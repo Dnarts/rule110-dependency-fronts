@@ -1,19 +1,17 @@
-# v1.0.0 — 18 November 2026
+# Research package v1.0.0 — 18 November 2026
 
-## Corrected since the supplied draft
+This file documents the preparation and verification of the first reproducible Rule 110 research package. It is a historical build record, not a publication-submission guide.
 
-- Synchronized the formal Lean source's introductory status with the supplied successful Lean 4.35.0 report. The proof declarations are byte-for-byte identical to the attested source; preserved the original source and the original report for independent verification. CI recompiles the comment-only edited source.
-- Rewrote the Russian proof's status statement, separating Lean-checked infinite-lattice results from the unformalized finite-ring proposition and conjecture.
-- Added accurate arXiv-required generative AI use disclosure to the English manuscript.
-- Rebuilt the PDF with local `latexmk`/`pdflatex`; visual check of all pages.
-- Verified the bibliographic naming of Seck-Tuoh-Mora (2006) and maintained existing references.
-- Independently recomputed all `2^20` Rule 110 ring configurations through `t=130`: full support from `t=11` through `130`; 2095 images and 12-bit capacity at `t=121`.
-- Re-ran the periodic background coverage through `t=2000`: all 3,337,668 pairs covered.
-- Added `CITATION.cff`, copyright/license candidates, GitHub Actions CI, reproducibility targets, submission instructions, and SHA-256 manifest.
-- Prepared a separate arXiv source ZIP containing only top-level `main.tex`, without the TeX-generated PDF or build intermediates.
+## Research and verification changes
 
-## Important scope
+- Synchronized the formal Lean source's introductory status with the successful supplied Lean 4.35.0 report; declarations and proofs were not changed. Preserved the attested source and report for independent verification.
+- Updated the Russian proof's status to distinguish Lean-checked infinite-lattice theorems from the non-formalized finite-ring proposition and open conjecture.
+- Added the manuscript's disclosure of substantive ChatGPT assistance and compiled the four-page PDF.
+- Independently enumerated all \(2^{20}\) Rule 110 ring configurations through \(t=130\); at \(t=121\), obtained 2,095 future states and all 20 essential initial sites.
+- Re-ran the periodic-background witness search through \(t=2000\), covering all 3,337,668 pairs.
+- Added machine-readable citation metadata, licensing notes, checksums, reproducibility targets, and GitHub Actions checks.
+- The repository now links to the published [Zenodo preprint](https://zenodo.org/records/24334185).
 
-Lean proof verified *according to the supplied author compilation report*, with the source hash independently cross-checked. The current environment has no Lean executable, so no fresh Lean compilation was performed here. The new GitHub Actions job is intended to perform that check after upload.
+## Verification boundaries
 
-The gap-free support conjecture for all time remains open, and no comprehensive scholarly-priority review has been certified. The arXiv submission is not created by packaging the files.
+GitHub Actions independently compiled the four principal Lean 4.35.0 infinite-lattice theorems. The supplied attestation is retained with its source hash. The all-time gap-free essentiality statement remains an open conjecture; the general finite-ring theorem is a human mathematical proof rather than a Lean theorem. A comprehensive prior-art/novelty evaluation has not been certified.
