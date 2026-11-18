@@ -1,0 +1,14 @@
+--- attested_source/rule110_complete.lean
++++ formal/rule110_complete.lean
+@@ -1,6 +1,9 @@
+ /-!
+-# Proposed formalization of Theorems 1 & 2 for Rule 110 in Lean 4 (UNVERIFIED)
+-Self-contained Lean 4 source, not compiler-verified in this release.
++# Formalization of Rule 110 Dependency-Front Theorems (Lean 4)
++The supplied Lean 4.35.0 compilation report attests that the four main theorems
++compiled without errors and have no `sorryAx` dependencies. This release edits
++only this documentation header; the executable declarations and proofs are
++unchanged. Recompile this file to verify the updated source.
+ 
+ Contents:
+ 1. Local Rule 110 transition, Zhegalkin (ANF) form, and directional derivatives.

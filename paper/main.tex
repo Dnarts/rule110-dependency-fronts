@@ -1,0 +1,167 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage[colorlinks=true,urlcolor=blue,citecolor=blue,linkcolor=blue]{hyperref}
+\usepackage[margin=1in]{geometry}
+\usepackage{microtype}
+\usepackage{array}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\F}{\mathbb{F}_2}
+\newcommand{\xor}{\oplus}
+\title{\textbf{Exact Worst-Case Dependency Fronts in Rule 110\\and Finite-State Certification of Input Essentiality}}
+\author{Aleksandr Strand}
+\date{18 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We determine the exact worst-case initial-condition dependency window for predicting a single cell of Elementary Cellular Automaton Rule 110 after $t$ synchronous updates on the bi-infinite lattice $\Z$. Let $G_t(u)=(F^t(u))_0$ and $D_t=\{j\in\Z:\exists u\in\{0,1\}^{\Z},\ G_t(u)\ne G_t(u\xor e_j)\}$. We prove, for every $t\ge0$, that $D_t\subseteq I_t=[-(t-\lfloor t/3\rfloor),t]$ and that both endpoints of $I_t$ belong to $D_t$. Consequently, the minimum contiguous observation interval sufficient for exact prediction has width $m_{\min}(t)=2t+1-\lfloor t/3\rfloor$, with $m_{\min}(t)/t\to 5/3$. The upper bound follows from a seven-site three-step local exclusion; sharpness follows from a traveling single-bit defect on the period-four background $(1011)^\infty$. Independent Python and TypeScript programs check the finite local identities and the recurrence. A separate Python search over spatially periodic backgrounds of period at most ten constructs witnesses for every site of $I_t$ through $t=2000$ (3,337,668 time--site pairs). Gap-free essential support at all horizons remains a conjecture. For finite periodic rings, we establish a finite-horizon certificate for persistent input essentiality via the coupled dynamics of pairs of configurations. Lean 4.35.0 verified both dependency bounds and both endpoint sharpness statements for every $t\ge0$ without a dependency on \texttt{sorryAx}.
+\end{abstract}
+
+\section{Introduction and problem formulation}
+The physical resources needed to predict a future observable may differ fundamentally from the number of bits required to represent its value. We isolate the exact combinatorial geometry of worst-case input sensitivity in Rule 110, a canonical computationally universal elementary cellular automaton \cite{cook2004}, against the background of predictive equivalence classes \cite{shalizi2001}, physical limits of inference \cite{wolpert2008}, and previously known glider velocities \cite{wolfram1986,martinez2006}. The latter literature makes it important not to confuse a traveling object's velocity with the worst-case essential-variable boundary for \emph{all} initial configurations.
+
+\begin{definition}[Rule 110 and the target observable]
+Set $X=\{0,1\}^{\Z}$ and define the local rule over $\F$ by
+\begin{equation}\label{eq:anf}
+f(l,c,r)=c\xor r\xor cr\xor lcr.
+\end{equation}
+The synchronous update $F:X\to X$ is $(F(u))_i=f(u_{i-1},u_i,u_{i+1})$. The time-$t$ observable at the origin is $G_t(u)=(F^t(u))_0$.
+\end{definition}
+\begin{definition}[Predictive factorization and essential variables]
+An observation map $O:X\to Y$ is sufficient for $G_t$ if $G_t=P\circ O$ for some map $P:Y\to\{0,1\}$. Equivalently, the equivalence relation induced by $O$ refines that induced by $G_t$. For $j\in\Z$, let $(u\xor e_j)_i=u_i\xor\mathbf1_{i=j}$ and put
+\begin{equation}\label{eq:essential}
+D_t=\{j\in\Z:\exists u\in X,\ G_t(u)\ne G_t(u\xor e_j)\}.
+\end{equation}
+\end{definition}
+Because $G_t$ depends on only finitely many coordinates, the unique minimum unrestricted set of individual input coordinates sufficient for its evaluation is $D_t$. Every sufficient contiguous interval must contain the integer convex hull of $D_t$.
+
+\section{Exact dependency window on the infinite lattice}
+Let $L(t)=t-\lfloor t/3\rfloor$ and $I_t=[-L(t),t]\cap\Z$.
+
+\begin{lemma}[Three-step rightward exclusion]\label{lem:local3}
+For every seven-bit word $x=(x_0,\ldots,x_6)$, let $Q(x)$ denote the output at the middle site after three synchronous Rule 110 updates. Then
+\begin{equation}\label{eq:local128}
+Q(x_0,x_1,\ldots,x_6)=Q(1\xor x_0,x_1,\ldots,x_6).
+\end{equation}
+\end{lemma}
+\begin{proof}
+From Eq.~\eqref{eq:anf} the Boolean derivative with respect to the left argument is
+\[
+ f(1,c,r)\xor f(0,c,r)=cr.
+\]
+Consider two configurations agreeing strictly to the right of site $p$ and suppose their rightmost discrepancy advances maximally from $p$ to $p+1$ to $p+2$ to $p+3$. The first advance forces the common values at $p+1$ and $p+2$ to be $1$; the next forces values $1$ at $p+2$ and $p+3$ at time one. As $f(1,1,z)=1\xor z$, this requires $x_{p+3}(0)=0$. Since $f(1,0,z)=z$, maintaining the advance also requires $x_{p+4}(0)=1$. But then $x_{p+4}(1)=f(0,1,x_{p+5}(0))=1$, and hence $x_{p+3}(2)=f(1,1,1)=0$, contradicting the third maximal advance. The fully local statement \eqref{eq:local128} is independently verified by checking all $2^7=128$ seven-bit inputs; the corresponding exhaustive verifier is supplied with this paper.
+\end{proof}
+
+\begin{theorem}[Universal dependency containment]\label{thm:upper}
+For every $t\in\N$,
+\[
+ D_t\subseteq I_t=[-(t-\lfloor t/3\rfloor),t]\cap\Z.
+\]
+\end{theorem}
+\begin{proof}
+Suppose two initial configurations agree strictly to the right of $p_0$. One update preserves agreement strictly to the right of $p_0+1$, by locality. By Lemma~\ref{lem:local3}, three updates preserve agreement strictly to the right of $p_0+2$: for a target site $i>p_0+2$ the initial seven-site window $[i-3,i+3]$ has at most one possibly differing bit, namely its leftmost one. Write $t=3q+r$, where $q=\lfloor t/3\rfloor$ and $r\in\{0,1,2\}$. Applying the three-step bound $q$ times and the one-step bound $r$ times, agreement remains to the right of
+\[
+ p_0+2q+r=p_0+t-\lfloor t/3\rfloor.
+\]
+If configurations initially differ at only $j<-L(t)$, they therefore agree at site zero at time $t$. If $j>t$, the ordinary radius-one light cone prevents any difference at site zero. Thus $D_t\subseteq I_t$.
+\end{proof}
+
+\begin{theorem}[Sharpness of both endpoints]\label{thm:sharp}
+For every $t\in\N$, both $-L(t)$ and $t$ are elements of $D_t$. Hence the smallest contiguous sufficient observation interval is $I_t$, of width
+\[
+ m_{\min}(t)=2t+1-\left\lfloor t/3\right\rfloor,
+ \qquad \lim_{t\to\infty}\frac{m_{\min}(t)}{t}=\frac53.
+\]
+\end{theorem}
+\begin{proof}
+For the right endpoint, compare the zero configuration with an isolated $1$ at site $t$. The leftmost $1$ advances exactly one site to the left on every step, by $f(0,0,0)=0$ and $f(0,0,1)=1$, and reaches site zero after $t$ steps.
+
+For the left endpoint, take the period-four background $B_0(i)=(1,0,1,1)[i\bmod 4]$ and the single-site perturbation $Y_0=B_0\xor e_2$. Let $B_t=F^t(B_0)$, $Y_t=F^t(Y_0)$ and $S_t=\{i:B_t(i)\ne Y_t(i)\}$. The following table follows from exact iteration of Rule 110:
+\begin{center}
+\begin{tabular}{@{}cccc@{}}\toprule
+$t$ & $B_t$ (period-four word) & $S_t$ & $\max S_t$ \\\midrule
+0 & 1011 & $\{2\}$ & 2 \\
+1 & 1110 & $\{1,3\}$ & 3 \\
+2 & 1011 & $\{1,3,4\}$ & 4 \\
+3 & 1110 & $\{0,1,4\}$ & 4 \\
+4 & 1011 & $\{-1,0,1,3,5\}$ & 5 \\
+5 & 1110 & $\{3,5,6\}$ & 6 \\
+6 & 1011 & $\{2,3,6\}$ & 6 \\\bottomrule
+\end{tabular}
+\end{center}
+Write $(\sigma^d u)_i=u_{i-d}$. The table, the equality of the periodic backgrounds, and finite propagation of a single-site defect give the full configuration identities $B_6=\sigma^2 B_3$ and $Y_6=\sigma^2 Y_3$. Shift equivariance $F\circ\sigma^d=\sigma^d\circ F$ then implies, for all $k\ge0$ and $r\in\{0,1,2\}$,
+\[
+ (B_{3+3k+r},Y_{3+3k+r})=\sigma^{2k}(B_{3+r},Y_{3+r}).
+\]
+Consequently $\max S_t=2+L(t)$ for every $t\ge0$. Shifting the initial pair by $-[2+L(t)]$ places its unique initial discrepancy at $-L(t)$ and the time-$t$ discrepancy at the origin. Therefore $-L(t)\in D_t$.
+\end{proof}
+
+\section{Finite rings, coupled dynamics, and capacity--access divergence}
+For a periodic ring $\Z_N$ with $N\ge3$, let $X_N=\{0,1\}^{\Z_N}$, let $F_N:X_N\to X_N$ denote Rule 110 with periodic boundaries, and define
+\[
+ B_t^{(N)}=F_N^t(X_N),\qquad C_t^{(N)}=\left\lceil\log_2|B_t^{(N)}|\right\rceil.
+\]
+Strict non-surjectivity implies $|B_t^{(N)}|<2^N$, but integer bit capacity falls below $N$ exactly when $|B_t^{(N)}|\le2^{N-1}$.
+
+To describe input essentiality after cone wraparound, define the paired evolution
+\[
+ H_N(u,v)=(F_N(u),F_N(v)),\quad
+ E_j=\{(u,u\xor e_j):u\in X_N\},\quad
+ W_0=\{(x,y):x_0\ne y_0\}.
+\]
+Then the following identity is immediate from definitions:
+\[
+ j\in D_t^{(N)}\quad\Longleftrightarrow\quad H_N^t(E_j)\cap W_0\ne\varnothing.
+\]
+\begin{proposition}[Finite-state certification of persistent essentiality]\label{prop:finite}
+Let $\mu_N$ be the maximum preperiod length of the finite dynamical system $F_N$, and let $P_N$ be the least common multiple of its cycle lengths. Then $D_{t+P_N}^{(N)}=D_t^{(N)}$ whenever $t\ge\mu_N$. Consequently, for any $T\in\N$, the statement
+\[
+ \forall t\ge T,\qquad D_t^{(N)}=\Z_N
+\]
+is equivalent to checking $H_N^t(E_j)\cap W_0\ne\varnothing$ for every $j\in\Z_N$ and every integer $t$ with
+\[
+ T\le t<\max(T,\mu_N)+P_N.
+\]
+\end{proposition}
+\begin{proof}
+Every trajectory in a finite deterministic system reaches a periodic cycle. By the choices of $\mu_N$ and $P_N$, the functions $F_N^{t+P_N}$ and $F_N^t$ agree on every input for $t\ge\mu_N$. The same holds componentwise for $H_N$. Therefore $D_t^{(N)}$ is ultimately periodic with period $P_N$. A finite segment covering all preperiod times at or after $T$ and one complete cycle after $\max(T,\mu_N)$ is necessary and sufficient for the asserted all-time property.
+\end{proof}
+
+\begin{remark}[Compression, interference, and finite counterexamples]
+Directional local sensitivity does not ensure persistent input essentiality on a finite ring. In Rule 110 with $N=5$, all 32 states have reached $0^5$ by $t=5$, so $D_t^{(5)}=\varnothing$ for $t\ge5$. For linear Rule 90 on $N=4$, $(F_4^2u)_i=u_{i-2}\xor u_{i+2}=0$, also giving $D_2^{(4)}=\varnothing$. Conversely, exhaustive full-state enumeration for Rule 110 on $N=20$ finds $|B_{121}^{(20)}|=2095$ (12 storage bits) but $D_{121}^{(20)}=\Z_{20}$. This illustrates that image cardinality and essential input support are different invariants. The last finding is a finite computation, not a universal theorem for all $N$.
+\end{remark}
+
+\section{Open conjecture and reproducibility}
+\begin{conjecture}[Gap-free essential support]
+For every $t\in\N$,
+\[
+ D_t=I_t=[-(t-\lfloor t/3\rfloor),t]\cap\Z.
+\]
+\end{conjecture}
+Theorems~\ref{thm:upper} and~\ref{thm:sharp} establish the exact smallest \emph{contiguous} observation interval, but do not prove essentiality of every interior coordinate. The supplied Python audit enumerates every spatially periodic background of period at most ten and evolves an isolated defect on an integer-encoded ring of length $5040=2\operatorname{lcm}(1,\ldots,10)>2(2000)+1$. This avoids wraparound interference through time 2000 while keeping all candidate background periods compatible with the ring. For all $0\le t\le2000$, every $j\in I_t$ is witnessed by some periodic background. The total is 3,337,668 distinct time--site pairs. The verification is finite and computational; it does not prove the conjecture beyond $t=2000$.
+
+The companion reproducibility materials include executable Python and TypeScript checks, machine-readable audit results, a human-readable proof, and a Lean~4 module. The supplied Lean~4.35.0 compilation report records successful checking of the two dependency-bound and two endpoint-sharpness statements, with no dependency on \texttt{sorryAx}; the reported dependencies are standard axioms \texttt{propext}, \texttt{Quot.sound}, and (for the endpoint statements) \texttt{Classical.choice}. The verified Lean scope does not include the finite-ring certification proposition or the all-horizon gap-free conjecture.
+
+\paragraph{Research software and AI assistance.} The computational experiments use independently implemented Python and TypeScript programs. OpenAI ChatGPT was used in hypothesis exploration, code development, proof drafting, auditing, and manuscript preparation. The author retains responsibility for the mathematical arguments, computational claims, references, and submitted content.
+
+\begin{thebibliography}{9}
+\bibitem{cook2004} M. Cook, ``Universality in elementary cellular automata,'' \emph{Complex Systems}, vol. 15, no. 1, pp. 1--40, 2004.
+\bibitem{martinez2006} G. J. Mart\'{\i}nez, H. V. McIntosh, and J. C. Seck-Tuoh-Mora, ``Gliders in Rule 110,'' \emph{International Journal of Unconventional Computing}, vol. 2, no. 1, pp. 1--49, 2006.
+\bibitem{shalizi2001} C. R. Shalizi and J. P. Crutchfield, ``Computational mechanics: Pattern and prediction, structure and simplicity,'' \emph{Journal of Statistical Physics}, vol. 104, pp. 817--879, 2001.
+\bibitem{wolfram1986} S. Wolfram, ``Tables of cellular automaton properties,'' in \emph{Theory and Applications of Cellular Automata}, World Scientific, pp. 485--557, 1986.
+\bibitem{wolpert2008} D. H. Wolpert, ``Physical limits of inference,'' \emph{Physica D: Nonlinear Phenomena}, vol. 237, no. 9, pp. 1257--1281, 2008.
+\end{thebibliography}
+\end{document}

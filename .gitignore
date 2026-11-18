@@ -1,0 +1,26 @@
+# TeX outputs (keep committed final paper/main.pdf)
+*.aux
+*.log
+*.out
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+*.bbl
+*.blg
+*.toc
+*.nav
+*.snm
+*.vrb
+# Lean build
+.lake/
+*.olean
+*.ilean
+# Python / local audit
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+# Generated outputs
+rule110_large_coverage.json
+rule110_certificate.json
+ring20_audit.json

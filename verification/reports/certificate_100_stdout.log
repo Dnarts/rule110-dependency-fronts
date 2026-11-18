@@ -1,0 +1,7 @@
+PASS: ANF=8, derivative=4, local 3-step=128
+PASS: 4-periodic defect, global shift recurrence finite base (t=3,6)
+PASS: independent ring32 double-check, both endpoint constructions
+PASS: ring counterexamples Rule110(N5) and Rule90(N4)
+COVERAGE: 8551 / 8551 period <= 6 max t= 100 FULL
+Certificate saved: certificate_100_rechecked.json
+NOTE: general induction is a human-readable proof, not a Python runtime theorem.

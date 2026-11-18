@@ -1,0 +1,1 @@
+771671e9199c41b2d7d11276ced34b439a976370a7520d7373770d87214a4ee9  rule110_complete.lean (original supplied, checked source)

@@ -1,0 +1,156 @@
+{
+  "kind": "finite computation plus explicit general mathematical induction",
+  "formal_kernel_checked": false,
+  "local": {
+    "anf_cases": 8,
+    "left_derivative_cases": 4,
+    "three_step_neighborhoods": 128,
+    "status": "PASS"
+  },
+  "periodic_defect": {
+    "period4_defect": "PASS",
+    "Y6_equals_shift2_Y3": "PASS",
+    "background_B6_equals_shift2_B3": "PASS",
+    "independent_ring32_crosscheck": "PASS",
+    "front_base_0_to_6": "PASS",
+    "frames": [
+      {
+        "t": 0,
+        "background": "1011",
+        "differences": [
+          2
+        ],
+        "rightmost": 2
+      },
+      {
+        "t": 1,
+        "background": "1110",
+        "differences": [
+          1,
+          3
+        ],
+        "rightmost": 3
+      },
+      {
+        "t": 2,
+        "background": "1011",
+        "differences": [
+          1,
+          3,
+          4
+        ],
+        "rightmost": 4
+      },
+      {
+        "t": 3,
+        "background": "1110",
+        "differences": [
+          0,
+          1,
+          4
+        ],
+        "rightmost": 4
+      },
+      {
+        "t": 4,
+        "background": "1011",
+        "differences": [
+          -1,
+          0,
+          1,
+          3,
+          5
+        ],
+        "rightmost": 5
+      },
+      {
+        "t": 5,
+        "background": "1110",
+        "differences": [
+          3,
+          5,
+          6
+        ],
+        "rightmost": 6
+      },
+      {
+        "t": 6,
+        "background": "1011",
+        "differences": [
+          2,
+          3,
+          6
+        ],
+        "rightmost": 6
+      }
+    ]
+  },
+  "right_endpoint": {
+    "single_seed_left_front_tested_t": 300,
+    "status": "PASS"
+  },
+  "finite_ring": {
+    "Rule110_N5": {
+      "4": {
+        "image_states": 2,
+        "capacity_bits": 1,
+        "essential_sites": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "5": {
+        "image_states": 1,
+        "capacity_bits": 0,
+        "essential_sites": []
+      },
+      "6": {
+        "image_states": 1,
+        "capacity_bits": 0,
+        "essential_sites": []
+      }
+    },
+    "Rule90_N4": {
+      "1": {
+        "image_states": 4,
+        "capacity_bits": 2,
+        "essential_sites": [
+          1,
+          3
+        ]
+      },
+      "2": {
+        "image_states": 1,
+        "capacity_bits": 0,
+        "essential_sites": []
+      },
+      "3": {
+        "image_states": 1,
+        "capacity_bits": 0,
+        "essential_sites": []
+      }
+    },
+    "status": "PASS"
+  },
+  "gapless_finite_horizon": {
+    "time_range": [
+      0,
+      100
+    ],
+    "max_background_period": 6,
+    "positions_requested": 8551,
+    "positions_witnessed": 8551,
+    "candidate_patterns_used": 32,
+    "first_uncovered": [],
+    "full_coverage": true
+  },
+  "induction_obligations": [
+    "3-step local independence => global upper bound by 3q+r decomposition",
+    "F commutes with shifts and F^(t+s)=F^t ∘ F^s",
+    "Y6=shift2(Y3) and B6=shift2(B3) => Y_(3+3k+r)=shift(2k)(Y_(3+r))",
+    "singleton leftmost 1 advances one site left per step"
+  ]
+}

@@ -1,0 +1,63 @@
+name: Verify Rule 110 research artifacts
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  computational:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Check supplied Lean attestation integrity
+        run: python scripts/verify_attested_lean.py
+      - name: Check finite certificates (Python)
+        run: |
+          python scripts/rule110_certificate.py --coverage-time 100 --coverage-period 6 --output /tmp/audit100.json
+          python scripts/rule110_large_coverage.py --max-time 2000 --max-period 10 --output /tmp/audit2000.json
+      - name: Independently check Rule 110 N=20 exhaustive enumeration
+        run: |
+          python -m pip install -r requirements-ring20.txt
+          python scripts/rule110_ring20_numpy.py
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: TypeScript independent cross-check
+        run: |
+          npm install --global typescript@5.8.3
+          mkdir -p /tmp/rule110-ts
+          tsc --strict --target ES2022 --module commonjs --skipLibCheck --outDir /tmp/rule110-ts scripts/rule110_crosscheck.ts
+          node /tmp/rule110-ts/rule110_crosscheck.js
+  formal:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: false
+          use-github-cache: false
+      - name: Compile formalized theorems and check axiom reports
+        shell: bash
+        run: |
+          set -euo pipefail
+          lean formal/rule110_complete.lean | tee /tmp/lean_axioms.log
+          ! grep -q 'sorryAx' /tmp/lean_axioms.log
+          test "$(grep -c 'depends on axioms:' /tmp/lean_axioms.log)" -eq 4
+  manuscript:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install TeX dependencies and compile manuscript
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq texlive-latex-base texlive-latex-recommended texlive-fonts-recommended texlive-latex-extra latexmk
+          cd paper
+          latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex

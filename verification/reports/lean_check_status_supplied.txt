@@ -1,0 +1,14 @@
+LEAN COMPILATION: PASS
+Check date: 2026-11-18 (Asia/Jerusalem)
+Lean (version 4.35.0, arm64-apple-darwin24.6.0, commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc, Release)
+Command: lean rule110_complete.lean
+Exit code: 0
+Errors: 0
+Warnings: 0
+771671e9199c41b2d7d11276ced34b439a976370a7520d7373770d87214a4ee9  rule110_complete.lean
+
+Axiom reports: 4 of 4 theorems have no sorryAx.
+'Rule110Complete.left_dependency_bound' depends on axioms: [propext, Quot.sound]
+'Rule110Complete.right_dependency_bound' depends on axioms: [propext, Quot.sound]
+'Rule110Complete.left_endpoint_essential' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Rule110Complete.right_endpoint_essential' depends on axioms: [propext, Classical.choice, Quot.sound]

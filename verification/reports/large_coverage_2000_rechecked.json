@@ -1,0 +1,11 @@
+{
+  "max_t": 2000,
+  "max_period": 10,
+  "ring_length": 5040,
+  "backgrounds_tested": 2046,
+  "expected_pairs": 3337668,
+  "witnessed_pairs": 3337668,
+  "complete_finite_coverage": true,
+  "first_gaps": [],
+  "times_with_gaps": 0
+}
