@@ -1,4 +1,13 @@
-# Evidence ledger
+# Verification scope
+
+## Combined preprint (v2)
+
+Lean 4.35.0 checks `Rails.essential_iff` on the infinite lattice for every natural time and every integer input coordinate. Its finite part covers 5,147,263 pairs through t=2484. The five strips of `Rails.late_all` cover all later times. The [root report](v2/final.log) lists exactly `[propext, Classical.choice, Quot.sound]`. Run `make verify` for a fresh build. The finite-ring proposition remains a mathematical proof in the manuscript.
+
+## First preprint (v1)
+
+The ledger below documents the scope of the first publication.
+
 
 ## `LEAN_ATTESTED_INPUT`
 

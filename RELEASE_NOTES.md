@@ -1,3 +1,9 @@
+# Combined preprint v2.0.0
+
+The Lean theorem `Rails.essential_iff` settles all-time gap-free essentiality on the infinite lattice. The proof combines a finite base for t < 2485 with five strips for t ≥ 2485. The English, Russian and Simplified Chinese manuscripts, their typesetting sources, the proof generator and compiler reports are included.
+
+The first manuscript and its [Zenodo record](https://doi.org/10.5281/zenodo.24334185) remain available. The notes below describe that edition at publication time.
+
 # Research package v1.0.0 — 18 November 2026
 
 This file documents the preparation and verification of the first reproducible Rule 110 research package. It is a historical build record, not a publication-submission guide.

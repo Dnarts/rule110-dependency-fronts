@@ -18,3 +18,15 @@ paper:
 
 lean:
 	lean formal/rule110_complete.lean
+
+.PHONY: verify paper-v2 package-v2
+verify:
+	@mkdir -p build
+	python3 scripts/build.py > build/verify.log || { tail -100 build/verify.log; exit 1; }
+	grep -Fx "'Rails.essential_iff' depends on axioms: [propext, Classical.choice, Quot.sound]" build/verify.log
+
+paper-v2:
+	cd paper/v2 && for lang in en ru zh; do latexmk -xelatex -halt-on-error -interaction=nonstopmode "$$lang.tex" || exit 1; done
+
+package-v2: paper-v2
+	python3 scripts/package_v2.py

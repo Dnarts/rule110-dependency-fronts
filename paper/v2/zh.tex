@@ -1,0 +1,308 @@
+\documentclass[11pt, a4paper]{article}
+\usepackage[a4paper, margin=2.3cm]{geometry}
+\usepackage{fontspec}
+\setmainfont[Path=fonts/,Extension=.otf,UprightFont=*-Regular,BoldFont=*-Bold,ItalicFont=*-Regular,BoldItalicFont=*-Bold]{R110Serif}
+\XeTeXlinebreaklocale "zh"\relax \XeTeXlinebreakskip=0pt plus 0.1pt\relax
+\setmonofont[Path=fonts/,Extension=.ttf,UprightFont=*,BoldFont=*-Bold,ItalicFont=*-Oblique,BoldItalicFont=*-BoldOblique]{DejaVuSansMono}
+\renewcommand{\contentsname}{目录}
+\renewcommand{\abstractname}{摘要}
+\renewcommand{\refname}{参考文献}
+\renewcommand{\tablename}{表}
+\setlength{\emergencystretch}{3em}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage[table]{xcolor}
+\usepackage{enumitem}
+\usepackage[colorlinks=true, linkcolor=blue!60!black, urlcolor=blue!60!black, citecolor=blue!60!black]{hyperref}
+
+\definecolor{ink}{HTML}{1E293B}
+\definecolor{slate}{HTML}{475569}
+\definecolor{rulegray}{HTML}{CBD5E1}
+\definecolor{tint}{HTML}{F8FAFC}
+\definecolor{accent}{HTML}{0F4C81}
+\renewcommand{\proofname}{证明}\linespread{1.12}
+\newtheorem{theorem}{定理}[section]
+\newtheorem{lemma}[theorem]{引理}
+\newtheorem{proposition}[theorem]{命题}
+\newtheorem{definition}[theorem]{定义}
+\newtheorem{conjecture}[theorem]{猜想}
+\newtheorem{remark}[theorem]{注}
+
+\title{\vspace{-1cm}\textbf{\Large 规则 110 的精确依赖前沿、有限证书\\与适用于无界时间的构造性不变量}\\[0.55em]
+{\large 无限格点上本质坐标的完整刻画}}
+\author{Aleksandr Strand}
+\date{2026 年 11 月}
+
+\hypersetup{pdftitle={规则 110 的精确依赖前沿、有限证书与适用于无界时间的构造性不变量},pdfauthor={Aleksandr Strand},pdflang={zh-CN}}
+\begin{document}
+\sloppy
+\maketitle
+\thispagestyle{plain}
+
+\begin{abstract}
+本文精确刻画一维元胞自动机规则 110 中哪些初始坐标能够影响 $t$ 步后原点处元胞的状态。对每个 $t\ge0$，这些坐标恰为从 $-(t-\lfloor t/3\rfloor)$ 到 $t$ 的所有整数，包含两个端点。对区间内的每个坐标，都存在一对仅在该处取值不同、且在时刻 $t$ 给出不同输出的初始构型。当 $t<2485$ 时，我们在有限环上验证证书，再利用局部性将结果推广到无限直线。当 $t\ge2485$ 时，五个相邻条带覆盖整个区间。在其中一个内部条带上，无论从右侧输入哪个比特，有限自动机都能维持移动边界左侧的周期晶体结构。最终的等价命题 \texttt{Rails.essential\_iff} 已通过 Lean 4.35.0 验证。
+\end{abstract}
+
+\tableofcontents
+\vspace{1em}
+
+% ==============================================================================
+\section{引言与问题表述}
+% ==============================================================================
+
+精确预测动力系统中某个观测量的未来值，所需的物理资源和信息资源可能与编码系统一个可能状态所需的比特数相差很大。本文研究具有通用计算能力的初等元胞自动机规则 110\cite{cook2004}，刻画其对初始条件的最坏情形敏感性在空间上的分布。这一问题与计算力学中的预测等价类\cite{shalizi2001}、推断的物理极限\cite{wolpert2008}及滑翔子的分类\cite{wolfram1986, martinez2006}有关。滑翔子的速度描述局域结构在特定背景上的运动。本质坐标的普适界则必须对所有初始构型成立。
+
+\begin{definition}[规则 110 与观测量]
+令 $X = \{0, 1\}^{\mathbb{Z}}$。局部规则在域 $\mathbb{F}_2$ 上的代数标准形为
+\begin{equation}\label{eq:rule110}
+f(l, c, r) = c \oplus r \oplus cr \oplus lcr.
+\end{equation}
+同步更新算子 $F : X \to X$ 由 $(F(u))_i = f(u_{i-1}, u_i, u_{i+1})$ 定义。时刻 $t \in \mathbb{N}$ 在原点处的观测量为 $G_t(u) = (F^t(u))_0$。
+\end{definition}
+
+\begin{definition}[预测映射的分解与本质变量]
+若存在映射 $P : Y \to \{0, 1\}$ 使 $G_t = P \circ O$，则称观测映射 $O : X \to Y$ 对 $G_t$ 是充分的。对 $j \in \mathbb{Z}$，用 $(u \oplus e_j)_i = u_i \oplus \mathbf{1}_{i=j}$ 表示仅翻转坐标 $j$ 处的比特。本质初始坐标的集合定义为
+\begin{equation}\label{eq:essential_set}
+D_t = \{ j \in \mathbb{Z} : \exists u \in X,\; G_t(u) \ne G_t(u \oplus e_j) \}.
+\end{equation}
+\end{definition}
+
+由于 $G_t$ 仅依赖有限多个坐标，在所有足以计算 $G_t$ 的输入坐标集合中，$D_t$ 是按包含关系唯一的极小集合。因此，任何充分的观测区间都必须包含 $D_t$ 的整数凸包。
+
+为了在周期背景上构造见证，我们区分输入坐标 $j$ 与观测到缺陷的物理坐标 $s$。给定周期字 $w$、空间相位 $\phi$ 及相应的无限构型 $B_0^{w,\phi}$，令
+\begin{equation}\label{eq:diff_support}
+B_t^{w,\phi} = F^t(B_0^{w,\phi}), \qquad
+Y_t^{w,\phi} = F^t(B_0^{w,\phi} \oplus e_0), \qquad
+S_t^{w,\phi} = \{ s \in \mathbb{Z} : B_t^{w,\phi}(s) \ne Y_t^{w,\phi}(s) \}.
+\end{equation}
+更新与平移可交换，即 $F \circ \sigma^d = \sigma^d \circ F$，其中 $(\sigma^d u)_i = u_{i-d}$。对每个 $s \in S_t^{w,\phi}$，将这对初始构型平移 $-s$，便得到 $j = -s \in D_t$ 的见证。因此，对任意背景及相位族 $\mathcal{W}$，有
+\begin{equation}\label{eq:coverage_bridge}
+C_t(\mathcal{W}) = \bigcup_{(w,\phi) \in \mathcal{W}} \{ -s : s \in S_t^{w,\phi} \} \subseteq D_t.
+\end{equation}
+由此可见，输入窗口的左端点 $j = -L(t)$ 对应缺陷的物理右前沿 $s = L(t)$，而右端点 $j = t$ 对应物理左前沿 $s = -t$。
+
+% ==============================================================================
+\section{无限格点上的精确依赖窗口}
+% ==============================================================================
+
+令 $L(t) = t - \lfloor t/3 \rfloor$，并记 $I_t = [-L(t), t] \cap \mathbb{Z}$。
+
+\begin{lemma}[向右传播的三步界]\label{lem:three_step}
+对任意七比特字 $x = (x_0, \dots, x_6) \in \{0, 1\}^7$，以 $Q(x)$ 表示按规则 110 同步更新三步后中心元胞的值。则
+\begin{equation}\label{eq:seven_bit}
+Q(x_0, x_1, \dots, x_6) = Q(1 \oplus x_0, x_1, \dots, x_6).
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+由式~\eqref{eq:rule110}，局部规则关于左侧输入的布尔导数为
+\begin{equation}\label{eq:bool_deriv}
+f(1, c, r) \oplus f(0, c, r) = cr.
+\end{equation}
+假设两个构型在 $p$ 的严格右侧处处相同，且最右侧差异连续三步各向右移动一个元胞，依次从 $p$ 到 $p+1$、$p+2$、$p+3$。第一次移动要求时刻 $0$ 在 $p+1$ 和 $p+2$ 处的共同取值均为 $1$。第二次移动要求时刻 $1$ 在 $p+2$ 和 $p+3$ 处的值均为 $1$。由 $f(1, 1, z) = 1 \oplus z$ 可知 $x_{p+3}(0) = 0$，再由 $f(1, 0, z) = z$ 得到 $x_{p+4}(0) = 1$。于是 $x_{p+4}(1) = f(0, 1, x_{p+5}(0)) = 1$，从而 $x_{p+3}(2) = f(1, 1, 1) = 0$，第三次移动便不可能发生。Lean 4 内核也逐一检查了全部 $2^7 = 128$ 种输入，验证了式~\eqref{eq:seven_bit}。
+\end{proof}
+
+\begin{theorem}[依赖集的普适界]\label{thm:upper_bound}
+对每个 $t \in \mathbb{N}$，均有 $D_t \subseteq I_t = [-(t - \lfloor t/3 \rfloor), t] \cap \mathbb{Z}$。
+\end{theorem}
+
+\begin{proof}
+若两个构型在 $p_0$ 的严格右侧处处相同，则一步后在 $p_0 + 1$ 的严格右侧仍然相同。由引理~\ref{lem:three_step}，三步后两者在 $p_0 + 2$ 的严格右侧仍然相同。写成 $t = 3q + r$，其中 $q = \lfloor t/3 \rfloor$，$r \in \{0, 1, 2\}$。经 $t$ 步后，两构型在 $p_0 + 2q + r = p_0 + L(t)$ 的严格右侧仍然相同。因此，始于 $j < -L(t)$ 的差异在时刻 $t$ 无法到达原点。对 $j > t$，通常的半径为一的光锥即给出所需结论。
+\end{proof}
+
+\begin{theorem}[两个端点均可达到]\label{thm:sharpness}
+对每个 $t \in \mathbb{N}$，两个端点 $-L(t)$ 和 $t$ 均属于 $D_t$。最小充分观测区间为 $I_t$，其宽度满足
+\begin{equation}
+m_{\min}(t) = 2t + 1 - \lfloor t/3 \rfloor, \qquad \lim_{t \to \infty} \frac{m_{\min}(t)}{t} = \frac{5}{3}.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+对右端点 $j = t$，比较全零构型 $0^{\mathbb{Z}}$ 与仅在 $t$ 处为一的构型 $e_t$。由 $f(0, 0, 0) = 0$ 和 $f(0, 0, 1) = 1$，最左侧的一在每一步恰好左移一个元胞，故在 $t$ 步后到达原点。
+
+对左端点 $j = -L(t)$，取周期为四的背景 $B_0(i) = (1, 0, 1, 1)[i \bmod 4]$ 及其扰动 $Y_0 = B_0 \oplus e_2$。迭代规则 110 六步，得到表~\ref{tab:period4_defect} 所列的差异支集 $S_t$。
+
+\begin{table}[h]
+\centering
+\caption{背景 $(1011)$ 上的单个缺陷。初始暂态过后，这对构型按时空位移 $(\Delta t, \Delta s) = (3, +2)$ 重现。}
+\label{tab:period4_defect}
+\begin{tabular}{cccc}
+\toprule
+$t$ & 背景字 $B_t$（周期 $4$）& 差异支集 $S_t$ & $\max S_t$ \\
+\midrule
+$0$ & $1011$ & $\{2\}$ & $2$ \\
+$1$ & $1110$ & $\{1, 3\}$ & $3$ \\
+$2$ & $1011$ & $\{1, 3, 4\}$ & $4$ \\
+$3$ & $1110$ & $\{0, 1, 4\}$ & $4$ \\
+$4$ & $1011$ & $\{-1, 0, 1, 3, 5\}$ & $5$ \\
+$5$ & $1110$ & $\{3, 5, 6\}$ & $6$ \\
+$6$ & $1011$ & $\{2, 3, 6\}$ & $6$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+由局部性及表中的结果可知，将 $t=3$ 的构型向右平移两个元胞即得 $t=6$ 的构型，故 $B_6 = \sigma^2 B_3$ 且 $Y_6 = \sigma^2 Y_3$。由平移等变性，对所有 $k \ge 0$ 和 $r \in \{0, 1, 2\}$，有 $(B_{3+3k+r}, Y_{3+3k+r}) = \sigma^{2k}(B_{3+r}, Y_{3+r})$。结合最初几步可得，对所有 $t \ge 0$，均有 $\max S_t = 2 + L(t)$。将初始构型对平移 $-[2 + L(t)]$，初始翻转便位于 $-L(t)$，而时刻 $t$ 的差异位于原点。因此 $-L(t) \in D_t$。
+\end{proof}
+
+% ==============================================================================
+\section{有限环、状态容量与输入访问}
+% ==============================================================================
+
+在有限环 $\mathbb{Z}_N$（$N \ge 3$）上，以 $X_N = \{0, 1\}^{\mathbb{Z}_N}$ 表示构型空间，$F_N : X_N \to X_N$ 表示更新映射。时刻 $t$ 的可达状态集为 $B_t^{(N)} = F_N^t(X_N)$，编码其中任一状态所需的比特数为 $C_t^{(N)} = \lceil \log_2 |B_t^{(N)}| \rceil$。定义构型对的演化 $H_N(u, v) = (F_N(u), F_N(v))$、初始构型对集合 $E_j = \{ (u, u \oplus e_j) : u \in X_N \}$，以及在原点处取值不同的构型对集合 $W_0 = \{ (x, y) : x_0 \ne y_0 \}$。于是
+\begin{equation}
+j \in D_t^{(N)} \iff H_N^t(E_j) \cap W_0 \ne \emptyset.
+\end{equation}
+
+\begin{proposition}[本质性持续成立的有限证书]\label{prop:ring_cert}
+设 $\mu_N$ 是有限确定性系统 $F_N$ 的最大暂态长度，$P_N$ 是所有周期轨道长度的最小公倍数。则对一切 $t \ge \mu_N$，有 $D_{t+P_N}^{(N)} = D_t^{(N)}$。因此，对任意 $T \in \mathbb{N}$，要验证 $\forall t \ge T,\; D_t^{(N)} = \mathbb{Z}_N$，等价地只需对每个 $j \in \mathbb{Z}_N$ 和每个满足 $T \le t < \max(T, \mu_N) + P_N$ 的 $t$，检验 $H_N^t(E_j) \cap W_0 \ne \emptyset$。
+\end{proposition}
+
+\begin{remark}[状态压缩与输入敏感性]
+无限格点上的敏感性在有限环上未必持续。对 $N = 5$ 的规则 110，全部 $32$ 个状态在 $t = 5$ 时均已到达 $0^5$，故当 $t \ge 5$ 时，$D_t^{(5)} = \emptyset$。在 $N = 20$ 的环上，穷举得到时刻 $t = 121$ 的可达状态数为 $|B_{121}^{(20)}| = 2095$，编码仅需 $12$ 比特。此时仍有 $D_{121}^{(20)} = \mathbb{Z}_{20}$，全部 $20$ 个输入比特都是本质变量。这两个例子说明，分析预测问题时应分别考察因果依赖（支集 $D_t$）、数据访问方式（逐个读取坐标或使用预处理后的数据）、状态容量（$C_t^{(N)}$）以及计算复杂度。
+\end{remark}
+
+\begin{theorem}[区间内每个坐标都是本质坐标]\label{conj:gap_free}
+对每个 $t \in \mathbb{N}$，均有 $D_t = I_t = [-(t - \lfloor t/3 \rfloor), t] \cap \mathbb{Z}$。
+\end{theorem}
+
+最初的有限验证覆盖了 $0\le t\le2000$。其后，以七个字的固定相位为初始背景的实验将检验延伸到 $t=5000$。最后一节给出对所有时刻成立的证明，其中采用的新有限证书验证至 $t=2484$。
+
+% ==============================================================================
+\section{单侧自主块与两条时间无界的边界带}
+% ==============================================================================
+
+迭代应用引理~\ref{lem:three_step}，可知对所有构型，元胞 $s$ 在 $3m$ 步后的输出依赖集均满足 $\mathrm{Dep}_{3m}(s) \subseteq [s - 2m, s + 3m]$。
+
+\begin{lemma}[半直线上的闭合性]\label{lem:one_sided}
+设 $A_t = F^t(A_0)$，$p > 0$，且 $a(t + p) = a(t) + \delta$。假设对每个基准时刻 $t_0 \le t < t_0 + p$ 和所有 $s \ge a(t)$，均有 $A_{t+p}(s + \delta) = A_t(s)$。再假设每经过 $p$ 步，$A_{t+p}$ 在 $[a(t+p), \infty)$ 上的限制仅由 $A_t$ 在 $[a(t), \infty)$ 上的限制决定。则对所有 $t \ge t_0$ 及 $s \ge a(t)$，均有 $A_{t+p}(s + \delta) = A_t(s)$。对左半直线 $s \le a(t)$，相应命题也成立。
+\end{lemma}
+
+对物理右前沿 $e(t) = L(t)$，取 $(\Delta t, \Delta s) = (30, +20)$ 并应用引理~\ref{lem:one_sided}。此时 $e(t+30) = e(t) + 20$，宽度为 $W$ 的新块所依赖的坐标位于 $[e(t) - W + 1, e(t) + 50]$ 内。因此，计算新块时无需知道内部区域 $s < e(t) - W + 1$ 的取值。对左前沿 $s = -t$ 取 $(\Delta t, \Delta s) = (40,-40)$，作同样的推导，即得以下对无界时间成立的结论。
+
+\begin{theorem}[两条边界带]\label{thm:dual_strips}
+对每个整数 $t \ge 300$，均有
+\begin{equation}\label{eq:dual_strips}
+[-L(t), -L(t) + 105] \cap \mathbb{Z} \;\cup\; [t - 7, t] \cap \mathbb{Z} \;\subseteq\; D_t.
+\end{equation}
+\end{theorem}
+
+对宽度为 $106$ 的左边界带，证书采用背景 $(0001111001)$、$(1011)$ 和 $(001011)$ 的 $20$ 个相位，在 $t = 300, \dots, 329$ 这 $30$ 个基准时刻使用深度为 $167$ 个元胞的块。对宽度为 $8$ 的右边界带，证书采用六个相位，在基准时刻 $t = 300, \dots, 339$ 上使用位移 $(\Delta t, \Delta s) = (40,-40)$。利用类型为 \texttt{BitVec 1320} 的位向量进行携带证明的计算，即可验证各中间状态。Lean 4.35.0 内核逐一检查转移 $F_{1320}^{h_i}(z_i) = z_{i+1}$，其中 $h_i \in \{1, 10\}$。
+
+% ==============================================================================
+\section{弹道射线与局部证书的适用范围}
+% ==============================================================================
+
+将覆盖范围延伸至任意大时刻的另一种方法，是证明差异沿某条离散时空轨迹一直存在。
+
+\begin{lemma}[右半直线上的持续性]\label{lem:ballistic_ray}
+假设轨迹 $A$ 在时刻 $T$ 满足 $\forall s \ge x,\; A_{T+3}(s + 2) = A_T(s)$。则 $\forall q \ge 0,\; \forall s \ge x,\; A_{T+3q}(s + 2q) = A_T(s)$。特别地，若 $B$ 与 $Y$ 均满足此条件，且 $B_T(x) \ne Y_T(x)$，则对每个 $q \ge 0$，都有 $B_{T+3q}(x + 2q) \ne Y_{T+3q}(x + 2q)$。
+\end{lemma}
+
+在背景 $(0000101111)$ 和 $(001011)$ 上分别取以下两族起点，参数范围为 $0 \le n \le 32$：
+\begin{equation}
+T_A(n) = 594 + 882n,\quad x_A(n) = 256 + 378n; \qquad
+T_B(n) = 884 + 882n,\quad x_B(n) = 380 + 378n,
+\end{equation}
+计算验证了这 $66$ 个起点。每个起点都产生一条由本质坐标构成的无限弹道射线。沿同一射线，到前沿 $e(t) = L(t)$ 的深度保持不变，两族射线的深度分别为 $d_A(n) = 140 + 210n$ 和 $d_B(n) = 210 + 210n$。
+
+随后的 \texttt{StaircaseA} 和 \texttt{StaircaseB} 模块通过拼接三个局部相容的构型行来精确描述演化，从而证明两族公式对任意 $n,q\ge0$ 均成立。A、B 两族前沿处的周期介质覆盖 $66\,150$ 个剩余类中的 $45\,255$ 个。加入第三族后，覆盖数增至 $53\,550$。这些计数针对 $315\times210$ 的剩余类表。将表中结果用于具体物理坐标时，还须检验该点确实位于相应的楔形区域内。
+
+下列反例说明了局部证书的三项限制。
+\begin{itemize}
+    \item \textbf{局部块不足以支持从 $n$ 到 $n+1$ 的归纳。}对于大步长 $(\Delta T, \Delta x) = (882, +378)$，普适依赖界为 $\mathrm{Dep}_{882}(s) \subseteq [s - 588, s + 882]$。将目标位置平移后，所得区间为 $[x - 210, x + 1260]$。在 \texttt{check\_macro\_boundary.py} 的反例中，即使固定半径为 $64$（$T=594$ 时）或 $186$（$T=884$ 时）的局部块，改变块外元胞仍能改变 $882$ 步后的目标比特。
+    \item \textbf{有限时间内覆盖的扇区在更晚时刻可能出现缺口。}对背景 $(0001111001)$，速度位于 $[-0.66, -0.64]$ 的左扇区直到 $t = 2000$ 都表现为完全覆盖。延长演化时间后便出现缺口。
+    \item \textbf{平移复现本身不足以保证完全覆盖。}对背景 $(0000001001)$，即使平移复现的深度达到 $261$ 个元胞，也无法由此保证每个剩余类都被覆盖。覆盖证明需要联合使用多个相位。
+\end{itemize}
+
+% ==============================================================================
+\section{左侧无界楔形区域的构造性闭合}
+% ==============================================================================
+
+为同时处理光锥左缘（速度为 $-1$）、周期为 $50$ 的晶体和扰动前沿的不同运动方式，我们用 $j \in \mathbb{N}$ 对偶数时刻编号，并令
+\begin{equation}
+\mathrm{tm}(j) = 2450 + 2j, \qquad a(j) = -350 - j.
+\end{equation}
+右边界 $a(j)$ 每两步左移一个元胞，速度为 $-1/2$。对六个相位 $p \in \{\mathrm{p0}, \mathrm{p1}, \mathrm{p2}, \mathrm{p3}, \mathrm{p7}, \mathrm{p9}\}$ 中的每一个，第 $j$ 层的不变量由两个条件组成：在 $a(j)$ 左侧的指定区间内，轨迹与参考晶体 $\mathrm{Cm}_p$ 一致；从 $a(j)$ 开始的 $16$ 比特边界缓冲区，则与有限转移图中某个节点存储的字一致。精确地说，
+\begin{align}
+\mathrm{Medium}(p, j) &\iff \forall x \in \mathbb{Z},\quad -\mathrm{tm}(j) + 1300 \le x < a(j) \implies Y_p(\mathrm{tm}(j), x) = \mathrm{Cm}_p(\mathrm{tm}(j), x), \\
+\mathrm{Window}(p, j, i) &\iff \forall k \in \{0, \dots, 15\},\quad Y_p(\mathrm{tm}(j), a(j) + k) = \mathrm{testBit}(\mathrm{word}(p, j, i), k).
+\end{align}
+
+\begin{lemma}[16 比特确定性转换器及其与左侧条带的衔接]\label{lem:transducer}
+对每个相位 $p$，表 \texttt{Crystal50Packed} 定义一个以 $50$ 为周期逐层重复的图。每条记录占 $36$ 比特。低 $16$ 位编码窗口 $\mathrm{word}(p, j, i)$，第 $16\dots 25$ 位和第 $26\dots 35$ 位分别编码右侧输入比特 $r \in \{0, 1\}$ 取两个不同值时的转移。
+\begin{enumerate}[label=(\alph*)]
+    \item 在第 $j$ 步，左侧的 $4$ 比特上下文 $\mathrm{ctx}(p, j \bmod 50)$ 占据位置 $a(j) - 4 + m$，其中 $m \in \{0, 1, 2, 3\}$。这些位置的深度为 $t + x = 2096 + j + m$，均处于 $\mathrm{Medium}(p, j)$ 已覆盖的区间内。
+    \item 连续进行两次逐位归约 $\mathrm{shrink}(\mathrm{shrink}(\mathrm{input}(p, j, i, r)))$，即可算出时刻 $\mathrm{tm}(j+1)$ 区间 $[a(j)-2, a(j)+14]$ 上的 $17$ 个构型比特。最低位（$k=0$）给出 $\mathrm{Cm}_p(\mathrm{tm}(j+1), a(j) - 2)$，其余 $16$ 位（$k=1\dots 16$）组成下一层节点 $z$ 的字，其窗口起点为 $a(j+1) = a(j) - 1$。
+    \item 在条带左缘，满足 $-\mathrm{tm}(j+1) + 1300 \le x < -\mathrm{tm}(j) + 1302$ 的元胞具有深度 $k = x + \mathrm{tm}(j+1) \in \{1300,1301,1302,1303\}$。平移 $(t, x) \mapsto (t + 50, x - 50)$ 保持 $t + x$ 不变，因此 \texttt{Crystal50Seam} 中的定理 \texttt{seam} 覆盖这些元胞。
+\end{enumerate}
+\end{lemma}
+
+\begin{theorem}[\texttt{Rails.Crystal50Wedge.wedge\_all}]\label{thm:wedge_all}
+对任意整数时刻 $t \ge 2485$ 和任意满足下式的整数 $x$，
+\begin{equation}\label{eq:wedge_region}
+-t + 1302 \le x \le 59 - \lfloor t/2 \rfloor,
+\end{equation}
+命题 \texttt{Rule110KernelCert.EssentialAt t (-x)} 成立。此处 $t$ 没有上界。
+\end{theorem}
+
+\begin{proof}[证明思路]
+取 $j = \lfloor (t - 2450) / 2 \rfloor$。当 $t \ge 2485$ 时，$j \ge 17$，且右边界为 $59 - \lfloor t/2 \rfloor = -1166 - j = a(j) - 816$。在偶数时刻 $t = \mathrm{tm}(j)$，由不变量 $\mathrm{Medium}(p, j)$ 可直接推出对全部六个相位 $p$ 均有 $Y_p(t, x) = \mathrm{Cm}_p(t, x)$。在奇数时刻 $t = \mathrm{tm}(j) + 1$，一步依赖区间 $[x - 1, x + 1]$ 完全位于 $[-\mathrm{tm}(j) + 1300, a(j))$ 内，由局部性引理 \texttt{carry} 即可将这种一致性延续一步。最后应用 \texttt{essential\_of\_cm}，便得到所需的本质性见证。
+\end{proof}
+
+% ==============================================================================
+\section{无限直线上的完全覆盖}
+改用输入坐标 $j=-x$，记 $b=\lfloor t/2\rfloor$。当 $t\ge2485$ 时，下列五个结果依次覆盖相邻区间。表中各行均包含两个端点。
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+起始坐标 & 终止坐标 & 依据 \\
+\midrule
+$-L(t)$ & $-L(t)+105$ & 宽度为 106 的半直线证书 \\
+$-L(t)+106$ & $b-60$ & \texttt{EtherWedge.half\_sector} \\
+$b-59$ & $t-1302$ & \texttt{Crystal50Wedge.wedge\_all} \\
+$t-1301$ & $t-20$ & \texttt{LeftCrystal50.left\_strip} \\
+$t-19$ & $t$ & \texttt{right\_boundary\_width20} \\
+\bottomrule
+\end{tabular}
+\end{center}
+周期为 14 的以太背景的三个相位使第二行从 $t\ge210$ 起便成立。最后一行将此前宽度为八的右边界带进一步扩大。在 $t=2485$ 时，第三行恰好包含一个元胞 $j=1183$。每一行的起始坐标都恰比上一行的终止坐标大一。引理 \texttt{Rails.late\_all} 将这五项证明合在一起。
+
+\paragraph{有限证书}
+对 $0\le t<2485$，取七个字的全部循环相位。以下各对数依次给出字长及其整数编码，最低有效位对应第一个元胞：
+\[
+(8,244),\ (10,632),\ (10,976),\ (10,576),\ (4,13),\ (6,52),\ (6,48).
+\]
+用长度为 5520 的位向量表示每个背景，在位置 2760 翻转一个比特。在每个时刻，对所有构型对的差异掩码逐位取并，验证所得结果包含物理区间 $[-t,L(t)]$ 的掩码。这共覆盖 $\sum_{t=0}^{2484}(2t+1-\lfloor t/3\rfloor)=5\,147\,263$ 个时空点。区间内每个 $x$ 均满足 $-5520<x-t$ 和 $x+t<5520$，故由局部性引理 \texttt{local\_obs} 可将环上的结果推广到无限直线上的单比特翻转。
+
+七个字确定初始行。生成器每隔 25 步给出一个候选快照。Lean 检查每个块的覆盖掩码，并在存在后继块时验证当前块的终态与下一块的初始快照相等。最后一块包含十行。对块长作归纳，可将掩码中每个被覆盖的比特对应到一对具体轨迹。因此，\texttt{Rails.Finite.finite\_all} 证明了有限区域内每个输入坐标的本质性。
+
+\begin{proof}[定理~\ref{conj:gap_free} 的证明（续）]
+由定理~\ref{thm:upper_bound} 得 $D_t\subseteq I_t$。对于反向包含关系，在 $t<2485$ 时使用有限证书，在 $t\ge2485$ 时使用上述五条带。将每一对在物理坐标 $x$ 处出现差异的构型作相应平移，即得输入坐标 $-x$ 的本质性见证。
+\end{proof}
+
+\paragraph{对数据访问的推论}
+任何足以在所有构型上精确计算 $G_t$ 的固定初始坐标集，都必须包含 $I_t$。局部性与依赖上界共同保证 $I_t$ 本身已经充分。因此，这类观测所需的最小坐标数恰为 $2t+1-\lfloor t/3\rfloor$。本质性的见证可以同时依赖于 $t$ 和 $j$。要进一步确定自适应查询的代价、预处理代价或内存需求，还须另行指定计算模型。
+
+\paragraph{复现方法}
+最终定理见 \texttt{lean/Rule110Exact.lean}。配套代码含有各导入模块的源码、有限块生成器、构建脚本和构建日志。命令 \texttt{\#print axioms} 对最终定理给出 \texttt{[propext, Classical.choice, Quot.sound]}，对 \texttt{wedge\_all} 给出 \texttt{[propext, Quot.sound]}。两份列表分别列出了相应定理所依赖的公理。
+
+\clearpage
+\begin{thebibliography}{9}
+\bibitem{cook2004}
+M.~Cook, ``Universality in elementary cellular automata,'' \emph{Complex Systems}, vol.~15, no.~1, pp.~1--40, 2004.
+
+\bibitem{martinez2006}
+G.~J.~Mart\'inez, H.~V.~McIntosh, and J.~C.~Seck-Tuoh-Mora, ``Gliders in Rule 110,'' \emph{International Journal of Unconventional Computing}, vol.~2, no.~1, pp.~1--49, 2006.
+
+\bibitem{shalizi2001}
+C.~R.~Shalizi and J.~P.~Crutchfield, ``Computational mechanics: Pattern and prediction, structure and simplicity,'' \emph{Journal of Statistical Physics}, vol.~104, pp.~817--879, 2001.
+
+\bibitem{wolfram1986}
+S.~Wolfram, ``Tables of cellular automaton properties,'' in \emph{Theory and Applications of Cellular Automata}, World Scientific, pp.~485--557, 1986.
+
+\bibitem{wolpert2008}
+D.~H.~Wolpert, ``Physical limits of inference,'' \emph{Physica D: Nonlinear Phenomena}, vol.~237, no.~9, pp.~1257--1281, 2008.
+\end{thebibliography}
+
+\end{document}

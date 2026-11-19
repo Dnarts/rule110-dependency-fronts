@@ -61,3 +61,46 @@ jobs:
           sudo apt-get install -y -qq texlive-latex-base texlive-latex-recommended texlive-fonts-recommended texlive-latex-extra latexmk
           cd paper
           latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex
+      - name: Typeset all three final manuscripts
+        run: |
+          sudo apt-get install -y -qq texlive-xetex
+          make package-v2
+
+  full-proof:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install the pinned Lean toolchain
+        run: |
+          curl -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -o /tmp/elan-init.sh
+          sh /tmp/elan-init.sh -y --default-toolchain "$(cat lean-toolchain)"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Rebuild and verify the all-time theorem
+        run: make verify
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: lean-verification-log
+          path: build/verify.log
+
+  publish-v2:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main' && github.event.before == '50a096db3c060fb015e9ce8fa25e5b0a527dae31'
+    needs: [full-proof, computational, formal, manuscript]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Publish verified preprints
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          v1_commit=2ec89cecea3c444b69c7768ca0bac20ecb25ae25
+          gh release create v1.0.0 --target "$v1_commit" --title 'First preprint' \
+            --notes 'Published manuscript and DOI: https://doi.org/10.5281/zenodo.24334185' \
+            paper/main.pdf || test "$(gh api "repos/$GITHUB_REPOSITORY/git/ref/tags/v1.0.0" --jq '.object.sha')" = "$v1_commit"
+          python3 scripts/package_v2.py
+          gh release create v2.0.0 --target "$GITHUB_SHA" --title 'Exact essential coordinates for all times' \
+            --notes-file docs/release-v2.md dist/v2/* verification/v2/final.log

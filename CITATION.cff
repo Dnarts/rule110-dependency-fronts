@@ -1,18 +1,25 @@
 cff-version: 1.2.0
-message: "If you use these results or software, cite the published preprint."
-title: "Exact Worst-Case Dependency Fronts in Rule 110 and Finite-State Certification of Input Essentiality"
+message: "To cite the combined preprint, use the preferred citation below. The DOI in references identifies the first preprint."
+title: "Exact Dependency Fronts in Rule 110: Formal Proofs and Certificates"
 type: software
 authors:
   - family-names: Strand
     given-names: Aleksandr
-date-released: 2026-11-18
-version: 1.0.0
+version: 2.0.0
 repository-code: "https://github.com/Dnarts/rule110-dependency-fronts"
 preferred-citation:
-  type: article
+  type: unpublished
+  title: "Exact Dependency Fronts, Finite Certificates, and Constructive Invariants for Unbounded Time in Rule 110"
   authors:
     - family-names: Strand
       given-names: Aleksandr
-  title: "Exact Worst-Case Dependency Fronts in Rule 110 and Finite-State Certification of Input Essentiality"
   year: 2026
-  url: "https://zenodo.org/records/24334185"
+  url: "https://github.com/Dnarts/rule110-dependency-fronts/blob/main/paper/v2/en.pdf"
+references:
+  - type: article
+    title: "Exact Worst-Case Dependency Fronts in Rule 110 and Finite-State Certification of Input Essentiality"
+    authors:
+      - family-names: Strand
+        given-names: Aleksandr
+    year: 2026
+    doi: "10.5281/zenodo.24334185"

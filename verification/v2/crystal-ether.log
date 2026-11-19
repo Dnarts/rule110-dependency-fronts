@@ -1,0 +1,55 @@
+Lean (version 4.35.0, x86_64-unknown-linux-gnu, commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc, Release)
+Checking Rule110Complete
+'Rule110Complete.left_dependency_bound' depends on axioms: [propext, Quot.sound]
+'Rule110Complete.right_dependency_bound' depends on axioms: [propext, Quot.sound]
+'Rule110Complete.left_endpoint_essential' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Rule110Complete.right_endpoint_essential' depends on axioms: [propext, Classical.choice, Quot.sound]
+Checking Rule110Fin1320Bridge
+'Rule110Fin1320Bridge.singleDefect_ring_bridge' depends on axioms: [propext, Classical.choice, Quot.sound]
+Checking Rule110KernelCertificate
+Checking Rule110BitVecBridge
+'Rule110KernelCert.singleDefect_BV_bridge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Rule110KernelCert.toFinRing_step' depends on axioms: [propext, Quot.sound]
+'Rule110KernelCert.toFinRing_evolve' depends on axioms: [propext, Quot.sound]
+Checking Rule110HalfRayClosure
+'Rule110Fin1320Bridge.leftQ_of_tile' depends on axioms: [propext, Quot.sound]
+'Rule110Fin1320Bridge.rightQ_of_tile' depends on axioms: [propext, Quot.sound]
+'Rule110Fin1320Bridge.leftQ_all' depends on axioms: [propext, Quot.sound]
+'Rule110Fin1320Bridge.rightQ_all' depends on axioms: [propext, Quot.sound]
+Checking Rule110CheckpointSoundness
+Checking Rule110Ether
+'Rule110Ether.ray_of_three_step' depends on axioms: [propext, Quot.sound]
+'Rule110Ether.ether_period' depends on axioms: [propext, Quot.sound]
+'Rule110Ether.ether_block_882' depends on axioms: [propext, Quot.sound]
+Checking Rule110LocalWindow
+Checking Base
+Checking Bridge
+Checking Crystal50Data
+Checking Crystal50Media
+Checking Crystal50Wedge
+'Rails.Crystal50Wedge.wedge_initial' depends on axioms: [propext, Quot.sound]
+'Rails.Crystal50Wedge.Cm_step' depends on axioms: [propext, Quot.sound]
+'Rails.Crystal50Wedge.cm_base' depends on axioms: [propext, Quot.sound]
+'Rails.Crystal50Wedge.essential_of_cm' depends on axioms: [propext, Quot.sound]
+Checking Crystal50Packed
+'Rails.Crystal50Graph.closed0' depends on axioms: [propext, Quot.sound]
+'Rails.Crystal50Graph.closed1' depends on axioms: [propext, Quot.sound]
+'Rails.Crystal50Graph.closed2' depends on axioms: [propext, Quot.sound]
+'Rails.Crystal50Graph.closed3' depends on axioms: [propext, Quot.sound]
+'Rails.Crystal50Graph.closed7' depends on axioms: [propext, Quot.sound]
+'Rails.Crystal50Graph.closed9' depends on axioms: [propext, Quot.sound]
+Checking Crystal50Seam
+'Rails.Crystal50Wedge.seam' depends on axioms: [propext, Quot.sound]
+'Rails.Crystal50Wedge.initialMedium' depends on axioms: [propext, Quot.sound]
+Checking Crystal50WedgeAll
+'Rails.Crystal50Wedge.wedge_all' depends on axioms: [propext, Quot.sound]
+Checking Rule110DomainWallA
+'Rule110LocalWindow.tileA_reads' depends on axioms: [propext, Quot.sound]
+'Rule110LocalWindow.domain_wall_A_period7' depends on axioms: [propext, Quot.sound]
+'Rule110LocalWindow.domain_wall_A_step' depends on axioms: [propext, Quot.sound]
+Checking Rule110FrontGlue
+'Rule110FrontGlue.evolve_splice' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Rule110FrontGlue.A_outer_13' depends on axioms: [propext, Quot.sound]
+Checking EtherWedge
+'Rails.EtherWedge.right_sector' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Rails.EtherWedge.half_sector' depends on axioms: [propext, Classical.choice, Quot.sound]
