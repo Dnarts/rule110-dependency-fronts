@@ -1,0 +1,307 @@
+\documentclass[11pt, a4paper]{article}
+\usepackage[a4paper, margin=2.3cm]{geometry}
+\usepackage{fontspec}
+\setmainfont[Path=fonts/,Extension=.ttf,UprightFont=*-Regular,BoldFont=*-Bold,ItalicFont=*-Italic,BoldItalicFont=*-BoldItalic]{NotoSerif}
+
+\setmonofont[Path=fonts/,Extension=.ttf,UprightFont=*,BoldFont=*-Bold,ItalicFont=*-Oblique,BoldItalicFont=*-BoldOblique]{DejaVuSansMono}
+\renewcommand{\contentsname}{Contents}
+\renewcommand{\abstractname}{Abstract}
+\renewcommand{\refname}{References}
+\renewcommand{\tablename}{Table}
+\setlength{\emergencystretch}{3em}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage[table]{xcolor}
+\usepackage{enumitem}
+\usepackage[colorlinks=true, linkcolor=blue!60!black, urlcolor=blue!60!black, citecolor=blue!60!black]{hyperref}
+
+\definecolor{ink}{HTML}{1E293B}
+\definecolor{slate}{HTML}{475569}
+\definecolor{rulegray}{HTML}{CBD5E1}
+\definecolor{tint}{HTML}{F8FAFC}
+\definecolor{accent}{HTML}{0F4C81}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{remark}[theorem]{Remark}
+
+\title{\vspace{-1cm}\textbf{\Large Exact Dependency Fronts, Finite Certificates,\\and Constructive Invariants for Unbounded Time in Rule 110}\\[0.45em]
+{\large The Full Set of Essential Coordinates on the Infinite Lattice}}
+\author{Aleksandr Strand}
+\date{November 2026}
+
+\hypersetup{pdftitle={Exact Dependency Fronts, Finite Certificates, and Constructive Invariants for Unbounded Time in Rule 110},pdfauthor={Aleksandr Strand},pdflang={en}}
+\begin{document}
+\sloppy
+\maketitle
+\thispagestyle{plain}
+
+\begin{abstract}
+We determine exactly which initial coordinates can affect the cell at the origin after $t$ steps of the one-dimensional cellular automaton Rule 110. For every $t\ge0$, these coordinates are all the integers from $-(t-\lfloor t/3\rfloor)$ to $t$, inclusive. For each such coordinate there is a pair of configurations that differ only at that coordinate and give different outputs. For $t<2485$, we verify a finite certificate on a ring and use locality to transfer the result to the infinite line. For $t\ge2485$, five adjoining strips cover the entire interval. In one interior strip, a finite automaton maintains a periodic crystal up to a moving boundary for either value of the incoming bit. Lean 4.35.0 verifies the resulting equivalence, \texttt{Rails.essential\_iff}.
+\end{abstract}
+
+\tableofcontents
+\vspace{1em}
+
+% ==============================================================================
+\section{Introduction and problem statement}
+% ==============================================================================
+
+The physical and informational resources needed to predict a future observable exactly can differ substantially from the number of bits needed to encode a possible state of the system. We study the geometry of worst-case sensitivity to initial conditions in Rule 110, a computationally universal elementary cellular automaton \cite{cook2004}. The problem draws on the study of predictive equivalence classes in computational mechanics \cite{shalizi2001}, physical limits of inference \cite{wolpert2008}, and the classification of gliders \cite{wolfram1986, martinez2006}. A glider speed describes the motion of a localized object on a particular background. A bound on essential coordinates must hold over all initial configurations.
+
+\begin{definition}[Rule 110 and the observable]
+Let $X = \{0, 1\}^{\mathbb{Z}}$. The algebraic normal form of the local rule over $\mathbb{F}_2$ is
+\begin{equation}\label{eq:rule110}
+f(l, c, r) = c \oplus r \oplus cr \oplus lcr.
+\end{equation}
+The synchronous update $F : X \to X$ is given by $(F(u))_i = f(u_{i-1}, u_i, u_{i+1})$. The observable at the origin at time $t \in \mathbb{N}$ is $G_t(u) = (F^t(u))_0$.
+\end{definition}
+
+\begin{definition}[Predictive factorization and essential variables]
+An observation map $O : X \to Y$ is sufficient for $G_t$ if there exists a map $P : Y \to \{0, 1\}$ such that $G_t = P \circ O$. For $j \in \mathbb{Z}$, write $(u \oplus e_j)_i = u_i \oplus \mathbf{1}_{i=j}$ for a single-bit flip. The set of essential initial coordinates is
+\begin{equation}\label{eq:essential_set}
+D_t = \{ j \in \mathbb{Z} : \exists u \in X,\; G_t(u) \ne G_t(u \oplus e_j) \}.
+\end{equation}
+\end{definition}
+
+Since $G_t$ depends on only finitely many coordinates, $D_t$ is the unique inclusion-minimal set of input coordinates sufficient to compute $G_t$. Every sufficient observation interval must contain the integer convex hull of $D_t$.
+
+To construct witnesses on periodic backgrounds, we distinguish the input coordinate $j$ from the physical coordinate $s$ at which a defect is observed. For a periodic word $w$, a spatial phase $\phi$, and the corresponding infinite configuration $B_0^{w,\phi}$, let
+\begin{equation}\label{eq:diff_support}
+B_t^{w,\phi} = F^t(B_0^{w,\phi}), \qquad
+Y_t^{w,\phi} = F^t(B_0^{w,\phi} \oplus e_0), \qquad
+S_t^{w,\phi} = \{ s \in \mathbb{Z} : B_t^{w,\phi}(s) \ne Y_t^{w,\phi}(s) \}.
+\end{equation}
+The update commutes with translations: $F \circ \sigma^d = \sigma^d \circ F$, where $(\sigma^d u)_i = u_{i-d}$. For each $s \in S_t^{w,\phi}$, translating the initial pair by $-s$ gives a witness that $j = -s \in D_t$. Hence every family $\mathcal{W}$ of backgrounds and phases satisfies
+\begin{equation}\label{eq:coverage_bridge}
+C_t(\mathcal{W}) = \bigcup_{(w,\phi) \in \mathcal{W}} \{ -s : s \in S_t^{w,\phi} \} \subseteq D_t.
+\end{equation}
+Thus the left endpoint $j = -L(t)$ of the input window corresponds to the right physical front $s = L(t)$ of the defect. The right endpoint $j = t$ corresponds to the left physical front $s = -t$.
+
+% ==============================================================================
+\section{The exact dependency window on the infinite lattice}
+% ==============================================================================
+
+Let $L(t) = t - \lfloor t/3 \rfloor$ and $I_t = [-L(t), t] \cap \mathbb{Z}$.
+
+\begin{lemma}[Three-step bound on rightward propagation]\label{lem:three_step}
+For a seven-bit word $x = (x_0, \dots, x_6) \in \{0, 1\}^7$, let $Q(x)$ denote the value at its central cell after three synchronous steps of Rule 110. Then
+\begin{equation}\label{eq:seven_bit}
+Q(x_0, x_1, \dots, x_6) = Q(1 \oplus x_0, x_1, \dots, x_6).
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+By \eqref{eq:rule110}, the Boolean derivative with respect to the left argument is
+\begin{equation}\label{eq:bool_deriv}
+f(1, c, r) \oplus f(0, c, r) = cr.
+\end{equation}
+Suppose two configurations agree strictly to the right of $p$ and their rightmost difference advances one cell at each of three steps, from $p$ to $p+1$, then to $p+2$, and finally to $p+3$. The first advance requires the common values at $p+1$ and $p+2$ to be $1$ at time $0$. The second requires the values at $p+2$ and $p+3$ to be $1$ at time $1$. Since $f(1, 1, z) = 1 \oplus z$, this forces $x_{p+3}(0) = 0$. Then $f(1, 0, z) = z$ forces $x_{p+4}(0) = 1$. It follows that $x_{p+4}(1) = f(0, 1, x_{p+5}(0)) = 1$, so $x_{p+3}(2) = f(1, 1, 1) = 0$. This rules out the third advance. The Lean 4 kernel also verifies \eqref{eq:seven_bit} by checking all $2^7 = 128$ inputs.
+\end{proof}
+
+\begin{theorem}[Universal bound on the dependency set]\label{thm:upper_bound}
+For every $t \in \mathbb{N}$, we have $D_t \subseteq I_t = [-(t - \lfloor t/3 \rfloor), t] \cap \mathbb{Z}$.
+\end{theorem}
+
+\begin{proof}
+If two configurations agree strictly to the right of $p_0$, they still agree strictly to the right of $p_0 + 1$ after one step and, by Lemma~\ref{lem:three_step}, strictly to the right of $p_0 + 2$ after three steps. Write $t = 3q + r$, where $q = \lfloor t/3 \rfloor$ and $r \in \{0, 1, 2\}$. Agreement persists strictly to the right of $p_0 + 2q + r = p_0 + L(t)$. A difference at $j < -L(t)$ therefore cannot reach the origin by time $t$. For $j > t$, the usual radius-one light cone gives the bound.
+\end{proof}
+
+\begin{theorem}[Sharpness at both endpoints]\label{thm:sharpness}
+For every $t \in \mathbb{N}$, both endpoints $-L(t)$ and $t$ belong to $D_t$. The smallest sufficient observation interval is $I_t$. Its width satisfies
+\begin{equation}
+m_{\min}(t) = 2t + 1 - \lfloor t/3 \rfloor, \qquad \lim_{t \to \infty} \frac{m_{\min}(t)}{t} = \frac{5}{3}.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+For the right endpoint $j = t$, compare the zero configuration $0^{\mathbb{Z}}$ with a single one at $t$, denoted by $e_t$. Since $f(0, 0, 0) = 0$ and $f(0, 0, 1) = 1$, the leftmost one moves exactly one cell to the left at each step and reaches the origin after $t$ steps.
+
+For the left endpoint $j = -L(t)$, take the period-four background $B_0(i) = (1, 0, 1, 1)[i \bmod 4]$ and its perturbation $Y_0 = B_0 \oplus e_2$. Table~\ref{tab:period4_defect} gives the support $S_t$ of the difference, obtained by iterating Rule 110 for six steps.
+
+\begin{table}[h]
+\centering
+\caption{A single defect on the background $(1011)$. After the initial transient, the pair of configurations recurs with displacement $(\Delta t, \Delta s) = (3, +2)$.}
+\label{tab:period4_defect}
+\begin{tabular}{cccc}
+\toprule
+$t$ & Background word $B_t$ (period $4$) & Difference support $S_t$ & $\max S_t$ \\
+\midrule
+$0$ & $1011$ & $\{2\}$ & $2$ \\
+$1$ & $1110$ & $\{1, 3\}$ & $3$ \\
+$2$ & $1011$ & $\{1, 3, 4\}$ & $4$ \\
+$3$ & $1110$ & $\{0, 1, 4\}$ & $4$ \\
+$4$ & $1011$ & $\{-1, 0, 1, 3, 5\}$ & $5$ \\
+$5$ & $1110$ & $\{3, 5, 6\}$ & $6$ \\
+$6$ & $1011$ & $\{2, 3, 6\}$ & $6$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+By locality, the rows at $t=3$ and $t=6$ agree up to a translation two cells to the right, giving the configuration identities $B_6 = \sigma^2 B_3$ and $Y_6 = \sigma^2 Y_3$. Translation equivariance gives $(B_{3+3k+r}, Y_{3+3k+r}) = \sigma^{2k}(B_{3+r}, Y_{3+r})$ for all $k \ge 0$ and $r \in \{0, 1, 2\}$. Together with the initial rows, this yields $\max S_t = 2 + L(t)$ for all $t \ge 0$. Translating the initial pair by $-[2 + L(t)]$ places the initial flip at $-L(t)$ and the difference at time $t$ at the origin. Thus $-L(t) \in D_t$.
+\end{proof}
+
+% ==============================================================================
+\section{Finite rings, state capacity, and access to inputs}
+% ==============================================================================
+
+On the finite ring $\mathbb{Z}_N$ ($N \ge 3$), let $X_N = \{0, 1\}^{\mathbb{Z}_N}$ be the configuration space and $F_N : X_N \to X_N$ the update map. The set of reachable states at time $t$ is $B_t^{(N)} = F_N^t(X_N)$, and the number of bits needed to encode a reachable state is $C_t^{(N)} = \lceil \log_2 |B_t^{(N)}| \rceil$. Define the paired dynamics $H_N(u, v) = (F_N(u), F_N(v))$, the initial pairs $E_j = \{ (u, u \oplus e_j) : u \in X_N \}$, and the pairs that differ at the origin, $W_0 = \{ (x, y) : x_0 \ne y_0 \}$. Then
+\begin{equation}
+j \in D_t^{(N)} \iff H_N^t(E_j) \cap W_0 \ne \emptyset.
+\end{equation}
+
+\begin{proposition}[A finite certificate for persistent essentiality]\label{prop:ring_cert}
+Let $\mu_N$ be the maximum transient length of the finite deterministic system $F_N$, and let $P_N$ be the least common multiple of its cycle lengths. Then $D_{t+P_N}^{(N)} = D_t^{(N)}$ for all $t \ge \mu_N$. Consequently, for any $T \in \mathbb{N}$, the condition $\forall t \ge T,\; D_t^{(N)} = \mathbb{Z}_N$ is equivalent to checking $H_N^t(E_j) \cap W_0 \ne \emptyset$ for every $j \in \mathbb{Z}_N$ and every $T \le t < \max(T, \mu_N) + P_N$.
+\end{proposition}
+
+\begin{remark}[State compression and input sensitivity]
+Sensitivity on the infinite lattice need not persist on a finite ring. For Rule 110 with $N = 5$, all $32$ states reach $0^5$ by time $t = 5$, so $D_t^{(5)} = \emptyset$ for $t \ge 5$. On the ring with $N = 20$, exhaustive enumeration at $t = 121$ gives $|B_{121}^{(20)}| = 2095$ reachable states, which take $12$ bits to encode. At this same time $D_{121}^{(20)} = \mathbb{Z}_{20}$, so all $20$ input bits are essential. These examples distinguish four aspects of prediction: \emph{causality} (the support $D_t$), \emph{access} (reading individual coordinates or using preprocessed data), \emph{capacity} ($C_t^{(N)}$), and \emph{computational complexity}.
+\end{remark}
+
+\begin{theorem}[Every coordinate in the interval is essential]\label{conj:gap_free}
+For every $t \in \mathbb{N}$, we have $D_t = I_t = [-(t - \lfloor t/3 \rfloor), t] \cap \mathbb{Z}$.
+\end{theorem}
+
+The first finite checks covered $0\le t\le2000$. A later experiment with fixed phases of seven words extended the check to $t=5000$. The final section proves the theorem for all times, using a new finite certificate through $t=2484$.
+
+% ==============================================================================
+\section{One-sided autonomous tiles and two unbounded boundary strips}
+% ==============================================================================
+
+Iterating Lemma~\ref{lem:three_step} shows that the dependency set for the output at cell $s$ after $3m$ steps satisfies $\mathrm{Dep}_{3m}(s) \subseteq [s - 2m, s + 3m]$ for all configurations.
+
+\begin{lemma}[Closure on a half-line]\label{lem:one_sided}
+Let $A_t = F^t(A_0)$, let $p > 0$, and suppose $a(t + p) = a(t) + \delta$. Assume that for each base time $t_0 \le t < t_0 + p$ we have $A_{t+p}(s + \delta) = A_t(s)$ for all $s \ge a(t)$. Assume also that the restriction of $A_{t+p}$ to $[a(t+p), \infty)$ depends only on the restriction of $A_t$ to $[a(t), \infty)$ at every step of length $p$. Then $A_{t+p}(s + \delta) = A_t(s)$ for all $t \ge t_0$ and $s \ge a(t)$. The corresponding statement holds for left half-lines $s \le a(t)$.
+\end{lemma}
+
+Apply Lemma~\ref{lem:one_sided} to the right physical front $e(t) = L(t)$ with $(\Delta t, \Delta s) = (30, +20)$. Here $e(t+30) = e(t) + 20$, and the dependency set of the new tile of width $W$ lies in $[e(t) - W + 1, e(t) + 50]$. Its left endpoint excludes the unknown interior $s < e(t) - W + 1$. Applying the same argument to the left front $s = -t$ with $(\Delta t, \Delta s) = (40,-40)$ gives the following result for unbounded time.
+
+\begin{theorem}[Two boundary strips]\label{thm:dual_strips}
+For every integer $t \ge 300$,
+\begin{equation}\label{eq:dual_strips}
+[-L(t), -L(t) + 105] \cap \mathbb{Z} \;\cup\; [t - 7, t] \cap \mathbb{Z} \;\subseteq\; D_t.
+\end{equation}
+\end{theorem}
+
+The certificate for the left strip of width $106$ uses $20$ phases of the backgrounds $(0001111001)$, $(1011)$, and $(001011)$, with a tile depth of $167$ cells over the $30$ base times $t = 300, \dots, 329$. The certificate for the right strip of width $8$ uses six phases with $(\Delta t, \Delta s) = (40,-40)$ over the base times $t = 300, \dots, 339$. A \emph{proof-carrying computation} on bit vectors of type \texttt{BitVec 1320} certifies the intermediate states. The Lean 4.35.0 kernel checks each transition $F_{1320}^{h_i}(z_i) = z_{i+1}$ for $h_i \in \{1, 10\}$.
+
+% ==============================================================================
+\section{Ballistic rays and the limits of local certificates}
+% ==============================================================================
+
+A second way to extend coverage to arbitrarily large times is to preserve a difference along a discrete trajectory in space and time.
+
+\begin{lemma}[Persistence on a right half-line]\label{lem:ballistic_ray}
+Suppose a trajectory $A$ satisfies $\forall s \ge x,\; A_{T+3}(s + 2) = A_T(s)$ at time $T$. Then $\forall q \ge 0,\; \forall s \ge x,\; A_{T+3q}(s + 2q) = A_T(s)$. In particular, if both $B$ and $Y$ satisfy this condition and $B_T(x) \ne Y_T(x)$, then $B_{T+3q}(x + 2q) \ne Y_{T+3q}(x + 2q)$ for every $q \ge 0$.
+\end{lemma}
+
+Consider the two arithmetic families of starting points on the backgrounds $(0000101111)$ and $(001011)$, with $0 \le n \le 32$:
+\begin{equation}
+T_A(n) = 594 + 882n,\quad x_A(n) = 256 + 378n; \qquad
+T_B(n) = 884 + 882n,\quad x_B(n) = 380 + 378n,
+\end{equation}
+respectively. Computation certified these $66$ starting points. Each generates an infinite ballistic ray of essential coordinates at a fixed depth from the front $e(t) = L(t)$. The depths are $d_A(n) = 140 + 210n$ and $d_B(n) = 210 + 210n$, respectively.
+
+The subsequent modules \texttt{StaircaseA} and \texttt{StaircaseB} prove the formulas for both families for all $n,q\ge0$ by splicing three locally compatible rows into an exact trajectory. The periodic media at the fronts of families A and B cover $45\,255$ of the $66\,150$ residue classes. Adding a third family raises the count to $53\,550$. These counts refer to the $315\times210$ table of residues. Applying a table entry at a physical coordinate also requires checking that the point lies within the corresponding wedge.
+
+Counterexamples identify three limits of these certificates.
+\begin{itemize}
+    \item \textbf{Local tiles do not suffice for induction from $n$ to $n+1$.} For the step $(\Delta T, \Delta x) = (882, +378)$, the universal dependency bound is $\mathrm{Dep}_{882}(s) \subseteq [s - 588, s + 882]$. At the translated target this gives the interval $[x - 210, x + 1260]$. The counterexamples in \texttt{check\_macro\_boundary.py} fix tiles of radius $64$ (at $T=594$) or $186$ (at $T=884$). In each case, changing cells outside the tile changes the target bit after $882$ steps.
+    \item \textbf{A sector observed over finite time can have gaps later.} For the background $(0001111001)$, the left sector with velocities in $[-0.66, -0.64]$ appears covered through $t = 2000$. A longer run reveals a gap.
+    \item \textbf{Shift recurrence alone does not establish coverage.} Even recurrence to a depth of $261$ cells for $(0000001001)$ does not guarantee that every residue class is covered. The coverage argument combines multiple phases.
+\end{itemize}
+
+% ==============================================================================
+\section{Constructive closure of the unbounded left wedge}
+% ==============================================================================
+
+To account for the different motions of the left edge of the light cone (velocity $-1$), the period-$50$ crystal, and the perturbation front, index the even times by $j \in \mathbb{N}$ and set
+\begin{equation}
+\mathrm{tm}(j) = 2450 + 2j, \qquad a(j) = -350 - j.
+\end{equation}
+The right boundary $a(j)$ moves one cell left every two steps, at velocity $-1/2$. For each of the six phases $p \in \{\mathrm{p0}, \mathrm{p1}, \mathrm{p2}, \mathrm{p3}, \mathrm{p7}, \mathrm{p9}\}$, the invariant at layer $j$ has two parts. The trajectory agrees with the reference crystal $\mathrm{Cm}_p$ on the interval to the left of $a(j)$, and its $16$-bit boundary buffer is the word stored at a node of a finite transition graph:
+\begin{align}
+\mathrm{Medium}(p, j) &\iff \forall x \in \mathbb{Z},\quad -\mathrm{tm}(j) + 1300 \le x < a(j) \implies Y_p(\mathrm{tm}(j), x) = \mathrm{Cm}_p(\mathrm{tm}(j), x), \\
+\mathrm{Window}(p, j, i) &\iff \forall k \in \{0, \dots, 15\},\quad Y_p(\mathrm{tm}(j), a(j) + k) = \mathrm{testBit}(\mathrm{word}(p, j, i), k).
+\end{align}
+
+\begin{lemma}[A 16-bit deterministic transducer and its interface with the left strip]\label{lem:transducer}
+For each phase $p$, the table \texttt{Crystal50Packed} defines a graph whose layers repeat with period $50$. Each entry occupies $36$ bits. The low $16$ bits encode the window $\mathrm{word}(p, j, i)$, and bits $16\dots 25$ and $26\dots 35$ encode the transitions for the two possible right input bits $r \in \{0, 1\}$.
+\begin{enumerate}[label=(\alph*)]
+    \item At step $j$, the $4$-bit left context $\mathrm{ctx}(p, j \bmod 50)$ occupies the positions $a(j) - 4 + m$ for $m \in \{0, 1, 2, 3\}$. These have depth $t + x = 2096 + j + m$ and lie in the interval already covered by $\mathrm{Medium}(p, j)$.
+    \item Applying the bitwise reduction twice, $\mathrm{shrink}(\mathrm{shrink}(\mathrm{input}(p, j, i, r)))$, computes the $17$ configuration bits on $[a(j)-2, a(j)+14]$ at time $\mathrm{tm}(j+1)$. The low bit ($k=0$) gives $\mathrm{Cm}_p(\mathrm{tm}(j+1), a(j) - 2)$. The upper $16$ bits ($k=1\dots 16$) form the word at node $z$ of the next layer, with its window starting at $a(j+1) = a(j) - 1$.
+    \item At the left edge of the strip, the cells $-\mathrm{tm}(j+1) + 1300 \le x < -\mathrm{tm}(j) + 1302$ have depths $k = x + \mathrm{tm}(j+1) \in \{1300,1301,1302,1303\}$. The theorem \texttt{seam} in \texttt{Crystal50Seam} covers these cells because $t + x$ is invariant under $(t, x) \mapsto (t + 50, x - 50)$.
+\end{enumerate}
+\end{lemma}
+
+\begin{theorem}[\texttt{Rails.Crystal50Wedge.wedge\_all}]\label{thm:wedge_all}
+For every integer time $t \ge 2485$ and every integer $x$ satisfying
+\begin{equation}\label{eq:wedge_region}
+-t + 1302 \le x \le 59 - \lfloor t/2 \rfloor,
+\end{equation}
+the predicate \texttt{Rule110KernelCert.EssentialAt t (-x)} holds. The time $t$ has no upper bound.
+\end{theorem}
+
+\begin{proof}[Proof sketch]
+Set $j = \lfloor (t - 2450) / 2 \rfloor$. For $t \ge 2485$, we have $j \ge 17$, and the right boundary is $59 - \lfloor t/2 \rfloor = -1166 - j = a(j) - 816$. At even times $t = \mathrm{tm}(j)$, the invariant $\mathrm{Medium}(p, j)$ gives $Y_p(t, x) = \mathrm{Cm}_p(t, x)$ directly for all six phases $p$. At odd times $t = \mathrm{tm}(j) + 1$, the one-step dependency interval $[x - 1, x + 1]$ lies entirely in $[-\mathrm{tm}(j) + 1300, a(j))$. The locality lemma \texttt{carry} therefore propagates the agreement. Applying \texttt{essential\_of\_cm} converts this agreement into the required witness of essentiality.
+\end{proof}
+
+% ==============================================================================
+\section{Full coverage on the infinite line}
+Use the input coordinate $j=-x$ and write $b=\lfloor t/2\rfloor$. For $t\ge2485$, the following five results apply on successive intervals. Both endpoints are included in each row.
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+First coordinate & Last coordinate & Result \\
+\midrule
+$-L(t)$ & $-L(t)+105$ & Half-line certificate of width 106 \\
+$-L(t)+106$ & $b-60$ & \texttt{EtherWedge.half\_sector} \\
+$b-59$ & $t-1302$ & \texttt{Crystal50Wedge.wedge\_all} \\
+$t-1301$ & $t-20$ & \texttt{LeftCrystal50.left\_strip} \\
+$t-19$ & $t$ & \texttt{right\_boundary\_width20} \\
+\bottomrule
+\end{tabular}
+\end{center}
+Three phases of the period-14 ether establish the second row for all $t\ge210$. The last row extends the earlier right strip of width eight. At $t=2485$, the third row consists of the single cell $j=1183$. Each row begins one coordinate after the preceding row ends. The lemma \texttt{Rails.late\_all} combines the five proofs.
+
+\paragraph{The finite certificate.}
+For $0\le t<2485$, take all cyclic phases of seven words. The pairs below give the length and integer encoding of each word, with the first cell in the least significant bit:
+\[
+(8,244),\ (10,632),\ (10,976),\ (10,576),\ (4,13),\ (6,52),\ (6,48).
+\]
+We represent the backgrounds by bit vectors of length 5520 and flip a single bit at position 2760. The periods of all seven words divide 5520. At each time step we take the bitwise union of the differences over all pairs and verify that it contains the mask for the physical interval $[-t,L(t)]$. This covers $\sum_{t=0}^{2484}(2t+1-\lfloor t/3\rfloor)=5\,147\,263$ space--time pairs. For $x$ in this interval, $-5520<x-t$ and $x+t<5520$. The locality lemma \texttt{local\_obs} therefore transfers the result to a single flip on the infinite line.
+
+The seven words determine the initial row. The generator supplies candidate snapshots every 25 steps. Lean checks each block's coverage masks and verifies that its final state equals the initial snapshot of the next block whenever there is a successor. The last block contains ten rows. Induction on the block length associates each covered mask bit with a particular pair of trajectories. In this way \texttt{Rails.Finite.finite\_all} proves essentiality for every input in the finite region.
+
+\begin{proof}[Completion of the proof of Theorem~\ref{conj:gap_free}]
+Theorem~\ref{thm:upper_bound} gives $D_t\subseteq I_t$. For the reverse inclusion, apply the finite certificate for $t<2485$ and the five strips for $t\ge2485$. Translating each pair that differs at physical coordinate $x$ gives a witness that input coordinate $-x$ is essential.
+\end{proof}
+
+\paragraph{Consequence for data access.}
+Every fixed set of initial coordinates sufficient to compute $G_t$ exactly on all configurations contains $I_t$. Locality and the upper bound show that $I_t$ itself suffices. The minimum number of coordinates in such an observation is therefore $2t+1-\lfloor t/3\rfloor$. The witness may depend on both $t$ and $j$. Claims about adaptive query cost, preprocessing, or memory require a separate computational model.
+
+\paragraph{Reproducibility.}
+The root theorem is in \texttt{lean/Rule110Exact.lean}. The accompanying code includes the sources of the imported modules, the finite-block generator, the build script, and the build logs. The \texttt{\#print axioms} command reports \texttt{[propext, Classical.choice, Quot.sound]} for the root theorem and \texttt{[propext, Quot.sound]} for \texttt{wedge\_all}. Each list records the dependencies of the corresponding theorem.
+
+\begin{thebibliography}{9}
+\bibitem{cook2004}
+M.~Cook, ``Universality in elementary cellular automata,'' \emph{Complex Systems}, vol.~15, no.~1, pp.~1--40, 2004.
+
+\bibitem{martinez2006}
+G.~J.~Mart\'inez, H.~V.~McIntosh, and J.~C.~Seck-Tuoh-Mora, ``Gliders in Rule 110,'' \emph{International Journal of Unconventional Computing}, vol.~2, no.~1, pp.~1--49, 2006.
+
+\bibitem{shalizi2001}
+C.~R.~Shalizi and J.~P.~Crutchfield, ``Computational mechanics: Pattern and prediction, structure and simplicity,'' \emph{Journal of Statistical Physics}, vol.~104, pp.~817--879, 2001.
+
+\bibitem{wolfram1986}
+S.~Wolfram, ``Tables of cellular automaton properties,'' in \emph{Theory and Applications of Cellular Automata}, World Scientific, pp.~485--557, 1986.
+
+\bibitem{wolpert2008}
+D.~H.~Wolpert, ``Physical limits of inference,'' \emph{Physica D: Nonlinear Phenomena}, vol.~237, no.~9, pp.~1257--1281, 2008.
+\end{thebibliography}
+
+\end{document}

@@ -1,73 +1,41 @@
-# Exact Worst-Case Dependency Fronts in Rule 110
+# Exact dependency fronts in Rule 110
 
-**Aleksandr Strand · 2026**
+**Aleksandr Strand · November 2026**
 
-Research repository for the preprint **[Exact Worst-Case Dependency Fronts in Rule 110 and Finite-State Certification of Input Essentiality](https://zenodo.org/records/24334185)**.
+**Final preprint:** [English](paper/v2/en.pdf) · [Русский](paper/v2/ru.pdf) · [简体中文](paper/v2/zh.pdf) · [XeLaTeX sources and fonts](paper/v2)
+**First preprint:** [Zenodo, DOI 10.5281/zenodo.24334185](https://doi.org/10.5281/zenodo.24334185) · [PDF](paper/main.pdf) · [TeX](paper/main.tex)
 
-**Published preprint:** [Zenodo record 24334185](https://zenodo.org/records/24334185)  
-**Manuscript:** [PDF](paper/main.pdf) · [LaTeX source](paper/main.tex)
+On the infinite one-dimensional lattice, an initial coordinate $j$ is essential for the cell at the origin at time $t$ if two configurations differing only at $j$ can give different outputs. For every nonnegative integer $t$, the exact set of essential coordinates is
 
-## Main results
+$$D_t = [- (t-\lfloor t/3\rfloor),\ t]\cap\mathbb Z.$$
 
-Let \(G_t(u)=(F^t(u))_0\) be the state of cell 0 after \(t\) synchronous updates of Rule 110 on the bi-infinite lattice, and let \(D_t\) denote the set of essential initial coordinates.
+Every one of the $2t+1-\lfloor t/3\rfloor$ coordinates in this interval is essential. The pair of configurations witnessing essentiality can depend on both $t$ and $j$.
 
-For every \(t\ge 0\), the work proves
-\[
-D_t\subseteq I_t=\left[-\left(t-\left\lfloor t/3\right\rfloor\right),\ t\right],
-\qquad \min D_t= -\left(t-\left\lfloor t/3\right\rfloor\right),
-\qquad \max D_t=t.
-\]
+## Results and verification
 
-Hence the shortest **contiguous** initial observation interval sufficient for exact prediction has
-\[
-m_{\min}(t)=2t+1-\left\lfloor t/3\right\rfloor
-\]
-sites.
+| Result | Evidence |
+| --- | --- |
+| Universal dependency bounds and both essential endpoints | **LEAN_VERIFIED** · [first proof](formal/rule110_complete.lean) |
+| Every interior coordinate is essential for every time | **LEAN_VERIFIED** · [Rails.essential_iff](lean/Rule110Exact.lean) · [compiler output](verification/v2/final.log) |
+| Finite base for the full theorem, times 0 through 2484 | [Finite transfer](lean/Finite.lean) and [certificate checker](lean/FiniteBase.lean) for 5,147,263 time–coordinate pairs in 100 blocks |
+| All later times | [Five adjoining strips](lean/Late.lean) for every time from 2485 onward |
+| Finite-ring persistence criterion | Mathematical proof in the manuscript |
+| Ring of 20 sites at time 121 | Independent exhaustive enumeration: 2,095 reachable states, all 20 inputs essential |
 
-The stronger statement \(D_t=I_t\), asserting that no interior coordinates are missing, is **not proved for all times**. Exhaustive finite-horizon witness search verifies it for \(0\le t\le 2000\), covering **3,337,668** time–coordinate pairs with spatially periodic backgrounds of period at most 10.
-
-For finite periodic rings, the manuscript proves a finite-state criterion for persistent input essentiality and gives an independently exhaustively checked example at \(N=20\), \(t=121\): the image has **2,095** states (12 bits of integer capacity), yet all 20 initial coordinates remain essential.
-
-## Verification scope
-
-| Result | Evidence | Status |
-| --- | --- | --- |
-| Rule 110 algebra and three-step local exclusion | Exhaustive Python and independent TypeScript checks, 128 local windows | **FINITE_CHECK** |
-| Infinite-lattice dependency bounds and essential endpoints | Lean 4.35.0 compilation and axiom reports; four theorems without `sorryAx` | **LEAN_VERIFIED** |
-| Gap-free support for \(0\le t\le 2000\) | Exhaustive search of periodic-background witnesses | **FINITE_COMPUTATIONAL_EVIDENCE** |
-| Gap-free support for every \(t\) | No universal proof | **CONJECTURE** |
-| Finite-ring persistence criterion | Mathematical proof in the manuscript, not formalized in Lean | **MATHEMATICAL_PROOF** |
-| Rule 110 ring \(N=20\) example | Exhaustive enumeration of all \(2^{20}\) states | **FINITE_CHECK** |
-
-Lean verification covers the infinite-lattice bounds and endpoint witnesses, **not** the finite-ring theorem or the unrestricted gap-free conjecture. The supplied attestation, independently checked source hash, and GitHub CI results are documented in [verification/VERIFICATION_SCOPE.md](verification/VERIFICATION_SCOPE.md).
-
-## Files
-
-- [paper/main.pdf](paper/main.pdf) and [paper/main.tex](paper/main.tex) — manuscript and LaTeX source.
-- [formal/rule110_complete.lean](formal/rule110_complete.lean) — Lean 4 proof, pinned to Lean 4.35.0.
-- [scripts/](scripts/) — independent Python/TypeScript verifiers and finite-ring enumeration.
-- [verification/](verification/) — machine-readable results, attestation, and reproducibility logs.
-- [docs/proof_ru.md](docs/proof_ru.md) — detailed mathematical proof and its limitations (in Russian).
+The first preprint proved the endpoints and reported a finite search through time 2000. It posed full coverage of the interior for all times as a conjecture. The final preprint proves it. [Verification scope](verification/VERIFICATION_SCOPE.md) · [Earlier proofs, experiments and manuscripts](history/)
 
 ## Reproduce
 
-Requirements: Python 3.10+, Node.js 18+, TypeScript, Lean 4.35.0, and TeX Live / `latexmk` for the manuscript. The exhaustive \(N=20\) test additionally requires NumPy.
+Install the Lean toolchain pinned by `lean-toolchain` (4.35.0) and Python 3.10 or later. Run from the repository root:
 
 ```sh
-make test                 # local Rule 110 identities and finite checks
-make coverage             # all 3,337,668 time–coordinate pairs up to t=2000
-make test-ts              # independent TypeScript checks
-python3 -m pip install -r requirements-ring20.txt
-make ring20               # exhaustive N=20 finite-ring audit
-make lean                 # core formal proofs and printed axioms
-make paper                # compile LaTeX manuscript
+make verify
 ```
+
+This regenerates the finite witnesses, compiles the proof from source and checks the axiom report for the root theorem. Its only reported dependencies are `propext`, `Classical.choice` and `Quot.sound`.
+
+`make paper-v2` builds the three final manuscripts with XeLaTeX. `make package-v2` assembles the PDFs and uploadable source ZIPs under `dist/v2/`. For the first edition, `make test`, `make coverage`, `make test-ts`, `make ring20`, `make lean` and `make paper` retain their original meanings. The independent TypeScript check requires TypeScript and Node.js, and the ring test requires NumPy.
 
 ## Citation and licenses
 
-**Cite the published preprint:** [Zenodo record 24334185](https://zenodo.org/records/24334185). Machine-readable citation metadata: [CITATION.cff](CITATION.cff).
-
-- **Code:** MIT ([LICENSE](LICENSE), [LICENSE-CODE](LICENSE-CODE)).
-- **Manuscript and explanatory notes:** Creative Commons Attribution 4.0 International ([LICENSE-PAPER.md](LICENSE-PAPER.md)).
-
-This is an openly available **preprint, not a peer-reviewed publication**. The all-time gap-free conjecture and claims of scholarly novelty remain outside the verified results. The manuscript discloses material use of ChatGPT; responsibility for the publication rests with the named author.
+[Citation metadata](CITATION.cff) · [Release notes](RELEASE_NOTES.md) · [MIT code license](LICENSE-CODE) · [CC BY 4.0 manuscript license](LICENSE-PAPER.md). The bundled fonts have their own notices in [paper/v2/fonts](paper/v2/fonts). These manuscripts are preprints. The author takes responsibility for the work, which was prepared with substantive assistance from ChatGPT.
