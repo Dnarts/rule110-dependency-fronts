@@ -1,15 +1,27 @@
 # Exact dependency fronts in Rule 110
 
-**Aleksandr Strand · November 2026**
+**Final preprint (PDF)**  [English PDF](paper/v2/en.pdf) · [Русский PDF](paper/v2/ru.pdf) · [简体中文 PDF](paper/v2/zh.pdf)
 
-**Final preprint:** [English](paper/v2/en.pdf) · [Русский](paper/v2/ru.pdf) · [简体中文](paper/v2/zh.pdf) · [XeLaTeX sources and fonts](paper/v2)
+Aleksandr Strand · November 2026
+
+<details>
+<summary>Abstract · Аннотация · 摘要</summary>
+
+**English.** For the elementary cellular automaton Rule 110, which initial cells can influence the origin after exactly $t$ steps? On the infinite one-dimensional lattice, an initial coordinate is essential if changing that cell alone can change the output. For every nonnegative integer $t$, the set of essential coordinates is exactly
+
+$$D_t = [-(t-\lfloor t/3\rfloor),\ t]\cap\mathbb Z.$$
+
+Every integer between the two dependency fronts is essential. The proof is formalized in Lean 4. The pair of initial configurations witnessing essentiality can depend on the time and the coordinate.
+
+**Русский.** Какие клетки начальной конфигурации могут повлиять на клетку в начале координат через $t$ шагов элементарного клеточного автомата «Правило 110»? На бесконечной одномерной решётке при каждом целом $t\ge 0$ существенны в точности все координаты от $-t+\lfloor t/3\rfloor$ до $t$ включительно. Для каждой такой координаты существует начальная конфигурация, в которой изменение одной этой клетки меняет результат. Теорема о точных границах зависимости и всех промежуточных координатах формализована в Lean 4.
+
+**简体中文。** 对于初等元胞自动机规则 110（Rule 110），哪些初始元胞能影响 $t$ 步后原点的状态？在无限一维格点上，对任意非负整数 $t$，所有本质坐标恰好是从 $-t+\lfloor t/3\rfloor$ 到 $t$ 的整数，包括两个端点。对其中每个坐标，都存在一对仅在该处不同的初始配置，使原点在第 $t$ 步的状态不同。该定理给出了精确的依赖边界，并已用 Lean 4 形式化证明。
+
+</details>
+
+[Final preprint sources and fonts](paper/v2)
+
 **First preprint:** [Zenodo, DOI 10.5281/zenodo.24334185](https://doi.org/10.5281/zenodo.24334185) · [PDF](paper/main.pdf) · [TeX](paper/main.tex)
-
-On the infinite one-dimensional lattice, an initial coordinate $j$ is essential for the cell at the origin at time $t$ if two configurations differing only at $j$ can give different outputs. For every nonnegative integer $t$, the exact set of essential coordinates is
-
-$$D_t = [- (t-\lfloor t/3\rfloor),\ t]\cap\mathbb Z.$$
-
-Every one of the $2t+1-\lfloor t/3\rfloor$ coordinates in this interval is essential. The pair of configurations witnessing essentiality can depend on both $t$ and $j$.
 
 ## Results and verification
 
