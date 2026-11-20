@@ -16,7 +16,7 @@ How many bits about its past does a system need for its next decision, and how c
 
 **Evidence as of 20 November 2026.** Lean 4.35.0 checked all 263 modules of the lattice proof and all 11 axiom reports for the observer module. On the OLMo development panel, transmitting the rule gave 64/64 correct answers on strings with unequal end bits, compared with 32/64 for a constant A token. Across the full panel, the result was 124/128 answers and 6/8 complete blocks. The held-out panels have status `NOT_RUN`. [Geometry log](./verification/monograph/geometry-axioms.log) · [Observer log](./verification/monograph/observer-axioms.log) · [OLMo report](./observer/two-step-instruct-chat-04/report.json)
 
-[Download the release and checksums](https://github.com/Dnarts/rule110-dependency-fronts/releases/tag/v2.2-monograph-multilingual) · [Verification commands](#verify) · [Citation](./CITATION.cff) · [Earlier editions](./archive/README.md)
+[Download the release and checksums](https://github.com/Dnarts/rule110-dependency-fronts/releases/tag/v2.2.1-monograph-multilingual) · [Verification commands](#verify) · [Citation](./CITATION.cff) · [Earlier editions](./archive/README.md)
 
 <a id="russian"></a>
 
@@ -26,7 +26,7 @@ How many bits about its past does a system need for its next decision, and how c
 
 **Срез на 20 ноября 2026 г.** Lean 4.35.0 проверил 263 модуля доказательства о решётке и все 11 отчётов об аксиомах модуля наблюдателя. На строках dev-панели OLMo с разными концами передача правила дала 64/64 правильных ответа, постоянный токен A — 32/64. По всей панели получено 124/128 ответов и 6/8 полностью решённых блоков. Отложенные панели имеют статус `NOT_RUN`. [Журнал геометрии](./verification/monograph/geometry-axioms.log) · [Журнал наблюдателя](./verification/monograph/observer-axioms.log) · [Отчёт OLMo](./observer/two-step-instruct-chat-04/report.json)
 
-[Скачать выпуск и контрольные суммы](https://github.com/Dnarts/rule110-dependency-fronts/releases/tag/v2.2-monograph-multilingual) · [Команды проверки](#verify) · [Для цитирования](./CITATION.cff) · [Предыдущие издания](./archive/README.md) · [Карта источников](./docs/series.md)
+[Скачать выпуск и контрольные суммы](https://github.com/Dnarts/rule110-dependency-fronts/releases/tag/v2.2.1-monograph-multilingual) · [Команды проверки](#verify) · [Для цитирования](./CITATION.cff) · [Предыдущие издания](./archive/README.md) · [Карта источников](./docs/series.md)
 
 <a id="chinese"></a>
 
@@ -36,7 +36,7 @@ How many bits about its past does a system need for its next decision, and how c
 
 **截至 2026 年 11 月 20 日的验证结果。** Lean 4.35.0 已检查格点证明的全部 263 个模块及观察者模块的全部 11 份公理报告。在 OLMo 开发集上，对于首尾比特不同的串，传递规则时答对 64/64 个条件，使用恒定词元 A 时答对 32/64 个。在整个开发集上，答对 124/128 个条件，完整通过 6/8 个区组。留出面板的状态为 `NOT_RUN`。[几何证明日志](./verification/monograph/geometry-axioms.log) · [观察者模块日志](./verification/monograph/observer-axioms.log) · [OLMo 实验报告](./observer/two-step-instruct-chat-04/report.json)
 
-[下载本版文件及校验和](https://github.com/Dnarts/rule110-dependency-fronts/releases/tag/v2.2-monograph-multilingual) · [验证命令](#verify) · [引用格式](./CITATION.cff) · [历次版本](./archive/README.md)
+[下载本版文件及校验和](https://github.com/Dnarts/rule110-dependency-fronts/releases/tag/v2.2.1-monograph-multilingual) · [验证命令](#verify) · [引用格式](./CITATION.cff) · [历次版本](./archive/README.md)
 
 <a id="verify"></a>
 
