@@ -1,0 +1,134 @@
+\section{Formal verification of the geometry and its application to the observer}\label{app:lean}
+
+\subsection{The two branches of the proof}
+The file \texttt{lean/Rule110Exact.lean} imports \texttt{Finite} and \texttt{Late}. The top-level result is called \texttt{essential\_iff} in the \texttt{Rails} namespace. Its left-hand side, \texttt{EssentialAt}\,$t\,j$, requires two configurations that agree everywhere except possibly at $j$ and yield different target-cell values at time $t$. The different outputs force the inputs to differ at $j$. On the right-hand side, Lean first evaluates $t-t/3$ in the natural numbers using integer division, then embeds the result in $\mathbb Z$.
+
+For the forward implication, \texttt{left\_dependency\_bound} and \texttt{right\_dependency\_bound} rule out essential coordinates outside the window. For the reverse implication, the certificate supplies an admissible pair of trajectories for each $(t,j)$ in the window. For $t<2485$, \texttt{lean/Finite.lean} applies \texttt{checkSound} to the finite blocks, extracts a witnessing bit at the physical defect position $s=-j$, and transfers the witness to the infinite line. The generator \texttt{scripts/generate.py} supplies candidate bit snapshots. Lean checks agreement at adjacent block boundaries and verifies coverage before deriving \texttt{Rails.Finite.finite\_all}.
+
+For $t\ge2485$, \texttt{lean/Late.lean} assigns the coordinate to one of the five strips in Section~\ref{sec:five-bands}. The proof uses the width-106 half-line certificate from \texttt{Rule110LeftCheckpoints}, the ether wedge \texttt{EtherWedge}, the proof in \texttt{Crystal50WedgeAll}, the narrow strip \texttt{LeftCrystal50}, and the right boundary strip of width 20 from \texttt{Rule110Right20}. The file \texttt{Crystal50WedgeAll.lean} proves simultaneous preservation of the crystalline medium and the 16-bit window for either value of the next exterior bit. The construction of this joint invariant verifies the finite transition tables and the matching condition at the seam. Coverage of the five cases yields \texttt{Rails.late\_all}.
+
+\subsection{Scope of the machine verification}
+For this monograph we rebuilt the root module and its imports on macOS arm64 using the Lean~4.35.0 version specified in \texttt{lean-toolchain}. The \src{verification/monograph/geometry-axioms.log}{geometry verification log} records the processing of 263 modules and coverage of all $5\,147\,263$ pairs in the finite region, in 100 blocks. For both \texttt{Rails.late\_all} and \texttt{Rails.essential\_iff}, the kernel reported \texttt{[propext, Classical.choice, Quot.sound]}. The \src{verification/v2/final.log}{previous release log} records the same axiom lists. Proposition~\ref{prop:ring_cert} separately establishes a finite criterion for checking persistent essentiality on an arbitrary finite ring. Remark~\ref{rem:ring5} supplies a five-cell counterexample to persistence. The counts for the 20-cell ring come from exhaustive finite enumeration.
+
+The command \texttt{make verify} regenerates the finite certificate, checks the import closure of \texttt{Rule110Exact} in dependency order, and verifies the axiom report for the root theorem. The command \texttt{make verify-series} also checks the observer module and the registers of claims and witnesses.
+
+\subsection{One-sided autonomous tiles and two unbounded boundary strips}\label{app:half-ray-tiles}
+
+Iterating Lemma~\ref{lem:three_step} shows that the dependency set for the output at cell $s$ after $3m$ steps satisfies $\mathrm{Dep}_{3m}(s) \subseteq [s - 2m, s + 3m]$ for all configurations.
+
+\begin{lemma}[Closure on a half-line]\label{lem:one_sided}
+Let $A_t = F^t(A_0)$, let $p > 0$, and suppose $a(t + p) = a(t) + \delta$. Assume that for each base time $t_0 \le t < t_0 + p$ we have $A_{t+p}(s + \delta) = A_t(s)$ for all $s \ge a(t)$. Assume also that the restriction of $A_{t+p}$ to $[a(t+p), \infty)$ depends only on the restriction of $A_t$ to $[a(t), \infty)$ at every step of length $p$. Then $A_{t+p}(s + \delta) = A_t(s)$ for all $t \ge t_0$ and $s \ge a(t)$. The corresponding statement holds for left half-lines $s \le a(t)$.
+\end{lemma}
+
+Apply Lemma~\ref{lem:one_sided} to the right physical front $e(t) = L(t)$ with $(\Delta t, \Delta s) = (30, +20)$. Here $e(t+30) = e(t) + 20$, and the dependency set of the new tile of width $W$ lies in $[e(t) - W + 1, e(t) + 50]$. Its left endpoint excludes the unknown interior $s < e(t) - W + 1$. Applying the same argument to the left front $s = -t$ with $(\Delta t, \Delta s) = (40,-40)$ gives the following result for unbounded time.
+
+\begin{theorem}[Two boundary strips]\label{thm:dual_strips}
+For every integer $t \ge 300$,
+\begin{equation}\label{eq:dual_strips}
+[-L(t), -L(t) + 105] \cap \mathbb{Z} \;\cup\; [t - 7, t] \cap \mathbb{Z} \;\subseteq\; D_t.
+\end{equation}
+\end{theorem}
+
+The certificate for the left strip of width $106$ uses $20$ phases of the backgrounds $(0001111001)$, $(1011)$, and $(001011)$, with a tile depth of $167$ cells over the $30$ base times $t = 300, \dots, 329$. The certificate for the right strip of width $8$ uses six phases with $(\Delta t, \Delta s) = (40,-40)$ over the base times $t = 300, \dots, 339$. A \emph{proof-carrying computation} on bit vectors of type \texttt{BitVec 1320} certifies the intermediate states. The Lean 4.35.0 kernel checks each transition $F_{1320}^{h_i}(z_i) = z_{i+1}$ for $h_i \in \{1, 10\}$.
+
+\subsection{Ballistic rays and the limits of local certificates}
+
+A second way to extend coverage to arbitrarily large times is to preserve a difference along a discrete trajectory in space and time.
+
+\begin{lemma}[Persistence on a right half-line]\label{lem:ballistic_ray}
+Fix the boundary $s_0\in\mathbb Z$ of the half-line. Suppose a trajectory $A$ satisfies $\forall s \ge s_0,\; A_{T+3}(s + 2) = A_T(s)$ at time $T$. Then $\forall q \ge 0,\; \forall s \ge s_0,\; A_{T+3q}(s + 2q) = A_T(s)$. In particular, if both $B$ and $\widetilde B$ satisfy this condition and $B_T(s_0) \ne \widetilde B_T(s_0)$, then $B_{T+3q}(s_0 + 2q) \ne \widetilde B_{T+3q}(s_0 + 2q)$ for every $q \ge 0$.
+\end{lemma}
+
+Consider the two arithmetic families of starting points on the backgrounds $(0000101111)$ and $(001011)$, with $0 \le n \le 32$:
+\begin{equation}
+T_A(n) = 594 + 882n,\quad s_A(n) = 256 + 378n; \qquad
+T_B(n) = 884 + 882n,\quad s_B(n) = 380 + 378n,
+\end{equation}
+respectively. Computation certified these $66$ starting points. Each generates an infinite ballistic ray of essential coordinates at a fixed depth from the front $e(t) = L(t)$. The depths are $d_A(n) = 140 + 210n$ and $d_B(n) = 210 + 210n$, respectively.
+
+The subsequent modules \texttt{StaircaseA} and \texttt{StaircaseB} prove the formulas for both families for all $n,q\ge0$ by splicing three locally compatible rows into an exact trajectory. The periodic media at the fronts of families A and B cover $45\,255$ of the $66\,150$ residue classes. Adding a third family raises the count to $53\,550$. These counts refer to the $315\times210$ table of residues. Applying a table entry at a physical coordinate also requires checking that the point lies within the corresponding wedge.
+
+Counterexamples identify three limits of these certificates.
+\begin{itemize}
+    \item \textbf{Local tiles do not suffice for induction from $n$ to $n+1$.} For the step $(\Delta T, \Delta s) = (882, +378)$, the universal dependency bound is $\mathrm{Dep}_{882}(s) \subseteq [s - 588, s + 882]$. At the translated target this gives the interval $[s - 210, s + 1260]$. The counterexamples in \texttt{check\_macro\_boundary.py} fix tiles of radius $64$ (at $T=594$) or $186$ (at $T=884$). In each case, changing cells outside the tile changes the target bit after $882$ steps.
+    \item \textbf{A sector observed over finite time can have gaps later.} For the background $(0001111001)$, the left sector with velocities in $[-0.66, -0.64]$ appears covered through $t = 2000$. A longer run reveals a gap.
+    \item \textbf{Shift recurrence alone does not establish coverage.} Even recurrence to a depth of $261$ cells for $(0000001001)$ does not guarantee that every residue class is covered. The coverage argument combines multiple phases.
+\end{itemize}
+
+\subsection{Constructive closure of the unbounded left wedge (\texttt{wedge\_all})}
+
+To account for the different motions of the left edge of the light cone (velocity $-1$), the period-$50$ crystal, and the perturbation front, index the even times by $n \in \mathbb{N}$ and set
+\begin{equation}
+\mathrm{tm}(n) = 2450 + 2n, \qquad a(n) = -350 - n.
+\end{equation}
+The right boundary $a(n)$ moves one cell left every two steps, at velocity $-1/2$. For each of the six phases $p \in \{\mathrm{p0}, \mathrm{p1}, \mathrm{p2}, \mathrm{p3}, \mathrm{p7}, \mathrm{p9}\}$, write $\widetilde B_p(t,s)=\widetilde B^p_t(s)$. The invariant at layer $n$ has two parts. The trajectory agrees with the reference crystal $\mathrm{Cm}_p$ on the interval to the left of $a(n)$, and its $16$-bit boundary buffer is the word stored at a node of a finite transition graph:
+\begin{align}
+\mathrm{Medium}(p,n)\ \iff\ {}&
+\forall s\in[-\mathrm{tm}(n)+1300,a(n))\cap\mathbb{Z},\notag\\
+&\widetilde B_p(\mathrm{tm}(n),s)=\mathrm{Cm}_p(\mathrm{tm}(n),s), \\
+\mathrm{Window}(p,n,i)\ \iff\ {}&
+\forall k\in\{0,\dots,15\},\notag\\
+&\widetilde B_p(\mathrm{tm}(n),a(n)+k)=\mathrm{testBit}(\mathrm{word}(p,n,i),k).
+\end{align}
+
+\begin{lemma}[A 16-bit deterministic transducer and its interface with the left strip]\label{lem:transducer}
+For each phase $p$, the table \texttt{Crystal50Packed} defines a graph whose layers repeat with period $50$. Each entry occupies $36$ bits. The low $16$ bits encode the window $\mathrm{word}(p, n, i)$, and bits $16\dots 25$ and $26\dots 35$ encode the transitions for the two possible right input bits $r \in \{0, 1\}$.
+\begin{enumerate}[label=(\alph*)]
+    \item At step $n$, the $4$-bit left context $\mathrm{ctx}(p, n \bmod 50)$ occupies the positions $a(n) - 4 + m$ for $m \in \{0, 1, 2, 3\}$. These have depth $t + s = 2096 + n + m$ and lie in the interval already covered by $\mathrm{Medium}(p, n)$.
+    \item Applying the bitwise reduction twice, $\mathrm{shrink}(\mathrm{shrink}(\mathrm{input}(p, n, i, r)))$, computes the $17$ configuration bits on $[a(n)-2, a(n)+14]$ at time $\mathrm{tm}(n+1)$. The low bit ($k=0$) gives $\mathrm{Cm}_p(\mathrm{tm}(n+1), a(n) - 2)$. The upper $16$ bits ($k=1\dots 16$) form the word at node $z$ of the next layer, with its window starting at $a(n+1) = a(n) - 1$.
+    \item At the left edge of the strip, the cells $-\mathrm{tm}(n+1) + 1300 \le s < -\mathrm{tm}(n) + 1302$ have depths $k = s + \mathrm{tm}(n+1) \in \{1300,1301,1302,1303\}$. The theorem \texttt{seam} in \texttt{Crystal50Seam} covers these cells because $t + s$ is invariant under $(t, s) \mapsto (t + 50, s - 50)$.
+\end{enumerate}
+\end{lemma}
+
+\begin{theorem}[\texttt{Rails.Crystal50Wedge.wedge\_all}]\label{thm:wedge_all}
+For every integer time $t \ge 2485$ and every integer $s$ satisfying
+\begin{equation}\label{eq:wedge_region}
+-t + 1302 \le s \le 59 - \lfloor t/2 \rfloor,
+\end{equation}
+the predicate \texttt{EssentialAt}\,$t\,(-s)$ holds. The time $t$ has no upper bound.
+\end{theorem}
+
+\begin{proof}[Proof sketch]
+Set $n = \lfloor (t - 2450) / 2 \rfloor$. For $t \ge 2485$, we have $n \ge 17$, and the right boundary is $59 - \lfloor t/2 \rfloor = -1166 - n = a(n) - 816$. At even times $t = \mathrm{tm}(n)$, the invariant $\mathrm{Medium}(p, n)$ gives $\widetilde B_p(t, s) = \mathrm{Cm}_p(t, s)$ directly for all six phases $p$. At odd times $t = \mathrm{tm}(n) + 1$, the one-step dependency interval $[s - 1, s + 1]$ lies entirely in $[-\mathrm{tm}(n) + 1300, a(n))$. The locality lemma \texttt{carry} therefore propagates the agreement. Applying \texttt{essential\_of\_cm} converts this agreement into the required witness of essentiality.
+\end{proof}
+
+\subsection{Full coverage on the infinite line}\label{sec:five-bands}
+Use the input coordinate $j=-s$ and write $b=\lfloor t/2\rfloor$. For $t\ge2485$, the following five results apply on successive intervals. Both endpoints are included in each row.
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+First coordinate & Last coordinate & Result \\
+\midrule
+$-L(t)$ & $-L(t)+105$ & Half-line certificate of width 106 \\
+$-L(t)+106$ & $b-60$ & \texttt{EtherWedge.half\_sector} \\
+$b-59$ & $t-1302$ & \texttt{Crystal50Wedge.wedge\_all} \\
+$t-1301$ & $t-20$ & \texttt{LeftCrystal50.left\_strip} \\
+$t-19$ & $t$ & \texttt{right\_boundary\_width20} \\
+\bottomrule
+\end{tabular}
+\end{center}
+Three phases of the period-14 ether establish the second row for all $t\ge210$. The last row extends the earlier right strip of width eight. At $t=2485$, the third row consists of the single cell $j=1183$. Each row begins one coordinate after the preceding row ends. The lemma \texttt{Rails.late\_all} combines the five proofs.
+
+The first numerical checks covered $0\le t\le2000$. A later experiment using fixed phases of seven words reached $t=5000$. The proof only requires the finite region that meets the five strips.
+
+\paragraph{The finite certificate.}
+For $0\le t<2485$, take all cyclic phases of seven words. The pairs below give the length and integer encoding of each word, with the first cell in the least significant bit:
+\[
+(8,244),\ (10,632),\ (10,976),\ (10,576),\ (4,13),\ (6,52),\ (6,48).
+\]
+We represent the backgrounds by bit vectors of length 5520 and flip a single bit at position 2760. The periods of all seven words divide 5520. At each time step we take the bitwise union of the differences over all pairs and verify that it contains the mask for the physical interval $[-t,L(t)]$. This covers $\sum_{t=0}^{2484}(2t+1-\lfloor t/3\rfloor)=5\,147\,263$ space--time pairs. For $s$ in this interval, $-5520<s-t$ and $s+t<5520$. The locality lemma \texttt{local\_obs} therefore transfers the result to a single flip on the infinite line.
+
+The seven words determine the initial row. The generator supplies candidate snapshots every 25 steps. Lean checks each block's coverage masks and verifies that its final state equals the initial snapshot of the next block whenever there is a successor. The last block contains ten rows. Induction on the block length associates each covered mask bit with a particular pair of trajectories. In this way \texttt{Rails.Finite.finite\_all} proves essentiality for every input in the finite region.
+
+\begin{proof}[Completion of the proof of Theorem~\ref{thm:gap-free}]
+Theorem~\ref{thm:upper_bound} gives $D_t\subseteq I_t$. For the reverse inclusion, apply the finite certificate for $t<2485$ and the five strips for $t\ge2485$. Translating each pair that differs at physical coordinate $s$ gives a witness that input coordinate $-s$ is essential.
+\end{proof}
+
+\subsection{From geometry to partial observation}
+The source \texttt{observer/Rule110Observer.lean} imports \texttt{Rule110Exact} and \texttt{Rule110FrontGlue}. The proof of \texttt{essential\_iff\_inCone} applies the root theorem to the displacement $j-s$, then translates the configuration to obtain a witness for target cell $s$. The target's exact window is therefore
+\[
+  [s-L(t),s+t]\cap\mathbb Z.
+\]
+The definition \texttt{CanPredict} asks whether a sequence of readings from prescribed sites up to a fixed deadline suffices to compute the target bit for every admissible input. The lemma \texttt{canPredict\_iff} characterizes sufficiency by constancy of the answer on each set of inputs with the same observation history. The file also gives counterexamples to the sufficiency of geometric coverage alone. A point may lie within the causal cone even when this observer's readings do not determine the target.
+
+The observer source was verified with Lean~4.35.0 using both canonical imports. The \src{verification/monograph/observer-axioms.log}{observer log} contains all 11 of the 11 responses to \texttt{\#print axioms}, from \texttt{canPredict\_iff} through \texttt{coverage\_does\_not\_suffice}. For every theorem the kernel reported exactly \texttt{[propext, Classical.choice, Quot.sound]}. The OLMo counts come from the separate experiments in Section~\ref{sec:olmo}.

@@ -1,0 +1,27 @@
+\section{The question, two examples, and notation}
+\emph{Before judging what a system can do, ask what information was withheld from it.}
+When can a dynamical system recover a fact about its own past? How many bits must it receive, and what intervention can establish that it used them? We specify which quantities are available to the recipient when the query is made. Two constructions in Rule~110 illustrate why this matters.
+
+\paragraph{Two sensors cover the window yet miss the distinction.}
+Place sensors at $S=(-1,1)$ and read them at times 0 and 1. The task is to predict the value of cell 0 at time 2. The sensor cones cover its entire dependency window $[-2,2]$. In the first initial state, only site $-1$ contains a one. In the second, sites $-1$ and $0$ contain ones. In both cases the sensors report the same pair $(1,0)$ twice. At time 2 the target cell takes values 0 and 1, respectively. Any decoder acting on this record must make an error in one of the two cases (Section~\ref{sec:observer-coverage}).
+
+\paragraph{One bit restores a lost distinction.}
+The target is now the earlier value $Y$ of cell 5. In each of two pairs of histories, flipping only $Y$ changes the reading $Z$ of cell 3 at time 2. The observer stores this bit. At time 4 the two underlying configurations in each pair already agree everywhere on the line. Write $Z$ to cell $-1$. Its left neighbour is 1, and its right neighbour holds the context bit $K$. The next update gives $Z\oplus K=Y$. Returning $1-Z$ to the same lattice state reverses the answer in all four histories (Section~\ref{sec:observer-return}).
+
+In this construction the channel carries a raw sensor reading. In the two-step OLMo experiment, the sender first computes the corrected rule $p=h\oplus e$ from its previous choice $h$ and the feedback $e$. Only the token $m\in\{\mathrm{A},\mathrm{B}\}$, chosen before the string $\mathbf{x}$ is shown, enters the new episode. The recipient processes the token anew with a fresh KV cache. This measures the transfer of a rule already chosen across an episode boundary. Internal strategy correction with continuously retained state requires a separate test (Section~\ref{sec:olmo}).
+
+\begin{center}\small
+\begin{tabularx}{\linewidth}{@{}lX@{}}\toprule
+Symbol & Meaning throughout the monograph \\\midrule
+$\omega,H,W,Z$ & An admissible history, the recipient's information, the information accessible to the observer, and the delivered message.\\
+$Y$ & The target bit about the past. In the more general setting of T1--T3 its alphabet may be any finite set.\\
+$t,i,j,s$ & Discrete time and integer lattice coordinates. $e_j$ flips only initial cell $j$.\\
+$B_t,\widetilde B_t,S_t$ & The unperturbed and perturbed configurations and the set of coordinates where they differ.\\
+$G_t,D_t,I_t$ & The value of the cell at the origin, the essential initial coordinates, and the theoretical dependency window.\\
+$h,e,p,m$ & OLMo's past choice, the feedback bit, the corrected rule, and the message token.\\
+$\mathbf{x}=LwR$ & A new eight-bit input with six-bit middle $w$ and endpoint bits $L,R$.\\
+$B,E(a,t)$ & The package of bridge postulates and the predicate of phenomenal experience for instance $a$ at time $t$.\\
+\bottomrule\end{tabularx}
+\end{center}
+
+A formula states what follows from specified assumptions (\texttt{COMPUTED}). A claim about a particular machine requires an executable witness or a measurement report (\texttt{MEASURED}). The status \texttt{UNBOUND} indicates that a required link to evidence is missing. The status \texttt{NOT\_RUN} indicates that a run is absent from the stated snapshot. In what follows, “exact” refers either to every element of a stated mathematical domain or to an explicitly identified finite panel. Section~\ref{sec:observer-theory} begins by establishing when an exact decoder exists.

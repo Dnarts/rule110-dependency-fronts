@@ -1,0 +1,35 @@
+\section{One-bit rule transfer in frozen OLMo}
+\label{sec:olmo}
+In the Rule~110 experiment, after the configurations merge, the observer writes the original sensor reading $Z$ back into a cell. At the next update the automaton recovers the earlier bit $Y$ using the bit $K$ still present in the lattice. In the two-step OLMo experiment, before a new string is presented, the sender reduces its earlier choice $h$ and the feedback $e$ to a single rule token $m\in\{A,B\}$. The recipient uses the same frozen weights, starts a new episode with a fresh KV cache, and applies the rule to the string. This episode boundary lets us measure the transfer of a rule that has already been selected. Internal correction of a strategy in a continuously maintained model state requires a separate experiment.
+
+\subsection{The counterfactual square}
+Suppose the model previously chose $h=0$ (A, take the first bit) or $h=1$ (B, take the last bit). The observer returns $e=0$ for a correct choice and $e=1$ for an error. Both feedback branches are available for each choice. Before any new string is shown, the corrected rule is $p=h\oplus e$. Once $\mathbf{x}=LwR$ is presented, the correct answer is $f_0(\mathbf{x})=L$ or $f_1(\mathbf{x})=R$, according to the rule. When the ends differ, the two histories $h$ with the same $e,\mathbf{x}$ require opposite actions. When the ends agree, both require the same bit. Presenting all four combinations of end bits guards against a strategy that has learned only an association between its answer and a feedback label.
+
+Each middle string defines a block of 16 conditions $(L,R,h,e)$. The development panel contains eight middle strings selected before measurement. A block counts only if all 16/16 answers are correct. The passing threshold is 6/8 blocks. Every required numeric readout must satisfy $P(0)+P(1)\ge0.80$ over the full vocabulary. The sign of the logit gap $\ell_1-\ell_0$ determines the selected bit when the gap is nonzero. A zero gap counts as an abstention. Rows with the same prefix reuse the corresponding model computation.
+
+\subsection{Measurements}
+In G0, the cache is isolated after the chosen token is processed and before any diagnostic readout. In G0R, the values at the choice position are replaced with those from the other naturally obtained history and then restored. In the original Base run, all 256/256 comparisons of the full logit vectors across the two swap directions reproduced the original bytes, with a maximum absolute difference of zero. This control tests replay integrity. Choosing the opposite strategy is a separate behavioral question.
+
+\begin{center}\small
+\begin{tabularx}{\linewidth}{@{}Xrrrl@{}}\toprule
+Checkpoint and interface (dev) & Rows & Blocks & Pairs at $e=1$ & Status \\\midrule
+Base, original raw & 76/128 & 0/8 & 0/16 & \texttt{FAIL\_DEV}\\
+Instruct, aligned raw & 79/128 & 0/8 & 1/16 & \texttt{FAIL\_FORMAT}\\
+Instruct, chat, correct/wrong & 115/128 & 2/8 & 9/16 & \texttt{FAIL\_DEV}\\
+Instruct, chat, keep/switch & 109/128 & 0/8 & 6/16 & \texttt{FAIL\_DEV}\\
+Instruct, chat, two steps (A) & 124/128 & 6/8 & 16/16 & \texttt{PASS\_DEV}\\
+\bottomrule\end{tabularx}
+\end{center}
+A pair in the table requires two correct answers for opposite histories at the same $e,\mathbf{x}$ with $L\ne R$. Both the weights and the demonstrations changed between the first two rows. With the raw Instruct interface, 28/64 control rows with an explicit rule fell below the probability-mass threshold. With the native chat template and correct/wrong feedback, diagnostic readouts on separate cache copies correctly identified 2/2 earlier choices. Given an explicit rule, the model solved 62/64 rows and 6/8 blocks. Macar et al.\ separately measured whether a model could detect an intervention in its activations and whether it could name the concept introduced by the injected vector~\cite{macar2026}. Our behavioral criterion requires the model to apply the information it receives to a new string. The activation-based G3 experiment has status \texttt{NOT\_RUN}.
+
+\subsection{A theorem for a one-bit channel}
+In the two-step variant, the sender emits the unique highest-scoring token over the full vocabulary before $\mathbf{x}$ is shown. Only tokens A and B are admissible. The recipient starts with its own empty KV cache. It receives only the ID of token $m$, computes its representation afresh, and then receives $\mathbf{x}$. The sender's branch identifier, activations, and logits are inaccessible to the recipient. The external program does not use rule labels to choose the code.
+
+\begin{proposition}
+Suppose $m$ is the only input to the recipient that can vary with the previous episode, its alphabet has two elements, and the channel has the form $(h,e)\longrightarrow m\longrightarrow F(m,\mathbf{x})$. If all four histories are solved exactly on a single common input with $L\ne R$, then the sender's table, in the order $00,01,10,11$, is $0110$ or $1001$.
+\end{proposition}
+\begin{proof}
+At the given $\mathbf{x}$, the two values of $p$ require different answers. Assigning the same $m$ to histories with different $p$ would give the recipient identical inputs for different targets. The two nonempty sets of messages must therefore be disjoint. There are just two messages, so each $p$ has exactly one $m$. Only the two permutations of the token labels are possible.
+\end{proof}
+
+The observed dev table was $A,B,B,A$. For each $e$, both histories were solved in all 16/16 pairs with different end bits. This gives 64/64 correct answers with delivery and 32/64 in the independently computed constant-A control. The sender's four decisions are reused on the recipient's new strings. The message therefore contains information about the rule class before the string appears. Establishing how the sender computes that information requires other interventions. A multidimensional state could transmit both bits $(h,e)$ and leave the rule computation to the recipient. Appendix~\ref{app:gates} lists the measurement sources and controls.

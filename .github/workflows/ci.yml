@@ -65,6 +65,7 @@ jobs:
           sudo apt-get install -y -qq texlive-xetex texlive-lang-cyrillic
           make package-v2
           make monograph
+          make translations
 
   full-proof:
     runs-on: ubuntu-latest

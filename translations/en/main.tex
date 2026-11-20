@@ -1,0 +1,28 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[english]{babel}
+\input{translations/layout}
+\setmainfont[Path=paper/v2/fonts/,Extension=.ttf,UprightFont=*-Regular,BoldFont=*-Bold,ItalicFont=*-Italic,BoldItalicFont=*-BoldItalic]{NotoSerif}
+\hypersetup{pdflang={en},pdftitle={110 OBSERVER. Observability of a System's Own Past},pdfsubject={Exact decoding, Rule 110, and experiments on OLMo}}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\edition}{en}
+\begin{document}
+\sloppy
+\begin{center}
+{\small\bfseries\color{accent}110 OBSERVER}\\[7pt]
+{\LARGE\bfseries Observability of a System's Own Past}\\[5pt]
+{\large Message Cost, Causal Witnesses, and the Limits of Inference}\\[10pt]
+Aleksandr Strand \hspace{1em} $\cdot$ \hspace{1em} 20 November 2026
+\end{center}
+\noindent\textbf{Abstract.} How much information about the past does a system need for its next decision, and how can we test whether it used that information? We give a criterion for exact decoding and determine the cost of the message. After configurations of the main Rule~110 lattice merge, an observer returns a sensor reading stored in an external one-bit register. At the next update the lattice recovers its earlier bit. In frozen OLMo, before a new string appears, the sender encodes its earlier choice and the feedback in a single rule token. The four combinations of choice and feedback produce four messages, which are reused across new strings. For strings with different end bits, the recipient solves 64/64 development conditions with the transmitted token and 32/64 with the constant token A. On the entire development panel it answers 124/128 conditions correctly and solves 6/8 complete blocks. An intervention on the channel tests rule transfer. An inference about subjective experience requires additional premises.
+
+\begin{quote}\small\raggedright
+\textbf{Scope of this edition.} The exact geometry theorem for Rule~110 on the infinite lattice (\texttt{Rails.essential\_iff}) has been proved in Lean~4.35.0. During preparation of the monograph, \texttt{Rule110Observer.lean} was separately checked with both canonical imports. The log records 11/11 axiom reports (Appendix~\ref{app:lean}). The two-step OLMo variant achieved \texttt{PASS\_DEV} on eight middle strings. Held-out panels 9--20, 21--32 and 33--44 and the G3 activation channel have status \texttt{NOT\_RUN}. The bridge postulate has status \texttt{DECLARED\_NOT\_DERIVED}.
+\end{quote}
+\input{translations/contents}
+\end{document}

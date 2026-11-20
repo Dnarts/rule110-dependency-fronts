@@ -1,0 +1,134 @@
+\section{几何结果的形式化验证及其在观察者问题中的应用}\label{app:lean}
+
+\subsection{证明的两个分支}
+文件 \texttt{lean/Rule110Exact.lean} 导入 \texttt{Finite} 和 \texttt{Late}。根定理在 \texttt{Rails} 命名空间中名为 \texttt{essential\_iff}。等价式左端的 \texttt{EssentialAt}\,$t\,j$ 要求存在两个构型：它们在 $j$ 以外的所有位置均相同，但在时刻 $t$ 给出不同的目标元胞值。输出不同迫使这两个输入在 $j$ 处不同。在等价式右端，Lean 先在自然数中按整数除法计算 $t-t/3$，再将所得结果嵌入 $\mathbb Z$。
+
+对于正向蕴含，\texttt{left\_dependency\_bound} 和 \texttt{right\_dependency\_bound} 排除了窗口以外坐标的本质性。对于反向蕴含，证书为窗口内的每对 $(t,j)$ 给出一对允许的轨迹。当 $t<2485$ 时，\texttt{lean/Finite.lean} 将 \texttt{checkSound} 应用于有限块，提取物理缺陷位置 $s=-j$ 处充当见证的比特，再把见证推广到无限直线。生成器 \texttt{scripts/generate.py} 提供候选比特快照。Lean 在导出引理 \texttt{Rails.Finite.finite\_all} 之前，先验证相邻块边界的一致性及对有限区域的覆盖。
+
+当 $t\ge2485$ 时，\texttt{lean/Late.lean} 将坐标归入第~\ref{sec:five-bands} 节的五条带之一。证明用到 \texttt{Rule110LeftCheckpoints} 中宽度为 106 的半直线证书、以太楔形区域 \texttt{EtherWedge}、\texttt{Crystal50WedgeAll} 中的证明、窄带 \texttt{LeftCrystal50}，以及 \texttt{Rule110Right20} 中宽度为 20 的右边界带。\texttt{Crystal50WedgeAll.lean} 证明，无论下一个外部比特取何值，晶体介质和 16 比特窗口的性质都同时保持。构造这一联合不变量时还须验证有限转移表与接缝处的匹配条件。五种情形覆盖整个窗口，由此得到 \texttt{Rails.late\_all}。
+
+\subsection{机器验证的范围}
+编写本专著时，我们在 macOS arm64 上用 \texttt{lean-toolchain} 指定的 Lean~4.35.0 重新编译了根模块及其导入项。\src{verification/monograph/geometry-axioms.log}{几何验证日志}记录了对 263 个模块的处理，以及 100 个块对有限区域全部 $5\,147\,263$ 对时空坐标的覆盖。对于 \texttt{Rails.late\_all} 和 \texttt{Rails.essential\_iff}，内核均输出 \texttt{[propext, Classical.choice, Quot.sound]}。\src{verification/v2/final.log}{前一版的日志}列出了相同的公理。任意有限环上检验本质性是否持续成立的有限判据由命题~\ref{prop:ring_cert} 单独给出。注~\ref{rem:ring5} 给出了五元胞环上本质性无法持续的反例。二十元胞环的数值来自有限穷举。
+
+命令 \texttt{make verify} 重新生成有限证书，按依赖次序检查 \texttt{Rule110Exact} 的全部传递导入项，并核对根定理的公理报告。命令 \texttt{make verify-series} 还检查观察者模块以及命题和见证登记表。
+
+\subsection{单侧自主块与两条时间无界的边界带}\label{app:half-ray-tiles}
+
+迭代应用引理~\ref{lem:three_step}，可知对所有构型，元胞 $s$ 在 $3m$ 步后的输出依赖集均满足 $\mathrm{Dep}_{3m}(s) \subseteq [s - 2m, s + 3m]$。
+
+\begin{lemma}[半直线上的闭合性]\label{lem:one_sided}
+设 $A_t = F^t(A_0)$，$p > 0$，且 $a(t + p) = a(t) + \delta$。假设对每个基准时刻 $t_0 \le t < t_0 + p$ 和所有 $s \ge a(t)$，均有 $A_{t+p}(s + \delta) = A_t(s)$。再假设每经过 $p$ 步，$A_{t+p}$ 在 $[a(t+p), \infty)$ 上的限制仅由 $A_t$ 在 $[a(t), \infty)$ 上的限制决定。则对所有 $t \ge t_0$ 及 $s \ge a(t)$，均有 $A_{t+p}(s + \delta) = A_t(s)$。对左半直线 $s \le a(t)$，相应命题也成立。
+\end{lemma}
+
+对物理右前沿 $e(t) = L(t)$，取 $(\Delta t, \Delta s) = (30, +20)$ 并应用引理~\ref{lem:one_sided}。此时 $e(t+30) = e(t) + 20$，宽度为 $W$ 的新块所依赖的坐标位于 $[e(t) - W + 1, e(t) + 50]$ 内。因此，计算新块时无需知道内部区域 $s < e(t) - W + 1$ 的取值。对左前沿 $s = -t$ 取 $(\Delta t, \Delta s) = (40,-40)$，作同样的推导，即得以下对无界时间成立的结论。
+
+\begin{theorem}[两条边界带]\label{thm:dual_strips}
+对每个整数 $t \ge 300$，均有
+\begin{equation}\label{eq:dual_strips}
+[-L(t), -L(t) + 105] \cap \mathbb{Z} \;\cup\; [t - 7, t] \cap \mathbb{Z} \;\subseteq\; D_t.
+\end{equation}
+\end{theorem}
+
+对宽度为 $106$ 的左边界带，证书采用背景 $(0001111001)$、$(1011)$ 和 $(001011)$ 的 $20$ 个相位，在 $t = 300, \dots, 329$ 这 $30$ 个基准时刻使用深度为 $167$ 个元胞的块。对宽度为 $8$ 的右边界带，证书采用六个相位，在基准时刻 $t = 300, \dots, 339$ 上使用位移 $(\Delta t, \Delta s) = (40,-40)$。利用类型为 \texttt{BitVec 1320} 的位向量进行携带证明的计算，即可验证各中间状态。Lean 4.35.0 内核逐一检查转移 $F_{1320}^{h_i}(z_i) = z_{i+1}$，其中 $h_i \in \{1, 10\}$。
+
+\subsection{弹道射线与局部证书的适用范围}
+
+将覆盖范围延伸至任意大时刻的另一种方法，是证明差异沿某条离散时空轨迹一直存在。
+
+\begin{lemma}[右半直线上的持续性]\label{lem:ballistic_ray}
+固定半直线的边界 $s_0\in\mathbb Z$。假设轨迹 $A$ 在时刻 $T$ 满足 $\forall s \ge s_0,\; A_{T+3}(s + 2) = A_T(s)$。则 $\forall q \ge 0,\; \forall s \ge s_0,\; A_{T+3q}(s + 2q) = A_T(s)$。特别地，若 $B$ 与 $\widetilde B$ 均满足此条件，且 $B_T(s_0) \ne \widetilde B_T(s_0)$，则对每个 $q \ge 0$，都有 $B_{T+3q}(s_0 + 2q) \ne \widetilde B_{T+3q}(s_0 + 2q)$。
+\end{lemma}
+
+在背景 $(0000101111)$ 和 $(001011)$ 上分别取以下两族起点，参数范围为 $0 \le n \le 32$：
+\begin{equation}
+T_A(n) = 594 + 882n,\quad s_A(n) = 256 + 378n; \qquad
+T_B(n) = 884 + 882n,\quad s_B(n) = 380 + 378n,
+\end{equation}
+计算验证了这 $66$ 个起点。每个起点都产生一条由本质坐标构成的无限弹道射线。沿同一射线，到前沿 $e(t) = L(t)$ 的深度保持不变，两族射线的深度分别为 $d_A(n) = 140 + 210n$ 和 $d_B(n) = 210 + 210n$。
+
+随后的 \texttt{StaircaseA} 和 \texttt{StaircaseB} 模块通过拼接三个局部相容的构型行来精确描述演化，从而证明两族公式对任意 $n,q\ge0$ 均成立。A、B 两族前沿处的周期介质覆盖 $66\,150$ 个剩余类中的 $45\,255$ 个。加入第三族后，覆盖数增至 $53\,550$。这些计数针对 $315\times210$ 的剩余类表。将表中结果用于具体物理坐标时，还须检验该点确实位于相应的楔形区域内。
+
+下列反例说明了局部证书的三项限制。
+\begin{itemize}
+    \item \textbf{局部块不足以支持从 $n$ 到 $n+1$ 的归纳。}对于大步长 $(\Delta T, \Delta s) = (882, +378)$，普适依赖界为 $\mathrm{Dep}_{882}(s) \subseteq [s - 588, s + 882]$。将目标位置平移后，所得区间为 $[s - 210, s + 1260]$。在 \texttt{check\_macro\_boundary.py} 的反例中，即使固定半径为 $64$（$T=594$ 时）或 $186$（$T=884$ 时）的局部块，改变块外元胞仍能改变 $882$ 步后的目标比特。
+    \item \textbf{有限时间内覆盖的扇区在更晚时刻可能出现缺口。}对背景 $(0001111001)$，速度位于 $[-0.66, -0.64]$ 的左扇区直到 $t = 2000$ 都表现为完全覆盖。延长演化时间后便出现缺口。
+    \item \textbf{平移复现本身不足以保证完全覆盖。}对背景 $(0000001001)$，即使平移复现的深度达到 $261$ 个元胞，也无法由此保证每个剩余类都被覆盖。覆盖证明需要联合使用多个相位。
+\end{itemize}
+
+\subsection{左侧无界楔形区域的构造性闭合（\texttt{wedge\_all} 定理）}
+
+为同时处理光锥左缘（速度为 $-1$）、周期为 $50$ 的晶体和扰动前沿的不同运动方式，我们用 $n \in \mathbb{N}$ 对偶数时刻编号，并令
+\begin{equation}
+\mathrm{tm}(n) = 2450 + 2n, \qquad a(n) = -350 - n.
+\end{equation}
+右边界 $a(n)$ 每两步左移一个元胞，速度为 $-1/2$。对六个相位 $p \in \{\mathrm{p0}, \mathrm{p1}, \mathrm{p2}, \mathrm{p3}, \mathrm{p7}, \mathrm{p9}\}$ 中的每一个，记 $\widetilde B_p(t,s)=\widetilde B^p_t(s)$。第 $n$ 层的不变量由两个条件组成：在 $a(n)$ 左侧的指定区间内，轨迹与参考晶体 $\mathrm{Cm}_p$ 一致；从 $a(n)$ 开始的 $16$ 比特边界缓冲区，则与有限转移图中某个节点存储的字一致。精确地说，
+\begin{align}
+\mathrm{Medium}(p,n)\ \iff\ {}&
+\forall s\in[-\mathrm{tm}(n)+1300,a(n))\cap\mathbb{Z},\notag\\
+&\widetilde B_p(\mathrm{tm}(n),s)=\mathrm{Cm}_p(\mathrm{tm}(n),s), \\
+\mathrm{Window}(p,n,i)\ \iff\ {}&
+\forall k\in\{0,\dots,15\},\notag\\
+&\widetilde B_p(\mathrm{tm}(n),a(n)+k)=\mathrm{testBit}(\mathrm{word}(p,n,i),k).
+\end{align}
+
+\begin{lemma}[16 比特确定性转换器及其与左侧条带的衔接]\label{lem:transducer}
+对每个相位 $p$，表 \texttt{Crystal50Packed} 定义一个以 $50$ 为周期逐层重复的图。每条记录占 $36$ 比特。低 $16$ 位编码窗口 $\mathrm{word}(p, n, i)$，第 $16\dots 25$ 位和第 $26\dots 35$ 位分别编码右侧输入比特 $r \in \{0, 1\}$ 取两个不同值时的转移。
+\begin{enumerate}[label=(\alph*)]
+    \item 在第 $n$ 步，左侧的 $4$ 比特上下文 $\mathrm{ctx}(p, n \bmod 50)$ 占据位置 $a(n) - 4 + m$，其中 $m \in \{0, 1, 2, 3\}$。这些位置的深度为 $t + s = 2096 + n + m$，均处于 $\mathrm{Medium}(p, n)$ 已覆盖的区间内。
+    \item 连续进行两次逐位归约 $\mathrm{shrink}(\mathrm{shrink}(\mathrm{input}(p, n, i, r)))$，即可算出时刻 $\mathrm{tm}(n+1)$ 区间 $[a(n)-2, a(n)+14]$ 上的 $17$ 个构型比特。最低位（$k=0$）给出 $\mathrm{Cm}_p(\mathrm{tm}(n+1), a(n) - 2)$，其余 $16$ 位（$k=1\dots 16$）组成下一层节点 $z$ 的字，其窗口起点为 $a(n+1) = a(n) - 1$。
+    \item 在条带左缘，满足 $-\mathrm{tm}(n+1) + 1300 \le s < -\mathrm{tm}(n) + 1302$ 的元胞具有深度 $k = s + \mathrm{tm}(n+1) \in \{1300,1301,1302,1303\}$。平移 $(t, s) \mapsto (t + 50, s - 50)$ 保持 $t + s$ 不变，因此 \texttt{Crystal50Seam} 中的定理 \texttt{seam} 覆盖这些元胞。
+\end{enumerate}
+\end{lemma}
+
+\begin{theorem}[\texttt{Rails.Crystal50Wedge.wedge\_all}]\label{thm:wedge_all}
+对任意整数时刻 $t \ge 2485$ 和任意满足下式的整数 $s$，
+\begin{equation}\label{eq:wedge_region}
+-t + 1302 \le s \le 59 - \lfloor t/2 \rfloor,
+\end{equation}
+命题 \texttt{EssentialAt}\,$t\,(-s)$ 成立。此处 $t$ 没有上界。
+\end{theorem}
+
+\begin{proof}[证明思路]
+取 $n = \lfloor (t - 2450) / 2 \rfloor$。当 $t \ge 2485$ 时，$n \ge 17$，且右边界为 $59 - \lfloor t/2 \rfloor = -1166 - n = a(n) - 816$。在偶数时刻 $t = \mathrm{tm}(n)$，由不变量 $\mathrm{Medium}(p, n)$ 可直接推出对全部六个相位 $p$ 均有 $\widetilde B_p(t, s) = \mathrm{Cm}_p(t, s)$。在奇数时刻 $t = \mathrm{tm}(n) + 1$，一步依赖区间 $[s - 1, s + 1]$ 完全位于 $[-\mathrm{tm}(n) + 1300, a(n))$ 内，由局部性引理 \texttt{carry} 即可将这种一致性延续一步。最后应用 \texttt{essential\_of\_cm}，便得到所需的本质性见证。
+\end{proof}
+
+\subsection{无限直线上的完全覆盖}\label{sec:five-bands}
+改用输入坐标 $j=-s$，记 $b=\lfloor t/2\rfloor$。当 $t\ge2485$ 时，下列五个结果依次覆盖相邻区间。表中各行均包含两个端点。
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+起始坐标 & 终止坐标 & 依据 \\
+\midrule
+$-L(t)$ & $-L(t)+105$ & 宽度为 106 的半直线证书 \\
+$-L(t)+106$ & $b-60$ & \texttt{EtherWedge.half\_sector} \\
+$b-59$ & $t-1302$ & \texttt{Crystal50Wedge.wedge\_all} \\
+$t-1301$ & $t-20$ & \texttt{LeftCrystal50.left\_strip} \\
+$t-19$ & $t$ & \texttt{right\_boundary\_width20} \\
+\bottomrule
+\end{tabular}
+\end{center}
+周期为 14 的以太背景的三个相位使第二行从 $t\ge210$ 起便成立。最后一行将此前宽度为八的右边界带进一步扩大。在 $t=2485$ 时，第三行恰好包含一个元胞 $j=1183$。每一行的起始坐标都恰比上一行的终止坐标大一。引理 \texttt{Rails.late\_all} 将这五项证明合在一起。
+
+最初的数值检验覆盖了 $0\le t\le2000$。后来，使用七个字的固定相位进行的实验将检验延伸到 $t=5000$。证明只需覆盖与五条带相接的有限区域。
+
+\paragraph{有限证书}
+对 $0\le t<2485$，取七个字的全部循环相位。以下各对数依次给出字长及其整数编码，最低有效位对应第一个元胞：
+\[
+(8,244),\ (10,632),\ (10,976),\ (10,576),\ (4,13),\ (6,52),\ (6,48).
+\]
+用长度为 5520 的位向量表示每个背景，在位置 2760 翻转一个比特。七个字的周期都整除 5520。在每个时刻，对所有构型对的差异掩码逐位取并，验证所得结果包含物理区间 $[-t,L(t)]$ 的掩码。这共覆盖 $\sum_{t=0}^{2484}(2t+1-\lfloor t/3\rfloor)=5\,147\,263$ 个时空点。区间内每个 $s$ 均满足 $-5520<s-t$ 和 $s+t<5520$，故由局部性引理 \texttt{local\_obs} 可将环上的结果推广到无限直线上的单比特翻转。
+
+七个字确定初始行。生成器每隔 25 步给出一个候选快照。Lean 检查每个块的覆盖掩码，并在存在后继块时验证当前块的终态与下一块的初始快照相等。最后一块包含十行。对块长作归纳，可将掩码中每个被覆盖的比特对应到一对具体轨迹。因此，\texttt{Rails.Finite.finite\_all} 证明了有限区域内每个输入坐标的本质性。
+
+\begin{proof}[定理~\ref{thm:gap-free} 的证明（续）]
+由定理~\ref{thm:upper_bound} 得 $D_t\subseteq I_t$。对于反向包含关系，在 $t<2485$ 时使用有限证书，在 $t\ge2485$ 时使用上述五条带。将每一对在物理坐标 $s$ 处出现差异的构型作相应平移，即得输入坐标 $-s$ 的本质性见证。
+\end{proof}
+
+\subsection{从几何结果到部分观测}
+源文件 \texttt{observer/Rule110Observer.lean} 导入 \texttt{Rule110Exact} 和 \texttt{Rule110FrontGlue}。\texttt{essential\_iff\_inCone} 的证明将根定理应用于位移 $j-s$，再平移构型，便得到目标元胞 $s$ 的见证。因此该目标的精确窗口为
+\[
+  [s-L(t),s+t]\cap\mathbb Z.
+\]
+定义 \texttt{CanPredict} 考察以下问题：在预先指定的格点上读取直到给定截止时刻的数值，所得序列是否足以对每个允许的输入算出目标比特？引理 \texttt{canPredict\_iff} 给出判据：在每一组观测历史相同的输入上，答案必须恒定。文件还给出单凭几何覆盖无法预测的反例。即使一个位置位于因果锥内，该观察者的实际读数也未必足以确定目标。
+
+观察者源文件已在 Lean~4.35.0 中连同两个正式导入模块完成验证。\src{verification/monograph/observer-axioms.log}{观察者验证日志}包含 \texttt{\#print axioms} 的全部 11/11 条输出，从 \texttt{canPredict\_iff} 到 \texttt{coverage\_does\_not\_suffice}。内核对每条定理报告的公理列表都恰为 \texttt{[propext, Classical.choice, Quot.sound]}。OLMo 的数据来自第~\ref{sec:olmo} 节的独立实验。

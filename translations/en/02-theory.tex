@@ -1,0 +1,56 @@
+\section{Access to the past: observations, messages, and memory}
+\label{sec:observer-theory}
+
+Let $U\ne\varnothing$ be the set of admissible histories of one device under a fixed system boundary and protocol. The target bit $Y(u)\in\{0,1\}$ describes the device's past in history $u$. Write $H(u)$ for the information available to the recipient when it decides, $W(u)$ for the sender's information, and $Z(u)$ for the delivered message. Earlier readings may be included in $H$ only if the recipient can access them through its interface or has retained them in memory. Two protocols that grant different access to the record define different tasks.
+
+\subsection{T1. Criterion for exact decoding}
+\label{thm:observer-t1}
+
+For any observation map $O:U\to\mathcal O$, exact deterministic recovery of $Y$ on all admissible histories is possible if and only if
+\begin{equation}
+ \forall u,v\in U\qquad O(u)=O(v)\ \Longrightarrow\ Y(u)=Y(v).
+ \label{eq:observer-fibres}
+\end{equation}
+\emph{Proof.} If $Y=d\circ O$, applying the same function $d$ to equal arguments gives equal answers. Conversely, for each $o\in O(U)$ the set $\{Y(u):O(u)=o\}$ is nonempty and, by hypothesis, a singleton. Define $d(o)$ to be its unique element. Values of $d$ outside $O(U)$ are arbitrary. This establishes the existence of a function. On a finite domain it can be implemented as a lookup table given sufficient memory and addressing capacity.
+
+The criterion applies separately to $O=H$ and $O=(H,Z)$. To establish a gain in zero-error access from receiving a message, it suffices to exhibit a pair with the same $H$ and different $Y$, then give an exact decoder from $(H,Z)$ for the \emph{entire} class of histories. For a family of observations $O_t$, the first time at which such access is possible is the least $t$ satisfying \eqref{eq:observer-fibres}, if it exists. In a system with erasure, whether the criterion still holds later is a separate question.
+
+\subsection{T2. The cost of one message}
+\label{thm:observer-t2}
+
+Suppose $U$ is finite. The sender transmits one fixed-length word $c(W)$ through a noiseless channel. Transmission and delivery times are set in advance. Construct an undirected graph $G$ with vertex set $W(U)$. Join $w,w'$ by an edge if there exist $u,v\in U$ such that
+\[
+ W(u)=w,\qquad W(v)=w',\qquad H(u)=H(v),\qquad Y(u)\ne Y(v).
+\]
+We allow $w=w'$. A loop makes every message of this form insufficient. If the graph is loopless, the minimum alphabet size and the minimum number of transmitted binary digits are, respectively,
+\[
+ M_{\min}=\chi(G),\qquad b_{\min}=\lceil\log_2\chi(G)\rceil .
+\]
+\emph{Proof.} Sending the same message for both endpoints of an edge would produce an identical $(H,Z)$ pair for different targets, contradicting T1. The values of any exact code therefore give a proper colouring. A loop would require one vertex to have two different colours. Conversely, in any proper colouring, two histories with the same $H$ and different targets receive different colours. When the sender transmits the colour, T1 gives an exact decoder. A fixed-length encoding of $M$ colours requires exactly $\lceil\log_2 M\rceil$ bits at minimum, including the empty message when $M=1$.
+
+The lower bound $\max_{h\in H(U)}|\{Y(u):H(u)=h\}|$ is attained if the sender knows both $H$ and $Y$. It can number the possible targets separately for each $h$. With limited access to history this bound may be strictly smaller than $M_{\min}$. Suppose the recipient holds one of the ordered pairs $ab,ac,bc$. The sender knows a previously selected letter from that pair, and the target bit specifies whether the first or second position was selected. The letters in each pair require different colours. The three letters form a triangle, so three message symbols are needed for a target bit with two possible values. The connection between one-shot zero-error coding with side information and graph colouring goes back to \href{https://doi.org/10.1109/TIT.1976.1055607}{Witsenhausen}. \href{https://doi.org/10.3390/e26040338}{Charpenay, Le Treust, and Roumy} also treat the problem of computing a function with side information.
+
+\subsection{T3. Channel errors and the cost of an addressed query}
+\label{thm:observer-t3}
+
+Suppose that in history $u$ the corrupted signal can take any value in a nonempty set $\mathcal R(u)$. Recovery under \emph{every} admissible corruption is possible precisely when
+\[
+ H(u)=H(v),\quad Y(u)\ne Y(v)
+ \quad\Longrightarrow\quad \mathcal R(u)\cap\mathcal R(v)=\varnothing .
+\]
+A symbol in the intersection would require two different answers to the same observation. If all the indicated intersections are empty, each reachable $(h,r)$ has a unique target value. This is the proof of T1 applied to histories extended to include the channel outcome.
+
+For a finite joint distribution of $(H,R,Y)$ under zero-one loss, the minimum error probability describes a different criterion and equals
+\[
+ P_e^*=1-\sum_{h,r}\max_{y\in\{0,1\}}\Pr(H=h,R=r,Y=y).
+\]
+Indeed, a deterministic answer $d(h,r)$ gives success probability $\sum_{h,r}\Pr(H=h,R=r,Y=d(h,r))$. Each summand can be maximised independently. For example, let $H,Z$ be independent fair bits, $Y=H\oplus Z$, and $R=Z\oplus N$ with independent $N\sim\mathrm{Bernoulli}(p)$, $0\le p\le 1/2$. The optimal answer $H\oplus R$ then has error probability $p$. For $p>0$ the guarantee of exact recovery under every corruption is lost.
+
+The advantage of interaction depends on which messages are allowed. Let $A_0,A_1$ be two previously recorded, unrestricted bits. An address $K$ known to the recipient specifies the required bit from the past, $Y=A_K$. All eight triples $(K,A_0,A_1)$ are admissible. One query bit $K$ and one return bit $A_K$ suffice. Suppose instead that the return bit must be a fixed function $c(A_0,A_1)$ independent of the address. Given one value of that function, an exact decoder could be run with $K=0$ and with $K=1$ to recover the entire pair $(A_0,A_1)$. Four distinct pairs require at least four messages. Thus sending the address reduces the required return alphabet under this communication protocol. Two return bits already suffice to send the entire record without a query. For a single fixed query, replaying a correct answer with the same content and delivery time produces the same outcome for a deterministic recipient.
+
+\subsection{T4. Self-report and retained state}
+\label{thm:observer-t4}
+
+Consider two devices that both compute the same exact $d(H,Z)=Y$ and publish it. The first retains a bit $M=Y$. The second erases the evidence and reaches the same accessible state for at least two histories with different $Y$. Access to the previous public report and to the observer's channel is then closed. Both devices receive a new bit $C$ and are asked to perform the action $Y\oplus C$. The first computes $M\oplus C$. For the second, fix the same $C$ in the two histories just described. All available inputs are identical, yet the required bits are opposite. By T1 the second device has no exact decoder. The delayed action thus distinguishes two implementations that produced identical immediate reports.
+
+Intervening on $Z$ while holding the earlier state fixed tests whether the action depends on the delivered signal. Testing whether the result carries over to another episode requires a second intervention: replace or erase $M$ with the new query held fixed and access to the earlier report blocked. These are two distinct counterfactual comparisons. In this task one internal register suffices for the correct delayed action.

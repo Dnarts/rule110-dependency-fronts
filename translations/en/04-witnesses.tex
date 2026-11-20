@@ -1,0 +1,79 @@
+\section{Coverage and distinguishability: constructive witnesses in Rule~110}
+\label{sec:observer-witnesses}
+
+Consider two questions about the same dynamics. In the first, an observer receives a record of readings at several sites and predicts the future value of a cell. In the second, a recipient recovers its own past bit $Y$ after the local record has ceased to distinguish its earlier values. In each case we test the criterion from Section~\ref{sec:observer-theory}: the target must be constant on each fibre of the observation map.
+
+\subsection{Prediction from a record and the limits of geometric coverage}
+\label{sec:observer-coverage}
+
+For an initial configuration $b$, write $b_t(s)$ for its value at site $s$ at time $t$. Let $S$ be a finite list of fixed sites and $\tau$ the last observation time. The observation record is the array
+\[
+ H_{S,\tau}(b)=\bigl(b_k(i)\bigr)_{0\le k\le\tau,\,i\in S}.
+\]
+In \nolinkurl{observer/Rule110Observer.lean}, the predicate \texttt{CanPredict} requires a decoder that outputs $b_t(s)$ from this record on every admissible configuration. The theorem \texttt{canPredict\_iff} identifies this requirement with constancy of $b_t(s)$ on the fibres of $H_{S,\tau}$. The definition allows arbitrary restrictions on the initial configurations.
+
+Write $I_t(s)=s+I_t$ for the translated exact dependency region. We use the theorem \texttt{Rails.essential\_iff} establishing $D_t=I_t$. Translation invariance of the dynamics carries the result from the origin to $s$. The predicate \texttt{CoversTarget} means
+\begin{equation}
+ I_t(s)\ \subseteq\ \bigcup_{i\in S}\bigcup_{k=0}^{\tau} I_k(i).
+ \label{eq:observer-cover}
+\end{equation}
+For the class of all initial configurations this is necessary. If a site $j$ on the left is missing from the right, essentiality of $j$ gives two configurations differing only at $j$ and producing different $b_t(s)$. All readings in their records agree because $j$ falls outside the dependency regions of those readings. This pair violates the prediction criterion. The choice of initial-state class matters: on a singleton class any future bit can be predicted by a constant.
+
+\paragraph{A counterexample to sufficiency.}
+Take $S=(-1,1)$, $\tau=1$, $s=0$, and $t=2$. The cones of the last readings alone are $[-2,0]$ and $[0,2]$ and cover $I_2(0)=[-2,2]$. In the first initial configuration the only one is at site $-1$. In the second the ones are at $-1$ and $0$. All other sites are zero in both configurations. After one step the sets of sites containing ones are $\{-2,-1\}$ and $\{-2,-1,0\}$, respectively. In both worlds the sensors produce the same record $(10,10)$. For the second update at site $0$, the local triples $100$ and $110$ give $0$ and $1$, respectively. Hence the coverage condition holds, yet prediction from the entire record is impossible. The exact constructions appear in \texttt{separated\_cells\_counterexample} and \texttt{coverage\_does\_not\_suffice}.
+
+The phenomenon also occurs with adjacent sensors. For $S=(0,1)$ and $\tau=2$, the cones $[-2,2]$ and $[-1,3]$ cover $I_3(0)=[-2,3]$. Initial sets of ones $\{2\}$ and $\{-1,2\}$ yield the same record $(00,01,11)$ and opposite values $1$ and $0$ at site $0$ at time $3$. This is \texttt{adjacent\_cells\_counterexample}. There is also a sufficient condition with a direct interpretation: if the last observed row gives the values of \emph{all cells} in $I_{t-\tau}(s)$ with $t\ge\tau$, ordinary evolution from those values uniquely determines the target. Condition~\eqref{eq:observer-cover} allows distinguishability to be lost when the initial data are compressed into a few cell readings.
+
+\subsection{Four successful histories and an exhaustive 11-bit control}
+
+Place an 11-bit word on the integer line at sites $0,\ldots,10$, from left to right, against a zero background. Before the first update write a one at site $11$. The target bit about the past is $Y=b_0(5)$, the sensor reading is $Z=b_2(10)$, the recipient's record is $H=(b_k(0))_{k=0}^3$, and its last bit is $K=b_3(0)$. After the observation at time 3 write $Z$ to $-1$ and read the result of the ordinary update of that cell at time 4.
+
+\begin{center}
+\begin{tabular}{lccccc}
+Initial word & $H$ & $K$ & $Y$ & $Z$ & Output at time 4 \\
+\hline
+\texttt{10111010001} & 1100 & 0 & 0 & 0 & 0 \\
+\texttt{10111110111} & 1100 & 0 & 1 & 1 & 1 \\
+\texttt{11000010111} & 1101 & 1 & 0 & 1 & 0 \\
+\texttt{11001100001} & 1101 & 1 & 1 & 0 & 1
+\end{tabular}
+\end{center}
+
+In these four histories $Y=K\oplus Z$. Within each pair with fixed $K$, even the entire underlying configuration at time 3 agrees before the write. The receiving cell's left neighbour is one and its right neighbour is $K$. The injected bit thus gives the correct answer by the identity
+\begin{equation}
+ f_{110}(1,z,k)=z\oplus k.
+ \label{eq:observer-xor-gate}
+\end{equation}
+Inverting the delivered bit reverses the answer in all four cases. The two prepared words within each pair, however, differ at sites other than $5$ as well.
+
+Over the entire uniform class of $2^{11}$ words, compare each word with its copy obtained by flipping only $b_0(5)$. The sensor at site $10$ at time 2 depends on initial sites $8,\ldots,12$. The record of cell $0$ through time 3 is determined entirely by site $0$ and its three-step neighbourhood. In each of the 1024 pairs, the two values of $Y$ therefore give the same observations $(H,Z)$. Any deterministic binary answer based on $(H,Z)$ is correct on exactly 1024/2048 histories. Enumeration in \nolinkurl{observer/domain.py} confirms 0/1024 changes in the sensor reading and the 1024/2048 bound for the decoder. The causal effect of the \emph{injected} bit on the receiving cell and that of the \emph{past} bit on the sensor are distinct claims.
+
+\subsection{An isolated flip and recovery at time 5}
+\label{sec:observer-return}
+
+Now place each word in the following table at sites $-6$ through $13$, inclusive, with a zero background outside the interval. In this construction the observer passively reads $Z=b_2(3)$. Before the return, $Y=b_0(5)$ and $K=b_4(0)$. For each fixed $K$, the two words differ only at site $5$.
+
+\begin{center}
+\begin{tabular}{cc l cc}
+$K$ & $Y$ & Word on $[-6,13]$ & $Z$ & Output at time 5 \\
+\hline
+0 & 0 & \texttt{00000001100001000000} & 0 & 0 \\
+0 & 1 & \texttt{00000001100101000000} & 1 & 1 \\
+1 & 0 & \texttt{00010111010001000010} & 1 & 0 \\
+1 & 1 & \texttt{00010111010101000010} & 0 & 1
+\end{tabular}
+\end{center}
+
+An isolated flip of $Y$ changes $Z$ for both values of $K$. When $K=0$ the sensor returns $Y$; when $K=1$ it returns its complement. At time 4 the underlying configurations in each pair agree along the entire line. Their records in the receiving window $(-2,-1,0)$ also agree at every time from 0 through 4 before the write. At this point $b_4(-2)=1$. Writing $Z$ once to $-1$ and applying one Rule~110 update gives $b_5(-1)=Z\oplus K=Y$ by~\eqref{eq:observer-xor-gate}. Writing $1-Z$ instead gives $1-Y$ in all four worlds. Before the write the underlying layer has already lost the distinction, while the external one-bit register has retained it. The calculation on the infinite line is implemented in \nolinkurl{observer/causal_line.py}.
+
+\paragraph{Scope of the minimality result.}
+Time 4 is the earliest possible complete merger in the following class on the line. Within each pair, a single initial cell is flipped. One raw reading is taken at a fixed site and time chosen in advance. Both binary inputs $K,Z$ must be jointly necessary for exact recovery on the square of four histories. To test for merger by time 3, all possible differences at that time lie within radius 3 of the flipped site and are determined by the initial interval of radius 6. Excluding the flipped cell leaves 12 surrounding bits. Of the $2^{12}=4096$ surroundings, eight lead to complete merger by the third step. Fix any sensitive sensor and reading time before merger. Across all these surroundings in which it is sensitive, the direction of its response to the flip is the same. For exact recovery, the sensor must be sensitive in both contexts. A common direction would then make $Y$ a function of $Z$ alone, contradicting the joint necessity of the two inputs. The four words in the table attain the merger bound and produce the output on the next update. The surroundings are enumerated in \nolinkurl{observer/causal_crosscheck.py}.
+
+\subsection{Finite-speed delivery and autonomous execution}
+
+In the previous experiment an external device wrote the retained bit directly to the receiving site. With the same four initial words one can explicitly bound channel speed. At times $2,3,4,5,6,7$, the isolated bit occupies sites $3,3,3,2,1,0$, respectively. The schedule is identical in all worlds, and the bit moves at most one cell per step. At time 7 the neighbours of cell $0$ have values $b_7(-1)=1$ and $b_7(1)=K$. After the delivered $Z$ is written, an ordinary update gives $b_8(0)=Y$. Replacing $Z$ by its complement reverses all four outputs. Before delivery, the records of the window $(-1,0,1)$ agree pairwise for fixed $K$. This is checked by \nolinkurl{observer/local_return.py}.
+
+The autonomous implementation uses a ring of length 61 with one homogeneous, time-independent local transition of radius 1. Each cell stores an underlying bit, a phase counter, a fixed role, and one message bit. At initialisation the observer role is assigned to site 3 and the receiver role to site 0. The phase controls capture, local forwarding, and insertion of the message. No external commands are issued after initialisation. In each pair of worlds the underlying layers agree at times 4 through 7, while the full extended states remain distinct. The check in \nolinkurl{observer/autonomous.py} gives 4/4 correct outputs at time 8. The existence of such an extended finite alphabet leaves open R110.11, which asks for the same complete protocol within a single strictly binary homogeneous Rule~110. Once the entire states of two isolated deterministic systems with the same dynamics agree, a distinction can arise again only if a new distinguishing input is supplied.
+
+\paragraph{Formal verification status.}
+In the historical snapshot, a separate version of the observer module on Lean~4.33.1 produced nine \texttt{\#print axioms} reports, including the fibre criterion for predictability and counterexamples to the sufficiency of coverage. For the monograph build, Lean~4.35.0 checked the canonical source with imports \texttt{Rule110Exact} and \texttt{Rule110FrontGlue} and returned all 11 of the 11 requested axiom lists. Appendix~\ref{app:lean} identifies the logs. Trajectories and enumeration results provide separate witnesses for the finite examples in this section.

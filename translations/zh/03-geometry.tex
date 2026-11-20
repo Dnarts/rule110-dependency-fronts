@@ -1,0 +1,123 @@
+\section{规则 110 本质坐标的精确几何}\label{sec:geometry}
+\subsection{观测量与单比特见证}
+固定原点处的目标元胞和时刻 $t$。若存在某个初始构型，使得仅翻转一个输入坐标上的比特便会改变输出，就称该坐标为本质坐标。用于见证这一性质的背景可以同时依赖于坐标和时刻。这个量词次序区分了最坏情形下的敏感性与特定滑翔子的速度。对于规则~110，已有通用计算的构造\cite{cook2004}和运动结构的分类\cite{wolfram1986,martinez2006}。关于观测、预测等价类和推断极限的关系，见文献\cite{shalizi2001,wolpert2008}。
+
+\begin{definition}[规则 110 与观测量]
+令 $X = \{0, 1\}^{\mathbb{Z}}$。局部规则在域 $\mathbb{F}_2$ 上的代数标准形为
+\begin{equation}\label{eq:rule110}
+f(l, c, r) = c \oplus r \oplus cr \oplus lcr.
+\end{equation}
+同步更新算子 $F : X \to X$ 由 $(F(u))_i = f(u_{i-1}, u_i, u_{i+1})$ 定义。时刻 $t \in \mathbb{N}$ 在原点处的观测量为 $G_t(u) = (F^t(u))_0$。
+\end{definition}
+
+\begin{definition}[预测映射的分解与本质变量]
+若存在映射 $P : \mathcal{O} \to \{0, 1\}$ 使 $G_t = P \circ O$，则称观测映射 $O : X \to \mathcal{O}$ 对 $G_t$ 是充分的。对 $j \in \mathbb{Z}$，用 $(u \oplus e_j)_i = u_i \oplus \mathbf{1}_{i=j}$ 表示仅翻转坐标 $j$ 处的比特。本质初始坐标的集合定义为
+\begin{equation}\label{eq:essential_set}
+D_t = \{ j \in \mathbb{Z} : \exists u \in X,\; G_t(u) \ne G_t(u \oplus e_j) \}.
+\end{equation}
+\end{definition}
+
+由于 $G_t$ 仅依赖有限多个坐标，在所有足以计算 $G_t$ 的输入坐标集合中，$D_t$ 是按包含关系唯一的极小集合。因此，任何充分的观测区间都必须包含 $D_t$ 的整数凸包。
+
+为了在周期背景上构造见证，我们区分输入坐标 $j$ 与观测到缺陷的物理坐标 $s$。给定周期字 $w$、空间相位 $\phi$ 及相应的无限构型 $B_0^{w,\phi}$，令
+\begin{equation}\label{eq:diff_support}
+B_t^{w,\phi} = F^t(B_0^{w,\phi}), \qquad
+\widetilde B_t^{w,\phi} = F^t(B_0^{w,\phi} \oplus e_0), \qquad
+S_t^{w,\phi} = \{ s \in \mathbb{Z} : B_t^{w,\phi}(s) \ne \widetilde B_t^{w,\phi}(s) \}.
+\end{equation}
+更新与平移可交换，即 $F \circ \sigma^d = \sigma^d \circ F$，其中 $(\sigma^d u)_i = u_{i-d}$。对每个 $s \in S_t^{w,\phi}$，将这对初始构型平移 $-s$，便得到 $j = -s \in D_t$ 的见证。因此，对任意背景及相位族 $\mathcal{W}$，有
+\begin{equation}\label{eq:coverage_bridge}
+C_t(\mathcal{W}) = \bigcup_{(w,\phi) \in \mathcal{W}} \{ -s : s \in S_t^{w,\phi} \} \subseteq D_t.
+\end{equation}
+由此可见，输入窗口的左端点 $j = -L(t)$ 对应缺陷的物理右前沿 $s = L(t)$，而右端点 $j = t$ 对应物理左前沿 $s = -t$。
+
+\subsection{无限格点上的精确依赖窗口}
+
+令 $L(t) = t - \lfloor t/3 \rfloor$，并记 $I_t = [-L(t), t] \cap \mathbb{Z}$。
+
+\begin{lemma}[向右传播的三步界]\label{lem:three_step}
+对任意七比特字 $b = (b_0, \dots, b_6) \in \{0, 1\}^7$，以 $Q(b)$ 表示按规则 110 同步更新三步后中心元胞的值。则
+\begin{equation}\label{eq:seven_bit}
+Q(b_0, b_1, \dots, b_6) = Q(1 \oplus b_0, b_1, \dots, b_6).
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+由式~\eqref{eq:rule110}，局部规则关于左侧输入的布尔导数为
+\begin{equation}\label{eq:bool_deriv}
+f(1, c, r) \oplus f(0, c, r) = cr.
+\end{equation}
+记 $b_i(t)$ 为所考察的一条轨迹上元胞 $i$ 在时刻 $t$ 的值。假设两个构型在 $p$ 的严格右侧处处相同，且最右侧差异连续三步各向右移动一个元胞，其路径为 $p \to p+1 \to p+2 \to p+3$。第一次移动要求在 $t=0$ 时 在 $p+1$ 和 $p+2$ 处的共同取值均为 $1$。第二次移动要求在 $t=1$ 时 在 $p+2$ 和 $p+3$ 处的值均为 $1$。由 $f(1, 1, z) = 1 \oplus z$ 可知 $b_{p+3}(0) = 0$，再由 $f(1, 0, z) = z$ 得到 $b_{p+4}(0) = 1$。于是 $b_{p+4}(1) = f(0, 1, b_{p+5}(0)) = 1$，从而 $b_{p+3}(2) = f(1, 1, 1) = 0$，第三次移动便不可能发生。Lean 4 内核也逐一检查了全部 $2^7 = 128$ 种输入，验证了式~\eqref{eq:seven_bit}。
+\end{proof}
+
+\begin{theorem}[依赖集的普适界]\label{thm:upper_bound}
+对每个 $t \in \mathbb{N}$，均有 $D_t \subseteq I_t = [-(t - \lfloor t/3 \rfloor), t] \cap \mathbb{Z}$。
+\end{theorem}
+
+\begin{proof}
+若两个构型在 $p_0$ 的严格右侧处处相同，则一步后在 $p_0 + 1$ 的严格右侧仍然相同。由引理~\ref{lem:three_step}，三步后两者在 $p_0 + 2$ 的严格右侧仍然相同。写成 $t = 3q + r$，其中 $q = \lfloor t/3 \rfloor$，$r \in \{0, 1, 2\}$。经 $t$ 步后，两构型在 $p_0 + 2q + r = p_0 + L(t)$ 的严格右侧仍然相同。因此，始于 $j < -L(t)$ 的差异在时刻 $t$ 无法到达原点。对 $j > t$，通常的半径为一的光锥即给出所需结论。
+\end{proof}
+
+\begin{theorem}[两个端点均可达到]\label{thm:sharpness}
+对每个 $t \in \mathbb{N}$，两个端点 $-L(t)$ 和 $t$ 均属于 $D_t$。最小充分观测区间为 $I_t$，其宽度满足
+\begin{equation}
+m_{\min}(t) = 2t + 1 - \lfloor t/3 \rfloor, \qquad \lim_{t \to \infty} \frac{m_{\min}(t)}{t} = \frac{5}{3}.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+对右端点 $j = t$，比较全零构型 $0^{\mathbb{Z}}$ 与仅在 $t$ 处为一的构型 $e_t$。由 $f(0, 0, 0) = 0$ 和 $f(0, 0, 1) = 1$，最左侧的一在每一步恰好左移一个元胞，故在 $t$ 步后到达原点。
+
+对左端点 $j = -L(t)$，取周期为四的背景 $B_0(i) = (1, 0, 1, 1)[i \bmod 4]$ 及其扰动 $\widetilde B_0 = B_0 \oplus e_2$。迭代规则 110 六步，得到表~\ref{tab:period4_defect} 所列的差异支集 $S_t$。
+
+\begin{table}[h]
+\centering
+\caption{背景 $(1011)$ 上的单个缺陷。初始暂态过后，这对构型按时空位移 $(\Delta t, \Delta s) = (3, +2)$ 重现。}
+\label{tab:period4_defect}
+\begin{tabular}{cccc}
+\toprule
+$t$ & 背景字 $B_t$（周期 $4$）& 差异支集 $S_t$ & $\max S_t$ \\
+\midrule
+$0$ & $1011$ & $\{2\}$ & $2$ \\
+$1$ & $1110$ & $\{1, 3\}$ & $3$ \\
+$2$ & $1011$ & $\{1, 3, 4\}$ & $4$ \\
+$3$ & $1110$ & $\{0, 1, 4\}$ & $4$ \\
+$4$ & $1011$ & $\{-1, 0, 1, 3, 5\}$ & $5$ \\
+$5$ & $1110$ & $\{3, 5, 6\}$ & $6$ \\
+$6$ & $1011$ & $\{2, 3, 6\}$ & $6$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+由局部性及表中的结果可知，将 $t=3$ 的构型向右平移两个元胞即得 $t=6$ 的构型，故 $B_6 = \sigma^2 B_3$ 且 $\widetilde B_6 = \sigma^2 \widetilde B_3$。由平移等变性，对所有 $k \ge 0$ 和 $r \in \{0, 1, 2\}$，有 $(B_{3+3k+r}, \widetilde B_{3+3k+r}) = \sigma^{2k}(B_{3+r}, \widetilde B_{3+r})$。结合最初几步可得，对所有 $t \ge 0$，均有 $\max S_t = 2 + L(t)$。将初始构型对平移 $-[2 + L(t)]$，初始翻转便位于 $-L(t)$，而时刻 $t$ 的差异位于原点。因此 $-L(t) \in D_t$。
+\end{proof}
+
+\subsection{有限环、状态容量与输入访问}
+
+在有限环 $\mathbb{Z}_N$（$N \ge 3$）上，以 $X_N = \{0, 1\}^{\mathbb{Z}_N}$ 表示构型空间，$F_N : X_N \to X_N$ 表示更新映射。时刻 $t$ 的可达状态集为 $\mathcal{R}_t^{(N)} = F_N^t(X_N)$，编码其中任一状态所需的比特数为 $C_t^{(N)} = \lceil \log_2 |\mathcal{R}_t^{(N)}| \rceil$。定义构型对的演化 $\Phi_N(u, v) = (F_N(u), F_N(v))$、初始构型对集合 $E_j = \{ (u, u \oplus e_j) : u \in X_N \}$，以及在原点处取值不同的构型对集合 $W_0 = \{ (u,v) : u_0 \ne v_0 \}$。于是
+\begin{equation}
+j \in D_t^{(N)} \iff \Phi_N^t(E_j) \cap W_0 \ne \emptyset.
+\end{equation}
+
+\begin{proposition}[本质性持续成立的有限证书]\label{prop:ring_cert}
+设 $\mu_N$ 是有限确定性系统 $F_N$ 的最大暂态长度，$P_N$ 是所有周期轨道长度的最小公倍数。则对一切 $t \ge \mu_N$，有 $D_{t+P_N}^{(N)} = D_t^{(N)}$。因此，对任意 $T \in \mathbb{N}$，要验证 $\forall t \ge T,\; D_t^{(N)} = \mathbb{Z}_N$，等价地只需对每个 $j \in \mathbb{Z}_N$ 和每个满足 $T \le t < \max(T, \mu_N) + P_N$ 的 $t$，检验 $\Phi_N^t(E_j) \cap W_0 \ne \emptyset$。
+\end{proposition}
+
+\begin{proof}
+当 $t\ge\mu_N$ 时，每个可达状态 $F_N^t(u)$ 都已落在某个循环上，且其周期整除 $P_N$。因此映射 $F_N^{t+P_N}$ 与 $F_N^t$ 在整个 $X_N$ 上相同。对任意 $j$ 和任意一对初始构型 $(u,u\oplus e_j)$，它们在原点处取值是否相同，在这两个时刻便有相同的答案。从 $\max(T,\mu_N)$ 起只须检查一个周期。若 $T<\mu_N$，还须逐一检查从 $T$ 到 $\mu_N-1$ 的各个时刻。
+\end{proof}
+
+\begin{remark}[状态压缩与输入敏感性]\label{rem:ring5}
+无限格点上的敏感性在有限环上未必持续。对 $N = 5$ 的规则 110，全部 $32$ 个状态在 $t = 5$ 时均已到达 $0^5$，故当 $t \ge 5$ 时，$D_t^{(5)} = \emptyset$。在 $N = 20$ 的环上，穷举得到时刻 $t = 121$ 的可达状态数为 $|\mathcal{R}_{121}^{(20)}| = 2095$，编码仅需 $12$ 比特。此时仍有 $D_{121}^{(20)} = \mathbb{Z}_{20}$，全部 $20$ 个输入比特都是本质变量。由此可以区分预测问题的四个独立方面，即因果依赖（支集 $D_t$）、数据访问方式（逐个读取坐标或使用预处理后的数据）、状态容量（$C_t^{(N)}$）以及计算复杂度。
+\end{remark}
+
+回到无限格点。对于窗口内部的每个坐标，同两个端点一样，都能找到一对初始构型来见证它对目标元胞的影响。
+
+\begin{theorem}[区间内每个坐标都是本质坐标]\label{thm:gap-free}
+对每个 $t \in \mathbb{N}$，均有 $D_t = I_t = [-(t - \lfloor t/3 \rfloor), t] \cap \mathbb{Z}$。
+\end{theorem}
+
+证明见附录~\ref{app:lean}。当 $t<2485$ 时，有限证书为窗口中的每对 $(t,j)$ 给出一个见证。当 $t\ge2485$ 时，五条首尾相接的带覆盖整个窗口（见第~\ref{sec:five-bands} 节）。
+
+\paragraph{对数据访问的推论}
+任何足以在所有构型上精确计算 $G_t$ 的固定初始坐标集，都必须包含 $I_t$。局部性与依赖上界共同保证 $I_t$ 本身已经充分。因此，这类观测所需的最小坐标数恰为 $2t+1-\lfloor t/3\rfloor$。本质性的见证可以同时依赖于 $t$ 和 $j$。要进一步确定自适应查询的代价、预处理代价或内存需求，还须另行指定计算模型。

@@ -5,7 +5,7 @@ type: software
 authors:
   - family-names: Strand
     given-names: Aleksandr
-version: "2.1-monograph-dev"
+version: "2.2-monograph-multilingual"
 repository-code: "https://github.com/Dnarts/rule110-dependency-fronts"
 preferred-citation:
   type: unpublished
@@ -14,7 +14,7 @@ preferred-citation:
     - family-names: Strand
       given-names: Aleksandr
   year: 2026
-  url: "https://github.com/Dnarts/rule110-dependency-fronts/blob/v2.1-monograph-dev/110_OBSERVER_Preprint.pdf"
+  url: "https://github.com/Dnarts/rule110-dependency-fronts/releases/tag/v2.2-monograph-multilingual"
 references:
   - type: article
     title: "Exact Worst-Case Dependency Fronts in Rule 110 and Finite-State Certification of Input Essentiality"

@@ -51,3 +51,15 @@ monograph:
 		latexmk -xelatex -interaction=nonstopmode -halt-on-error -outdir=build/monograph main.tex; \
 	fi
 	cp build/monograph/main.pdf 110_OBSERVER_Preprint.pdf
+
+.PHONY: translations monograph-en monograph-zh
+translations: monograph-en monograph-zh
+
+monograph-en monograph-zh: monograph-%:
+	@mkdir -p build/monograph-$*
+	@if command -v tectonic >/dev/null; then \
+		tectonic --untrusted --keep-logs --outdir build/monograph-$* - < translations/$*/main.tex; \
+	else \
+		latexmk -xelatex -jobname=texput -interaction=nonstopmode -halt-on-error -outdir=build/monograph-$* translations/$*/main.tex; \
+	fi
+	cp build/monograph-$*/texput.pdf 110_OBSERVER_Preprint_$*.pdf

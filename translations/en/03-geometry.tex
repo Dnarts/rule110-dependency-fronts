@@ -1,0 +1,123 @@
+\section{The geometry of essential coordinates in Rule 110}\label{sec:geometry}
+\subsection{The observable and single-bit witnesses}
+Fix a target cell at the origin and a time horizon $t$. An input coordinate is essential if there is an initial configuration in which flipping that bit alone changes the output. The background may depend on both the coordinate and the horizon. This order of quantifiers distinguishes worst-case sensitivity from the speed of a particular glider. For Rule~110, constructions of universal computation \cite{cook2004} and classifications of moving structures \cite{wolfram1986,martinez2006} are known. The relation of observations to predictive classes and limits on inference is discussed in \cite{shalizi2001,wolpert2008}.
+
+\begin{definition}[Rule 110 and the observable]
+Let $X = \{0, 1\}^{\mathbb{Z}}$. The algebraic normal form of the local rule over $\mathbb{F}_2$ is
+\begin{equation}\label{eq:rule110}
+f(l, c, r) = c \oplus r \oplus cr \oplus lcr.
+\end{equation}
+The synchronous update $F : X \to X$ is given by $(F(u))_i = f(u_{i-1}, u_i, u_{i+1})$. The observable at the origin at time $t \in \mathbb{N}$ is $G_t(u) = (F^t(u))_0$.
+\end{definition}
+
+\begin{definition}[Predictive factorization and essential variables]
+An observation map $O : X \to \mathcal{O}$ is sufficient for $G_t$ if there exists a map $P : \mathcal{O} \to \{0, 1\}$ such that $G_t = P \circ O$. For $j \in \mathbb{Z}$, write $(u \oplus e_j)_i = u_i \oplus \mathbf{1}_{i=j}$ for a single-bit flip. The set of essential initial coordinates is
+\begin{equation}\label{eq:essential_set}
+D_t = \{ j \in \mathbb{Z} : \exists u \in X,\; G_t(u) \ne G_t(u \oplus e_j) \}.
+\end{equation}
+\end{definition}
+
+Since $G_t$ depends on only finitely many coordinates, $D_t$ is the unique inclusion-minimal set of input coordinates sufficient to compute $G_t$. Every sufficient observation interval must contain the integer convex hull of $D_t$.
+
+To construct witnesses on periodic backgrounds, we distinguish the input coordinate $j$ from the physical coordinate $s$ at which a defect is observed. For a periodic word $w$, a spatial phase $\phi$, and the corresponding infinite configuration $B_0^{w,\phi}$, let
+\begin{equation}\label{eq:diff_support}
+B_t^{w,\phi} = F^t(B_0^{w,\phi}), \qquad
+\widetilde B_t^{w,\phi} = F^t(B_0^{w,\phi} \oplus e_0), \qquad
+S_t^{w,\phi} = \{ s \in \mathbb{Z} : B_t^{w,\phi}(s) \ne \widetilde B_t^{w,\phi}(s) \}.
+\end{equation}
+The update commutes with translations, so $F \circ \sigma^d = \sigma^d \circ F$, where $(\sigma^d u)_i = u_{i-d}$. For each $s \in S_t^{w,\phi}$, translating the initial pair by $-s$ gives a witness that $j = -s \in D_t$. Hence every family $\mathcal{W}$ of backgrounds and phases satisfies
+\begin{equation}\label{eq:coverage_bridge}
+C_t(\mathcal{W}) = \bigcup_{(w,\phi) \in \mathcal{W}} \{ -s : s \in S_t^{w,\phi} \} \subseteq D_t.
+\end{equation}
+Thus the left endpoint $j = -L(t)$ of the input window corresponds to the right physical front $s = L(t)$ of the defect. The right endpoint $j = t$ corresponds to the left physical front $s = -t$.
+
+\subsection{The exact dependency window on the infinite lattice}
+
+Let $L(t) = t - \lfloor t/3 \rfloor$ and $I_t = [-L(t), t] \cap \mathbb{Z}$.
+
+\begin{lemma}[Three-step bound on rightward propagation]\label{lem:three_step}
+For a seven-bit word $b = (b_0, \dots, b_6) \in \{0, 1\}^7$, let $Q(b)$ denote the value at its central cell after three synchronous steps of Rule 110. Then
+\begin{equation}\label{eq:seven_bit}
+Q(b_0, b_1, \dots, b_6) = Q(1 \oplus b_0, b_1, \dots, b_6).
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+By \eqref{eq:rule110}, the Boolean derivative with respect to the left argument is
+\begin{equation}\label{eq:bool_deriv}
+f(1, c, r) \oplus f(0, c, r) = cr.
+\end{equation}
+Write $b_i(t)$ for the value of cell $i$ on one of the trajectories. Suppose two configurations agree strictly to the right of $p$ and their rightmost difference advances one cell at each of three steps, along $p \to p+1 \to p+2 \to p+3$. The first advance requires the common values at $p+1$ and $p+2$ to be $1$ at $t=0$. The second requires the values at $p+2$ and $p+3$ to be $1$ at $t=1$. Since $f(1, 1, z) = 1 \oplus z$, this forces $b_{p+3}(0) = 0$. Then $f(1, 0, z) = z$ forces $b_{p+4}(0) = 1$. It follows that $b_{p+4}(1) = f(0, 1, b_{p+5}(0)) = 1$, so $b_{p+3}(2) = f(1, 1, 1) = 0$. This rules out the third advance. The Lean 4 kernel also verifies \eqref{eq:seven_bit} by checking all $2^7 = 128$ inputs.
+\end{proof}
+
+\begin{theorem}[Universal bound on the dependency set]\label{thm:upper_bound}
+For every $t \in \mathbb{N}$, we have $D_t \subseteq I_t = [-(t - \lfloor t/3 \rfloor), t] \cap \mathbb{Z}$.
+\end{theorem}
+
+\begin{proof}
+If two configurations agree strictly to the right of $p_0$, they still agree strictly to the right of $p_0 + 1$ after one step and, by Lemma~\ref{lem:three_step}, strictly to the right of $p_0 + 2$ after three steps. Write $t = 3q + r$, where $q = \lfloor t/3 \rfloor$ and $r \in \{0, 1, 2\}$. Agreement persists strictly to the right of $p_0 + 2q + r = p_0 + L(t)$. A difference at $j < -L(t)$ therefore cannot reach the origin by time $t$. For $j > t$, the usual radius-one light cone gives the bound.
+\end{proof}
+
+\begin{theorem}[Sharpness at both endpoints]\label{thm:sharpness}
+For every $t \in \mathbb{N}$, both endpoints $-L(t)$ and $t$ belong to $D_t$. The smallest sufficient observation interval is $I_t$. Its width satisfies
+\begin{equation}
+m_{\min}(t) = 2t + 1 - \lfloor t/3 \rfloor, \qquad \lim_{t \to \infty} \frac{m_{\min}(t)}{t} = \frac{5}{3}.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+For the right endpoint $j = t$, compare the zero configuration $0^{\mathbb{Z}}$ with a single one at $t$, denoted by $e_t$. Since $f(0, 0, 0) = 0$ and $f(0, 0, 1) = 1$, the leftmost one moves exactly one cell to the left at each step and reaches the origin after $t$ steps.
+
+For the left endpoint $j = -L(t)$, take the period-four background $B_0(i) = (1, 0, 1, 1)[i \bmod 4]$ and its perturbation $\widetilde B_0 = B_0 \oplus e_2$. Table~\ref{tab:period4_defect} gives the support $S_t$ of the difference, obtained by iterating Rule 110 for six steps.
+
+\begin{table}[h]
+\centering
+\caption{A single defect on the background $(1011)$. After the initial transient, the pair of configurations recurs with displacement $(\Delta t, \Delta s) = (3, +2)$.}
+\label{tab:period4_defect}
+\begin{tabular}{cccc}
+\toprule
+$t$ & Background word $B_t$ (period $4$) & Difference support $S_t$ & $\max S_t$ \\
+\midrule
+$0$ & $1011$ & $\{2\}$ & $2$ \\
+$1$ & $1110$ & $\{1, 3\}$ & $3$ \\
+$2$ & $1011$ & $\{1, 3, 4\}$ & $4$ \\
+$3$ & $1110$ & $\{0, 1, 4\}$ & $4$ \\
+$4$ & $1011$ & $\{-1, 0, 1, 3, 5\}$ & $5$ \\
+$5$ & $1110$ & $\{3, 5, 6\}$ & $6$ \\
+$6$ & $1011$ & $\{2, 3, 6\}$ & $6$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+By locality, the rows at $t=3$ and $t=6$ agree up to a translation two cells to the right, giving the configuration identities $B_6 = \sigma^2 B_3$ and $\widetilde B_6 = \sigma^2 \widetilde B_3$. Translation equivariance gives $(B_{3+3k+r}, \widetilde B_{3+3k+r}) = \sigma^{2k}(B_{3+r}, \widetilde B_{3+r})$ for all $k \ge 0$ and $r \in \{0, 1, 2\}$. Together with the initial rows, this yields $\max S_t = 2 + L(t)$ for all $t \ge 0$. Translating the initial pair by $-[2 + L(t)]$ places the initial flip at $-L(t)$ and the difference at time $t$ at the origin. Thus $-L(t) \in D_t$.
+\end{proof}
+
+\subsection{Finite rings, state capacity, and access to inputs}
+
+On the finite ring $\mathbb{Z}_N$ ($N \ge 3$), let $X_N = \{0, 1\}^{\mathbb{Z}_N}$ be the configuration space and $F_N : X_N \to X_N$ the update map. The set of reachable states at time $t$ is $\mathcal{R}_t^{(N)} = F_N^t(X_N)$, and the number of bits needed to encode a reachable state is $C_t^{(N)} = \lceil \log_2 |\mathcal{R}_t^{(N)}| \rceil$. Define the paired dynamics $\Phi_N(u, v) = (F_N(u), F_N(v))$, the initial pairs $E_j = \{ (u, u \oplus e_j) : u \in X_N \}$, and the pairs that differ at the origin, $W_0 = \{ (u,v) : u_0 \ne v_0 \}$. Then
+\begin{equation}
+j \in D_t^{(N)} \iff \Phi_N^t(E_j) \cap W_0 \ne \emptyset.
+\end{equation}
+
+\begin{proposition}[A finite certificate for persistent essentiality]\label{prop:ring_cert}
+Let $\mu_N$ be the maximum transient length of the finite deterministic system $F_N$, and let $P_N$ be the least common multiple of its cycle lengths. Then $D_{t+P_N}^{(N)} = D_t^{(N)}$ for all $t \ge \mu_N$. Consequently, for any $T \in \mathbb{N}$, the condition $\forall t \ge T,\; D_t^{(N)} = \mathbb{Z}_N$ is equivalent to checking $\Phi_N^t(E_j) \cap W_0 \ne \emptyset$ for every $j \in \mathbb{Z}_N$ and every $T \le t < \max(T, \mu_N) + P_N$.
+\end{proposition}
+
+\begin{proof}
+For $t\ge\mu_N$, every reachable state $F_N^t(u)$ lies on a cycle whose length divides $P_N$. The maps $F_N^{t+P_N}$ and $F_N^t$ therefore coincide on all of $X_N$. For every $j$, the agreement or disagreement at the origin is consequently the same at both times for each pair $(u,u\oplus e_j)$. From time $\max(T,\mu_N)$ onward it suffices to check one period. If $T<\mu_N$, one must also check every time from $T$ through $\mu_N-1$.
+\end{proof}
+
+\begin{remark}[State compression and input sensitivity]\label{rem:ring5}
+Sensitivity on the infinite lattice need not persist on a finite ring. For Rule 110 with $N = 5$, all $32$ states reach $0^5$ by time $t = 5$, so $D_t^{(5)} = \emptyset$ for $t \ge 5$. On the ring with $N = 20$, exhaustive enumeration at $t = 121$ gives $|\mathcal{R}_{121}^{(20)}| = 2095$ reachable states, which take $12$ bits to encode. At this same time $D_{121}^{(20)} = \mathbb{Z}_{20}$, so all $20$ input bits are essential. These examples distinguish four independent aspects of prediction: \emph{causality} (the support $D_t$), \emph{access} (reading individual coordinates or using preprocessed data), \emph{capacity} ($C_t^{(N)}$), and \emph{computational complexity}.
+\end{remark}
+
+Return to the infinite lattice. For each interior coordinate of the window, as for its endpoints, we can find a pair of initial configurations that witnesses a difference at the target.
+
+\begin{theorem}[Every coordinate in the interval is essential]\label{thm:gap-free}
+For every $t \in \mathbb{N}$, we have $D_t = I_t = [-(t - \lfloor t/3 \rfloor), t] \cap \mathbb{Z}$.
+\end{theorem}
+
+The proof is given in Appendix~\ref{app:lean}. For $t<2485$, a finite certificate supplies a witness for each pair $(t,j)$ in the window. For $t\ge2485$, five adjacent strips cover the window (Section~\ref{sec:five-bands}).
+
+\paragraph{Consequence for data access.}
+Every fixed set of initial coordinates sufficient to compute $G_t$ exactly on all configurations contains $I_t$. Locality and the upper bound show that $I_t$ itself suffices. The minimum number of coordinates in such an observation is therefore $2t+1-\lfloor t/3\rfloor$. The witness may depend on both $t$ and $j$. Claims about adaptive query cost, preprocessing, or memory require a separate computational model.

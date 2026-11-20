@@ -1,0 +1,34 @@
+\documentclass[11pt,a4paper]{article}
+\input{translations/layout}
+\setmainfont[Path=translations/fonts/,Extension=.otf,UprightFont=*-Regular,BoldFont=*-Regular,BoldFeatures={FakeBold=.8},ItalicFont=*-Regular,ItalicFeatures={FakeSlant=.13},BoldItalicFont=*-Regular,BoldItalicFeatures={FakeBold=.8,FakeSlant=.13}]{ObserverSerifSC}
+\linespread{1.10}
+\XeTeXlinebreaklocale "zh"\relax
+\XeTeXlinebreakskip=0pt plus .1pt\relax
+\renewcommand{\contentsname}{目录}
+\renewcommand{\refname}{参考文献}
+\renewcommand{\proofname}{证明}
+\renewcommand{\tablename}{表}
+\hypersetup{pdflang={zh-CN},pdftitle={110 OBSERVER：系统自身过去的可观测性},pdfsubject={精确解码、规则 110 与 OLMo 实验}}
+\newtheorem{theorem}{定理}[section]
+\newtheorem{lemma}[theorem]{引理}
+\newtheorem{proposition}[theorem]{命题}
+\newtheorem{conjecture}[theorem]{猜想}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{定义}
+\newtheorem{remark}[theorem]{注}
+\newcommand{\edition}{zh}
+\begin{document}
+\sloppy
+\begin{center}
+{\small\bfseries\color{accent}110 OBSERVER}\\[7pt]
+{\LARGE\bfseries 系统自身过去的可观测性}\\[5pt]
+{\large 消息代价、因果见证与推断的边界}\\[10pt]
+Aleksandr Strand \hspace{1em} $\cdot$ \hspace{1em} 2026 年 11 月 20 日
+\end{center}
+\noindent\textbf{摘要}\quad 系统为作出下一次决策，至少需要多少关于过去的信息？怎样检验它是否使用了这些信息？本文给出精确解码的判据，并确定所需的消息代价。在规则~110 的主格点系统中，两个构型合并后，观察者将保存在外部单比特寄存器中的传感器读数送回格点。系统在下一次更新时恢复过去的比特。在冻结的 OLMo 中，发送方在新串出现之前，将先前的选择与反馈编码为一个规则词元。选择与反馈的四种组合产生四条消息，分别在不同的新串上复用。当首尾比特不同时，接收方用传来的词元答对开发集（dev）中的 64/64 个条件，改为恒定词元 A 时答对 32/64 个。在整个开发集上，答对 124/128 个条件，完整通过 6/8 个区组。对信道的干预检验了规则的传递。要从中对主观体验作出推断，仍需要额外前提。
+
+\begin{quote}\small\raggedright
+\textbf{本版验证范围}\quad 无限格点上规则~110 的精确几何定理（\texttt{Rails.essential\_iff}）已在 Lean~4.35.0 中证明。在编写本专著时，还使用两个规范导入模块单独检查了 \texttt{Rule110Observer.lean}。日志记录了全部 11/11 份公理报告（附录~\ref{app:lean}）。OLMo 两步方案在八个中间串上取得 \texttt{PASS\_DEV}。留出面板 9--20、21--32、33--44 和激活信道 G3 的状态均为 \texttt{NOT\_RUN}。桥接公设的状态为 \texttt{DECLARED\_NOT\_DERIVED}。
+\end{quote}
+\input{translations/contents}
+\end{document}

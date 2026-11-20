@@ -1,0 +1,39 @@
+\section{Claim registry, provenance of witnesses and open slots}
+\label{app:registers}
+
+The canonical \src{observer/hypotheses.tsv}{hypothesis registry} has 23 rows. Each row gives an identifier, dependencies, the exact statement, assumptions, status, a reference to the witness and a condition for revision. Dependencies precede the claims that depend on them. The set of admissible histories forms part of the statement. For example, the failure of the original 11-bit example to generalize to all words is compatible with its accuracy on the four selected words.
+
+\begin{center}
+\begin{tabularx}{\linewidth}{@{}l r X@{}}
+\toprule
+Registry status & Of 23 & Identifiers \\
+\midrule
+Proved & 12 & OBS.01--03, R110.01, R110.05--09, R110.12, LOOP.01, E.01 \\
+Refuted & 4 & R110.02--04, R110.10 \\
+Confirmed within the experiment & 3 & AI.01--03 \\
+Open & 2 & R110.11, AI.04 \\
+\texttt{DECLARED\_NOT\_DERIVED} & 1 & E.02 \\
+\texttt{UN} & 1 & E.03 \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+The statuses \emph{proved} and \emph{refuted} apply to the statement with all the assumptions in its row. The rows admit different forms of evidence: a mathematical proof, a computationally verifiable finite construction or an exhaustive enumeration. AI.01--03 respectively record the relationship between an assistant's answer and the signal shown to it, the divergence between live and recorded channels on new queries, and revision of an earlier strategy in the tested family of tasks. These rows come from separate assistant trials. The frozen OLMo counts in Section~\ref{sec:olmo} have their own reports and panels. E.01 proves underdetermination of the added predicate. E.02 records an additional premise, and E.03 the open status of a particular instance.
+
+\paragraph{36 claim addresses.}
+The \src{observer/leaf/leaf.tsv}{slot table} crosses six domains, S (source), I (identity), M (meaning), T (transition), A (action) and O (observation), with six descriptive positions: origin, state, carrier, local claim, witness and limit. In this snapshot, 32/36 rows are \texttt{KNOWN}. Each supplies a file's SHA-256 digest and a verifiable reference to a definition, function or passage of text. The remaining 4/36 are \texttt{UNKNOWN}, with empty witness-source fields. Their substantive questions are recorded as follows.
+\begin{itemize}
+\item I6 concerns the numerical identity of the subject when a causal history branches. The convention for recording descendants assigns branch identifiers.
+\item M6 concerns independent justification for the psychophysical link taken as a sufficient condition.
+\item A6 requires implementation of the entire side channel within one strictly binary, homogeneous Rule~110 system for the stated witness (R110.11).
+\item O6 concerns the value of the phenomenal predicate for the particular instance at the moment of feedback (E.03).
+\end{itemize}
+Within the slot grid, the address \texttt{T6} denotes the sixth position in the transition domain and refers to the noisy-channel criterion. The conditional theorem T6 belongs to a different identifier system. The \src{observer/leaf/render_leaf.py}{figure validator} checks address order, hashes against sources, symbol existence, the canonical TSV representation and its byte-exact recovery from the SVG. The figure thus provides a verifiable rendering of the table.
+
+\paragraph{Release provenance and status.}
+The \src{SHA256SUMS}{root release manifest} gives checksums for the PDF, both Lean logs and the source files. A \src{observer/sha256.txt}{separate manifest} records the 48 files in the observer corpus. The original edition's \src{observer/provenance/observer-original.sha256}{historical checksum list} of 36 entries is also preserved. The publication package uses 35 original files from that list. The entry for the internal research assignment remains in the list to document provenance. The assignment itself is omitted from the public package. The published hashes reflect changes to navigation and witness locations. The saved JSON reports contain the original observations. The contract used in earlier runs is checked against the bytes of its text in the edition associated with those reports.
+
+\paragraph{Conditions for further work.}
+R110.11 requires a verifiable encoding of input, storage, delivery and response within a single binary dynamical system, together with trajectories for all four histories. AI.04 requires a new task and a transfer test for the internal state, with the source positions inaccessible, the complete history available in the positive control, a reversible swap and erasure. Appendix~\ref{app:gates} gives the numerical G4 contract. To localize transfer to a selected subspace, specify the layer, intervention, mediation measure, controlled alternatives and tolerance before the experiment. A result for a single textual carrier leaves this condition open.
+
+The full check of the observer's canonical imports was performed with Lean~4.35.0 in preparing the monograph (Appendix~\ref{app:lean}). The OLMo panel statuses refer to the experimental dev snapshot. The persistent-plasticity hypothesis requires a change in the carrier's organization across episodes and a demonstrated causal effect of that change on subsequent input processing, with external history controlled. E.02 requires independent grounds for choosing the bridge, or distinct operational predictions from competing bridges with explicit linking premises. E.03 retains the status \texttt{UN} in this snapshot.
