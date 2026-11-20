@@ -1,0 +1,72 @@
+{
+  "live": {
+    "n": 8,
+    "correct": 8,
+    "abstain": 0,
+    "decoded_as_instructed": 8,
+    "transfer_n": 2,
+    "transfer_correct": 2,
+    "transfer_abstain": 0,
+    "transfer_matches_own_estimate": 2
+  },
+  "flip": {
+    "n": 8,
+    "correct": 0,
+    "abstain": 0,
+    "decoded_as_instructed": 8,
+    "transfer_n": 2,
+    "transfer_correct": 0,
+    "transfer_abstain": 0,
+    "transfer_matches_own_estimate": 2
+  },
+  "drop": {
+    "n": 8,
+    "correct": 0,
+    "abstain": 8,
+    "decoded_as_instructed": 8,
+    "transfer_n": 2,
+    "transfer_correct": 0,
+    "transfer_abstain": 2,
+    "transfer_matches_own_estimate": 2
+  },
+  "shuffle": {
+    "n": 8,
+    "correct": 4,
+    "abstain": 0,
+    "decoded_as_instructed": 8,
+    "transfer_n": 2,
+    "transfer_correct": 2,
+    "transfer_abstain": 0,
+    "transfer_matches_own_estimate": 2
+  },
+  "foreign": {
+    "n": 8,
+    "correct": 2,
+    "abstain": 0,
+    "decoded_as_instructed": 8,
+    "transfer_n": 2,
+    "transfer_correct": 0,
+    "transfer_abstain": 0,
+    "transfer_matches_own_estimate": 2
+  },
+  "replay": {
+    "n": 8,
+    "correct": 8,
+    "abstain": 0,
+    "decoded_as_instructed": 8,
+    "transfer_n": 2,
+    "transfer_correct": 2,
+    "transfer_abstain": 0,
+    "transfer_matches_own_estimate": 2
+  },
+  "fixed_query": {
+    "n": 8,
+    "correct": 5,
+    "abstain": 0,
+    "decoded_as_instructed": 8,
+    "transfer_n": 2,
+    "transfer_correct": 1,
+    "transfer_abstain": 0,
+    "transfer_matches_own_estimate": 2
+  }
+}

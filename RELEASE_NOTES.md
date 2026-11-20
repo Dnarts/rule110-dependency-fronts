@@ -1,3 +1,15 @@
+> **Серия:** 110 OBSERVER — Точная наблюдаемость, причинное самообращение и границы вывода<br>
+> **Документ:** История выпусков<br>
+> **Статус:** VERSIONED<br>
+> **Карта серии:** [Монография](110_OBSERVER_Preprint.pdf) · [Индекс](README.md) · [Источники и разделы](docs/series.md) · [Архив](archive/README.md)<br>
+> **Зависимости:** Датированные состояния геометрии и экспериментального среза.
+
+# Единый препринт 110 OBSERVER
+
+20 ноября 2026 г. · Геометрия решётки и прежние издания представлены в архиве. Главный файл для цитирования — [единая монография](./110_OBSERVER_Preprint.pdf). Lean 4.35.0 на arm64 воспроизвёл все 263 модуля доказательства о решётке и 11 объявлений наблюдателя с их реальными импортами. [Журнал геометрии](verification/monograph/geometry-axioms.log) · [Журнал наблюдателя](verification/monograph/observer-axioms.log)
+
+Статус OLMo относится к dev-срезу после варианта A. Формулировки об открытой гипотезе ниже относятся к первому выпуску.
+
 # Combined preprint v2.0.0
 
 The Lean theorem `Rails.essential_iff` settles all-time gap-free essentiality on the infinite lattice. The proof combines a finite base for t < 2485 with five strips for t ≥ 2485. The English, Russian and Simplified Chinese manuscripts, their typesetting sources, the proof generator and compiler reports are included.

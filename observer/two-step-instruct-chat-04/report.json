@@ -1,0 +1,7524 @@
+{
+  "condition": "Olmo-3-7B-Instruct-4bit/native-chat-04-two-step",
+  "heldout_run": false,
+  "status": "PASS_DEV",
+  "started_utc": "2026-11-20T08:27:13.101718+00:00",
+  "manifest_sha256": "1294c190e8724b655af9613bc4303ff1f1991c6526da604aed9c0ad6b3e72001",
+  "dev_middles": [
+    "100001",
+    "010011",
+    "000001",
+    "101001",
+    "100011",
+    "001100",
+    "011001",
+    "000110"
+  ],
+  "prefix_text": "<|im_start|>system\nThe observer's feedback is about that choice. If correct, keep it. If wrong, switch rules. Use the resulting rule on the new bits. Write just the answer bit.\nRule A with correct feedback: first bit. Rule A with wrong feedback: last bit.\nRule B with correct feedback: last bit. Rule B with wrong feedback: first bit.<|im_end|>\n<|im_start|>user\nRule: A\nFeedback: correct\nBits: 0 0 0 1 1 1 0 1<|im_end|>\n<|im_start|>assistant\nAnswer: 0<|im_end|>\n<|im_start|>user\nRule: B\nFeedback: wrong\nBits: 1 0 0 1 1 1 0 0<|im_end|>\n<|im_start|>assistant\nAnswer: 1<|im_end|>\n<|im_start|>user\nRule: A\nFeedback: wrong\nBits: 0 0 0 1 1 1 0 0<|im_end|>\n<|im_start|>assistant\nAnswer: 0<|im_end|>\n<|im_start|>user\nRule: B\nFeedback: correct\nBits: 1 0 0 1 1 1 0 1<|im_end|>\n<|im_start|>assistant\nAnswer: 1<|im_end|>\n<|im_start|>user\nRule: B\nFeedback: correct\nBits: 1 1 1 0 0 0 1 0<|im_end|>\n<|im_start|>assistant\nAnswer: 0<|im_end|>\n<|im_start|>user\nRule: A\nFeedback: wrong\nBits: 0 1 1 0 0 0 1 1<|im_end|>\n<|im_start|>assistant\nAnswer: 1<|im_end|>\n<|im_start|>user\nRule: B\nFeedback: wrong\nBits: 0 1 1 0 0 0 1 0<|im_end|>\n<|im_start|>assistant\nAnswer: 0<|im_end|>\n<|im_start|>user\nRule: A\nFeedback: correct\nBits: 1 1 1 0 0 0 1 1<|im_end|>\n<|im_start|>assistant\nAnswer: 1<|im_end|>\n<|im_start|>user\nEach round starts with your rule choice, A or B.<|im_end|>\n<|im_start|>assistant\nRule:",
+  "prefix_sha256": "f317aaa1b07ce89fd56ffd383522fe783fe85a4267444d6744eaf172a6536d8d",
+  "bit_ids": [
+    15,
+    16
+  ],
+  "model": {
+    "repo": "mlx-community/Olmo-3-7B-Instruct-4bit",
+    "revision": "d732c91ae02e90cd5d86e810fbeb9741794b4dd9",
+    "folder": "/Users/alyx/.cache/huggingface/hub/models--mlx-community--Olmo-3-7B-Instruct-4bit/snapshots/d732c91ae02e90cd5d86e810fbeb9741794b4dd9",
+    "weight_sha256": "a97f02f033af038a222c4ae3cd22a3df580160d559dc985c6a6a2d512b5210cd",
+    "tokenizer_sha256": "7738a25c46a6043a0e2e605138851baa450269ce9d800af6ca9bf6192e45510c",
+    "config_sha256": "92408f393c6c724d087c8a1ef913a507d1c4aff689e2019fc7577fcacecfdd64",
+    "quantization": {
+      "group_size": 64,
+      "bits": 4,
+      "mode": "affine"
+    },
+    "choice_ids": {
+      "A": 362,
+      "B": 426,
+      "X": 1630
+    },
+    "bit_ids": [
+      15,
+      16
+    ],
+    "kv_growth_tokens": 16,
+    "versions": {
+      "mlx": "0.32.4",
+      "mlx-lm": "0.32.2",
+      "tokenizers": "0.23.3"
+    },
+    "device": "Apple M2"
+  },
+  "sampling": {
+    "full_p_A": 0.8945632576942444,
+    "full_p_B": 0.09428627043962479,
+    "prefix_logits": {
+      "shape": [
+        100278
+      ],
+      "dtype": "mlx.core.bfloat16",
+      "sha256": "3decea4cc4a8f8f083d59fce747a69153defa51bb9ccb637fbe5aa82cf5ff218",
+      "nbytes": 200556
+    },
+    "prefix_ids": [
+      100264,
+      9125,
+      198,
+      791,
+      22842,
+      596,
+      11302,
+      374,
+      922,
+      430,
+      5873,
+      13,
+      1442,
+      4495,
+      11,
+      2567,
+      433,
+      13,
+      1442,
+      5076,
+      11,
+      3480,
+      5718,
+      13,
+      5560,
+      279,
+      13239,
+      6037,
+      389,
+      279,
+      502,
+      9660,
+      13,
+      9842,
+      1120,
+      279,
+      4320,
+      2766,
+      627,
+      11590,
+      362,
+      449,
+      4495,
+      11302,
+      25,
+      1176,
+      2766,
+      13,
+      18592,
+      362,
+      449,
+      5076,
+      11302,
+      25,
+      1566,
+      2766,
+      627,
+      11590,
+      426,
+      449,
+      4495,
+      11302,
+      25,
+      1566,
+      2766,
+      13,
+      18592,
+      426,
+      449,
+      5076,
+      11302,
+      25,
+      1176,
+      2766,
+      13,
+      100265,
+      198,
+      100264,
+      882,
+      198,
+      11590,
+      25,
+      362,
+      198,
+      36448,
+      25,
+      4495,
+      198,
+      20515,
+      25,
+      220,
+      15,
+      220,
+      15,
+      220,
+      15,
+      220,
+      16,
+      220,
+      16,
+      220,
+      16,
+      220,
+      15,
+      220,
+      16,
+      100265,
+      198,
+      100264,
+      78191,
+      198,
+      16533,
+      25,
+      220,
+      15,
+      100265,
+      198,
+      100264,
+      882,
+      198,
+      11590,
+      25,
+      426,
+      198,
+      36448,
+      25,
+      5076,
+      198,
+      20515,
+      25,
+      220,
+      16,
+      220,
+      15,
+      220,
+      15,
+      220,
+      16,
+      220,
+      16,
+      220,
+      16,
+      220,
+      15,
+      220,
+      15,
+      100265,
+      198,
+      100264,
+      78191,
+      198,
+      16533,
+      25,
+      220,
+      16,
+      100265,
+      198,
+      100264,
+      882,
+      198,
+      11590,
+      25,
+      362,
+      198,
+      36448,
+      25,
+      5076,
+      198,
+      20515,
+      25,
+      220,
+      15,
+      220,
+      15,
+      220,
+      15,
+      220,
+      16,
+      220,
+      16,
+      220,
+      16,
+      220,
+      15,
+      220,
+      15,
+      100265,
+      198,
+      100264,
+      78191,
+      198,
+      16533,
+      25,
+      220,
+      15,
+      100265,
+      198,
+      100264,
+      882,
+      198,
+      11590,
+      25,
+      426,
+      198,
+      36448,
+      25,
+      4495,
+      198,
+      20515,
+      25,
+      220,
+      16,
+      220,
+      15,
+      220,
+      15,
+      220,
+      16,
+      220,
+      16,
+      220,
+      16,
+      220,
+      15,
+      220,
+      16,
+      100265,
+      198,
+      100264,
+      78191,
+      198,
+      16533,
+      25,
+      220,
+      16,
+      100265,
+      198,
+      100264,
+      882,
+      198,
+      11590,
+      25,
+      426,
+      198,
+      36448,
+      25,
+      4495,
+      198,
+      20515,
+      25,
+      220,
+      16,
+      220,
+      16,
+      220,
+      16,
+      220,
+      15,
+      220,
+      15,
+      220,
+      15,
+      220,
+      16,
+      220,
+      15,
+      100265,
+      198,
+      100264,
+      78191,
+      198,
+      16533,
+      25,
+      220,
+      15,
+      100265,
+      198,
+      100264,
+      882,
+      198,
+      11590,
+      25,
+      362,
+      198,
+      36448,
+      25,
+      5076,
+      198,
+      20515,
+      25,
+      220,
+      15,
+      220,
+      16,
+      220,
+      16,
+      220,
+      15,
+      220,
+      15,
+      220,
+      15,
+      220,
+      16,
+      220,
+      16,
+      100265,
+      198,
+      100264,
+      78191,
+      198,
+      16533,
+      25,
+      220,
+      16,
+      100265,
+      198,
+      100264,
+      882,
+      198,
+      11590,
+      25,
+      426,
+      198,
+      36448,
+      25,
+      5076,
+      198,
+      20515,
+      25,
+      220,
+      15,
+      220,
+      16,
+      220,
+      16,
+      220,
+      15,
+      220,
+      15,
+      220,
+      15,
+      220,
+      16,
+      220,
+      15,
+      100265,
+      198,
+      100264,
+      78191,
+      198,
+      16533,
+      25,
+      220,
+      15,
+      100265,
+      198,
+      100264,
+      882,
+      198,
+      11590,
+      25,
+      362,
+      198,
+      36448,
+      25,
+      4495,
+      198,
+      20515,
+      25,
+      220,
+      16,
+      220,
+      16,
+      220,
+      16,
+      220,
+      15,
+      220,
+      15,
+      220,
+      15,
+      220,
+      16,
+      220,
+      16,
+      100265,
+      198,
+      100264,
+      78191,
+      198,
+      16533,
+      25,
+      220,
+      16,
+      100265,
+      198,
+      100264,
+      882,
+      198,
+      4959,
+      4883,
+      8638,
+      449,
+      701,
+      6037,
+      5873,
+      11,
+      362,
+      477,
+      426,
+      13,
+      100265,
+      198,
+      100264,
+      78191,
+      198,
+      11590,
+      25
+    ],
+    "prefix_tokens": 419,
+    "seed": 110,
+    "budget": 1024,
+    "p_A_given_AB": 0.9046505380676478,
+    "draws": "BAAAAAAAAAAABAAAAAAAAABBAABBAAAAAAAAAAABAAAAAAAAAAAABAAAABAABBABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABABBAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAABAAABAAABAAAAAAAABAAAAAABAAABAAAAAAAAAAAAABAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAABAAAABAAAAAAAAABAABAAAAAAAAAAAAAABAAAAAABAAAABABAAAABAAAAAAAAAAAAAAAAABAAABAAAAAAAAAAAAAAAAAAAAAAAABAAAAAABBAAABAAAAAAAAAABAAAAAAAAAABAAAAAAAAABBAAAAAAAAAAABAAAAAAAAAAAAABABAAAAAAAAAAAAAAAABBAAAAAAAAAAAABBABAABAAAAAAAAAAAAAAABAAAAABAAAAAAAAAAAAAAABAAAAAABAAAAAAAAAAAAAAAAAAAAAABBAAAABAAAABAAAAAAAAAAAAAAAAAAABAAAAAABAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAABBAAAAAAAAAABAAAABBAAAAABAAAAAAAABAAAAAAAAAAAABAAAAAAAABAAABABAABAAAAAAAAAABBAABBBAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAABAAAAAAAAAAABAAAAAAAAAAAABAAAAABABAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAABAAAAABAAAAAAAAAAAAAAABABAAAAAAAAAAAAAAAAAABAAAAAAAAAAAABAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABABAAAAABAAABBAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAABAAAAAAAAAA",
+    "counts": {
+      "A": 918,
+      "B": 106
+    },
+    "first_index_zero_based": {
+      "A": 1,
+      "B": 0
+    }
+  },
+  "senders": [
+    {
+      "h": "A",
+      "e": 0,
+      "target": 0,
+      "margin": -11.1875,
+      "mass": 0.999983328196322,
+      "pred": 0,
+      "logits": [
+        26.625,
+        15.4375
+      ],
+      "probabilities": [
+        0.999969482421875,
+        1.3845774446963333e-05
+      ],
+      "greedy_id": 362,
+      "greedy_unique": true,
+      "accepted": true,
+      "native_logits": {
+        "shape": [
+          100278
+        ],
+        "dtype": "mlx.core.bfloat16",
+        "sha256": "857013994f96ba3571b8ef3f2faf49656e12236040fdbebac76464431368b94d",
+        "nbytes": 200556
+      },
+      "delivered_id": 362,
+      "greedy_text": " A",
+      "correct": true,
+      "previous_first_token": {
+        "margin": -9.9375,
+        "mass": 0.09864739956401536,
+        "pred": 0,
+        "logits": [
+          19.625,
+          9.6875
+        ],
+        "probabilities": [
+          0.09864263236522675,
+          4.767198788613314e-06
+        ],
+        "greedy_id": 18592,
+        "greedy_unique": true,
+        "accepted": false,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "ecefbebf86abf7bb7f32e3ae3ad53849cafccbed37466db081168f1543b8e1d2",
+          "nbytes": 200556
+        }
+      },
+      "previous_free_second_token": {
+        "margin": -11.1875,
+        "mass": 0.999983328196322,
+        "pred": 0,
+        "logits": [
+          26.625,
+          15.4375
+        ],
+        "probabilities": [
+          0.999969482421875,
+          1.3845774446963333e-05
+        ],
+        "greedy_id": 362,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "d61a06d71993f5c7515b8863f5fc51b772a06db68481221b64fd13db9fdb3972",
+          "nbytes": 200556
+        },
+        "text": " A"
+      },
+      "same_greedy_across_layouts": true,
+      "same_logits_across_layouts": false
+    },
+    {
+      "h": "A",
+      "e": 1,
+      "target": 1,
+      "margin": 1.625,
+      "mass": 0.9999026954174042,
+      "pred": 1,
+      "logits": [
+        23.75,
+        25.375
+      ],
+      "probabilities": [
+        0.16450044512748718,
+        0.835402250289917
+      ],
+      "greedy_id": 426,
+      "greedy_unique": true,
+      "accepted": true,
+      "native_logits": {
+        "shape": [
+          100278
+        ],
+        "dtype": "mlx.core.bfloat16",
+        "sha256": "56d64b9a81350753cc93203fb86e21cecbd9177156863255290662cf05a4fbea",
+        "nbytes": 200556
+      },
+      "delivered_id": 426,
+      "greedy_text": " B",
+      "correct": true,
+      "previous_first_token": {
+        "margin": -0.5,
+        "mass": 0.0824433546513319,
+        "pred": 0,
+        "logits": [
+          19.875,
+          19.375
+        ],
+        "probabilities": [
+          0.05131763592362404,
+          0.031125718727707863
+        ],
+        "greedy_id": 18592,
+        "greedy_unique": true,
+        "accepted": false,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "f2cda10b56bccef894b305f3126fb16cacace358929d46550c4ae16cf91fed3d",
+          "nbytes": 200556
+        }
+      },
+      "previous_free_second_token": {
+        "margin": 1.5,
+        "mass": 0.9998962134122849,
+        "pred": 1,
+        "logits": [
+          23.75,
+          25.25
+        ],
+        "probabilities": [
+          0.18240658938884735,
+          0.8174896240234375
+        ],
+        "greedy_id": 426,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "582e124f8ed92fcbe28d665aa6463b5120ca130e54bad9ec91383a0d89b7c759",
+          "nbytes": 200556
+        },
+        "text": " B"
+      },
+      "same_greedy_across_layouts": true,
+      "same_logits_across_layouts": false
+    },
+    {
+      "h": "B",
+      "e": 0,
+      "target": 1,
+      "margin": 10.125,
+      "mass": 0.9999923796713119,
+      "pred": 1,
+      "logits": [
+        16.375,
+        26.5
+      ],
+      "probabilities": [
+        4.006338713224977e-05,
+        0.9999523162841797
+      ],
+      "greedy_id": 426,
+      "greedy_unique": true,
+      "accepted": true,
+      "native_logits": {
+        "shape": [
+          100278
+        ],
+        "dtype": "mlx.core.bfloat16",
+        "sha256": "b1447c31c0c9a75210ac79dc163b6435471fdd89db85bd69cefa4c15f5713d10",
+        "nbytes": 200556
+      },
+      "delivered_id": 426,
+      "greedy_text": " B",
+      "correct": true,
+      "previous_first_token": {
+        "margin": 10.75,
+        "mass": 0.6738907967110208,
+        "pred": 1,
+        "logits": [
+          12.0,
+          22.75
+        ],
+        "probabilities": [
+          1.4451553397520911e-05,
+          0.6738763451576233
+        ],
+        "greedy_id": 426,
+        "greedy_unique": true,
+        "accepted": false,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "c054137d8e553b9c6ddc8ce3daa57b2f92ded35a90334f688f6ff8d033d29be5",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "h": "B",
+      "e": 1,
+      "target": 0,
+      "margin": -8.125,
+      "mass": 0.9999717590981163,
+      "pred": 0,
+      "logits": [
+        26.875,
+        18.75
+      ],
+      "probabilities": [
+        0.9996758103370667,
+        0.00029594876104965806
+      ],
+      "greedy_id": 362,
+      "greedy_unique": true,
+      "accepted": true,
+      "native_logits": {
+        "shape": [
+          100278
+        ],
+        "dtype": "mlx.core.bfloat16",
+        "sha256": "5fad686632a5548825330095e12e0a8580e03db71c5c665cef1dab0859fb6c14",
+        "nbytes": 200556
+      },
+      "delivered_id": 362,
+      "greedy_text": " A",
+      "correct": true,
+      "previous_first_token": {
+        "margin": -7.5,
+        "mass": 0.8136083766585216,
+        "pred": 0,
+        "logits": [
+          24.875,
+          17.375
+        ],
+        "probabilities": [
+          0.8131586313247681,
+          0.0004497453337535262
+        ],
+        "greedy_id": 362,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "30b5fe803dd037baccaf00246b2af0395a57f056bc0790b5ad86ca9b4d3c2acf",
+          "nbytes": 200556
+        }
+      }
+    }
+  ],
+  "sender_cleanup": {
+    "cached_before_bytes": 35619794,
+    "cached_after_bytes": 0,
+    "active_after_bytes": 4105938952,
+    "swap_mib": 4815.19
+  },
+  "recipient_controls": [
+    {
+      "x": "01000010",
+      "p": 0,
+      "letter_id": 362,
+      "recipient_target": 0,
+      "margin": -6.625,
+      "mass": 0.9999983996385708,
+      "pred": 0,
+      "logits": [
+        23.625,
+        17.0
+      ],
+      "probabilities": [
+        0.9986733794212341,
+        0.0013250202173367143
+      ],
+      "greedy_id": 15,
+      "greedy_unique": true,
+      "accepted": true,
+      "native_logits": {
+        "shape": [
+          100278
+        ],
+        "dtype": "mlx.core.bfloat16",
+        "sha256": "94ba5812bac6a3baa27f45b91b72d7d9fbb8a47db028b86cf3e0a41f4e1e7341",
+        "nbytes": 200556
+      }
+    },
+    {
+      "x": "01000010",
+      "p": 1,
+      "letter_id": 426,
+      "recipient_target": 0,
+      "margin": 0.375,
+      "mass": 0.9999661445617676,
+      "pred": 1,
+      "logits": [
+        22.5,
+        22.875
+      ],
+      "probabilities": [
+        0.4073196053504944,
+        0.5926465392112732
+      ],
+      "greedy_id": 16,
+      "greedy_unique": true,
+      "accepted": true,
+      "native_logits": {
+        "shape": [
+          100278
+        ],
+        "dtype": "mlx.core.bfloat16",
+        "sha256": "24f73637083a98c84a8b051e08fcad335ef10931a9610063ed196592d62ef060",
+        "nbytes": 200556
+      }
+    },
+    {
+      "x": "01000011",
+      "p": 0,
+      "letter_id": 362,
+      "recipient_target": 0,
+      "margin": -6.75,
+      "mass": 0.9999972028890625,
+      "pred": 0,
+      "logits": [
+        23.5,
+        16.75
+      ],
+      "probabilities": [
+        0.9988276958465576,
+        0.001169507042504847
+      ],
+      "greedy_id": 15,
+      "greedy_unique": true,
+      "accepted": true,
+      "native_logits": {
+        "shape": [
+          100278
+        ],
+        "dtype": "mlx.core.bfloat16",
+        "sha256": "2e969b66203bd18ad4b976aaf36db22141966c8f88e3fb86a057305b1b9c9394",
+        "nbytes": 200556
+      }
+    },
+    {
+      "x": "01000011",
+      "p": 1,
+      "letter_id": 426,
+      "recipient_target": 1,
+      "margin": 5.375,
+      "mass": 0.9999815439805388,
+      "pred": 1,
+      "logits": [
+        16.0,
+        21.375
+      ],
+      "probabilities": [
+        0.004609487019479275,
+        0.9953720569610596
+      ],
+      "greedy_id": 16,
+      "greedy_unique": true,
+      "accepted": true,
+      "native_logits": {
+        "shape": [
+          100278
+        ],
+        "dtype": "mlx.core.bfloat16",
+        "sha256": "3b3670b1509646af9bab1e8b51f94a92177c4f38fd0b56e7537eeb89ff982467",
+        "nbytes": 200556
+      }
+    },
+    {
+      "x": "11000010",
+      "p": 0,
+      "letter_id": 362,
+      "recipient_target": 1,
+      "margin": 7.5,
+      "mass": 0.9999979177955538,
+      "pred": 1,
+      "logits": [
+        14.875,
+        22.375
+      ],
+      "probabilities": [
+        0.0005527774337679148,
+        0.9994451403617859
+      ],
+      "greedy_id": 16,
+      "greedy_unique": true,
+      "accepted": true,
+      "native_logits": {
+        "shape": [
+          100278
+        ],
+        "dtype": "mlx.core.bfloat16",
+        "sha256": "f3f207ec9511f61c0782dafb33d0e34a9a08253ec60bd76cd03f22499e520c93",
+        "nbytes": 200556
+      }
+    },
+    {
+      "x": "11000010",
+      "p": 1,
+      "letter_id": 426,
+      "recipient_target": 0,
+      "margin": -2.375,
+      "mass": 0.9999769330024719,
+      "pred": 0,
+      "logits": [
+        23.0,
+        20.625
+      ],
+      "probabilities": [
+        0.9148798584938049,
+        0.08509707450866699
+      ],
+      "greedy_id": 15,
+      "greedy_unique": true,
+      "accepted": true,
+      "native_logits": {
+        "shape": [
+          100278
+        ],
+        "dtype": "mlx.core.bfloat16",
+        "sha256": "a4f514ff5def6fd082b48a06556fd8bf174a928e2d8ad03bc42dc3cf41826871",
+        "nbytes": 200556
+      }
+    },
+    {
+      "x": "11000011",
+      "p": 0,
+      "letter_id": 362,
+      "recipient_target": 1,
+      "margin": 8.3125,
+      "mass": 0.9999974731472321,
+      "pred": 1,
+      "logits": [
+        14.0625,
+        22.375
+      ],
+      "probabilities": [
+        0.0002453688648529351,
+        0.9997521042823792
+      ],
+      "greedy_id": 16,
+      "greedy_unique": true,
+      "accepted": true,
+      "native_logits": {
+        "shape": [
+          100278
+        ],
+        "dtype": "mlx.core.bfloat16",
+        "sha256": "849be834aabdff171cd54d998dd9c5bd16e96992c65213d0512a36222241d2e6",
+        "nbytes": 200556
+      }
+    },
+    {
+      "x": "11000011",
+      "p": 1,
+      "letter_id": 426,
+      "recipient_target": 1,
+      "margin": 5.25,
+      "mass": 0.9999904837459326,
+      "pred": 1,
+      "logits": [
+        16.375,
+        21.625
+      ],
+      "probabilities": [
+        0.005220076069235802,
+        0.9947704076766968
+      ],
+      "greedy_id": 16,
+      "greedy_unique": true,
+      "accepted": true,
+      "native_logits": {
+        "shape": [
+          100278
+        ],
+        "dtype": "mlx.core.bfloat16",
+        "sha256": "0cc629115e4a1d5515d9d0597d5ce758b4532ab4218e8596689588bcac674355",
+        "nbytes": 200556
+      }
+    },
+    {
+      "x": "00100110",
+      "p": 0,
+      "letter_id": 362,
+      "recipient_target": 0,
+      "margin": -7.875,
+      "mass": 0.9999985738832038,
+      "pred": 0,
+      "logits": [
+        23.875,
+        16.0
+      ],
+      "probabilities": [
+        0.9996185898780823,
+        0.0003799840051215142
+      ],
+      "greedy_id": 15,
+      "greedy_unique": true,
+      "accepted": true,
+      "native_logits": {
+        "shape": [
+          100278
+        ],
+        "dtype": "mlx.core.bfloat16",
+        "sha256": "bfd39193fd81e97315115b9a3f3289c5b1b95e893cf04f5999c7e12bd6db606c",
+        "nbytes": 200556
+      }
+    },
+    {
+      "x": "00100110",
+      "p": 1,
+      "letter_id": 426,
+      "recipient_target": 0,
+      "margin": -1.125,
+      "mass": 0.999982163310051,
+      "pred": 0,
+      "logits": [
+        22.0,
+        20.875
+      ],
+      "probabilities": [
+        0.7549015283584595,
+        0.2450806349515915
+      ],
+      "greedy_id": 15,
+      "greedy_unique": true,
+      "accepted": true,
+      "native_logits": {
+        "shape": [
+          100278
+        ],
+        "dtype": "mlx.core.bfloat16",
+        "sha256": "8601c70abdb6e64361c7fe88c6d23b9777c659d608e5b81064f897938c43b4b5",
+        "nbytes": 200556
+      }
+    },
+    {
+      "x": "00100111",
+      "p": 0,
+      "letter_id": 362,
+      "recipient_target": 0,
+      "margin": -8.5,
+      "mass": 0.9999993405508576,
+      "pred": 0,
+      "logits": [
+        23.5,
+        15.0
+      ],
+      "probabilities": [
+        0.9997959136962891,
+        0.0002034268545685336
+      ],
+      "greedy_id": 15,
+      "greedy_unique": true,
+      "accepted": true,
+      "native_logits": {
+        "shape": [
+          100278
+        ],
+        "dtype": "mlx.core.bfloat16",
+        "sha256": "5ab40b38586e431904d1304159b58aee4097e8a16e0dc4cac39500e16ab2c64f",
+        "nbytes": 200556
+      }
+    },
+    {
+      "x": "00100111",
+      "p": 1,
+      "letter_id": 426,
+      "recipient_target": 1,
+      "margin": 7.8125,
+      "mass": 0.9999944589217193,
+      "pred": 1,
+      "logits": [
+        14.3125,
+        22.125
+      ],
+      "probabilities": [
+        0.0004044792731292546,
+        0.9995899796485901
+      ],
+      "greedy_id": 16,
+      "greedy_unique": true,
+      "accepted": true,
+      "native_logits": {
+        "shape": [
+          100278
+        ],
+        "dtype": "mlx.core.bfloat16",
+        "sha256": "860792e0d00bac365d99a73751d35788cec41585833cfa4909cfebd75f0f715f",
+        "nbytes": 200556
+      }
+    },
+    {
+      "x": "10100110",
+      "p": 0,
+      "letter_id": 362,
+      "recipient_target": 1,
+      "margin": 7.5625,
+      "mass": 0.9999968089396134,
+      "pred": 1,
+      "logits": [
+        15.1875,
+        22.75
+      ],
+      "probabilities": [
+        0.0005193032557144761,
+        0.9994775056838989
+      ],
+      "greedy_id": 16,
+      "greedy_unique": true,
+      "accepted": true,
+      "native_logits": {
+        "shape": [
+          100278
+        ],
+        "dtype": "mlx.core.bfloat16",
+        "sha256": "62ec598d127ceea1dc994fe2326d537e149bf21230c18767e80fa21191986a65",
+        "nbytes": 200556
+      }
+    },
+    {
+      "x": "10100110",
+      "p": 1,
+      "letter_id": 426,
+      "recipient_target": 0,
+      "margin": -2.75,
+      "mass": 0.9999864101409912,
+      "pred": 0,
+      "logits": [
+        22.5,
+        19.75
+      ],
+      "probabilities": [
+        0.9399005770683289,
+        0.060085833072662354
+      ],
+      "greedy_id": 15,
+      "greedy_unique": true,
+      "accepted": true,
+      "native_logits": {
+        "shape": [
+          100278
+        ],
+        "dtype": "mlx.core.bfloat16",
+        "sha256": "9a97701abe9ede33054cde42b74decded2e59a47a3689a43fc17af0b6b5e5543",
+        "nbytes": 200556
+      }
+    },
+    {
+      "x": "10100111",
+      "p": 0,
+      "letter_id": 362,
+      "recipient_target": 1,
+      "margin": 8.6875,
+      "mass": 0.9999988985364325,
+      "pred": 1,
+      "logits": [
+        14.0625,
+        22.75
+      ],
+      "probabilities": [
+        0.00016865256475284696,
+        0.9998302459716797
+      ],
+      "greedy_id": 16,
+      "greedy_unique": true,
+      "accepted": true,
+      "native_logits": {
+        "shape": [
+          100278
+        ],
+        "dtype": "mlx.core.bfloat16",
+        "sha256": "f08a2d98fcfb535c83f8671b83cd4c69e755ded385891bf9c0107f2d2e4f1caa",
+        "nbytes": 200556
+      }
+    },
+    {
+      "x": "10100111",
+      "p": 1,
+      "letter_id": 426,
+      "recipient_target": 1,
+      "margin": 7.4375,
+      "mass": 0.999995399499312,
+      "pred": 1,
+      "logits": [
+        14.6875,
+        22.125
+      ],
+      "probabilities": [
+        0.0005884061101824045,
+        0.9994069933891296
+      ],
+      "greedy_id": 16,
+      "greedy_unique": true,
+      "accepted": true,
+      "native_logits": {
+        "shape": [
+          100278
+        ],
+        "dtype": "mlx.core.bfloat16",
+        "sha256": "f2a73ef0a56c74a158f7ff25a712e643d9e1bf188e94e6d44575811317cea370",
+        "nbytes": 200556
+      }
+    },
+    {
+      "x": "00000010",
+      "p": 0,
+      "letter_id": 362,
+      "recipient_target": 0,
+      "margin": -4.75,
+      "mass": 0.9999951496720314,
+      "pred": 0,
+      "logits": [
+        23.0,
+        18.25
+      ],
+      "probabilities": [
+        0.9914177060127258,
+        0.008577443659305573
+      ],
+      "greedy_id": 15,
+      "greedy_unique": true,
+      "accepted": true,
+      "native_logits": {
+        "shape": [
+          100278
+        ],
+        "dtype": "mlx.core.bfloat16",
+        "sha256": "d5155b4855cedeb45310cdd29841d8d3654c57580f4a392d3934e2526c66f140",
+        "nbytes": 200556
+      }
+    },
+    {
+      "x": "00000010",
+      "p": 1,
+      "letter_id": 426,
+      "recipient_target": 0,
+      "margin": 1.625,
+      "mass": 0.9999827444553375,
+      "pred": 1,
+      "logits": [
+        21.375,
+        23.0
+      ],
+      "probabilities": [
+        0.16451361775398254,
+        0.835469126701355
+      ],
+      "greedy_id": 16,
+      "greedy_unique": true,
+      "accepted": true,
+      "native_logits": {
+        "shape": [
+          100278
+        ],
+        "dtype": "mlx.core.bfloat16",
+        "sha256": "ded97f6208e4fb060aa006bb66da1b6a28b614bd9febf18e162a27f2414d463d",
+        "nbytes": 200556
+      }
+    },
+    {
+      "x": "00000011",
+      "p": 0,
+      "letter_id": 362,
+      "recipient_target": 0,
+      "margin": -4.5,
+      "mass": 0.9999946551397443,
+      "pred": 0,
+      "logits": [
+        22.75,
+        18.25
+      ],
+      "probabilities": [
+        0.9890077710151672,
+        0.010986884124577045
+      ],
+      "greedy_id": 15,
+      "greedy_unique": true,
+      "accepted": true,
+      "native_logits": {
+        "shape": [
+          100278
+        ],
+        "dtype": "mlx.core.bfloat16",
+        "sha256": "72db0c0b4bb2f3ac246b50a508e390e79fd2f789161d4cf737aef879709f783a",
+        "nbytes": 200556
+      }
+    },
+    {
+      "x": "00000011",
+      "p": 1,
+      "letter_id": 426,
+      "recipient_target": 1,
+      "margin": 6.8125,
+      "mass": 0.9999835101189092,
+      "pred": 1,
+      "logits": [
+        14.5625,
+        21.375
+      ],
+      "probabilities": [
+        0.0010987130226567388,
+        0.9988847970962524
+      ],
+      "greedy_id": 16,
+      "greedy_unique": true,
+      "accepted": true,
+      "native_logits": {
+        "shape": [
+          100278
+        ],
+        "dtype": "mlx.core.bfloat16",
+        "sha256": "e05bac7de36b1ee6d05317b0976fd1b6bece62bc57de1dd677319d872b29ddbd",
+        "nbytes": 200556
+      }
+    },
+    {
+      "x": "10000010",
+      "p": 0,
+      "letter_id": 362,
+      "recipient_target": 1,
+      "margin": 8.0625,
+      "mass": 0.9999965700262692,
+      "pred": 1,
+      "logits": [
+        14.6875,
+        22.75
+      ],
+      "probabilities": [
+        0.00031503764330409467,
+        0.9996815323829651
+      ],
+      "greedy_id": 16,
+      "greedy_unique": true,
+      "accepted": true,
+      "native_logits": {
+        "shape": [
+          100278
+        ],
+        "dtype": "mlx.core.bfloat16",
+        "sha256": "e6e23d18bf621d170639734fefbb50164016ce01abb00abe3900a8c0820df7c7",
+        "nbytes": 200556
+      }
+    },
+    {
+      "x": "10000010",
+      "p": 1,
+      "letter_id": 426,
+      "recipient_target": 0,
+      "margin": -1.25,
+      "mass": 0.9998787045478821,
+      "pred": 0,
+      "logits": [
+        22.625,
+        21.375
+      ],
+      "probabilities": [
+        0.7772055864334106,
+        0.22267311811447144
+      ],
+      "greedy_id": 15,
+      "greedy_unique": true,
+      "accepted": true,
+      "native_logits": {
+        "shape": [
+          100278
+        ],
+        "dtype": "mlx.core.bfloat16",
+        "sha256": "863622bd68827bda7f8c89c0b8791231915ec9e6b9e1555362e4fdc51fcaf54f",
+        "nbytes": 200556
+      }
+    },
+    {
+      "x": "10000011",
+      "p": 0,
+      "letter_id": 362,
+      "recipient_target": 1,
+      "margin": 8.375,
+      "mass": 0.9999959019041853,
+      "pred": 1,
+      "logits": [
+        14.125,
+        22.5
+      ],
+      "probabilities": [
+        0.00023050578602124006,
+        0.9997653961181641
+      ],
+      "greedy_id": 16,
+      "greedy_unique": true,
+      "accepted": true,
+      "native_logits": {
+        "shape": [
+          100278
+        ],
+        "dtype": "mlx.core.bfloat16",
+        "sha256": "ffbc0b4ab1c6d231189ee90ec20d8bc1d780baba86eec64c467cfcc6a4ea703d",
+        "nbytes": 200556
+      }
+    },
+    {
+      "x": "10000011",
+      "p": 1,
+      "letter_id": 426,
+      "recipient_target": 1,
+      "margin": 6.0625,
+      "mass": 0.9999817304778844,
+      "pred": 1,
+      "logits": [
+        15.3125,
+        21.375
+      ],
+      "probabilities": [
+        0.0023231201339513063,
+        0.9976586103439331
+      ],
+      "greedy_id": 16,
+      "greedy_unique": true,
+      "accepted": true,
+      "native_logits": {
+        "shape": [
+          100278
+        ],
+        "dtype": "mlx.core.bfloat16",
+        "sha256": "0556006fe80e96ae8007ab8c3e6c08aa3036ecc9f4c4c8d640a0473c60fa2891",
+        "nbytes": 200556
+      }
+    },
+    {
+      "x": "01010010",
+      "p": 0,
+      "letter_id": 362,
+      "recipient_target": 0,
+      "margin": -7.5,
+      "mass": 0.9999979177955538,
+      "pred": 0,
+      "logits": [
+        23.875,
+        16.375
+      ],
+      "probabilities": [
+        0.9994451403617859,
+        0.0005527774337679148
+      ],
+      "greedy_id": 15,
+      "greedy_unique": true,
+      "accepted": true,
+      "native_logits": {
+        "shape": [
+          100278
+        ],
+        "dtype": "mlx.core.bfloat16",
+        "sha256": "3a89f6c4672a650b0a663ecd6863879cdc6f57bb43fc4b2b326c45c3fa016752",
+        "nbytes": 200556
+      }
+    },
+    {
+      "x": "01010010",
+      "p": 1,
+      "letter_id": 426,
+      "recipient_target": 0,
+      "margin": -2.75,
+      "mass": 0.9999864101409912,
+      "pred": 0,
+      "logits": [
+        23.5,
+        20.75
+      ],
+      "probabilities": [
+        0.9399005770683289,
+        0.060085833072662354
+      ],
+      "greedy_id": 15,
+      "greedy_unique": true,
+      "accepted": true,
+      "native_logits": {
+        "shape": [
+          100278
+        ],
+        "dtype": "mlx.core.bfloat16",
+        "sha256": "9105a4f87be3fbe9d609a857f4c2af2955c40258e5719c26b958ce3eeb7e0136",
+        "nbytes": 200556
+      }
+    },
+    {
+      "x": "01010011",
+      "p": 0,
+      "letter_id": 362,
+      "recipient_target": 0,
+      "margin": -7.375,
+      "mass": 0.9999989946954884,
+      "pred": 0,
+      "logits": [
+        23.625,
+        16.25
+      ],
+      "probabilities": [
+        0.999372661113739,
+        0.0006263335817493498
+      ],
+      "greedy_id": 15,
+      "greedy_unique": true,
+      "accepted": true,
+      "native_logits": {
+        "shape": [
+          100278
+        ],
+        "dtype": "mlx.core.bfloat16",
+        "sha256": "3df20633d7a07ab57806a5d0cb226837c872ec4e1f34555a817440cc2ce66efc",
+        "nbytes": 200556
+      }
+    },
+    {
+      "x": "01010011",
+      "p": 1,
+      "letter_id": 426,
+      "recipient_target": 1,
+      "margin": 5.0,
+      "mass": 0.9999900632537901,
+      "pred": 1,
+      "logits": [
+        16.5,
+        21.5
+      ],
+      "probabilities": [
+        0.006692784372717142,
+        0.993297278881073
+      ],
+      "greedy_id": 16,
+      "greedy_unique": true,
+      "accepted": true,
+      "native_logits": {
+        "shape": [
+          100278
+        ],
+        "dtype": "mlx.core.bfloat16",
+        "sha256": "2cc14a123e429d8df8a17c525675306af92bdaeb5061daeab8f8a28a19e9f9e4",
+        "nbytes": 200556
+      }
+    },
+    {
+      "x": "11010010",
+      "p": 0,
+      "letter_id": 362,
+      "recipient_target": 1,
+      "margin": 7.875,
+      "mass": 0.9999966657778714,
+      "pred": 1,
+      "logits": [
+        14.75,
+        22.625
+      ],
+      "probabilities": [
+        0.0003799832484219223,
+        0.9996166825294495
+      ],
+      "greedy_id": 16,
+      "greedy_unique": true,
+      "accepted": true,
+      "native_logits": {
+        "shape": [
+          100278
+        ],
+        "dtype": "mlx.core.bfloat16",
+        "sha256": "38a190d2e31b9a89f37ef381fcc961a84c44321f201b661a7a4daa069162362e",
+        "nbytes": 200556
+      }
+    },
+    {
+      "x": "11010010",
+      "p": 1,
+      "letter_id": 426,
+      "recipient_target": 0,
+      "margin": -4.0,
+      "mass": 0.9999919589608908,
+      "pred": 0,
+      "logits": [
+        23.25,
+        19.25
+      ],
+      "probabilities": [
+        0.9820058941841125,
+        0.01798606477677822
+      ],
+      "greedy_id": 15,
+      "greedy_unique": true,
+      "accepted": true,
+      "native_logits": {
+        "shape": [
+          100278
+        ],
+        "dtype": "mlx.core.bfloat16",
+        "sha256": "c348765b866699be69bbcc3fbdacfb74837c16a016e2a354d18e3649f61e6865",
+        "nbytes": 200556
+      }
+    },
+    {
+      "x": "11010011",
+      "p": 0,
+      "letter_id": 362,
+      "recipient_target": 1,
+      "margin": 8.25,
+      "mass": 0.9999980352877174,
+      "pred": 1,
+      "logits": [
+        14.25,
+        22.5
+      ],
+      "probabilities": [
+        0.0002611897944007069,
+        0.9997368454933167
+      ],
+      "greedy_id": 16,
+      "greedy_unique": true,
+      "accepted": true,
+      "native_logits": {
+        "shape": [
+          100278
+        ],
+        "dtype": "mlx.core.bfloat16",
+        "sha256": "9c13a9b08d9b1a7e385621c5582af82411e8f3badfb9f58e63d635b81da0dab1",
+        "nbytes": 200556
+      }
+    },
+    {
+      "x": "11010011",
+      "p": 1,
+      "letter_id": 426,
+      "recipient_target": 1,
+      "margin": 4.25,
+      "mass": 0.9999880604445934,
+      "pred": 1,
+      "logits": [
+        17.375,
+        21.625
+      ],
+      "probabilities": [
+        0.014063458889722824,
+        0.9859246015548706
+      ],
+      "greedy_id": 16,
+      "greedy_unique": true,
+      "accepted": true,
+      "native_logits": {
+        "shape": [
+          100278
+        ],
+        "dtype": "mlx.core.bfloat16",
+        "sha256": "1c0b559f11aea8ae32a571e9b34da9bb39a4d948bde99cc79fedfc1e3bc9e594",
+        "nbytes": 200556
+      }
+    },
+    {
+      "x": "01000110",
+      "p": 0,
+      "letter_id": 362,
+      "recipient_target": 0,
+      "margin": -6.75,
+      "mass": 0.9999972028890625,
+      "pred": 0,
+      "logits": [
+        23.5,
+        16.75
+      ],
+      "probabilities": [
+        0.9988276958465576,
+        0.001169507042504847
+      ],
+      "greedy_id": 15,
+      "greedy_unique": true,
+      "accepted": true,
+      "native_logits": {
+        "shape": [
+          100278
+        ],
+        "dtype": "mlx.core.bfloat16",
+        "sha256": "37d4cc01f7998067a555f8c25da6c4e41dca3696db562f496cb507bf60ed195a",
+        "nbytes": 200556
+      }
+    },
+    {
+      "x": "01000110",
+      "p": 1,
+      "letter_id": 426,
+      "recipient_target": 0,
+      "margin": -0.875,
+      "mass": 0.999977707862854,
+      "pred": 0,
+      "logits": [
+        22.125,
+        21.25
+      ],
+      "probabilities": [
+        0.7057693004608154,
+        0.2942084074020386
+      ],
+      "greedy_id": 15,
+      "greedy_unique": true,
+      "accepted": true,
+      "native_logits": {
+        "shape": [
+          100278
+        ],
+        "dtype": "mlx.core.bfloat16",
+        "sha256": "c902a87db2b00ed9bf0537d65872cd160b2a12c4c248ca94cbdcfd2a54f7f6f0",
+        "nbytes": 200556
+      }
+    },
+    {
+      "x": "01000111",
+      "p": 0,
+      "letter_id": 362,
+      "recipient_target": 0,
+      "margin": -7.25,
+      "mass": 0.9999984666937962,
+      "pred": 0,
+      "logits": [
+        23.5,
+        16.25
+      ],
+      "probabilities": [
+        0.99928879737854,
+        0.0007096693152561784
+      ],
+      "greedy_id": 15,
+      "greedy_unique": true,
+      "accepted": true,
+      "native_logits": {
+        "shape": [
+          100278
+        ],
+        "dtype": "mlx.core.bfloat16",
+        "sha256": "676624e6b65bd25da4550a8dbe53f7452f669239800864e5605eeaa8f5d087ac",
+        "nbytes": 200556
+      }
+    },
+    {
+      "x": "01000111",
+      "p": 1,
+      "letter_id": 426,
+      "recipient_target": 1,
+      "margin": 6.8125,
+      "mass": 0.9999930572230369,
+      "pred": 1,
+      "logits": [
+        14.9375,
+        21.75
+      ],
+      "probabilities": [
+        0.0010987233836203814,
+        0.9988943338394165
+      ],
+      "greedy_id": 16,
+      "greedy_unique": true,
+      "accepted": true,
+      "native_logits": {
+        "shape": [
+          100278
+        ],
+        "dtype": "mlx.core.bfloat16",
+        "sha256": "5d012ab5ecf947243879c58afb5d4f8b2afc2c9e6ce882b97c045a1a4284e251",
+        "nbytes": 200556
+      }
+    },
+    {
+      "x": "11000110",
+      "p": 0,
+      "letter_id": 362,
+      "recipient_target": 1,
+      "margin": 8.0,
+      "mass": 0.9999978082778398,
+      "pred": 1,
+      "logits": [
+        14.375,
+        22.375
+      ],
+      "probabilities": [
+        0.00033534938120283186,
+        0.999662458896637
+      ],
+      "greedy_id": 16,
+      "greedy_unique": true,
+      "accepted": true,
+      "native_logits": {
+        "shape": [
+          100278
+        ],
+        "dtype": "mlx.core.bfloat16",
+        "sha256": "421e795b9a97e98fa004cd1fa9cd7dd0c12b4fcdc66774fc7d2274b16bda3867",
+        "nbytes": 200556
+      }
+    },
+    {
+      "x": "11000110",
+      "p": 1,
+      "letter_id": 426,
+      "recipient_target": 0,
+      "margin": -3.0,
+      "mass": 0.9999804832041264,
+      "pred": 0,
+      "logits": [
+        22.5,
+        19.5
+      ],
+      "probabilities": [
+        0.9525555372238159,
+        0.04742494598031044
+      ],
+      "greedy_id": 15,
+      "greedy_unique": true,
+      "accepted": true,
+      "native_logits": {
+        "shape": [
+          100278
+        ],
+        "dtype": "mlx.core.bfloat16",
+        "sha256": "8b1681c125059adbc59c0e6f4d7770d47dc314447d69a0cd32f67a49960ac02a",
+        "nbytes": 200556
+      }
+    },
+    {
+      "x": "11000111",
+      "p": 0,
+      "letter_id": 362,
+      "recipient_target": 1,
+      "margin": 8.5,
+      "mass": 0.9999974328093231,
+      "pred": 1,
+      "logits": [
+        13.875,
+        22.375
+      ],
+      "probabilities": [
+        0.00020342646166682243,
+        0.9997940063476562
+      ],
+      "greedy_id": 16,
+      "greedy_unique": true,
+      "accepted": true,
+      "native_logits": {
+        "shape": [
+          100278
+        ],
+        "dtype": "mlx.core.bfloat16",
+        "sha256": "6f410ba774c9ebff1bc17fadc9745ee4d8ff05cee1e6bb64c46f712b1d9a0840",
+        "nbytes": 200556
+      }
+    },
+    {
+      "x": "11000111",
+      "p": 1,
+      "letter_id": 426,
+      "recipient_target": 1,
+      "margin": 6.6875,
+      "mass": 0.999990571057424,
+      "pred": 1,
+      "logits": [
+        14.9375,
+        21.625
+      ],
+      "probabilities": [
+        0.0012448315974324942,
+        0.9987457394599915
+      ],
+      "greedy_id": 16,
+      "greedy_unique": true,
+      "accepted": true,
+      "native_logits": {
+        "shape": [
+          100278
+        ],
+        "dtype": "mlx.core.bfloat16",
+        "sha256": "547ada864de6553008c4558b965205e2fb1f353ae83153cf8da4b9f6343fdc2e",
+        "nbytes": 200556
+      }
+    },
+    {
+      "x": "00011000",
+      "p": 0,
+      "letter_id": 362,
+      "recipient_target": 0,
+      "margin": -6.875,
+      "mass": 0.9999989834614098,
+      "pred": 0,
+      "logits": [
+        23.25,
+        16.375
+      ],
+      "probabilities": [
+        0.9989667534828186,
+        0.0010322299785912037
+      ],
+      "greedy_id": 15,
+      "greedy_unique": true,
+      "accepted": true,
+      "native_logits": {
+        "shape": [
+          100278
+        ],
+        "dtype": "mlx.core.bfloat16",
+        "sha256": "610b51ae5f23af3d12883619952a56e9a65f9bface0c2af66d6a6a6425b6911d",
+        "nbytes": 200556
+      }
+    },
+    {
+      "x": "00011000",
+      "p": 1,
+      "letter_id": 426,
+      "recipient_target": 0,
+      "margin": -3.0,
+      "mass": 0.9999747313559055,
+      "pred": 0,
+      "logits": [
+        21.75,
+        18.75
+      ],
+      "probabilities": [
+        0.9525500535964966,
+        0.04742467775940895
+      ],
+      "greedy_id": 15,
+      "greedy_unique": true,
+      "accepted": true,
+      "native_logits": {
+        "shape": [
+          100278
+        ],
+        "dtype": "mlx.core.bfloat16",
+        "sha256": "d4982bb84ae02d0a62bbebbcfe426f619d468c192856895a1b513fecc05f7772",
+        "nbytes": 200556
+      }
+    },
+    {
+      "x": "00011001",
+      "p": 0,
+      "letter_id": 362,
+      "recipient_target": 0,
+      "margin": -6.25,
+      "mass": 0.9999964314047247,
+      "pred": 0,
+      "logits": [
+        22.875,
+        16.625
+      ],
+      "probabilities": [
+        0.998069703578949,
+        0.0019267278257757425
+      ],
+      "greedy_id": 15,
+      "greedy_unique": true,
+      "accepted": true,
+      "native_logits": {
+        "shape": [
+          100278
+        ],
+        "dtype": "mlx.core.bfloat16",
+        "sha256": "0de3444e9248fd9c8b66b0c717e5f74ba099f2f830fd3924d6101a999c248fca",
+        "nbytes": 200556
+      }
+    },
+    {
+      "x": "00011001",
+      "p": 1,
+      "letter_id": 426,
+      "recipient_target": 1,
+      "margin": 4.25,
+      "mass": 0.9999651480466127,
+      "pred": 1,
+      "logits": [
+        17.0,
+        21.25
+      ],
+      "probabilities": [
+        0.014063136652112007,
+        0.9859020113945007
+      ],
+      "greedy_id": 16,
+      "greedy_unique": true,
+      "accepted": true,
+      "native_logits": {
+        "shape": [
+          100278
+        ],
+        "dtype": "mlx.core.bfloat16",
+        "sha256": "ca7566022d9cc495bf42f5024663bff2f67c1f392a55bedd0c2605fae6cb7780",
+        "nbytes": 200556
+      }
+    },
+    {
+      "x": "10011000",
+      "p": 0,
+      "letter_id": 362,
+      "recipient_target": 1,
+      "margin": 9.125,
+      "mass": 0.9999982704975992,
+      "pred": 1,
+      "logits": [
+        13.625,
+        22.75
+      ],
+      "probabilities": [
+        0.00010889671830227599,
+        0.9998893737792969
+      ],
+      "greedy_id": 16,
+      "greedy_unique": true,
+      "accepted": true,
+      "native_logits": {
+        "shape": [
+          100278
+        ],
+        "dtype": "mlx.core.bfloat16",
+        "sha256": "c16ad68385766f33025e917bc950641626e0cff7b9637c31d81a635bf70fbbf4",
+        "nbytes": 200556
+      }
+    },
+    {
+      "x": "10011000",
+      "p": 1,
+      "letter_id": 426,
+      "recipient_target": 0,
+      "margin": -4.75,
+      "mass": 0.9999951496720314,
+      "pred": 0,
+      "logits": [
+        22.75,
+        18.0
+      ],
+      "probabilities": [
+        0.9914177060127258,
+        0.008577443659305573
+      ],
+      "greedy_id": 15,
+      "greedy_unique": true,
+      "accepted": true,
+      "native_logits": {
+        "shape": [
+          100278
+        ],
+        "dtype": "mlx.core.bfloat16",
+        "sha256": "0b345b72227935559b205e3dbfeec39110f2ee0fe6cb7ec9ca016350a20233e8",
+        "nbytes": 200556
+      }
+    },
+    {
+      "x": "10011001",
+      "p": 0,
+      "letter_id": 362,
+      "recipient_target": 1,
+      "margin": 9.0,
+      "mass": 0.9999975092650857,
+      "pred": 1,
+      "logits": [
+        13.75,
+        22.75
+      ],
+      "probabilities": [
+        0.00012339427485130727,
+        0.9998741149902344
+      ],
+      "greedy_id": 16,
+      "greedy_unique": true,
+      "accepted": true,
+      "native_logits": {
+        "shape": [
+          100278
+        ],
+        "dtype": "mlx.core.bfloat16",
+        "sha256": "cac51e80eb59be3208ed919940e077c88b43bdcf9ec53a6bf838fe28214ac0a7",
+        "nbytes": 200556
+      }
+    },
+    {
+      "x": "10011001",
+      "p": 1,
+      "letter_id": 426,
+      "recipient_target": 1,
+      "margin": 4.5,
+      "mass": 0.9999870015308261,
+      "pred": 1,
+      "logits": [
+        17.125,
+        21.625
+      ],
+      "probabilities": [
+        0.01098680030554533,
+        0.9890002012252808
+      ],
+      "greedy_id": 16,
+      "greedy_unique": true,
+      "accepted": true,
+      "native_logits": {
+        "shape": [
+          100278
+        ],
+        "dtype": "mlx.core.bfloat16",
+        "sha256": "2c2609d17a947905436ddcbbf9ab99301c40d2a65af7e887773900580c2ec649",
+        "nbytes": 200556
+      }
+    },
+    {
+      "x": "00110010",
+      "p": 0,
+      "letter_id": 362,
+      "recipient_target": 0,
+      "margin": -8.0625,
+      "mass": 0.9999984779569786,
+      "pred": 0,
+      "logits": [
+        23.5,
+        15.4375
+      ],
+      "probabilities": [
+        0.9996834397315979,
+        0.0003150382253807038
+      ],
+      "greedy_id": 15,
+      "greedy_unique": true,
+      "accepted": true,
+      "native_logits": {
+        "shape": [
+          100278
+        ],
+        "dtype": "mlx.core.bfloat16",
+        "sha256": "4cda8a00ddcda72b0f299b6a78c8885c175c5ecd6517e544eac165dd4d127b00",
+        "nbytes": 200556
+      }
+    },
+    {
+      "x": "00110010",
+      "p": 1,
+      "letter_id": 426,
+      "recipient_target": 0,
+      "margin": -2.25,
+      "mass": 0.999986857175827,
+      "pred": 0,
+      "logits": [
+        23.125,
+        20.875
+      ],
+      "probabilities": [
+        0.9046386480331421,
+        0.09534820914268494
+      ],
+      "greedy_id": 15,
+      "greedy_unique": true,
+      "accepted": true,
+      "native_logits": {
+        "shape": [
+          100278
+        ],
+        "dtype": "mlx.core.bfloat16",
+        "sha256": "9f4f6d9f801f66db615272286f9c854e5c63eed8ac34e6e4542ab5144eefa861",
+        "nbytes": 200556
+      }
+    },
+    {
+      "x": "00110011",
+      "p": 0,
+      "letter_id": 362,
+      "recipient_target": 0,
+      "margin": -8.5,
+      "mass": 0.9999993405508576,
+      "pred": 0,
+      "logits": [
+        23.625,
+        15.125
+      ],
+      "probabilities": [
+        0.9997959136962891,
+        0.0002034268545685336
+      ],
+      "greedy_id": 15,
+      "greedy_unique": true,
+      "accepted": true,
+      "native_logits": {
+        "shape": [
+          100278
+        ],
+        "dtype": "mlx.core.bfloat16",
+        "sha256": "39290c20553462705bfeebc4d445f70cd9ee94cf47c60d06ffbc47ae71a4752e",
+        "nbytes": 200556
+      }
+    },
+    {
+      "x": "00110011",
+      "p": 1,
+      "letter_id": 426,
+      "recipient_target": 1,
+      "margin": 5.8125,
+      "mass": 0.9999909386970103,
+      "pred": 1,
+      "logits": [
+        15.4375,
+        21.25
+      ],
+      "probabilities": [
+        0.0029810057021677494,
+        0.9970099329948425
+      ],
+      "greedy_id": 16,
+      "greedy_unique": true,
+      "accepted": true,
+      "native_logits": {
+        "shape": [
+          100278
+        ],
+        "dtype": "mlx.core.bfloat16",
+        "sha256": "22db5d7e90f1aa2aa9a31d27ba0790366c11cf41c2a220f575fac9f83448d45b",
+        "nbytes": 200556
+      }
+    },
+    {
+      "x": "10110010",
+      "p": 0,
+      "letter_id": 362,
+      "recipient_target": 1,
+      "margin": 8.125,
+      "mass": 0.9999965619645081,
+      "pred": 1,
+      "logits": [
+        14.625,
+        22.75
+      ],
+      "probabilities": [
+        0.00029595609521493316,
+        0.9997006058692932
+      ],
+      "greedy_id": 16,
+      "greedy_unique": true,
+      "accepted": true,
+      "native_logits": {
+        "shape": [
+          100278
+        ],
+        "dtype": "mlx.core.bfloat16",
+        "sha256": "8eeb572d4255a1eb2d83786f782ac449625365866792083b7488b60432a8d640",
+        "nbytes": 200556
+      }
+    },
+    {
+      "x": "10110010",
+      "p": 1,
+      "letter_id": 426,
+      "recipient_target": 0,
+      "margin": -3.625,
+      "mass": 0.9999902211129665,
+      "pred": 0,
+      "logits": [
+        23.0,
+        19.375
+      ],
+      "probabilities": [
+        0.9740331172943115,
+        0.025957103818655014
+      ],
+      "greedy_id": 15,
+      "greedy_unique": true,
+      "accepted": true,
+      "native_logits": {
+        "shape": [
+          100278
+        ],
+        "dtype": "mlx.core.bfloat16",
+        "sha256": "707be8d85426c156545dc889bbec3630c50d2a82b3979173d9271977a495c4b8",
+        "nbytes": 200556
+      }
+    },
+    {
+      "x": "10110011",
+      "p": 0,
+      "letter_id": 362,
+      "recipient_target": 1,
+      "margin": 8.4375,
+      "mass": 0.9999971983634168,
+      "pred": 1,
+      "logits": [
+        14.3125,
+        22.75
+      ],
+      "probabilities": [
+        0.00021654345619026572,
+        0.9997806549072266
+      ],
+      "greedy_id": 16,
+      "greedy_unique": true,
+      "accepted": true,
+      "native_logits": {
+        "shape": [
+          100278
+        ],
+        "dtype": "mlx.core.bfloat16",
+        "sha256": "f269468ba274d77b137cbe4206e8a155fbcdd56b1cc4f2753610aa87f1aca86b",
+        "nbytes": 200556
+      }
+    },
+    {
+      "x": "10110011",
+      "p": 1,
+      "letter_id": 426,
+      "recipient_target": 1,
+      "margin": 4.375,
+      "mass": 0.9999916404485703,
+      "pred": 1,
+      "logits": [
+        17.0,
+        21.375
+      ],
+      "probabilities": [
+        0.012431547045707703,
+        0.9875600934028625
+      ],
+      "greedy_id": 16,
+      "greedy_unique": true,
+      "accepted": true,
+      "native_logits": {
+        "shape": [
+          100278
+        ],
+        "dtype": "mlx.core.bfloat16",
+        "sha256": "87cb2c9495e674a4022f17b327bd8a10c644c595cf741bd5270dfc9ba89ad886",
+        "nbytes": 200556
+      }
+    },
+    {
+      "x": "00001100",
+      "p": 0,
+      "letter_id": 362,
+      "recipient_target": 0,
+      "margin": -6.25,
+      "mass": 0.9999983424786478,
+      "pred": 0,
+      "logits": [
+        23.0,
+        16.75
+      ],
+      "probabilities": [
+        0.9980716109275818,
+        0.001926731551066041
+      ],
+      "greedy_id": 15,
+      "greedy_unique": true,
+      "accepted": true,
+      "native_logits": {
+        "shape": [
+          100278
+        ],
+        "dtype": "mlx.core.bfloat16",
+        "sha256": "75f46b1178364e56a60be9d9ecd6aac17fda191d7ab22e217b59505230b24ebe",
+        "nbytes": 200556
+      }
+    },
+    {
+      "x": "00001100",
+      "p": 1,
+      "letter_id": 426,
+      "recipient_target": 0,
+      "margin": -1.375,
+      "mass": 0.9999316036701202,
+      "pred": 0,
+      "logits": [
+        20.75,
+        19.375
+      ],
+      "probabilities": [
+        0.7981321811676025,
+        0.2017994225025177
+      ],
+      "greedy_id": 15,
+      "greedy_unique": true,
+      "accepted": true,
+      "native_logits": {
+        "shape": [
+          100278
+        ],
+        "dtype": "mlx.core.bfloat16",
+        "sha256": "a17a5847c9dbba40239649674f63b0ba8c47918ec7303cbd753117ed20136f8d",
+        "nbytes": 200556
+      }
+    },
+    {
+      "x": "00001101",
+      "p": 0,
+      "letter_id": 362,
+      "recipient_target": 0,
+      "margin": -6.0,
+      "mass": 0.9999961599241942,
+      "pred": 0,
+      "logits": [
+        22.625,
+        16.625
+      ],
+      "probabilities": [
+        0.9975235462188721,
+        0.0024726137053221464
+      ],
+      "greedy_id": 15,
+      "greedy_unique": true,
+      "accepted": true,
+      "native_logits": {
+        "shape": [
+          100278
+        ],
+        "dtype": "mlx.core.bfloat16",
+        "sha256": "9f4800d87e1a3344fea09323866b6ae3c2d4f63d306d63963a29264f9fd8c1cb",
+        "nbytes": 200556
+      }
+    },
+    {
+      "x": "00001101",
+      "p": 1,
+      "letter_id": 426,
+      "recipient_target": 1,
+      "margin": 4.375,
+      "mass": 0.9999572988599539,
+      "pred": 1,
+      "logits": [
+        16.75,
+        21.125
+      ],
+      "probabilities": [
+        0.012431120499968529,
+        0.9875261783599854
+      ],
+      "greedy_id": 16,
+      "greedy_unique": true,
+      "accepted": true,
+      "native_logits": {
+        "shape": [
+          100278
+        ],
+        "dtype": "mlx.core.bfloat16",
+        "sha256": "a6531ca32c5592fb6e0c10c44eb78e99bf395c240008dacca66bc3aed7bbedf1",
+        "nbytes": 200556
+      }
+    },
+    {
+      "x": "10001100",
+      "p": 0,
+      "letter_id": 362,
+      "recipient_target": 1,
+      "margin": 8.75,
+      "mass": 0.9999982186564011,
+      "pred": 1,
+      "logits": [
+        13.875,
+        22.625
+      ],
+      "probabilities": [
+        0.00015843594155739993,
+        0.9998397827148438
+      ],
+      "greedy_id": 16,
+      "greedy_unique": true,
+      "accepted": true,
+      "native_logits": {
+        "shape": [
+          100278
+        ],
+        "dtype": "mlx.core.bfloat16",
+        "sha256": "b253bca534a609158cfea20819e74d84b502db6f4d2b57d25c59b42548ba1f05",
+        "nbytes": 200556
+      }
+    },
+    {
+      "x": "10001100",
+      "p": 1,
+      "letter_id": 426,
+      "recipient_target": 0,
+      "margin": -2.875,
+      "mass": 0.9999429024755955,
+      "pred": 0,
+      "logits": [
+        21.375,
+        18.5
+      ],
+      "probabilities": [
+        0.9465426206588745,
+        0.05340028181672096
+      ],
+      "greedy_id": 15,
+      "greedy_unique": true,
+      "accepted": true,
+      "native_logits": {
+        "shape": [
+          100278
+        ],
+        "dtype": "mlx.core.bfloat16",
+        "sha256": "697a7ae6806ebcf8ce2d778b0ada177cee2faf7c5bdedac71e4bb4d9b30d496a",
+        "nbytes": 200556
+      }
+    },
+    {
+      "x": "10001101",
+      "p": 0,
+      "letter_id": 362,
+      "recipient_target": 1,
+      "margin": 8.1875,
+      "mass": 0.9999977096740622,
+      "pred": 1,
+      "logits": [
+        14.3125,
+        22.5
+      ],
+      "probabilities": [
+        0.00027803031844086945,
+        0.9997196793556213
+      ],
+      "greedy_id": 16,
+      "greedy_unique": true,
+      "accepted": true,
+      "native_logits": {
+        "shape": [
+          100278
+        ],
+        "dtype": "mlx.core.bfloat16",
+        "sha256": "3c8783d6aa57c6f71c4e82d178bb4e04212a007e71728ddcbd18e0753e8a5fa5",
+        "nbytes": 200556
+      }
+    },
+    {
+      "x": "10001101",
+      "p": 1,
+      "letter_id": 426,
+      "recipient_target": 1,
+      "margin": 4.125,
+      "mass": 0.9999591149389744,
+      "pred": 1,
+      "logits": [
+        17.25,
+        21.375
+      ],
+      "probabilities": [
+        0.01590574160218239,
+        0.984053373336792
+      ],
+      "greedy_id": 16,
+      "greedy_unique": true,
+      "accepted": true,
+      "native_logits": {
+        "shape": [
+          100278
+        ],
+        "dtype": "mlx.core.bfloat16",
+        "sha256": "334c0f6676a5450432dea611a574c89d050bffd703143427337f8e40d15802d8",
+        "nbytes": 200556
+      }
+    }
+  ],
+  "rows": [
+    {
+      "u": "100001",
+      "x": "01000010",
+      "h": "A",
+      "e": 0,
+      "target": 0,
+      "delivered_id": 362,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "01000010",
+        "p": 0,
+        "letter_id": 362,
+        "recipient_target": 0,
+        "margin": -6.625,
+        "mass": 0.9999983996385708,
+        "pred": 0,
+        "logits": [
+          23.625,
+          17.0
+        ],
+        "probabilities": [
+          0.9986733794212341,
+          0.0013250202173367143
+        ],
+        "greedy_id": 15,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "94ba5812bac6a3baa27f45b91b72d7d9fbb8a47db028b86cf3e0a41f4e1e7341",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "100001",
+      "x": "01000010",
+      "h": "A",
+      "e": 1,
+      "target": 0,
+      "delivered_id": 426,
+      "correct": false,
+      "erased_correct": true,
+      "recipient": {
+        "x": "01000010",
+        "p": 1,
+        "letter_id": 426,
+        "recipient_target": 0,
+        "margin": 0.375,
+        "mass": 0.9999661445617676,
+        "pred": 1,
+        "logits": [
+          22.5,
+          22.875
+        ],
+        "probabilities": [
+          0.4073196053504944,
+          0.5926465392112732
+        ],
+        "greedy_id": 16,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "24f73637083a98c84a8b051e08fcad335ef10931a9610063ed196592d62ef060",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "100001",
+      "x": "01000010",
+      "h": "B",
+      "e": 0,
+      "target": 0,
+      "delivered_id": 426,
+      "correct": false,
+      "erased_correct": true,
+      "recipient": {
+        "x": "01000010",
+        "p": 1,
+        "letter_id": 426,
+        "recipient_target": 0,
+        "margin": 0.375,
+        "mass": 0.9999661445617676,
+        "pred": 1,
+        "logits": [
+          22.5,
+          22.875
+        ],
+        "probabilities": [
+          0.4073196053504944,
+          0.5926465392112732
+        ],
+        "greedy_id": 16,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "24f73637083a98c84a8b051e08fcad335ef10931a9610063ed196592d62ef060",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "100001",
+      "x": "01000010",
+      "h": "B",
+      "e": 1,
+      "target": 0,
+      "delivered_id": 362,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "01000010",
+        "p": 0,
+        "letter_id": 362,
+        "recipient_target": 0,
+        "margin": -6.625,
+        "mass": 0.9999983996385708,
+        "pred": 0,
+        "logits": [
+          23.625,
+          17.0
+        ],
+        "probabilities": [
+          0.9986733794212341,
+          0.0013250202173367143
+        ],
+        "greedy_id": 15,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "94ba5812bac6a3baa27f45b91b72d7d9fbb8a47db028b86cf3e0a41f4e1e7341",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "100001",
+      "x": "01000011",
+      "h": "A",
+      "e": 0,
+      "target": 0,
+      "delivered_id": 362,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "01000011",
+        "p": 0,
+        "letter_id": 362,
+        "recipient_target": 0,
+        "margin": -6.75,
+        "mass": 0.9999972028890625,
+        "pred": 0,
+        "logits": [
+          23.5,
+          16.75
+        ],
+        "probabilities": [
+          0.9988276958465576,
+          0.001169507042504847
+        ],
+        "greedy_id": 15,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "2e969b66203bd18ad4b976aaf36db22141966c8f88e3fb86a057305b1b9c9394",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "100001",
+      "x": "01000011",
+      "h": "A",
+      "e": 1,
+      "target": 1,
+      "delivered_id": 426,
+      "correct": true,
+      "erased_correct": false,
+      "recipient": {
+        "x": "01000011",
+        "p": 1,
+        "letter_id": 426,
+        "recipient_target": 1,
+        "margin": 5.375,
+        "mass": 0.9999815439805388,
+        "pred": 1,
+        "logits": [
+          16.0,
+          21.375
+        ],
+        "probabilities": [
+          0.004609487019479275,
+          0.9953720569610596
+        ],
+        "greedy_id": 16,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "3b3670b1509646af9bab1e8b51f94a92177c4f38fd0b56e7537eeb89ff982467",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "100001",
+      "x": "01000011",
+      "h": "B",
+      "e": 0,
+      "target": 1,
+      "delivered_id": 426,
+      "correct": true,
+      "erased_correct": false,
+      "recipient": {
+        "x": "01000011",
+        "p": 1,
+        "letter_id": 426,
+        "recipient_target": 1,
+        "margin": 5.375,
+        "mass": 0.9999815439805388,
+        "pred": 1,
+        "logits": [
+          16.0,
+          21.375
+        ],
+        "probabilities": [
+          0.004609487019479275,
+          0.9953720569610596
+        ],
+        "greedy_id": 16,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "3b3670b1509646af9bab1e8b51f94a92177c4f38fd0b56e7537eeb89ff982467",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "100001",
+      "x": "01000011",
+      "h": "B",
+      "e": 1,
+      "target": 0,
+      "delivered_id": 362,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "01000011",
+        "p": 0,
+        "letter_id": 362,
+        "recipient_target": 0,
+        "margin": -6.75,
+        "mass": 0.9999972028890625,
+        "pred": 0,
+        "logits": [
+          23.5,
+          16.75
+        ],
+        "probabilities": [
+          0.9988276958465576,
+          0.001169507042504847
+        ],
+        "greedy_id": 15,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "2e969b66203bd18ad4b976aaf36db22141966c8f88e3fb86a057305b1b9c9394",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "100001",
+      "x": "11000010",
+      "h": "A",
+      "e": 0,
+      "target": 1,
+      "delivered_id": 362,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "11000010",
+        "p": 0,
+        "letter_id": 362,
+        "recipient_target": 1,
+        "margin": 7.5,
+        "mass": 0.9999979177955538,
+        "pred": 1,
+        "logits": [
+          14.875,
+          22.375
+        ],
+        "probabilities": [
+          0.0005527774337679148,
+          0.9994451403617859
+        ],
+        "greedy_id": 16,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "f3f207ec9511f61c0782dafb33d0e34a9a08253ec60bd76cd03f22499e520c93",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "100001",
+      "x": "11000010",
+      "h": "A",
+      "e": 1,
+      "target": 0,
+      "delivered_id": 426,
+      "correct": true,
+      "erased_correct": false,
+      "recipient": {
+        "x": "11000010",
+        "p": 1,
+        "letter_id": 426,
+        "recipient_target": 0,
+        "margin": -2.375,
+        "mass": 0.9999769330024719,
+        "pred": 0,
+        "logits": [
+          23.0,
+          20.625
+        ],
+        "probabilities": [
+          0.9148798584938049,
+          0.08509707450866699
+        ],
+        "greedy_id": 15,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "a4f514ff5def6fd082b48a06556fd8bf174a928e2d8ad03bc42dc3cf41826871",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "100001",
+      "x": "11000010",
+      "h": "B",
+      "e": 0,
+      "target": 0,
+      "delivered_id": 426,
+      "correct": true,
+      "erased_correct": false,
+      "recipient": {
+        "x": "11000010",
+        "p": 1,
+        "letter_id": 426,
+        "recipient_target": 0,
+        "margin": -2.375,
+        "mass": 0.9999769330024719,
+        "pred": 0,
+        "logits": [
+          23.0,
+          20.625
+        ],
+        "probabilities": [
+          0.9148798584938049,
+          0.08509707450866699
+        ],
+        "greedy_id": 15,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "a4f514ff5def6fd082b48a06556fd8bf174a928e2d8ad03bc42dc3cf41826871",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "100001",
+      "x": "11000010",
+      "h": "B",
+      "e": 1,
+      "target": 1,
+      "delivered_id": 362,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "11000010",
+        "p": 0,
+        "letter_id": 362,
+        "recipient_target": 1,
+        "margin": 7.5,
+        "mass": 0.9999979177955538,
+        "pred": 1,
+        "logits": [
+          14.875,
+          22.375
+        ],
+        "probabilities": [
+          0.0005527774337679148,
+          0.9994451403617859
+        ],
+        "greedy_id": 16,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "f3f207ec9511f61c0782dafb33d0e34a9a08253ec60bd76cd03f22499e520c93",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "100001",
+      "x": "11000011",
+      "h": "A",
+      "e": 0,
+      "target": 1,
+      "delivered_id": 362,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "11000011",
+        "p": 0,
+        "letter_id": 362,
+        "recipient_target": 1,
+        "margin": 8.3125,
+        "mass": 0.9999974731472321,
+        "pred": 1,
+        "logits": [
+          14.0625,
+          22.375
+        ],
+        "probabilities": [
+          0.0002453688648529351,
+          0.9997521042823792
+        ],
+        "greedy_id": 16,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "849be834aabdff171cd54d998dd9c5bd16e96992c65213d0512a36222241d2e6",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "100001",
+      "x": "11000011",
+      "h": "A",
+      "e": 1,
+      "target": 1,
+      "delivered_id": 426,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "11000011",
+        "p": 1,
+        "letter_id": 426,
+        "recipient_target": 1,
+        "margin": 5.25,
+        "mass": 0.9999904837459326,
+        "pred": 1,
+        "logits": [
+          16.375,
+          21.625
+        ],
+        "probabilities": [
+          0.005220076069235802,
+          0.9947704076766968
+        ],
+        "greedy_id": 16,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "0cc629115e4a1d5515d9d0597d5ce758b4532ab4218e8596689588bcac674355",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "100001",
+      "x": "11000011",
+      "h": "B",
+      "e": 0,
+      "target": 1,
+      "delivered_id": 426,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "11000011",
+        "p": 1,
+        "letter_id": 426,
+        "recipient_target": 1,
+        "margin": 5.25,
+        "mass": 0.9999904837459326,
+        "pred": 1,
+        "logits": [
+          16.375,
+          21.625
+        ],
+        "probabilities": [
+          0.005220076069235802,
+          0.9947704076766968
+        ],
+        "greedy_id": 16,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "0cc629115e4a1d5515d9d0597d5ce758b4532ab4218e8596689588bcac674355",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "100001",
+      "x": "11000011",
+      "h": "B",
+      "e": 1,
+      "target": 1,
+      "delivered_id": 362,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "11000011",
+        "p": 0,
+        "letter_id": 362,
+        "recipient_target": 1,
+        "margin": 8.3125,
+        "mass": 0.9999974731472321,
+        "pred": 1,
+        "logits": [
+          14.0625,
+          22.375
+        ],
+        "probabilities": [
+          0.0002453688648529351,
+          0.9997521042823792
+        ],
+        "greedy_id": 16,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "849be834aabdff171cd54d998dd9c5bd16e96992c65213d0512a36222241d2e6",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "010011",
+      "x": "00100110",
+      "h": "A",
+      "e": 0,
+      "target": 0,
+      "delivered_id": 362,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "00100110",
+        "p": 0,
+        "letter_id": 362,
+        "recipient_target": 0,
+        "margin": -7.875,
+        "mass": 0.9999985738832038,
+        "pred": 0,
+        "logits": [
+          23.875,
+          16.0
+        ],
+        "probabilities": [
+          0.9996185898780823,
+          0.0003799840051215142
+        ],
+        "greedy_id": 15,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "bfd39193fd81e97315115b9a3f3289c5b1b95e893cf04f5999c7e12bd6db606c",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "010011",
+      "x": "00100110",
+      "h": "A",
+      "e": 1,
+      "target": 0,
+      "delivered_id": 426,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "00100110",
+        "p": 1,
+        "letter_id": 426,
+        "recipient_target": 0,
+        "margin": -1.125,
+        "mass": 0.999982163310051,
+        "pred": 0,
+        "logits": [
+          22.0,
+          20.875
+        ],
+        "probabilities": [
+          0.7549015283584595,
+          0.2450806349515915
+        ],
+        "greedy_id": 15,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "8601c70abdb6e64361c7fe88c6d23b9777c659d608e5b81064f897938c43b4b5",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "010011",
+      "x": "00100110",
+      "h": "B",
+      "e": 0,
+      "target": 0,
+      "delivered_id": 426,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "00100110",
+        "p": 1,
+        "letter_id": 426,
+        "recipient_target": 0,
+        "margin": -1.125,
+        "mass": 0.999982163310051,
+        "pred": 0,
+        "logits": [
+          22.0,
+          20.875
+        ],
+        "probabilities": [
+          0.7549015283584595,
+          0.2450806349515915
+        ],
+        "greedy_id": 15,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "8601c70abdb6e64361c7fe88c6d23b9777c659d608e5b81064f897938c43b4b5",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "010011",
+      "x": "00100110",
+      "h": "B",
+      "e": 1,
+      "target": 0,
+      "delivered_id": 362,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "00100110",
+        "p": 0,
+        "letter_id": 362,
+        "recipient_target": 0,
+        "margin": -7.875,
+        "mass": 0.9999985738832038,
+        "pred": 0,
+        "logits": [
+          23.875,
+          16.0
+        ],
+        "probabilities": [
+          0.9996185898780823,
+          0.0003799840051215142
+        ],
+        "greedy_id": 15,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "bfd39193fd81e97315115b9a3f3289c5b1b95e893cf04f5999c7e12bd6db606c",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "010011",
+      "x": "00100111",
+      "h": "A",
+      "e": 0,
+      "target": 0,
+      "delivered_id": 362,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "00100111",
+        "p": 0,
+        "letter_id": 362,
+        "recipient_target": 0,
+        "margin": -8.5,
+        "mass": 0.9999993405508576,
+        "pred": 0,
+        "logits": [
+          23.5,
+          15.0
+        ],
+        "probabilities": [
+          0.9997959136962891,
+          0.0002034268545685336
+        ],
+        "greedy_id": 15,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "5ab40b38586e431904d1304159b58aee4097e8a16e0dc4cac39500e16ab2c64f",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "010011",
+      "x": "00100111",
+      "h": "A",
+      "e": 1,
+      "target": 1,
+      "delivered_id": 426,
+      "correct": true,
+      "erased_correct": false,
+      "recipient": {
+        "x": "00100111",
+        "p": 1,
+        "letter_id": 426,
+        "recipient_target": 1,
+        "margin": 7.8125,
+        "mass": 0.9999944589217193,
+        "pred": 1,
+        "logits": [
+          14.3125,
+          22.125
+        ],
+        "probabilities": [
+          0.0004044792731292546,
+          0.9995899796485901
+        ],
+        "greedy_id": 16,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "860792e0d00bac365d99a73751d35788cec41585833cfa4909cfebd75f0f715f",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "010011",
+      "x": "00100111",
+      "h": "B",
+      "e": 0,
+      "target": 1,
+      "delivered_id": 426,
+      "correct": true,
+      "erased_correct": false,
+      "recipient": {
+        "x": "00100111",
+        "p": 1,
+        "letter_id": 426,
+        "recipient_target": 1,
+        "margin": 7.8125,
+        "mass": 0.9999944589217193,
+        "pred": 1,
+        "logits": [
+          14.3125,
+          22.125
+        ],
+        "probabilities": [
+          0.0004044792731292546,
+          0.9995899796485901
+        ],
+        "greedy_id": 16,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "860792e0d00bac365d99a73751d35788cec41585833cfa4909cfebd75f0f715f",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "010011",
+      "x": "00100111",
+      "h": "B",
+      "e": 1,
+      "target": 0,
+      "delivered_id": 362,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "00100111",
+        "p": 0,
+        "letter_id": 362,
+        "recipient_target": 0,
+        "margin": -8.5,
+        "mass": 0.9999993405508576,
+        "pred": 0,
+        "logits": [
+          23.5,
+          15.0
+        ],
+        "probabilities": [
+          0.9997959136962891,
+          0.0002034268545685336
+        ],
+        "greedy_id": 15,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "5ab40b38586e431904d1304159b58aee4097e8a16e0dc4cac39500e16ab2c64f",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "010011",
+      "x": "10100110",
+      "h": "A",
+      "e": 0,
+      "target": 1,
+      "delivered_id": 362,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "10100110",
+        "p": 0,
+        "letter_id": 362,
+        "recipient_target": 1,
+        "margin": 7.5625,
+        "mass": 0.9999968089396134,
+        "pred": 1,
+        "logits": [
+          15.1875,
+          22.75
+        ],
+        "probabilities": [
+          0.0005193032557144761,
+          0.9994775056838989
+        ],
+        "greedy_id": 16,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "62ec598d127ceea1dc994fe2326d537e149bf21230c18767e80fa21191986a65",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "010011",
+      "x": "10100110",
+      "h": "A",
+      "e": 1,
+      "target": 0,
+      "delivered_id": 426,
+      "correct": true,
+      "erased_correct": false,
+      "recipient": {
+        "x": "10100110",
+        "p": 1,
+        "letter_id": 426,
+        "recipient_target": 0,
+        "margin": -2.75,
+        "mass": 0.9999864101409912,
+        "pred": 0,
+        "logits": [
+          22.5,
+          19.75
+        ],
+        "probabilities": [
+          0.9399005770683289,
+          0.060085833072662354
+        ],
+        "greedy_id": 15,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "9a97701abe9ede33054cde42b74decded2e59a47a3689a43fc17af0b6b5e5543",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "010011",
+      "x": "10100110",
+      "h": "B",
+      "e": 0,
+      "target": 0,
+      "delivered_id": 426,
+      "correct": true,
+      "erased_correct": false,
+      "recipient": {
+        "x": "10100110",
+        "p": 1,
+        "letter_id": 426,
+        "recipient_target": 0,
+        "margin": -2.75,
+        "mass": 0.9999864101409912,
+        "pred": 0,
+        "logits": [
+          22.5,
+          19.75
+        ],
+        "probabilities": [
+          0.9399005770683289,
+          0.060085833072662354
+        ],
+        "greedy_id": 15,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "9a97701abe9ede33054cde42b74decded2e59a47a3689a43fc17af0b6b5e5543",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "010011",
+      "x": "10100110",
+      "h": "B",
+      "e": 1,
+      "target": 1,
+      "delivered_id": 362,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "10100110",
+        "p": 0,
+        "letter_id": 362,
+        "recipient_target": 1,
+        "margin": 7.5625,
+        "mass": 0.9999968089396134,
+        "pred": 1,
+        "logits": [
+          15.1875,
+          22.75
+        ],
+        "probabilities": [
+          0.0005193032557144761,
+          0.9994775056838989
+        ],
+        "greedy_id": 16,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "62ec598d127ceea1dc994fe2326d537e149bf21230c18767e80fa21191986a65",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "010011",
+      "x": "10100111",
+      "h": "A",
+      "e": 0,
+      "target": 1,
+      "delivered_id": 362,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "10100111",
+        "p": 0,
+        "letter_id": 362,
+        "recipient_target": 1,
+        "margin": 8.6875,
+        "mass": 0.9999988985364325,
+        "pred": 1,
+        "logits": [
+          14.0625,
+          22.75
+        ],
+        "probabilities": [
+          0.00016865256475284696,
+          0.9998302459716797
+        ],
+        "greedy_id": 16,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "f08a2d98fcfb535c83f8671b83cd4c69e755ded385891bf9c0107f2d2e4f1caa",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "010011",
+      "x": "10100111",
+      "h": "A",
+      "e": 1,
+      "target": 1,
+      "delivered_id": 426,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "10100111",
+        "p": 1,
+        "letter_id": 426,
+        "recipient_target": 1,
+        "margin": 7.4375,
+        "mass": 0.999995399499312,
+        "pred": 1,
+        "logits": [
+          14.6875,
+          22.125
+        ],
+        "probabilities": [
+          0.0005884061101824045,
+          0.9994069933891296
+        ],
+        "greedy_id": 16,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "f2a73ef0a56c74a158f7ff25a712e643d9e1bf188e94e6d44575811317cea370",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "010011",
+      "x": "10100111",
+      "h": "B",
+      "e": 0,
+      "target": 1,
+      "delivered_id": 426,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "10100111",
+        "p": 1,
+        "letter_id": 426,
+        "recipient_target": 1,
+        "margin": 7.4375,
+        "mass": 0.999995399499312,
+        "pred": 1,
+        "logits": [
+          14.6875,
+          22.125
+        ],
+        "probabilities": [
+          0.0005884061101824045,
+          0.9994069933891296
+        ],
+        "greedy_id": 16,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "f2a73ef0a56c74a158f7ff25a712e643d9e1bf188e94e6d44575811317cea370",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "010011",
+      "x": "10100111",
+      "h": "B",
+      "e": 1,
+      "target": 1,
+      "delivered_id": 362,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "10100111",
+        "p": 0,
+        "letter_id": 362,
+        "recipient_target": 1,
+        "margin": 8.6875,
+        "mass": 0.9999988985364325,
+        "pred": 1,
+        "logits": [
+          14.0625,
+          22.75
+        ],
+        "probabilities": [
+          0.00016865256475284696,
+          0.9998302459716797
+        ],
+        "greedy_id": 16,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "f08a2d98fcfb535c83f8671b83cd4c69e755ded385891bf9c0107f2d2e4f1caa",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "000001",
+      "x": "00000010",
+      "h": "A",
+      "e": 0,
+      "target": 0,
+      "delivered_id": 362,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "00000010",
+        "p": 0,
+        "letter_id": 362,
+        "recipient_target": 0,
+        "margin": -4.75,
+        "mass": 0.9999951496720314,
+        "pred": 0,
+        "logits": [
+          23.0,
+          18.25
+        ],
+        "probabilities": [
+          0.9914177060127258,
+          0.008577443659305573
+        ],
+        "greedy_id": 15,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "d5155b4855cedeb45310cdd29841d8d3654c57580f4a392d3934e2526c66f140",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "000001",
+      "x": "00000010",
+      "h": "A",
+      "e": 1,
+      "target": 0,
+      "delivered_id": 426,
+      "correct": false,
+      "erased_correct": true,
+      "recipient": {
+        "x": "00000010",
+        "p": 1,
+        "letter_id": 426,
+        "recipient_target": 0,
+        "margin": 1.625,
+        "mass": 0.9999827444553375,
+        "pred": 1,
+        "logits": [
+          21.375,
+          23.0
+        ],
+        "probabilities": [
+          0.16451361775398254,
+          0.835469126701355
+        ],
+        "greedy_id": 16,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "ded97f6208e4fb060aa006bb66da1b6a28b614bd9febf18e162a27f2414d463d",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "000001",
+      "x": "00000010",
+      "h": "B",
+      "e": 0,
+      "target": 0,
+      "delivered_id": 426,
+      "correct": false,
+      "erased_correct": true,
+      "recipient": {
+        "x": "00000010",
+        "p": 1,
+        "letter_id": 426,
+        "recipient_target": 0,
+        "margin": 1.625,
+        "mass": 0.9999827444553375,
+        "pred": 1,
+        "logits": [
+          21.375,
+          23.0
+        ],
+        "probabilities": [
+          0.16451361775398254,
+          0.835469126701355
+        ],
+        "greedy_id": 16,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "ded97f6208e4fb060aa006bb66da1b6a28b614bd9febf18e162a27f2414d463d",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "000001",
+      "x": "00000010",
+      "h": "B",
+      "e": 1,
+      "target": 0,
+      "delivered_id": 362,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "00000010",
+        "p": 0,
+        "letter_id": 362,
+        "recipient_target": 0,
+        "margin": -4.75,
+        "mass": 0.9999951496720314,
+        "pred": 0,
+        "logits": [
+          23.0,
+          18.25
+        ],
+        "probabilities": [
+          0.9914177060127258,
+          0.008577443659305573
+        ],
+        "greedy_id": 15,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "d5155b4855cedeb45310cdd29841d8d3654c57580f4a392d3934e2526c66f140",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "000001",
+      "x": "00000011",
+      "h": "A",
+      "e": 0,
+      "target": 0,
+      "delivered_id": 362,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "00000011",
+        "p": 0,
+        "letter_id": 362,
+        "recipient_target": 0,
+        "margin": -4.5,
+        "mass": 0.9999946551397443,
+        "pred": 0,
+        "logits": [
+          22.75,
+          18.25
+        ],
+        "probabilities": [
+          0.9890077710151672,
+          0.010986884124577045
+        ],
+        "greedy_id": 15,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "72db0c0b4bb2f3ac246b50a508e390e79fd2f789161d4cf737aef879709f783a",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "000001",
+      "x": "00000011",
+      "h": "A",
+      "e": 1,
+      "target": 1,
+      "delivered_id": 426,
+      "correct": true,
+      "erased_correct": false,
+      "recipient": {
+        "x": "00000011",
+        "p": 1,
+        "letter_id": 426,
+        "recipient_target": 1,
+        "margin": 6.8125,
+        "mass": 0.9999835101189092,
+        "pred": 1,
+        "logits": [
+          14.5625,
+          21.375
+        ],
+        "probabilities": [
+          0.0010987130226567388,
+          0.9988847970962524
+        ],
+        "greedy_id": 16,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "e05bac7de36b1ee6d05317b0976fd1b6bece62bc57de1dd677319d872b29ddbd",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "000001",
+      "x": "00000011",
+      "h": "B",
+      "e": 0,
+      "target": 1,
+      "delivered_id": 426,
+      "correct": true,
+      "erased_correct": false,
+      "recipient": {
+        "x": "00000011",
+        "p": 1,
+        "letter_id": 426,
+        "recipient_target": 1,
+        "margin": 6.8125,
+        "mass": 0.9999835101189092,
+        "pred": 1,
+        "logits": [
+          14.5625,
+          21.375
+        ],
+        "probabilities": [
+          0.0010987130226567388,
+          0.9988847970962524
+        ],
+        "greedy_id": 16,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "e05bac7de36b1ee6d05317b0976fd1b6bece62bc57de1dd677319d872b29ddbd",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "000001",
+      "x": "00000011",
+      "h": "B",
+      "e": 1,
+      "target": 0,
+      "delivered_id": 362,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "00000011",
+        "p": 0,
+        "letter_id": 362,
+        "recipient_target": 0,
+        "margin": -4.5,
+        "mass": 0.9999946551397443,
+        "pred": 0,
+        "logits": [
+          22.75,
+          18.25
+        ],
+        "probabilities": [
+          0.9890077710151672,
+          0.010986884124577045
+        ],
+        "greedy_id": 15,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "72db0c0b4bb2f3ac246b50a508e390e79fd2f789161d4cf737aef879709f783a",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "000001",
+      "x": "10000010",
+      "h": "A",
+      "e": 0,
+      "target": 1,
+      "delivered_id": 362,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "10000010",
+        "p": 0,
+        "letter_id": 362,
+        "recipient_target": 1,
+        "margin": 8.0625,
+        "mass": 0.9999965700262692,
+        "pred": 1,
+        "logits": [
+          14.6875,
+          22.75
+        ],
+        "probabilities": [
+          0.00031503764330409467,
+          0.9996815323829651
+        ],
+        "greedy_id": 16,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "e6e23d18bf621d170639734fefbb50164016ce01abb00abe3900a8c0820df7c7",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "000001",
+      "x": "10000010",
+      "h": "A",
+      "e": 1,
+      "target": 0,
+      "delivered_id": 426,
+      "correct": true,
+      "erased_correct": false,
+      "recipient": {
+        "x": "10000010",
+        "p": 1,
+        "letter_id": 426,
+        "recipient_target": 0,
+        "margin": -1.25,
+        "mass": 0.9998787045478821,
+        "pred": 0,
+        "logits": [
+          22.625,
+          21.375
+        ],
+        "probabilities": [
+          0.7772055864334106,
+          0.22267311811447144
+        ],
+        "greedy_id": 15,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "863622bd68827bda7f8c89c0b8791231915ec9e6b9e1555362e4fdc51fcaf54f",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "000001",
+      "x": "10000010",
+      "h": "B",
+      "e": 0,
+      "target": 0,
+      "delivered_id": 426,
+      "correct": true,
+      "erased_correct": false,
+      "recipient": {
+        "x": "10000010",
+        "p": 1,
+        "letter_id": 426,
+        "recipient_target": 0,
+        "margin": -1.25,
+        "mass": 0.9998787045478821,
+        "pred": 0,
+        "logits": [
+          22.625,
+          21.375
+        ],
+        "probabilities": [
+          0.7772055864334106,
+          0.22267311811447144
+        ],
+        "greedy_id": 15,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "863622bd68827bda7f8c89c0b8791231915ec9e6b9e1555362e4fdc51fcaf54f",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "000001",
+      "x": "10000010",
+      "h": "B",
+      "e": 1,
+      "target": 1,
+      "delivered_id": 362,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "10000010",
+        "p": 0,
+        "letter_id": 362,
+        "recipient_target": 1,
+        "margin": 8.0625,
+        "mass": 0.9999965700262692,
+        "pred": 1,
+        "logits": [
+          14.6875,
+          22.75
+        ],
+        "probabilities": [
+          0.00031503764330409467,
+          0.9996815323829651
+        ],
+        "greedy_id": 16,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "e6e23d18bf621d170639734fefbb50164016ce01abb00abe3900a8c0820df7c7",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "000001",
+      "x": "10000011",
+      "h": "A",
+      "e": 0,
+      "target": 1,
+      "delivered_id": 362,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "10000011",
+        "p": 0,
+        "letter_id": 362,
+        "recipient_target": 1,
+        "margin": 8.375,
+        "mass": 0.9999959019041853,
+        "pred": 1,
+        "logits": [
+          14.125,
+          22.5
+        ],
+        "probabilities": [
+          0.00023050578602124006,
+          0.9997653961181641
+        ],
+        "greedy_id": 16,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "ffbc0b4ab1c6d231189ee90ec20d8bc1d780baba86eec64c467cfcc6a4ea703d",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "000001",
+      "x": "10000011",
+      "h": "A",
+      "e": 1,
+      "target": 1,
+      "delivered_id": 426,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "10000011",
+        "p": 1,
+        "letter_id": 426,
+        "recipient_target": 1,
+        "margin": 6.0625,
+        "mass": 0.9999817304778844,
+        "pred": 1,
+        "logits": [
+          15.3125,
+          21.375
+        ],
+        "probabilities": [
+          0.0023231201339513063,
+          0.9976586103439331
+        ],
+        "greedy_id": 16,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "0556006fe80e96ae8007ab8c3e6c08aa3036ecc9f4c4c8d640a0473c60fa2891",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "000001",
+      "x": "10000011",
+      "h": "B",
+      "e": 0,
+      "target": 1,
+      "delivered_id": 426,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "10000011",
+        "p": 1,
+        "letter_id": 426,
+        "recipient_target": 1,
+        "margin": 6.0625,
+        "mass": 0.9999817304778844,
+        "pred": 1,
+        "logits": [
+          15.3125,
+          21.375
+        ],
+        "probabilities": [
+          0.0023231201339513063,
+          0.9976586103439331
+        ],
+        "greedy_id": 16,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "0556006fe80e96ae8007ab8c3e6c08aa3036ecc9f4c4c8d640a0473c60fa2891",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "000001",
+      "x": "10000011",
+      "h": "B",
+      "e": 1,
+      "target": 1,
+      "delivered_id": 362,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "10000011",
+        "p": 0,
+        "letter_id": 362,
+        "recipient_target": 1,
+        "margin": 8.375,
+        "mass": 0.9999959019041853,
+        "pred": 1,
+        "logits": [
+          14.125,
+          22.5
+        ],
+        "probabilities": [
+          0.00023050578602124006,
+          0.9997653961181641
+        ],
+        "greedy_id": 16,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "ffbc0b4ab1c6d231189ee90ec20d8bc1d780baba86eec64c467cfcc6a4ea703d",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "101001",
+      "x": "01010010",
+      "h": "A",
+      "e": 0,
+      "target": 0,
+      "delivered_id": 362,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "01010010",
+        "p": 0,
+        "letter_id": 362,
+        "recipient_target": 0,
+        "margin": -7.5,
+        "mass": 0.9999979177955538,
+        "pred": 0,
+        "logits": [
+          23.875,
+          16.375
+        ],
+        "probabilities": [
+          0.9994451403617859,
+          0.0005527774337679148
+        ],
+        "greedy_id": 15,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "3a89f6c4672a650b0a663ecd6863879cdc6f57bb43fc4b2b326c45c3fa016752",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "101001",
+      "x": "01010010",
+      "h": "A",
+      "e": 1,
+      "target": 0,
+      "delivered_id": 426,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "01010010",
+        "p": 1,
+        "letter_id": 426,
+        "recipient_target": 0,
+        "margin": -2.75,
+        "mass": 0.9999864101409912,
+        "pred": 0,
+        "logits": [
+          23.5,
+          20.75
+        ],
+        "probabilities": [
+          0.9399005770683289,
+          0.060085833072662354
+        ],
+        "greedy_id": 15,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "9105a4f87be3fbe9d609a857f4c2af2955c40258e5719c26b958ce3eeb7e0136",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "101001",
+      "x": "01010010",
+      "h": "B",
+      "e": 0,
+      "target": 0,
+      "delivered_id": 426,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "01010010",
+        "p": 1,
+        "letter_id": 426,
+        "recipient_target": 0,
+        "margin": -2.75,
+        "mass": 0.9999864101409912,
+        "pred": 0,
+        "logits": [
+          23.5,
+          20.75
+        ],
+        "probabilities": [
+          0.9399005770683289,
+          0.060085833072662354
+        ],
+        "greedy_id": 15,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "9105a4f87be3fbe9d609a857f4c2af2955c40258e5719c26b958ce3eeb7e0136",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "101001",
+      "x": "01010010",
+      "h": "B",
+      "e": 1,
+      "target": 0,
+      "delivered_id": 362,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "01010010",
+        "p": 0,
+        "letter_id": 362,
+        "recipient_target": 0,
+        "margin": -7.5,
+        "mass": 0.9999979177955538,
+        "pred": 0,
+        "logits": [
+          23.875,
+          16.375
+        ],
+        "probabilities": [
+          0.9994451403617859,
+          0.0005527774337679148
+        ],
+        "greedy_id": 15,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "3a89f6c4672a650b0a663ecd6863879cdc6f57bb43fc4b2b326c45c3fa016752",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "101001",
+      "x": "01010011",
+      "h": "A",
+      "e": 0,
+      "target": 0,
+      "delivered_id": 362,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "01010011",
+        "p": 0,
+        "letter_id": 362,
+        "recipient_target": 0,
+        "margin": -7.375,
+        "mass": 0.9999989946954884,
+        "pred": 0,
+        "logits": [
+          23.625,
+          16.25
+        ],
+        "probabilities": [
+          0.999372661113739,
+          0.0006263335817493498
+        ],
+        "greedy_id": 15,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "3df20633d7a07ab57806a5d0cb226837c872ec4e1f34555a817440cc2ce66efc",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "101001",
+      "x": "01010011",
+      "h": "A",
+      "e": 1,
+      "target": 1,
+      "delivered_id": 426,
+      "correct": true,
+      "erased_correct": false,
+      "recipient": {
+        "x": "01010011",
+        "p": 1,
+        "letter_id": 426,
+        "recipient_target": 1,
+        "margin": 5.0,
+        "mass": 0.9999900632537901,
+        "pred": 1,
+        "logits": [
+          16.5,
+          21.5
+        ],
+        "probabilities": [
+          0.006692784372717142,
+          0.993297278881073
+        ],
+        "greedy_id": 16,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "2cc14a123e429d8df8a17c525675306af92bdaeb5061daeab8f8a28a19e9f9e4",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "101001",
+      "x": "01010011",
+      "h": "B",
+      "e": 0,
+      "target": 1,
+      "delivered_id": 426,
+      "correct": true,
+      "erased_correct": false,
+      "recipient": {
+        "x": "01010011",
+        "p": 1,
+        "letter_id": 426,
+        "recipient_target": 1,
+        "margin": 5.0,
+        "mass": 0.9999900632537901,
+        "pred": 1,
+        "logits": [
+          16.5,
+          21.5
+        ],
+        "probabilities": [
+          0.006692784372717142,
+          0.993297278881073
+        ],
+        "greedy_id": 16,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "2cc14a123e429d8df8a17c525675306af92bdaeb5061daeab8f8a28a19e9f9e4",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "101001",
+      "x": "01010011",
+      "h": "B",
+      "e": 1,
+      "target": 0,
+      "delivered_id": 362,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "01010011",
+        "p": 0,
+        "letter_id": 362,
+        "recipient_target": 0,
+        "margin": -7.375,
+        "mass": 0.9999989946954884,
+        "pred": 0,
+        "logits": [
+          23.625,
+          16.25
+        ],
+        "probabilities": [
+          0.999372661113739,
+          0.0006263335817493498
+        ],
+        "greedy_id": 15,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "3df20633d7a07ab57806a5d0cb226837c872ec4e1f34555a817440cc2ce66efc",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "101001",
+      "x": "11010010",
+      "h": "A",
+      "e": 0,
+      "target": 1,
+      "delivered_id": 362,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "11010010",
+        "p": 0,
+        "letter_id": 362,
+        "recipient_target": 1,
+        "margin": 7.875,
+        "mass": 0.9999966657778714,
+        "pred": 1,
+        "logits": [
+          14.75,
+          22.625
+        ],
+        "probabilities": [
+          0.0003799832484219223,
+          0.9996166825294495
+        ],
+        "greedy_id": 16,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "38a190d2e31b9a89f37ef381fcc961a84c44321f201b661a7a4daa069162362e",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "101001",
+      "x": "11010010",
+      "h": "A",
+      "e": 1,
+      "target": 0,
+      "delivered_id": 426,
+      "correct": true,
+      "erased_correct": false,
+      "recipient": {
+        "x": "11010010",
+        "p": 1,
+        "letter_id": 426,
+        "recipient_target": 0,
+        "margin": -4.0,
+        "mass": 0.9999919589608908,
+        "pred": 0,
+        "logits": [
+          23.25,
+          19.25
+        ],
+        "probabilities": [
+          0.9820058941841125,
+          0.01798606477677822
+        ],
+        "greedy_id": 15,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "c348765b866699be69bbcc3fbdacfb74837c16a016e2a354d18e3649f61e6865",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "101001",
+      "x": "11010010",
+      "h": "B",
+      "e": 0,
+      "target": 0,
+      "delivered_id": 426,
+      "correct": true,
+      "erased_correct": false,
+      "recipient": {
+        "x": "11010010",
+        "p": 1,
+        "letter_id": 426,
+        "recipient_target": 0,
+        "margin": -4.0,
+        "mass": 0.9999919589608908,
+        "pred": 0,
+        "logits": [
+          23.25,
+          19.25
+        ],
+        "probabilities": [
+          0.9820058941841125,
+          0.01798606477677822
+        ],
+        "greedy_id": 15,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "c348765b866699be69bbcc3fbdacfb74837c16a016e2a354d18e3649f61e6865",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "101001",
+      "x": "11010010",
+      "h": "B",
+      "e": 1,
+      "target": 1,
+      "delivered_id": 362,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "11010010",
+        "p": 0,
+        "letter_id": 362,
+        "recipient_target": 1,
+        "margin": 7.875,
+        "mass": 0.9999966657778714,
+        "pred": 1,
+        "logits": [
+          14.75,
+          22.625
+        ],
+        "probabilities": [
+          0.0003799832484219223,
+          0.9996166825294495
+        ],
+        "greedy_id": 16,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "38a190d2e31b9a89f37ef381fcc961a84c44321f201b661a7a4daa069162362e",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "101001",
+      "x": "11010011",
+      "h": "A",
+      "e": 0,
+      "target": 1,
+      "delivered_id": 362,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "11010011",
+        "p": 0,
+        "letter_id": 362,
+        "recipient_target": 1,
+        "margin": 8.25,
+        "mass": 0.9999980352877174,
+        "pred": 1,
+        "logits": [
+          14.25,
+          22.5
+        ],
+        "probabilities": [
+          0.0002611897944007069,
+          0.9997368454933167
+        ],
+        "greedy_id": 16,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "9c13a9b08d9b1a7e385621c5582af82411e8f3badfb9f58e63d635b81da0dab1",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "101001",
+      "x": "11010011",
+      "h": "A",
+      "e": 1,
+      "target": 1,
+      "delivered_id": 426,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "11010011",
+        "p": 1,
+        "letter_id": 426,
+        "recipient_target": 1,
+        "margin": 4.25,
+        "mass": 0.9999880604445934,
+        "pred": 1,
+        "logits": [
+          17.375,
+          21.625
+        ],
+        "probabilities": [
+          0.014063458889722824,
+          0.9859246015548706
+        ],
+        "greedy_id": 16,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "1c0b559f11aea8ae32a571e9b34da9bb39a4d948bde99cc79fedfc1e3bc9e594",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "101001",
+      "x": "11010011",
+      "h": "B",
+      "e": 0,
+      "target": 1,
+      "delivered_id": 426,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "11010011",
+        "p": 1,
+        "letter_id": 426,
+        "recipient_target": 1,
+        "margin": 4.25,
+        "mass": 0.9999880604445934,
+        "pred": 1,
+        "logits": [
+          17.375,
+          21.625
+        ],
+        "probabilities": [
+          0.014063458889722824,
+          0.9859246015548706
+        ],
+        "greedy_id": 16,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "1c0b559f11aea8ae32a571e9b34da9bb39a4d948bde99cc79fedfc1e3bc9e594",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "101001",
+      "x": "11010011",
+      "h": "B",
+      "e": 1,
+      "target": 1,
+      "delivered_id": 362,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "11010011",
+        "p": 0,
+        "letter_id": 362,
+        "recipient_target": 1,
+        "margin": 8.25,
+        "mass": 0.9999980352877174,
+        "pred": 1,
+        "logits": [
+          14.25,
+          22.5
+        ],
+        "probabilities": [
+          0.0002611897944007069,
+          0.9997368454933167
+        ],
+        "greedy_id": 16,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "9c13a9b08d9b1a7e385621c5582af82411e8f3badfb9f58e63d635b81da0dab1",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "100011",
+      "x": "01000110",
+      "h": "A",
+      "e": 0,
+      "target": 0,
+      "delivered_id": 362,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "01000110",
+        "p": 0,
+        "letter_id": 362,
+        "recipient_target": 0,
+        "margin": -6.75,
+        "mass": 0.9999972028890625,
+        "pred": 0,
+        "logits": [
+          23.5,
+          16.75
+        ],
+        "probabilities": [
+          0.9988276958465576,
+          0.001169507042504847
+        ],
+        "greedy_id": 15,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "37d4cc01f7998067a555f8c25da6c4e41dca3696db562f496cb507bf60ed195a",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "100011",
+      "x": "01000110",
+      "h": "A",
+      "e": 1,
+      "target": 0,
+      "delivered_id": 426,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "01000110",
+        "p": 1,
+        "letter_id": 426,
+        "recipient_target": 0,
+        "margin": -0.875,
+        "mass": 0.999977707862854,
+        "pred": 0,
+        "logits": [
+          22.125,
+          21.25
+        ],
+        "probabilities": [
+          0.7057693004608154,
+          0.2942084074020386
+        ],
+        "greedy_id": 15,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "c902a87db2b00ed9bf0537d65872cd160b2a12c4c248ca94cbdcfd2a54f7f6f0",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "100011",
+      "x": "01000110",
+      "h": "B",
+      "e": 0,
+      "target": 0,
+      "delivered_id": 426,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "01000110",
+        "p": 1,
+        "letter_id": 426,
+        "recipient_target": 0,
+        "margin": -0.875,
+        "mass": 0.999977707862854,
+        "pred": 0,
+        "logits": [
+          22.125,
+          21.25
+        ],
+        "probabilities": [
+          0.7057693004608154,
+          0.2942084074020386
+        ],
+        "greedy_id": 15,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "c902a87db2b00ed9bf0537d65872cd160b2a12c4c248ca94cbdcfd2a54f7f6f0",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "100011",
+      "x": "01000110",
+      "h": "B",
+      "e": 1,
+      "target": 0,
+      "delivered_id": 362,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "01000110",
+        "p": 0,
+        "letter_id": 362,
+        "recipient_target": 0,
+        "margin": -6.75,
+        "mass": 0.9999972028890625,
+        "pred": 0,
+        "logits": [
+          23.5,
+          16.75
+        ],
+        "probabilities": [
+          0.9988276958465576,
+          0.001169507042504847
+        ],
+        "greedy_id": 15,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "37d4cc01f7998067a555f8c25da6c4e41dca3696db562f496cb507bf60ed195a",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "100011",
+      "x": "01000111",
+      "h": "A",
+      "e": 0,
+      "target": 0,
+      "delivered_id": 362,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "01000111",
+        "p": 0,
+        "letter_id": 362,
+        "recipient_target": 0,
+        "margin": -7.25,
+        "mass": 0.9999984666937962,
+        "pred": 0,
+        "logits": [
+          23.5,
+          16.25
+        ],
+        "probabilities": [
+          0.99928879737854,
+          0.0007096693152561784
+        ],
+        "greedy_id": 15,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "676624e6b65bd25da4550a8dbe53f7452f669239800864e5605eeaa8f5d087ac",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "100011",
+      "x": "01000111",
+      "h": "A",
+      "e": 1,
+      "target": 1,
+      "delivered_id": 426,
+      "correct": true,
+      "erased_correct": false,
+      "recipient": {
+        "x": "01000111",
+        "p": 1,
+        "letter_id": 426,
+        "recipient_target": 1,
+        "margin": 6.8125,
+        "mass": 0.9999930572230369,
+        "pred": 1,
+        "logits": [
+          14.9375,
+          21.75
+        ],
+        "probabilities": [
+          0.0010987233836203814,
+          0.9988943338394165
+        ],
+        "greedy_id": 16,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "5d012ab5ecf947243879c58afb5d4f8b2afc2c9e6ce882b97c045a1a4284e251",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "100011",
+      "x": "01000111",
+      "h": "B",
+      "e": 0,
+      "target": 1,
+      "delivered_id": 426,
+      "correct": true,
+      "erased_correct": false,
+      "recipient": {
+        "x": "01000111",
+        "p": 1,
+        "letter_id": 426,
+        "recipient_target": 1,
+        "margin": 6.8125,
+        "mass": 0.9999930572230369,
+        "pred": 1,
+        "logits": [
+          14.9375,
+          21.75
+        ],
+        "probabilities": [
+          0.0010987233836203814,
+          0.9988943338394165
+        ],
+        "greedy_id": 16,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "5d012ab5ecf947243879c58afb5d4f8b2afc2c9e6ce882b97c045a1a4284e251",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "100011",
+      "x": "01000111",
+      "h": "B",
+      "e": 1,
+      "target": 0,
+      "delivered_id": 362,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "01000111",
+        "p": 0,
+        "letter_id": 362,
+        "recipient_target": 0,
+        "margin": -7.25,
+        "mass": 0.9999984666937962,
+        "pred": 0,
+        "logits": [
+          23.5,
+          16.25
+        ],
+        "probabilities": [
+          0.99928879737854,
+          0.0007096693152561784
+        ],
+        "greedy_id": 15,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "676624e6b65bd25da4550a8dbe53f7452f669239800864e5605eeaa8f5d087ac",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "100011",
+      "x": "11000110",
+      "h": "A",
+      "e": 0,
+      "target": 1,
+      "delivered_id": 362,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "11000110",
+        "p": 0,
+        "letter_id": 362,
+        "recipient_target": 1,
+        "margin": 8.0,
+        "mass": 0.9999978082778398,
+        "pred": 1,
+        "logits": [
+          14.375,
+          22.375
+        ],
+        "probabilities": [
+          0.00033534938120283186,
+          0.999662458896637
+        ],
+        "greedy_id": 16,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "421e795b9a97e98fa004cd1fa9cd7dd0c12b4fcdc66774fc7d2274b16bda3867",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "100011",
+      "x": "11000110",
+      "h": "A",
+      "e": 1,
+      "target": 0,
+      "delivered_id": 426,
+      "correct": true,
+      "erased_correct": false,
+      "recipient": {
+        "x": "11000110",
+        "p": 1,
+        "letter_id": 426,
+        "recipient_target": 0,
+        "margin": -3.0,
+        "mass": 0.9999804832041264,
+        "pred": 0,
+        "logits": [
+          22.5,
+          19.5
+        ],
+        "probabilities": [
+          0.9525555372238159,
+          0.04742494598031044
+        ],
+        "greedy_id": 15,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "8b1681c125059adbc59c0e6f4d7770d47dc314447d69a0cd32f67a49960ac02a",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "100011",
+      "x": "11000110",
+      "h": "B",
+      "e": 0,
+      "target": 0,
+      "delivered_id": 426,
+      "correct": true,
+      "erased_correct": false,
+      "recipient": {
+        "x": "11000110",
+        "p": 1,
+        "letter_id": 426,
+        "recipient_target": 0,
+        "margin": -3.0,
+        "mass": 0.9999804832041264,
+        "pred": 0,
+        "logits": [
+          22.5,
+          19.5
+        ],
+        "probabilities": [
+          0.9525555372238159,
+          0.04742494598031044
+        ],
+        "greedy_id": 15,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "8b1681c125059adbc59c0e6f4d7770d47dc314447d69a0cd32f67a49960ac02a",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "100011",
+      "x": "11000110",
+      "h": "B",
+      "e": 1,
+      "target": 1,
+      "delivered_id": 362,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "11000110",
+        "p": 0,
+        "letter_id": 362,
+        "recipient_target": 1,
+        "margin": 8.0,
+        "mass": 0.9999978082778398,
+        "pred": 1,
+        "logits": [
+          14.375,
+          22.375
+        ],
+        "probabilities": [
+          0.00033534938120283186,
+          0.999662458896637
+        ],
+        "greedy_id": 16,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "421e795b9a97e98fa004cd1fa9cd7dd0c12b4fcdc66774fc7d2274b16bda3867",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "100011",
+      "x": "11000111",
+      "h": "A",
+      "e": 0,
+      "target": 1,
+      "delivered_id": 362,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "11000111",
+        "p": 0,
+        "letter_id": 362,
+        "recipient_target": 1,
+        "margin": 8.5,
+        "mass": 0.9999974328093231,
+        "pred": 1,
+        "logits": [
+          13.875,
+          22.375
+        ],
+        "probabilities": [
+          0.00020342646166682243,
+          0.9997940063476562
+        ],
+        "greedy_id": 16,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "6f410ba774c9ebff1bc17fadc9745ee4d8ff05cee1e6bb64c46f712b1d9a0840",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "100011",
+      "x": "11000111",
+      "h": "A",
+      "e": 1,
+      "target": 1,
+      "delivered_id": 426,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "11000111",
+        "p": 1,
+        "letter_id": 426,
+        "recipient_target": 1,
+        "margin": 6.6875,
+        "mass": 0.999990571057424,
+        "pred": 1,
+        "logits": [
+          14.9375,
+          21.625
+        ],
+        "probabilities": [
+          0.0012448315974324942,
+          0.9987457394599915
+        ],
+        "greedy_id": 16,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "547ada864de6553008c4558b965205e2fb1f353ae83153cf8da4b9f6343fdc2e",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "100011",
+      "x": "11000111",
+      "h": "B",
+      "e": 0,
+      "target": 1,
+      "delivered_id": 426,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "11000111",
+        "p": 1,
+        "letter_id": 426,
+        "recipient_target": 1,
+        "margin": 6.6875,
+        "mass": 0.999990571057424,
+        "pred": 1,
+        "logits": [
+          14.9375,
+          21.625
+        ],
+        "probabilities": [
+          0.0012448315974324942,
+          0.9987457394599915
+        ],
+        "greedy_id": 16,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "547ada864de6553008c4558b965205e2fb1f353ae83153cf8da4b9f6343fdc2e",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "100011",
+      "x": "11000111",
+      "h": "B",
+      "e": 1,
+      "target": 1,
+      "delivered_id": 362,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "11000111",
+        "p": 0,
+        "letter_id": 362,
+        "recipient_target": 1,
+        "margin": 8.5,
+        "mass": 0.9999974328093231,
+        "pred": 1,
+        "logits": [
+          13.875,
+          22.375
+        ],
+        "probabilities": [
+          0.00020342646166682243,
+          0.9997940063476562
+        ],
+        "greedy_id": 16,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "6f410ba774c9ebff1bc17fadc9745ee4d8ff05cee1e6bb64c46f712b1d9a0840",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "001100",
+      "x": "00011000",
+      "h": "A",
+      "e": 0,
+      "target": 0,
+      "delivered_id": 362,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "00011000",
+        "p": 0,
+        "letter_id": 362,
+        "recipient_target": 0,
+        "margin": -6.875,
+        "mass": 0.9999989834614098,
+        "pred": 0,
+        "logits": [
+          23.25,
+          16.375
+        ],
+        "probabilities": [
+          0.9989667534828186,
+          0.0010322299785912037
+        ],
+        "greedy_id": 15,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "610b51ae5f23af3d12883619952a56e9a65f9bface0c2af66d6a6a6425b6911d",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "001100",
+      "x": "00011000",
+      "h": "A",
+      "e": 1,
+      "target": 0,
+      "delivered_id": 426,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "00011000",
+        "p": 1,
+        "letter_id": 426,
+        "recipient_target": 0,
+        "margin": -3.0,
+        "mass": 0.9999747313559055,
+        "pred": 0,
+        "logits": [
+          21.75,
+          18.75
+        ],
+        "probabilities": [
+          0.9525500535964966,
+          0.04742467775940895
+        ],
+        "greedy_id": 15,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "d4982bb84ae02d0a62bbebbcfe426f619d468c192856895a1b513fecc05f7772",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "001100",
+      "x": "00011000",
+      "h": "B",
+      "e": 0,
+      "target": 0,
+      "delivered_id": 426,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "00011000",
+        "p": 1,
+        "letter_id": 426,
+        "recipient_target": 0,
+        "margin": -3.0,
+        "mass": 0.9999747313559055,
+        "pred": 0,
+        "logits": [
+          21.75,
+          18.75
+        ],
+        "probabilities": [
+          0.9525500535964966,
+          0.04742467775940895
+        ],
+        "greedy_id": 15,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "d4982bb84ae02d0a62bbebbcfe426f619d468c192856895a1b513fecc05f7772",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "001100",
+      "x": "00011000",
+      "h": "B",
+      "e": 1,
+      "target": 0,
+      "delivered_id": 362,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "00011000",
+        "p": 0,
+        "letter_id": 362,
+        "recipient_target": 0,
+        "margin": -6.875,
+        "mass": 0.9999989834614098,
+        "pred": 0,
+        "logits": [
+          23.25,
+          16.375
+        ],
+        "probabilities": [
+          0.9989667534828186,
+          0.0010322299785912037
+        ],
+        "greedy_id": 15,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "610b51ae5f23af3d12883619952a56e9a65f9bface0c2af66d6a6a6425b6911d",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "001100",
+      "x": "00011001",
+      "h": "A",
+      "e": 0,
+      "target": 0,
+      "delivered_id": 362,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "00011001",
+        "p": 0,
+        "letter_id": 362,
+        "recipient_target": 0,
+        "margin": -6.25,
+        "mass": 0.9999964314047247,
+        "pred": 0,
+        "logits": [
+          22.875,
+          16.625
+        ],
+        "probabilities": [
+          0.998069703578949,
+          0.0019267278257757425
+        ],
+        "greedy_id": 15,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "0de3444e9248fd9c8b66b0c717e5f74ba099f2f830fd3924d6101a999c248fca",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "001100",
+      "x": "00011001",
+      "h": "A",
+      "e": 1,
+      "target": 1,
+      "delivered_id": 426,
+      "correct": true,
+      "erased_correct": false,
+      "recipient": {
+        "x": "00011001",
+        "p": 1,
+        "letter_id": 426,
+        "recipient_target": 1,
+        "margin": 4.25,
+        "mass": 0.9999651480466127,
+        "pred": 1,
+        "logits": [
+          17.0,
+          21.25
+        ],
+        "probabilities": [
+          0.014063136652112007,
+          0.9859020113945007
+        ],
+        "greedy_id": 16,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "ca7566022d9cc495bf42f5024663bff2f67c1f392a55bedd0c2605fae6cb7780",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "001100",
+      "x": "00011001",
+      "h": "B",
+      "e": 0,
+      "target": 1,
+      "delivered_id": 426,
+      "correct": true,
+      "erased_correct": false,
+      "recipient": {
+        "x": "00011001",
+        "p": 1,
+        "letter_id": 426,
+        "recipient_target": 1,
+        "margin": 4.25,
+        "mass": 0.9999651480466127,
+        "pred": 1,
+        "logits": [
+          17.0,
+          21.25
+        ],
+        "probabilities": [
+          0.014063136652112007,
+          0.9859020113945007
+        ],
+        "greedy_id": 16,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "ca7566022d9cc495bf42f5024663bff2f67c1f392a55bedd0c2605fae6cb7780",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "001100",
+      "x": "00011001",
+      "h": "B",
+      "e": 1,
+      "target": 0,
+      "delivered_id": 362,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "00011001",
+        "p": 0,
+        "letter_id": 362,
+        "recipient_target": 0,
+        "margin": -6.25,
+        "mass": 0.9999964314047247,
+        "pred": 0,
+        "logits": [
+          22.875,
+          16.625
+        ],
+        "probabilities": [
+          0.998069703578949,
+          0.0019267278257757425
+        ],
+        "greedy_id": 15,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "0de3444e9248fd9c8b66b0c717e5f74ba099f2f830fd3924d6101a999c248fca",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "001100",
+      "x": "10011000",
+      "h": "A",
+      "e": 0,
+      "target": 1,
+      "delivered_id": 362,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "10011000",
+        "p": 0,
+        "letter_id": 362,
+        "recipient_target": 1,
+        "margin": 9.125,
+        "mass": 0.9999982704975992,
+        "pred": 1,
+        "logits": [
+          13.625,
+          22.75
+        ],
+        "probabilities": [
+          0.00010889671830227599,
+          0.9998893737792969
+        ],
+        "greedy_id": 16,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "c16ad68385766f33025e917bc950641626e0cff7b9637c31d81a635bf70fbbf4",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "001100",
+      "x": "10011000",
+      "h": "A",
+      "e": 1,
+      "target": 0,
+      "delivered_id": 426,
+      "correct": true,
+      "erased_correct": false,
+      "recipient": {
+        "x": "10011000",
+        "p": 1,
+        "letter_id": 426,
+        "recipient_target": 0,
+        "margin": -4.75,
+        "mass": 0.9999951496720314,
+        "pred": 0,
+        "logits": [
+          22.75,
+          18.0
+        ],
+        "probabilities": [
+          0.9914177060127258,
+          0.008577443659305573
+        ],
+        "greedy_id": 15,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "0b345b72227935559b205e3dbfeec39110f2ee0fe6cb7ec9ca016350a20233e8",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "001100",
+      "x": "10011000",
+      "h": "B",
+      "e": 0,
+      "target": 0,
+      "delivered_id": 426,
+      "correct": true,
+      "erased_correct": false,
+      "recipient": {
+        "x": "10011000",
+        "p": 1,
+        "letter_id": 426,
+        "recipient_target": 0,
+        "margin": -4.75,
+        "mass": 0.9999951496720314,
+        "pred": 0,
+        "logits": [
+          22.75,
+          18.0
+        ],
+        "probabilities": [
+          0.9914177060127258,
+          0.008577443659305573
+        ],
+        "greedy_id": 15,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "0b345b72227935559b205e3dbfeec39110f2ee0fe6cb7ec9ca016350a20233e8",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "001100",
+      "x": "10011000",
+      "h": "B",
+      "e": 1,
+      "target": 1,
+      "delivered_id": 362,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "10011000",
+        "p": 0,
+        "letter_id": 362,
+        "recipient_target": 1,
+        "margin": 9.125,
+        "mass": 0.9999982704975992,
+        "pred": 1,
+        "logits": [
+          13.625,
+          22.75
+        ],
+        "probabilities": [
+          0.00010889671830227599,
+          0.9998893737792969
+        ],
+        "greedy_id": 16,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "c16ad68385766f33025e917bc950641626e0cff7b9637c31d81a635bf70fbbf4",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "001100",
+      "x": "10011001",
+      "h": "A",
+      "e": 0,
+      "target": 1,
+      "delivered_id": 362,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "10011001",
+        "p": 0,
+        "letter_id": 362,
+        "recipient_target": 1,
+        "margin": 9.0,
+        "mass": 0.9999975092650857,
+        "pred": 1,
+        "logits": [
+          13.75,
+          22.75
+        ],
+        "probabilities": [
+          0.00012339427485130727,
+          0.9998741149902344
+        ],
+        "greedy_id": 16,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "cac51e80eb59be3208ed919940e077c88b43bdcf9ec53a6bf838fe28214ac0a7",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "001100",
+      "x": "10011001",
+      "h": "A",
+      "e": 1,
+      "target": 1,
+      "delivered_id": 426,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "10011001",
+        "p": 1,
+        "letter_id": 426,
+        "recipient_target": 1,
+        "margin": 4.5,
+        "mass": 0.9999870015308261,
+        "pred": 1,
+        "logits": [
+          17.125,
+          21.625
+        ],
+        "probabilities": [
+          0.01098680030554533,
+          0.9890002012252808
+        ],
+        "greedy_id": 16,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "2c2609d17a947905436ddcbbf9ab99301c40d2a65af7e887773900580c2ec649",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "001100",
+      "x": "10011001",
+      "h": "B",
+      "e": 0,
+      "target": 1,
+      "delivered_id": 426,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "10011001",
+        "p": 1,
+        "letter_id": 426,
+        "recipient_target": 1,
+        "margin": 4.5,
+        "mass": 0.9999870015308261,
+        "pred": 1,
+        "logits": [
+          17.125,
+          21.625
+        ],
+        "probabilities": [
+          0.01098680030554533,
+          0.9890002012252808
+        ],
+        "greedy_id": 16,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "2c2609d17a947905436ddcbbf9ab99301c40d2a65af7e887773900580c2ec649",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "001100",
+      "x": "10011001",
+      "h": "B",
+      "e": 1,
+      "target": 1,
+      "delivered_id": 362,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "10011001",
+        "p": 0,
+        "letter_id": 362,
+        "recipient_target": 1,
+        "margin": 9.0,
+        "mass": 0.9999975092650857,
+        "pred": 1,
+        "logits": [
+          13.75,
+          22.75
+        ],
+        "probabilities": [
+          0.00012339427485130727,
+          0.9998741149902344
+        ],
+        "greedy_id": 16,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "cac51e80eb59be3208ed919940e077c88b43bdcf9ec53a6bf838fe28214ac0a7",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "011001",
+      "x": "00110010",
+      "h": "A",
+      "e": 0,
+      "target": 0,
+      "delivered_id": 362,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "00110010",
+        "p": 0,
+        "letter_id": 362,
+        "recipient_target": 0,
+        "margin": -8.0625,
+        "mass": 0.9999984779569786,
+        "pred": 0,
+        "logits": [
+          23.5,
+          15.4375
+        ],
+        "probabilities": [
+          0.9996834397315979,
+          0.0003150382253807038
+        ],
+        "greedy_id": 15,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "4cda8a00ddcda72b0f299b6a78c8885c175c5ecd6517e544eac165dd4d127b00",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "011001",
+      "x": "00110010",
+      "h": "A",
+      "e": 1,
+      "target": 0,
+      "delivered_id": 426,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "00110010",
+        "p": 1,
+        "letter_id": 426,
+        "recipient_target": 0,
+        "margin": -2.25,
+        "mass": 0.999986857175827,
+        "pred": 0,
+        "logits": [
+          23.125,
+          20.875
+        ],
+        "probabilities": [
+          0.9046386480331421,
+          0.09534820914268494
+        ],
+        "greedy_id": 15,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "9f4f6d9f801f66db615272286f9c854e5c63eed8ac34e6e4542ab5144eefa861",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "011001",
+      "x": "00110010",
+      "h": "B",
+      "e": 0,
+      "target": 0,
+      "delivered_id": 426,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "00110010",
+        "p": 1,
+        "letter_id": 426,
+        "recipient_target": 0,
+        "margin": -2.25,
+        "mass": 0.999986857175827,
+        "pred": 0,
+        "logits": [
+          23.125,
+          20.875
+        ],
+        "probabilities": [
+          0.9046386480331421,
+          0.09534820914268494
+        ],
+        "greedy_id": 15,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "9f4f6d9f801f66db615272286f9c854e5c63eed8ac34e6e4542ab5144eefa861",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "011001",
+      "x": "00110010",
+      "h": "B",
+      "e": 1,
+      "target": 0,
+      "delivered_id": 362,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "00110010",
+        "p": 0,
+        "letter_id": 362,
+        "recipient_target": 0,
+        "margin": -8.0625,
+        "mass": 0.9999984779569786,
+        "pred": 0,
+        "logits": [
+          23.5,
+          15.4375
+        ],
+        "probabilities": [
+          0.9996834397315979,
+          0.0003150382253807038
+        ],
+        "greedy_id": 15,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "4cda8a00ddcda72b0f299b6a78c8885c175c5ecd6517e544eac165dd4d127b00",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "011001",
+      "x": "00110011",
+      "h": "A",
+      "e": 0,
+      "target": 0,
+      "delivered_id": 362,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "00110011",
+        "p": 0,
+        "letter_id": 362,
+        "recipient_target": 0,
+        "margin": -8.5,
+        "mass": 0.9999993405508576,
+        "pred": 0,
+        "logits": [
+          23.625,
+          15.125
+        ],
+        "probabilities": [
+          0.9997959136962891,
+          0.0002034268545685336
+        ],
+        "greedy_id": 15,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "39290c20553462705bfeebc4d445f70cd9ee94cf47c60d06ffbc47ae71a4752e",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "011001",
+      "x": "00110011",
+      "h": "A",
+      "e": 1,
+      "target": 1,
+      "delivered_id": 426,
+      "correct": true,
+      "erased_correct": false,
+      "recipient": {
+        "x": "00110011",
+        "p": 1,
+        "letter_id": 426,
+        "recipient_target": 1,
+        "margin": 5.8125,
+        "mass": 0.9999909386970103,
+        "pred": 1,
+        "logits": [
+          15.4375,
+          21.25
+        ],
+        "probabilities": [
+          0.0029810057021677494,
+          0.9970099329948425
+        ],
+        "greedy_id": 16,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "22db5d7e90f1aa2aa9a31d27ba0790366c11cf41c2a220f575fac9f83448d45b",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "011001",
+      "x": "00110011",
+      "h": "B",
+      "e": 0,
+      "target": 1,
+      "delivered_id": 426,
+      "correct": true,
+      "erased_correct": false,
+      "recipient": {
+        "x": "00110011",
+        "p": 1,
+        "letter_id": 426,
+        "recipient_target": 1,
+        "margin": 5.8125,
+        "mass": 0.9999909386970103,
+        "pred": 1,
+        "logits": [
+          15.4375,
+          21.25
+        ],
+        "probabilities": [
+          0.0029810057021677494,
+          0.9970099329948425
+        ],
+        "greedy_id": 16,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "22db5d7e90f1aa2aa9a31d27ba0790366c11cf41c2a220f575fac9f83448d45b",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "011001",
+      "x": "00110011",
+      "h": "B",
+      "e": 1,
+      "target": 0,
+      "delivered_id": 362,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "00110011",
+        "p": 0,
+        "letter_id": 362,
+        "recipient_target": 0,
+        "margin": -8.5,
+        "mass": 0.9999993405508576,
+        "pred": 0,
+        "logits": [
+          23.625,
+          15.125
+        ],
+        "probabilities": [
+          0.9997959136962891,
+          0.0002034268545685336
+        ],
+        "greedy_id": 15,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "39290c20553462705bfeebc4d445f70cd9ee94cf47c60d06ffbc47ae71a4752e",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "011001",
+      "x": "10110010",
+      "h": "A",
+      "e": 0,
+      "target": 1,
+      "delivered_id": 362,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "10110010",
+        "p": 0,
+        "letter_id": 362,
+        "recipient_target": 1,
+        "margin": 8.125,
+        "mass": 0.9999965619645081,
+        "pred": 1,
+        "logits": [
+          14.625,
+          22.75
+        ],
+        "probabilities": [
+          0.00029595609521493316,
+          0.9997006058692932
+        ],
+        "greedy_id": 16,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "8eeb572d4255a1eb2d83786f782ac449625365866792083b7488b60432a8d640",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "011001",
+      "x": "10110010",
+      "h": "A",
+      "e": 1,
+      "target": 0,
+      "delivered_id": 426,
+      "correct": true,
+      "erased_correct": false,
+      "recipient": {
+        "x": "10110010",
+        "p": 1,
+        "letter_id": 426,
+        "recipient_target": 0,
+        "margin": -3.625,
+        "mass": 0.9999902211129665,
+        "pred": 0,
+        "logits": [
+          23.0,
+          19.375
+        ],
+        "probabilities": [
+          0.9740331172943115,
+          0.025957103818655014
+        ],
+        "greedy_id": 15,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "707be8d85426c156545dc889bbec3630c50d2a82b3979173d9271977a495c4b8",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "011001",
+      "x": "10110010",
+      "h": "B",
+      "e": 0,
+      "target": 0,
+      "delivered_id": 426,
+      "correct": true,
+      "erased_correct": false,
+      "recipient": {
+        "x": "10110010",
+        "p": 1,
+        "letter_id": 426,
+        "recipient_target": 0,
+        "margin": -3.625,
+        "mass": 0.9999902211129665,
+        "pred": 0,
+        "logits": [
+          23.0,
+          19.375
+        ],
+        "probabilities": [
+          0.9740331172943115,
+          0.025957103818655014
+        ],
+        "greedy_id": 15,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "707be8d85426c156545dc889bbec3630c50d2a82b3979173d9271977a495c4b8",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "011001",
+      "x": "10110010",
+      "h": "B",
+      "e": 1,
+      "target": 1,
+      "delivered_id": 362,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "10110010",
+        "p": 0,
+        "letter_id": 362,
+        "recipient_target": 1,
+        "margin": 8.125,
+        "mass": 0.9999965619645081,
+        "pred": 1,
+        "logits": [
+          14.625,
+          22.75
+        ],
+        "probabilities": [
+          0.00029595609521493316,
+          0.9997006058692932
+        ],
+        "greedy_id": 16,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "8eeb572d4255a1eb2d83786f782ac449625365866792083b7488b60432a8d640",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "011001",
+      "x": "10110011",
+      "h": "A",
+      "e": 0,
+      "target": 1,
+      "delivered_id": 362,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "10110011",
+        "p": 0,
+        "letter_id": 362,
+        "recipient_target": 1,
+        "margin": 8.4375,
+        "mass": 0.9999971983634168,
+        "pred": 1,
+        "logits": [
+          14.3125,
+          22.75
+        ],
+        "probabilities": [
+          0.00021654345619026572,
+          0.9997806549072266
+        ],
+        "greedy_id": 16,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "f269468ba274d77b137cbe4206e8a155fbcdd56b1cc4f2753610aa87f1aca86b",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "011001",
+      "x": "10110011",
+      "h": "A",
+      "e": 1,
+      "target": 1,
+      "delivered_id": 426,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "10110011",
+        "p": 1,
+        "letter_id": 426,
+        "recipient_target": 1,
+        "margin": 4.375,
+        "mass": 0.9999916404485703,
+        "pred": 1,
+        "logits": [
+          17.0,
+          21.375
+        ],
+        "probabilities": [
+          0.012431547045707703,
+          0.9875600934028625
+        ],
+        "greedy_id": 16,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "87cb2c9495e674a4022f17b327bd8a10c644c595cf741bd5270dfc9ba89ad886",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "011001",
+      "x": "10110011",
+      "h": "B",
+      "e": 0,
+      "target": 1,
+      "delivered_id": 426,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "10110011",
+        "p": 1,
+        "letter_id": 426,
+        "recipient_target": 1,
+        "margin": 4.375,
+        "mass": 0.9999916404485703,
+        "pred": 1,
+        "logits": [
+          17.0,
+          21.375
+        ],
+        "probabilities": [
+          0.012431547045707703,
+          0.9875600934028625
+        ],
+        "greedy_id": 16,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "87cb2c9495e674a4022f17b327bd8a10c644c595cf741bd5270dfc9ba89ad886",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "011001",
+      "x": "10110011",
+      "h": "B",
+      "e": 1,
+      "target": 1,
+      "delivered_id": 362,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "10110011",
+        "p": 0,
+        "letter_id": 362,
+        "recipient_target": 1,
+        "margin": 8.4375,
+        "mass": 0.9999971983634168,
+        "pred": 1,
+        "logits": [
+          14.3125,
+          22.75
+        ],
+        "probabilities": [
+          0.00021654345619026572,
+          0.9997806549072266
+        ],
+        "greedy_id": 16,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "f269468ba274d77b137cbe4206e8a155fbcdd56b1cc4f2753610aa87f1aca86b",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "000110",
+      "x": "00001100",
+      "h": "A",
+      "e": 0,
+      "target": 0,
+      "delivered_id": 362,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "00001100",
+        "p": 0,
+        "letter_id": 362,
+        "recipient_target": 0,
+        "margin": -6.25,
+        "mass": 0.9999983424786478,
+        "pred": 0,
+        "logits": [
+          23.0,
+          16.75
+        ],
+        "probabilities": [
+          0.9980716109275818,
+          0.001926731551066041
+        ],
+        "greedy_id": 15,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "75f46b1178364e56a60be9d9ecd6aac17fda191d7ab22e217b59505230b24ebe",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "000110",
+      "x": "00001100",
+      "h": "A",
+      "e": 1,
+      "target": 0,
+      "delivered_id": 426,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "00001100",
+        "p": 1,
+        "letter_id": 426,
+        "recipient_target": 0,
+        "margin": -1.375,
+        "mass": 0.9999316036701202,
+        "pred": 0,
+        "logits": [
+          20.75,
+          19.375
+        ],
+        "probabilities": [
+          0.7981321811676025,
+          0.2017994225025177
+        ],
+        "greedy_id": 15,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "a17a5847c9dbba40239649674f63b0ba8c47918ec7303cbd753117ed20136f8d",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "000110",
+      "x": "00001100",
+      "h": "B",
+      "e": 0,
+      "target": 0,
+      "delivered_id": 426,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "00001100",
+        "p": 1,
+        "letter_id": 426,
+        "recipient_target": 0,
+        "margin": -1.375,
+        "mass": 0.9999316036701202,
+        "pred": 0,
+        "logits": [
+          20.75,
+          19.375
+        ],
+        "probabilities": [
+          0.7981321811676025,
+          0.2017994225025177
+        ],
+        "greedy_id": 15,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "a17a5847c9dbba40239649674f63b0ba8c47918ec7303cbd753117ed20136f8d",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "000110",
+      "x": "00001100",
+      "h": "B",
+      "e": 1,
+      "target": 0,
+      "delivered_id": 362,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "00001100",
+        "p": 0,
+        "letter_id": 362,
+        "recipient_target": 0,
+        "margin": -6.25,
+        "mass": 0.9999983424786478,
+        "pred": 0,
+        "logits": [
+          23.0,
+          16.75
+        ],
+        "probabilities": [
+          0.9980716109275818,
+          0.001926731551066041
+        ],
+        "greedy_id": 15,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "75f46b1178364e56a60be9d9ecd6aac17fda191d7ab22e217b59505230b24ebe",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "000110",
+      "x": "00001101",
+      "h": "A",
+      "e": 0,
+      "target": 0,
+      "delivered_id": 362,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "00001101",
+        "p": 0,
+        "letter_id": 362,
+        "recipient_target": 0,
+        "margin": -6.0,
+        "mass": 0.9999961599241942,
+        "pred": 0,
+        "logits": [
+          22.625,
+          16.625
+        ],
+        "probabilities": [
+          0.9975235462188721,
+          0.0024726137053221464
+        ],
+        "greedy_id": 15,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "9f4800d87e1a3344fea09323866b6ae3c2d4f63d306d63963a29264f9fd8c1cb",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "000110",
+      "x": "00001101",
+      "h": "A",
+      "e": 1,
+      "target": 1,
+      "delivered_id": 426,
+      "correct": true,
+      "erased_correct": false,
+      "recipient": {
+        "x": "00001101",
+        "p": 1,
+        "letter_id": 426,
+        "recipient_target": 1,
+        "margin": 4.375,
+        "mass": 0.9999572988599539,
+        "pred": 1,
+        "logits": [
+          16.75,
+          21.125
+        ],
+        "probabilities": [
+          0.012431120499968529,
+          0.9875261783599854
+        ],
+        "greedy_id": 16,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "a6531ca32c5592fb6e0c10c44eb78e99bf395c240008dacca66bc3aed7bbedf1",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "000110",
+      "x": "00001101",
+      "h": "B",
+      "e": 0,
+      "target": 1,
+      "delivered_id": 426,
+      "correct": true,
+      "erased_correct": false,
+      "recipient": {
+        "x": "00001101",
+        "p": 1,
+        "letter_id": 426,
+        "recipient_target": 1,
+        "margin": 4.375,
+        "mass": 0.9999572988599539,
+        "pred": 1,
+        "logits": [
+          16.75,
+          21.125
+        ],
+        "probabilities": [
+          0.012431120499968529,
+          0.9875261783599854
+        ],
+        "greedy_id": 16,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "a6531ca32c5592fb6e0c10c44eb78e99bf395c240008dacca66bc3aed7bbedf1",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "000110",
+      "x": "00001101",
+      "h": "B",
+      "e": 1,
+      "target": 0,
+      "delivered_id": 362,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "00001101",
+        "p": 0,
+        "letter_id": 362,
+        "recipient_target": 0,
+        "margin": -6.0,
+        "mass": 0.9999961599241942,
+        "pred": 0,
+        "logits": [
+          22.625,
+          16.625
+        ],
+        "probabilities": [
+          0.9975235462188721,
+          0.0024726137053221464
+        ],
+        "greedy_id": 15,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "9f4800d87e1a3344fea09323866b6ae3c2d4f63d306d63963a29264f9fd8c1cb",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "000110",
+      "x": "10001100",
+      "h": "A",
+      "e": 0,
+      "target": 1,
+      "delivered_id": 362,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "10001100",
+        "p": 0,
+        "letter_id": 362,
+        "recipient_target": 1,
+        "margin": 8.75,
+        "mass": 0.9999982186564011,
+        "pred": 1,
+        "logits": [
+          13.875,
+          22.625
+        ],
+        "probabilities": [
+          0.00015843594155739993,
+          0.9998397827148438
+        ],
+        "greedy_id": 16,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "b253bca534a609158cfea20819e74d84b502db6f4d2b57d25c59b42548ba1f05",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "000110",
+      "x": "10001100",
+      "h": "A",
+      "e": 1,
+      "target": 0,
+      "delivered_id": 426,
+      "correct": true,
+      "erased_correct": false,
+      "recipient": {
+        "x": "10001100",
+        "p": 1,
+        "letter_id": 426,
+        "recipient_target": 0,
+        "margin": -2.875,
+        "mass": 0.9999429024755955,
+        "pred": 0,
+        "logits": [
+          21.375,
+          18.5
+        ],
+        "probabilities": [
+          0.9465426206588745,
+          0.05340028181672096
+        ],
+        "greedy_id": 15,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "697a7ae6806ebcf8ce2d778b0ada177cee2faf7c5bdedac71e4bb4d9b30d496a",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "000110",
+      "x": "10001100",
+      "h": "B",
+      "e": 0,
+      "target": 0,
+      "delivered_id": 426,
+      "correct": true,
+      "erased_correct": false,
+      "recipient": {
+        "x": "10001100",
+        "p": 1,
+        "letter_id": 426,
+        "recipient_target": 0,
+        "margin": -2.875,
+        "mass": 0.9999429024755955,
+        "pred": 0,
+        "logits": [
+          21.375,
+          18.5
+        ],
+        "probabilities": [
+          0.9465426206588745,
+          0.05340028181672096
+        ],
+        "greedy_id": 15,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "697a7ae6806ebcf8ce2d778b0ada177cee2faf7c5bdedac71e4bb4d9b30d496a",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "000110",
+      "x": "10001100",
+      "h": "B",
+      "e": 1,
+      "target": 1,
+      "delivered_id": 362,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "10001100",
+        "p": 0,
+        "letter_id": 362,
+        "recipient_target": 1,
+        "margin": 8.75,
+        "mass": 0.9999982186564011,
+        "pred": 1,
+        "logits": [
+          13.875,
+          22.625
+        ],
+        "probabilities": [
+          0.00015843594155739993,
+          0.9998397827148438
+        ],
+        "greedy_id": 16,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "b253bca534a609158cfea20819e74d84b502db6f4d2b57d25c59b42548ba1f05",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "000110",
+      "x": "10001101",
+      "h": "A",
+      "e": 0,
+      "target": 1,
+      "delivered_id": 362,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "10001101",
+        "p": 0,
+        "letter_id": 362,
+        "recipient_target": 1,
+        "margin": 8.1875,
+        "mass": 0.9999977096740622,
+        "pred": 1,
+        "logits": [
+          14.3125,
+          22.5
+        ],
+        "probabilities": [
+          0.00027803031844086945,
+          0.9997196793556213
+        ],
+        "greedy_id": 16,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "3c8783d6aa57c6f71c4e82d178bb4e04212a007e71728ddcbd18e0753e8a5fa5",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "000110",
+      "x": "10001101",
+      "h": "A",
+      "e": 1,
+      "target": 1,
+      "delivered_id": 426,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "10001101",
+        "p": 1,
+        "letter_id": 426,
+        "recipient_target": 1,
+        "margin": 4.125,
+        "mass": 0.9999591149389744,
+        "pred": 1,
+        "logits": [
+          17.25,
+          21.375
+        ],
+        "probabilities": [
+          0.01590574160218239,
+          0.984053373336792
+        ],
+        "greedy_id": 16,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "334c0f6676a5450432dea611a574c89d050bffd703143427337f8e40d15802d8",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "000110",
+      "x": "10001101",
+      "h": "B",
+      "e": 0,
+      "target": 1,
+      "delivered_id": 426,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "10001101",
+        "p": 1,
+        "letter_id": 426,
+        "recipient_target": 1,
+        "margin": 4.125,
+        "mass": 0.9999591149389744,
+        "pred": 1,
+        "logits": [
+          17.25,
+          21.375
+        ],
+        "probabilities": [
+          0.01590574160218239,
+          0.984053373336792
+        ],
+        "greedy_id": 16,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "334c0f6676a5450432dea611a574c89d050bffd703143427337f8e40d15802d8",
+          "nbytes": 200556
+        }
+      }
+    },
+    {
+      "u": "000110",
+      "x": "10001101",
+      "h": "B",
+      "e": 1,
+      "target": 1,
+      "delivered_id": 362,
+      "correct": true,
+      "erased_correct": true,
+      "recipient": {
+        "x": "10001101",
+        "p": 0,
+        "letter_id": 362,
+        "recipient_target": 1,
+        "margin": 8.1875,
+        "mass": 0.9999977096740622,
+        "pred": 1,
+        "logits": [
+          14.3125,
+          22.5
+        ],
+        "probabilities": [
+          0.00027803031844086945,
+          0.9997196793556213
+        ],
+        "greedy_id": 16,
+        "greedy_unique": true,
+        "accepted": true,
+        "native_logits": {
+          "shape": [
+            100278
+          ],
+          "dtype": "mlx.core.bfloat16",
+          "sha256": "3c8783d6aa57c6f71c4e82d178bb4e04212a007e71728ddcbd18e0753e8a5fa5",
+          "nbytes": 200556
+        }
+      }
+    }
+  ],
+  "cleanups": [
+    {
+      "cached_before_bytes": 33833120,
+      "cached_after_bytes": 0,
+      "active_after_bytes": 4105938952,
+      "swap_mib": 4815.19
+    },
+    {
+      "cached_before_bytes": 33637288,
+      "cached_after_bytes": 0,
+      "active_after_bytes": 4105938952,
+      "swap_mib": 4815.19
+    },
+    {
+      "cached_before_bytes": 33637288,
+      "cached_after_bytes": 0,
+      "active_after_bytes": 4105938952,
+      "swap_mib": 4815.19
+    },
+    {
+      "cached_before_bytes": 33864536,
+      "cached_after_bytes": 0,
+      "active_after_bytes": 4105938952,
+      "swap_mib": 4815.19
+    },
+    {
+      "cached_before_bytes": 33833120,
+      "cached_after_bytes": 0,
+      "active_after_bytes": 4105938952,
+      "swap_mib": 4815.19
+    },
+    {
+      "cached_before_bytes": 33833642,
+      "cached_after_bytes": 0,
+      "active_after_bytes": 4105938952,
+      "swap_mib": 4815.19
+    },
+    {
+      "cached_before_bytes": 33637288,
+      "cached_after_bytes": 0,
+      "active_after_bytes": 4105938952,
+      "swap_mib": 4815.19
+    },
+    {
+      "cached_before_bytes": 33570972,
+      "cached_after_bytes": 0,
+      "active_after_bytes": 4105938952,
+      "swap_mib": 4815.19
+    }
+  ],
+  "summary": {
+    "sender_table": "0110",
+    "encodes_xor_up_to_permutation": true,
+    "sender_accepted": 4,
+    "sender_correct": 4,
+    "delivered_rows": 128,
+    "abstained_rows": 0,
+    "primary_correct": 124,
+    "by_middle": [
+      14,
+      16,
+      14,
+      16,
+      16,
+      16,
+      16,
+      16
+    ],
+    "complete_blocks": 6,
+    "distinct_ends_both": {
+      "0": 16,
+      "1": 16
+    },
+    "erased_total_correct": 96,
+    "erased_different_ends_correct": 32,
+    "explicit_correct": 62,
+    "min_sender_mass": 0.9999026954174042,
+    "min_recipient_mass": 0.9998787045478821
+  },
+  "resources": {
+    "seconds": 131.47,
+    "swap_start_mib": 4815.19,
+    "swap_end_mib": 4815.19,
+    "swap_max_sampled_mib": 4815.19,
+    "resource_polls": 219,
+    "mlx_peak_gib": 4.662973519414663
+  },
+  "ended_utc": "2026-11-20T08:29:24.571070+00:00"
+}

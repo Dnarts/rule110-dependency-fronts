@@ -1,0 +1,305 @@
+Lean (version 4.35.0, arm64-apple-darwin24.6.0, commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc, Release)
+All 5147263 cells covered in 100 blocks.
+Checking Rule110Complete
+'Rule110Complete.left_dependency_bound' depends on axioms: [propext, Quot.sound]
+'Rule110Complete.right_dependency_bound' depends on axioms: [propext, Quot.sound]
+'Rule110Complete.left_endpoint_essential' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Rule110Complete.right_endpoint_essential' depends on axioms: [propext, Classical.choice, Quot.sound]
+Checking Rule110Fin1320Bridge
+'Rule110Fin1320Bridge.singleDefect_ring_bridge' depends on axioms: [propext, Classical.choice, Quot.sound]
+Checking Rule110KernelCertificate
+Checking Rule110BitVecBridge
+'Rule110KernelCert.singleDefect_BV_bridge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Rule110KernelCert.toFinRing_step' depends on axioms: [propext, Quot.sound]
+'Rule110KernelCert.toFinRing_evolve' depends on axioms: [propext, Quot.sound]
+Checking Rule110HalfRayClosure
+'Rule110Fin1320Bridge.leftQ_of_tile' depends on axioms: [propext, Quot.sound]
+'Rule110Fin1320Bridge.rightQ_of_tile' depends on axioms: [propext, Quot.sound]
+'Rule110Fin1320Bridge.leftQ_all' depends on axioms: [propext, Quot.sound]
+'Rule110Fin1320Bridge.rightQ_all' depends on axioms: [propext, Quot.sound]
+Checking Rule110CheckpointSoundness
+Checking Rule110Ether
+'Rule110Ether.ray_of_three_step' depends on axioms: [propext, Quot.sound]
+'Rule110Ether.ether_period' depends on axioms: [propext, Quot.sound]
+'Rule110Ether.ether_block_882' depends on axioms: [propext, Quot.sound]
+Checking Rule110LocalWindow
+Checking Base
+Checking Bridge
+Checking FiniteBase
+Checking Snap0
+Checking Snap25
+Checking Block0
+Checking Snap50
+Checking Block25
+Checking Snap75
+Checking Block50
+Checking Snap100
+Checking Block75
+Checking Snap125
+Checking Block100
+Checking Snap150
+Checking Block125
+Checking Snap175
+Checking Block150
+Checking Snap200
+Checking Block175
+Checking Snap225
+Checking Block200
+Checking Snap250
+Checking Block225
+Checking Snap275
+Checking Block250
+Checking Snap300
+Checking Block275
+Checking Snap325
+Checking Block300
+Checking Snap350
+Checking Block325
+Checking Snap375
+Checking Block350
+Checking Snap400
+Checking Block375
+Checking Snap425
+Checking Block400
+Checking Snap450
+Checking Block425
+Checking Snap475
+Checking Block450
+Checking Snap500
+Checking Block475
+Checking Snap525
+Checking Block500
+Checking Snap550
+Checking Block525
+Checking Snap575
+Checking Block550
+Checking Snap600
+Checking Block575
+Checking Snap625
+Checking Block600
+Checking Snap650
+Checking Block625
+Checking Snap675
+Checking Block650
+Checking Snap700
+Checking Block675
+Checking Snap725
+Checking Block700
+Checking Snap750
+Checking Block725
+Checking Snap775
+Checking Block750
+Checking Snap800
+Checking Block775
+Checking Snap825
+Checking Block800
+Checking Snap850
+Checking Block825
+Checking Snap875
+Checking Block850
+Checking Snap900
+Checking Block875
+Checking Snap925
+Checking Block900
+Checking Snap950
+Checking Block925
+Checking Snap975
+Checking Block950
+Checking Snap1000
+Checking Block975
+Checking Snap1025
+Checking Block1000
+Checking Snap1050
+Checking Block1025
+Checking Snap1075
+Checking Block1050
+Checking Snap1100
+Checking Block1075
+Checking Snap1125
+Checking Block1100
+Checking Snap1150
+Checking Block1125
+Checking Snap1175
+Checking Block1150
+Checking Snap1200
+Checking Block1175
+Checking Snap1225
+Checking Block1200
+Checking Snap1250
+Checking Block1225
+Checking Snap1275
+Checking Block1250
+Checking Snap1300
+Checking Block1275
+Checking Snap1325
+Checking Block1300
+Checking Snap1350
+Checking Block1325
+Checking Snap1375
+Checking Block1350
+Checking Snap1400
+Checking Block1375
+Checking Snap1425
+Checking Block1400
+Checking Snap1450
+Checking Block1425
+Checking Snap1475
+Checking Block1450
+Checking Snap1500
+Checking Block1475
+Checking Snap1525
+Checking Block1500
+Checking Snap1550
+Checking Block1525
+Checking Snap1575
+Checking Block1550
+Checking Snap1600
+Checking Block1575
+Checking Snap1625
+Checking Block1600
+Checking Snap1650
+Checking Block1625
+Checking Snap1675
+Checking Block1650
+Checking Snap1700
+Checking Block1675
+Checking Snap1725
+Checking Block1700
+Checking Snap1750
+Checking Block1725
+Checking Snap1775
+Checking Block1750
+Checking Snap1800
+Checking Block1775
+Checking Snap1825
+Checking Block1800
+Checking Snap1850
+Checking Block1825
+Checking Snap1875
+Checking Block1850
+Checking Snap1900
+Checking Block1875
+Checking Snap1925
+Checking Block1900
+Checking Snap1950
+Checking Block1925
+Checking Snap1975
+Checking Block1950
+Checking Snap2000
+Checking Block1975
+Checking Snap2025
+Checking Block2000
+Checking Snap2050
+Checking Block2025
+Checking Snap2075
+Checking Block2050
+Checking Snap2100
+Checking Block2075
+Checking Snap2125
+Checking Block2100
+Checking Snap2150
+Checking Block2125
+Checking Snap2175
+Checking Block2150
+Checking Snap2200
+Checking Block2175
+Checking Snap2225
+Checking Block2200
+Checking Snap2250
+Checking Block2225
+Checking Snap2275
+Checking Block2250
+Checking Snap2300
+Checking Block2275
+Checking Snap2325
+Checking Block2300
+Checking Snap2350
+Checking Block2325
+Checking Snap2375
+Checking Block2350
+Checking Snap2400
+Checking Block2375
+Checking Snap2425
+Checking Block2400
+Checking Snap2450
+Checking Block2425
+Checking Snap2475
+Checking Block2450
+Checking Block2475
+Checking CertFinal
+Checking Finite
+'Rails.Finite.finite_all' depends on axioms: [propext, Classical.choice, Quot.sound]
+Checking Crystal50Data
+Checking Crystal50Media
+Checking Crystal50Wedge
+'Rails.Crystal50Wedge.wedge_initial' depends on axioms: [propext, Quot.sound]
+'Rails.Crystal50Wedge.Cm_step' depends on axioms: [propext, Quot.sound]
+'Rails.Crystal50Wedge.cm_base' depends on axioms: [propext, Quot.sound]
+'Rails.Crystal50Wedge.essential_of_cm' depends on axioms: [propext, Quot.sound]
+Checking Crystal50Packed
+'Rails.Crystal50Graph.closed0' depends on axioms: [propext, Quot.sound]
+'Rails.Crystal50Graph.closed1' depends on axioms: [propext, Quot.sound]
+'Rails.Crystal50Graph.closed2' depends on axioms: [propext, Quot.sound]
+'Rails.Crystal50Graph.closed3' depends on axioms: [propext, Quot.sound]
+'Rails.Crystal50Graph.closed7' depends on axioms: [propext, Quot.sound]
+'Rails.Crystal50Graph.closed9' depends on axioms: [propext, Quot.sound]
+Checking Crystal50Seam
+'Rails.Crystal50Wedge.seam' depends on axioms: [propext, Quot.sound]
+'Rails.Crystal50Wedge.initialMedium' depends on axioms: [propext, Quot.sound]
+Checking Crystal50WedgeAll
+'Rails.Crystal50Wedge.wedge_all' depends on axioms: [propext, Quot.sound]
+Checking Rule110DomainWallA
+'Rule110LocalWindow.tileA_reads' depends on axioms: [propext, Quot.sound]
+'Rule110LocalWindow.domain_wall_A_period7' depends on axioms: [propext, Quot.sound]
+'Rule110LocalWindow.domain_wall_A_step' depends on axioms: [propext, Quot.sound]
+Checking Rule110FrontGlue
+'Rule110FrontGlue.evolve_splice' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Rule110FrontGlue.A_outer_13' depends on axioms: [propext, Quot.sound]
+Checking EtherWedge
+'Rails.EtherWedge.right_sector' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Rails.EtherWedge.half_sector' depends on axioms: [propext, Classical.choice, Quot.sound]
+Checking LeftCrystal50
+'Rails.LeftCrystal50.left_strip' depends on axioms: [propext, Classical.choice, Quot.sound]
+Checking Rule110CheckpointCommon
+Checking Rule110LeftPhase00
+Checking Rule110LeftPhase01
+Checking Rule110LeftPhase02
+Checking Rule110LeftPhase03
+Checking Rule110LeftPhase04
+Checking Rule110LeftPhase05
+Checking Rule110LeftPhase06
+Checking Rule110LeftPhase07
+Checking Rule110LeftPhase08
+Checking Rule110LeftPhase09
+Checking Rule110LeftPhase10
+Checking Rule110LeftPhase11
+Checking Rule110LeftPhase12
+Checking Rule110LeftPhase13
+Checking Rule110LeftPhase14
+Checking Rule110LeftPhase15
+Checking Rule110LeftPhase16
+Checking Rule110LeftPhase17
+Checking Rule110LeftPhase18
+Checking Rule110LeftPhase19
+Checking Rule110LeftCoverage00
+Checking Rule110LeftCoverage05
+Checking Rule110LeftCoverage10
+Checking Rule110LeftCoverage15
+Checking Rule110LeftCoverage20
+Checking Rule110LeftCoverage25
+Checking Rule110LeftCheckpoints
+Checking Rule110RightPhase00
+Checking Rule110RightPhase01
+Checking Rule110RightPhase02
+Checking Rule110RightPhase03
+Checking Rule110RightPhase04
+Checking Rule110RightPhase05
+Checking Rule110RightPhase06
+Checking Rule110RightCoverage00
+Checking Rule110RightCheckpoints
+Checking Rule110Right20
+'Rule110KernelCert.right_boundary_width20' depends on axioms: [propext, Classical.choice, Quot.sound]
+Checking Late
+'Rails.late_all' depends on axioms: [propext, Classical.choice, Quot.sound]
+Checking Rule110Exact
+'Rails.essential_iff' depends on axioms: [propext, Classical.choice, Quot.sound]

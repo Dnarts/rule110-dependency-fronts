@@ -1,0 +1,36 @@
+{
+  "status": "PASS",
+  "parent_report_sha256": "cba1e1f6acc6600c25682a401ed318f43faffe2a074693c2140bb982c2eb3264",
+  "verifier_sha256": "4a521ae1a8f3eb796578725ab0b822e08ebb680f3be4841d93b9dceb1de216a8",
+  "rows": {
+    "A": {
+      "comparison": {
+        "native_bytes_equal": true,
+        "max_abs_diff": 0.0,
+        "checked_bytes": 200556,
+        "sha256": "581c83391ced9fcab46cba6bcae5796ea6b8e5a4ab45538a363e2dadda186ea6"
+      },
+      "parent_byte_checkpoints": 3,
+      "both_parents_match_literal_bytes": true
+    },
+    "B": {
+      "comparison": {
+        "native_bytes_equal": true,
+        "max_abs_diff": 0.0,
+        "checked_bytes": 200556,
+        "sha256": "6c7553159a7c10c09e981cfeefb12a59b5978c2d651fa09a4ab01422d2baeaf3"
+      },
+      "parent_byte_checkpoints": 3,
+      "both_parents_match_literal_bytes": true
+    }
+  },
+  "parent_bytes_per_checkpoint": 309329920,
+  "resources": {
+    "seconds": 14.45,
+    "swap_start_mib": 4749.12,
+    "swap_end_mib": 4749.12,
+    "swap_max_sampled_mib": 4749.12,
+    "resource_polls": 9,
+    "mlx_peak_gib": 4.459855146706104
+  }
+}

@@ -8,7 +8,9 @@ paper = root / "paper" / "v2"
 out = root / "dist" / "v2"
 out.mkdir(parents=True, exist_ok=True)
 for lang in ("en", "ru", "zh"):
-    copyfile(paper / f"{lang}.pdf", out / f"rule110-{lang}.pdf")
+    rebuilt = root / "build" / "legacy-v2" / f"{lang}.pdf"
+    edition = rebuilt if rebuilt.is_file() else root / "archive" / "paper-i" / f"{lang}.pdf"
+    copyfile(edition, out / f"rule110-{lang}.pdf")
     with ZipFile(out / f"rule110-{lang}-source.zip", "w", ZIP_DEFLATED) as archive:
         archive.write(paper / f"{lang}.tex", f"{lang}.tex")
         for font in sorted((paper / "fonts").iterdir()):

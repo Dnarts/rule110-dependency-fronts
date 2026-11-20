@@ -1,20 +1,20 @@
 cff-version: 1.2.0
 message: "To cite the combined preprint, use the preferred citation below. The DOI in references identifies the first preprint."
-title: "Exact Dependency Fronts in Rule 110: Formal Proofs and Certificates"
+title: "110 OBSERVER. Наблюдаемость собственного прошлого"
 type: software
 authors:
   - family-names: Strand
     given-names: Aleksandr
-version: 2.0.0
+version: "2.0-part-III-dev"
 repository-code: "https://github.com/Dnarts/rule110-dependency-fronts"
 preferred-citation:
   type: unpublished
-  title: "Exact Dependency Fronts, Finite Certificates, and Constructive Invariants for Unbounded Time in Rule 110"
+  title: "110 OBSERVER. Наблюдаемость собственного прошлого: цена сообщения, причинные свидетели и границы вывода"
   authors:
     - family-names: Strand
       given-names: Aleksandr
   year: 2026
-  url: "https://github.com/Dnarts/rule110-dependency-fronts/blob/main/paper/v2/en.pdf"
+  url: "https://github.com/Dnarts/rule110-dependency-fronts/blob/v2.0-part-III-dev/110_OBSERVER_Preprint.pdf"
 references:
   - type: article
     title: "Exact Worst-Case Dependency Fronts in Rule 110 and Finite-State Certification of Input Essentiality"

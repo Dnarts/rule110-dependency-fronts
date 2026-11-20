@@ -1,0 +1,2 @@
+true {'trials': 8, 'prior_correct': 8, 'post_correct': 16, 'self_error_correct': 8, 'action_correct': 8, 'action_correct_frozen': 4}
+flip {'trials': 8, 'prior_correct': 8, 'post_correct': 0, 'self_error_correct': 0, 'action_correct': 0, 'action_correct_frozen': 4}

@@ -1,4 +1,14 @@
+> **Серия:** 110 OBSERVER — Точная наблюдаемость, причинное самообращение и границы вывода<br>
+> **Документ:** Paper I · границы проверок<br>
+> **Статус:** VERIFICATION<br>
+> **Карта серии:** [Монография](../110_OBSERVER_Preprint.pdf) · [Индекс](../README.md) · [Источники и разделы](../docs/series.md) · [Архив](../archive/README.md)<br>
+> **Зависимости:** Отчёты первого издания и полного доказательства.
+
 # Verification scope
+
+## Unified monograph, 20 November 2026
+
+The macOS arm64 rebuild with Lean 4.35.0 compiled all 263 modules in the import closure of `Rule110Exact`. Compiling `observer/Rule110Observer.lean` against those outputs produced eleven axiom reports. The two reports are published alongside this edition. [Geometry](monograph/geometry-axioms.log) · [Observer](monograph/observer-axioms.log)
 
 ## Combined preprint (v2)
 

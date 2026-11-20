@@ -14,7 +14,8 @@ ring20:
 	python3 scripts/rule110_ring20_numpy.py
 
 paper:
-	cd paper && latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex
+	@mkdir -p build/legacy-v1
+	cd paper && latexmk -pdf -outdir=../build/legacy-v1 -interaction=nonstopmode -halt-on-error main.tex
 
 lean:
 	lean formal/rule110_complete.lean
@@ -26,7 +27,27 @@ verify:
 	grep -Fx "'Rails.essential_iff' depends on axioms: [propext, Classical.choice, Quot.sound]" build/verify.log
 
 paper-v2:
-	cd paper/v2 && for lang in en ru zh; do latexmk -xelatex -halt-on-error -interaction=nonstopmode "$$lang.tex" || exit 1; done
+	@mkdir -p build/legacy-v2
+	cd paper/v2 && for lang in en ru zh; do latexmk -outdir=../../build/legacy-v2 -xelatex -halt-on-error -interaction=nonstopmode "$$lang.tex" || exit 1; done
 
 package-v2: paper-v2
 	python3 scripts/package_v2.py
+
+.PHONY: monograph verify-observer verify-series
+
+verify-observer:
+	python3 -B observer/verify.py
+	python3 -B observer/verify_part_iii.py
+
+verify-series: verify
+	python3 -B scripts/verify_observer_lean.py
+	$(MAKE) verify-observer
+
+monograph:
+	@mkdir -p build/monograph
+	@if command -v tectonic >/dev/null; then \
+		tectonic --untrusted --keep-logs --outdir build/monograph main.tex; \
+	else \
+		latexmk -xelatex -interaction=nonstopmode -halt-on-error -outdir=build/monograph main.tex; \
+	fi
+	cp build/monograph/main.pdf 110_OBSERVER_Preprint.pdf

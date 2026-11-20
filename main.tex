@@ -1,0 +1,58 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=24mm]{geometry}
+\usepackage{fontspec}
+\usepackage[english,russian]{babel}
+\setmainfont[Path=paper/v2/fonts/,Extension=.ttf,UprightFont=*-Regular,BoldFont=*-Bold,ItalicFont=*-Italic,BoldItalicFont=*-BoldItalic]{NotoSerif}
+\setmonofont[Scale=.85,Path=paper/v2/fonts/,Extension=.ttf,UprightFont=*,BoldFont=*-Bold,ItalicFont=*-Oblique,BoldItalicFont=*-BoldOblique]{DejaVuSansMono}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{array,booktabs,tabularx,enumitem}
+\usepackage[table]{xcolor}
+\definecolor{ink}{HTML}{1E293B}
+\definecolor{slate}{HTML}{475569}
+\definecolor{rulegray}{HTML}{CBD5E1}
+\definecolor{tint}{HTML}{F8FAFC}
+\definecolor{accent}{HTML}{174B69}
+\usepackage[unicode,colorlinks=true,linkcolor=accent,urlcolor=accent,citecolor=accent,bookmarksnumbered=true]{hyperref}
+\hypersetup{pdftitle={110 OBSERVER. Наблюдаемость собственного прошлого},pdfauthor={Aleksandr Strand},pdfsubject={Точное декодирование, Rule 110 и эксперименты на OLMo}}
+\setlength{\emergencystretch}{2.5em}
+\renewcommand{\contentsname}{Содержание}
+\renewcommand{\refname}{Литература}
+\renewcommand{\proofname}{Доказательство}
+\renewcommand{\tablename}{Таблица}
+\setcounter{tocdepth}{1}
+\setlist{itemsep=1pt,topsep=3pt}
+\newtheorem{theorem}{Теорема}[section]
+\newtheorem{lemma}[theorem]{Лемма}
+\newtheorem{proposition}[theorem]{Предложение}
+\newtheorem{conjecture}[theorem]{Гипотеза}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Определение}
+\newtheorem{remark}[theorem]{Замечание}
+\newcommand{\src}[2]{\href{https://github.com/Dnarts/rule110-dependency-fronts/blob/v2.0-part-III-dev/#1}{#2}}
+\begin{document}
+\sloppy
+\begin{center}
+{\small\bfseries\color{accent}110 OBSERVER}\\[7pt]
+{\LARGE\bfseries Наблюдаемость собственного прошлого}\\[5pt]
+{\large Цена сообщения, причинные свидетели и границы вывода}\\[10pt]
+Aleksandr Strand \hspace{1em} $\cdot$ \hspace{1em} 20 ноября 2026
+\end{center}
+\begin{quote}\small
+\textbf{Срез.} Точная геометрия Rule 110 на бесконечной прямой имеет формальное доказательство в Lean 4.35.0. Данные OLMo зафиксированы на восьми серединах dev после двухшагового варианта A (\texttt{PASS\_DEV}). Панели 9--20, 21--32 и 33--44 имеют статус \texttt{NOT\_RUN} в этом срезе. Мост к феноменальному опыту имеет статус \texttt{DECLARED\_NOT\_DERIVED}.
+\end{quote}
+\noindent\textbf{Аннотация.} Один и тот же наблюдаемый ответ может возникнуть при чтении сохранённой истории, по корреляции или при постоянной привычке получателя. Мы формулируем условия, при которых сообщение различает нужные истории, и проверяем, воспользовалась ли им система. В Rule 110 изолированный переворот клетки даёт возможность проверить происхождение сигнала, а возврат сигнала после слияния конфигураций --- его действие. В замороженной языковой модели отправитель сводит выбор и обратную связь к одному токену до предъявления новой строки. С этим токеном получатель решает 64 из 64 различающих условий dev, с фиксированным токеном --- 32 из 64. В заключение указываем, какие дополнительные предпосылки потребовались бы для вывода о субъективном опыте.
+\tableofcontents
+\clearpage
+\input{sections/01-introduction}
+\input{sections/02-theory}
+\input{sections/03-geometry}
+\input{sections/04-witnesses}
+\input{sections/05-olmo}
+\input{sections/06-boundary}
+\input{sections/07-discussion}
+\appendix
+\input{sections/app-a-lean}
+\input{sections/app-b-gates}
+\input{sections/app-c-registers}
+{\small\input{sections/references}}
+\end{document}

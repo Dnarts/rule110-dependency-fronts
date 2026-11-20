@@ -1,6 +1,8 @@
-# TeX outputs (keep committed final paper/main.pdf)
+# TeX outputs and checked-in Lean verification logs
 *.aux
 *.log
+!/verification/monograph/geometry-axioms.log
+!/verification/monograph/observer-axioms.log
 *.out
 *.synctex.gz
 *.fls
