@@ -1,0 +1,3 @@
+'MergeThreshold.protocol_at_four' depends on axioms: [propext, Quot.sound]
+'MergeThreshold.protocol_time_ge_four' depends on axioms: [propext, Quot.sound]
+'MergeThreshold.four_is_least' depends on axioms: [propext, Quot.sound]

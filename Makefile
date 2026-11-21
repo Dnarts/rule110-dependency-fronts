@@ -30,3 +30,12 @@ paper-v2:
 
 package-v2: paper-v2
 	python3 scripts/package_v2.py
+
+.PHONY: verify-continuation paper-continuation
+verify-continuation:
+	python3 continuation/scripts/check_package.py
+	python3 continuation/scripts/check_finite.py
+	python3 continuation/scripts/verify_lean.py
+
+paper-continuation:
+	cd continuation/paper && latexmk -xelatex -interaction=nonstopmode -halt-on-error rule110-continuation-en.tex

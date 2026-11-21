@@ -1,0 +1,29 @@
+Lean (version 4.35.0, arm64-apple-darwin24.6.0, commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc, Release)
+source SHA-256: 4ea6306b1bb1f8f9ed50631a43af7374c15af8bc2da4dc6249f45649a8bb7112
+command: lean -j 1 ContinuousSubject110.lean
+exit: 0
+
+'ContinuousSubject110.rule110_xor_gate' does not depend on any axioms
+'ContinuousSubject110.runEpisode_output' depends on axioms: [propext]
+'ContinuousSubject110.stream_state_invariant' does not depend on any axioms
+'ContinuousSubject110.xor_not_left' does not depend on any axioms
+'ContinuousSubject110.donor_swap_flips_all_future_outputs' depends on axioms: [propext]
+'ContinuousSubject110.no_stateless_decoder' depends on axioms: [propext]
+'ContinuousSubject110.step_zero_outside' depends on axioms: [propext, Quot.sound]
+'ContinuousSubject110.evolve_zero_outside' depends on axioms: [propext, Quot.sound]
+'ContinuousSubject110.fromWord20_zero_outside' depends on axioms: [propext, Quot.sound]
+'_private.ContinuousSubject110.0.ContinuousSubject110.outside_of_not_inside' depends on axioms: [propext]
+'ContinuousSubject110.initial_diff_only_at_five' depends on axioms: [propext, Quot.sound]
+'ContinuousSubject110.initial_values' depends on axioms: [propext]
+'ContinuousSubject110.merge_on_line_4' depends on axioms: [propext, Quot.sound]
+'ContinuousSubject110.merge_K0' depends on axioms: [propext, Quot.sound]
+'ContinuousSubject110.merge_K1' depends on axioms: [propext, Quot.sound]
+'ContinuousSubject110.sensor_values' depends on axioms: [propext]
+'ContinuousSubject110.context_values' depends on axioms: [propext]
+'ContinuousSubject110.left_gate_values' depends on axioms: [propext]
+'ContinuousSubject110.witness_return' depends on axioms: [propext]
+'ContinuousSubject110.concrete_no_stateless_decoder' depends on axioms: [propext, Quot.sound]
+'ContinuousSubject110.witness_restart_coordinate' depends on axioms: [propext]
+'ContinuousSubject110.concrete_stream_invariants' depends on axioms: [propext]
+'ContinuousSubject110.parity_not_initial' does not depend on any axioms
+'ContinuousSubject110.infinite_witness_stream' depends on axioms: [propext]

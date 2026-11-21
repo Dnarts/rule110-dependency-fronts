@@ -1,0 +1,16 @@
+/workspace/scratch/0a33716e5180/work/rule110-dependency-fronts/continuation/lean/Rule110ChiralSeam.lean:548:8: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+/workspace/scratch/0a33716e5180/work/rule110-dependency-fronts/continuation/lean/Rule110ChiralSeam.lean:552:8: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+/workspace/scratch/0a33716e5180/work/rule110-dependency-fronts/continuation/lean/Rule110ChiralSeam.lean:567:8: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+/workspace/scratch/0a33716e5180/work/rule110-dependency-fronts/continuation/lean/Rule110ChiralSeam.lean:571:8: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲

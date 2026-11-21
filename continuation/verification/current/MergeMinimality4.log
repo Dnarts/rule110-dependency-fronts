@@ -1,0 +1,11 @@
+'_private.MergeMinimality4.0.MergeMinimality4.outside_of_not_inside' depends on axioms: [propext]
+'MergeMinimality4.evolve3_eq_evolve3Bits' does not depend on any axioms
+'MergeMinimality4.merging_worlds_agree_on_m4_4' depends on axioms: [propext, Quot.sound]
+'MergeMinimality4.evolve_cone' depends on axioms: [propext, Quot.sound]
+'MergeMinimality4.setAt0_outside_cone' depends on axioms: [propext, Quot.sound]
+'MergeMinimality4.merges3Strip_iff' does not depend on any axioms
+'MergeMinimality4.merges3_count_eq_8' does not depend on any axioms
+'MergeMinimality4.global_merge3_iff_pattern' depends on axioms: [propext, Quot.sound]
+'MergeMinimality4.same_sensor_on_merging_worlds' depends on axioms: [propext, Quot.sound]
+'MergeMinimality4.no_opposite_orientations_at_merge3' depends on axioms: [propext, Quot.sound]
+'MergeMinimality4.no_joint_necessity_at_merge3' depends on axioms: [propext, Quot.sound]

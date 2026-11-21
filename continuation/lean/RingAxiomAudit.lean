@@ -1,0 +1,23 @@
+import Rule110RingDecoupling
+
+/-! Audit the canonical ring module. -/
+
+#print axioms Rule110RingDecoupling.evolRing7_add
+#print axioms Rule110RingDecoupling.ring7_cycle_base
+#print axioms Rule110RingDecoupling.evolRing7_period14
+#print axioms Rule110RingDecoupling.evolRing7_add_mul14
+#print axioms Rule110RingDecoupling.evolRing7_reduce
+#print axioms Rule110RingDecoupling.attractors7_injective
+#print axioms Rule110RingDecoupling.evol7_lands_in_attractors
+#print axioms Rule110RingDecoupling.attractors7_closed
+#print axioms Rule110RingDecoupling.ring7_capacity_bound_all_time
+#print axioms Rule110RingDecoupling.ring7_attractors_reachable
+#print axioms Rule110RingDecoupling.ring7_reachable_iff_attractor
+#print axioms Rule110RingDecoupling.ring7_exact_image_size
+#print axioms Rule110RingDecoupling.ring7_minimal_preperiod
+#print axioms Rule110RingDecoupling.ring7_period_dvd
+#print axioms Rule110RingDecoupling.ring7_minimal_common_period
+#print axioms Rule110RingDecoupling.ring7_essential_base
+#print axioms Rule110RingDecoupling.ring7_all_bits_essential_all_time
+#print axioms Rule110RingDecoupling.ring7_persistent_decoupling
+#print axioms Rule110RingDecoupling.rule90_ring8_collapses_at_4

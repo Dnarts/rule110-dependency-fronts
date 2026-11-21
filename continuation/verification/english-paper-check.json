@@ -1,0 +1,11 @@
+{
+  "pages": 5,
+  "all_pages_visually_reviewed": true,
+  "all_fonts_embedded": true,
+  "tex_warnings": 0,
+  "pdf_sha256": "bd9f756361f9295fda941743f22c7a50258e142906b93500f75d04fbc83dd484",
+  "translation_source": "archive/supplied/rule110-continuation-ru.pdf",
+  "editorial_notes": "paper/README.md",
+  "typesetting_log": "verification/english-typesetting.txt",
+  "font_report": "verification/english-fonts.txt"
+}

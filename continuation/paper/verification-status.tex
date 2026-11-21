@@ -1,0 +1,46 @@
+Verification uses Lean 4.35.0. The package contains four mathematical modules
+and a linking module. The file \texttt{AxiomAudit.lean} imports the canonical
+seam module and prints its axiom dependencies; a separate audit imports the
+ring module. The table gives the number of distinct requested reports for
+each part of the proof.
+
+\begin{center}
+\footnotesize
+\begin{tabular}{@{}lll@{}}
+\toprule
+Module & One of the checked theorems & Reports\\
+\midrule
+\texttt{Rule110ChiralSeam} & \texttt{counterfactual\_donor\_swap\_G5\_1} & 22\\
+\texttt{Rule110RingDecoupling} & \texttt{ring7\_exact\_image\_size} & 19\\
+\texttt{MergeMinimality4} & \texttt{global\_merge3\_iff\_pattern} & 11\\
+\texttt{ContinuousSubject110} & \texttt{infinite\_witness\_stream} & 24\\
+\texttt{MergeThreshold} & \texttt{four\_is\_least} & 3\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The linking module \texttt{MergeThreshold} reconciles the iteration conventions
+of two files and translates the coordinates of the four words. Its theorem
+\texttt{four\_is\_least} establishes both existence of the protocol at $T=4$
+and the lower bound for every admissible $T$. All 79 requested axiom reports
+were reproduced. They use only \texttt{propext} and \texttt{Quot.sound}.
+The compiler emits four deprecation warnings for the spelling \texttt{if\_pos}
+in the seam source.
+
+From the continuation package directory, run
+\texttt{python3 scripts/verify\_lean.py} to check the sources and axiom reports.
+The command \texttt{python3 scripts/check\_finite.py} independently recomputes
+the finite tables from the rule number. Induction supplies the unbounded time
+and space claims. Run logs and checksums are included in the package.
+
+\noindent\textbf{Publication provenance.}
+The supplied Russian PDF refers to \texttt{MergeThreshold}, but that file was
+absent from the supplied sources. It has been reconstructed for this
+publication and checked with the four unchanged mathematical modules.
+The original seam audit duplicated its implementation; the publication audit
+imports it instead. A supplied historical failing log for
+\texttt{MergeMinimality4} refers to a different source hash and is archived
+separately; the current source compiles successfully. The reproduction paths
+above have been normalized to the published directory structure.
+The preparation of the text, translations, and verification code involved
+assistance from ChatGPT.

@@ -1,0 +1,2 @@
+# The diagnostic log is preserved verbatim, including TeX's trailing spaces.
+verification/english-typesetting.txt -whitespace

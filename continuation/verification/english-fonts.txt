@@ -1,0 +1,18 @@
+name                                 type              encoding         emb sub uni object ID
+------------------------------------ ----------------- ---------------- --- --- --- ---------
+FEDAZS+NotoSerif-Regular             CID TrueType      Identity-H       yes yes yes      4  0
+HXUJTZ+NotoSerif-Bold                CID TrueType      Identity-H       yes yes yes      6  0
+XHUIPK+CMMI10                        Type 1C           Builtin          yes yes yes      8  0
+JIVLVD+CMR10                         Type 1C           Builtin          yes yes yes      9  0
+EFCAGD+MSBM10                        Type 1C           Builtin          yes yes yes     10  0
+YGOUEK+CMSY10                        Type 1C           Builtin          yes yes yes     11  0
+IDHVMT+NotoSerif-Italic              CID TrueType      Identity-H       yes yes yes     12  0
+TWRQZX+CMMI8                         Type 1C           Builtin          yes yes yes     14  0
+AVBYJN+CMR8                          Type 1C           Builtin          yes yes yes     18  0
+LLELSJ+CMEX10                        Type 1C           Builtin          yes yes yes     19  0
+VSKSMK+CMMI7                         Type 1C           Builtin          yes yes yes     23  0
+KTXAVC+DejaVuSansMono                CID TrueType      Identity-H       yes yes yes     53  0
+GCWXDV+DejaVuSans-Oblique            CID TrueType      Identity-H       yes yes yes     30  0
+BMQQDV+DejaVuSans                    CID TrueType      Identity-H       yes yes yes     37  0
+GCWXDV+DejaVuSans-Oblique            CID TrueType      Identity-H       yes yes yes     60  0
+BMQQDV+DejaVuSans                    CID TrueType      Identity-H       yes yes yes     67  0

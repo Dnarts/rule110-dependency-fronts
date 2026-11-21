@@ -1,0 +1,22 @@
+'Rule110ChiralSeam.rule110_right_exclusion' does not depend on any axioms
+'Rule110ChiralSeam.rule110_no_left_exclusion' does not depend on any axioms
+'Rule110ChiralSeam.rule124_inverts_chirality' does not depend on any axioms
+'Rule110ChiralSeam.rule90_symmetric_cone' does not depend on any axioms
+'Rule110ChiralSeam.etherCm_time_periodic' depends on axioms: [propext]
+'Rule110ChiralSeam.etherCm_space_periodic' depends on axioms: [propext]
+'Rule110ChiralSeam.etherCm_is_exact_crystal' depends on axioms: [propext]
+'Rule110ChiralSeam.etherCm_step' depends on axioms: [propext]
+'Rule110ChiralSeam.donor_phases_0_7_distinguishable' depends on axioms: [propext, Quot.sound]
+'Rule110ChiralSeam.crystalAt_step' depends on axioms: [propext, Quot.sound]
+'Rule110ChiralSeam.globalStep2_bridge' depends on axioms: [propext, Quot.sound]
+'Rule110ChiralSeam.initial_node_p0_sound' depends on axioms: [propext]
+'Rule110ChiralSeam.initial_node_p7_sound' depends on axioms: [propext]
+'Rule110ChiralSeam.every_node_reachable' does not depend on any axioms
+'Rule110ChiralSeam.transducer_step_sound' depends on axioms: [propext]
+'Rule110ChiralSeam.globalInv_step' depends on axioms: [propext, Quot.sound]
+'Rule110ChiralSeam.globalInv_p0_zero' depends on axioms: [propext, Quot.sound]
+'Rule110ChiralSeam.globalInv_p7_zero' depends on axioms: [propext, Quot.sound]
+'Rule110ChiralSeam.global_crystal_preserved_p0' depends on axioms: [propext, Quot.sound]
+'Rule110ChiralSeam.global_crystal_preserved_p7' depends on axioms: [propext, Quot.sound]
+'Rule110ChiralSeam.counterfactual_donor_swap_G5_1' depends on axioms: [propext, Quot.sound]
+'Rule110ChiralSeam.mirror_rule124_breaks_reachable_seam' depends on axioms: [propext]

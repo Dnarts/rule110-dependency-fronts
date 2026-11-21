@@ -1,0 +1,49 @@
+name: Verify Rule 110 continuation
+
+on:
+  push:
+    paths:
+      - 'continuation/**'
+      - '.github/workflows/continuation.yml'
+      - 'README.md'
+      - 'Makefile'
+  pull_request:
+    paths:
+      - 'continuation/**'
+      - '.github/workflows/continuation.yml'
+      - 'README.md'
+      - 'Makefile'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  continuation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Check package identities and links
+        run: python3 continuation/scripts/check_package.py
+      - name: Recompute finite tables independently
+        run: |
+          python3 continuation/scripts/check_finite.py
+          cmp continuation/build/finite-checks.json continuation/verification/finite-checks.json
+      - name: Install pinned Lean toolchain
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -o /tmp/elan-init.sh
+          sh /tmp/elan-init.sh -y --default-toolchain "$(cat continuation/lean-toolchain)"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Rebuild all modules and audit 79 declarations
+        run: python3 continuation/scripts/verify_lean.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: continuation-verification
+          path: continuation/build/

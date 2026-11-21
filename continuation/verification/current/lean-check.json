@@ -1,0 +1,365 @@
+{
+  "status": "PASS",
+  "started_utc": "2026-11-21T13:26:18.544845+00:00",
+  "toolchain": "Lean (version 4.35.0, x86_64-unknown-linux-gnu, commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc, Release)",
+  "dependencies": "Lean core only; no Mathlib",
+  "runner_sha256": "89799783f524bbdfead8c595a977343524a0347cad2c76b7387f847b3e3eba03",
+  "allowed_axioms": [
+    "Quot.sound",
+    "propext"
+  ],
+  "fresh_build": true,
+  "modules": [
+    {
+      "module": "Rule110ChiralSeam",
+      "source": "lean/Rule110ChiralSeam.lean",
+      "source_sha256": "cb16a38cfdc0465d5aebf47cce8d65b4fb09fa52061a1c9e6fb2276fedd79851",
+      "exit_code": 0,
+      "duration_seconds": 9.064,
+      "log": "Rule110ChiralSeam.log",
+      "log_sha256": "fc12ab73ebbf0df9ed2a23d9e24689a6da7b99fa85543c01b91c8172c6f1bc57",
+      "warnings": 4,
+      "audit_count": 0,
+      "axioms": {}
+    },
+    {
+      "module": "Rule110RingDecoupling",
+      "source": "lean/Rule110RingDecoupling.lean",
+      "source_sha256": "44f2ae3f8499c4b425e30658863270537b4684f89bfd78914c5d42300abf34ef",
+      "exit_code": 0,
+      "duration_seconds": 5.069,
+      "log": "Rule110RingDecoupling.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "warnings": 0,
+      "audit_count": 0,
+      "axioms": {}
+    },
+    {
+      "module": "MergeMinimality4",
+      "source": "lean/MergeMinimality4.lean",
+      "source_sha256": "da41665bb1ab2d72dcb9501560a64d6fda4bca01e01c672822f7606194bdd651",
+      "exit_code": 0,
+      "duration_seconds": 6.053,
+      "log": "MergeMinimality4.log",
+      "log_sha256": "2ebdb1cd60d2b928287cf43b06877863c1a5030f2b8a9e27cacbdbe5206755a7",
+      "warnings": 0,
+      "audit_count": 11,
+      "axioms": {
+        "_private.MergeMinimality4.0.MergeMinimality4.outside_of_not_inside": [
+          "propext"
+        ],
+        "MergeMinimality4.evolve3_eq_evolve3Bits": [],
+        "MergeMinimality4.merging_worlds_agree_on_m4_4": [
+          "propext",
+          "Quot.sound"
+        ],
+        "MergeMinimality4.evolve_cone": [
+          "propext",
+          "Quot.sound"
+        ],
+        "MergeMinimality4.setAt0_outside_cone": [
+          "propext",
+          "Quot.sound"
+        ],
+        "MergeMinimality4.merges3Strip_iff": [],
+        "MergeMinimality4.merges3_count_eq_8": [],
+        "MergeMinimality4.global_merge3_iff_pattern": [
+          "propext",
+          "Quot.sound"
+        ],
+        "MergeMinimality4.same_sensor_on_merging_worlds": [
+          "propext",
+          "Quot.sound"
+        ],
+        "MergeMinimality4.no_opposite_orientations_at_merge3": [
+          "propext",
+          "Quot.sound"
+        ],
+        "MergeMinimality4.no_joint_necessity_at_merge3": [
+          "propext",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "module": "ContinuousSubject110",
+      "source": "lean/ContinuousSubject110.lean",
+      "source_sha256": "4ea6306b1bb1f8f9ed50631a43af7374c15af8bc2da4dc6249f45649a8bb7112",
+      "exit_code": 0,
+      "duration_seconds": 4.531,
+      "log": "ContinuousSubject110.log",
+      "log_sha256": "4e7d177335215ac8132f059fbd09e05f501ae742650e4a15cdbc17967034328a",
+      "warnings": 0,
+      "audit_count": 24,
+      "axioms": {
+        "ContinuousSubject110.rule110_xor_gate": [],
+        "ContinuousSubject110.runEpisode_output": [
+          "propext"
+        ],
+        "ContinuousSubject110.stream_state_invariant": [],
+        "ContinuousSubject110.xor_not_left": [],
+        "ContinuousSubject110.donor_swap_flips_all_future_outputs": [
+          "propext"
+        ],
+        "ContinuousSubject110.no_stateless_decoder": [
+          "propext"
+        ],
+        "ContinuousSubject110.step_zero_outside": [
+          "propext",
+          "Quot.sound"
+        ],
+        "ContinuousSubject110.evolve_zero_outside": [
+          "propext",
+          "Quot.sound"
+        ],
+        "ContinuousSubject110.fromWord20_zero_outside": [
+          "propext",
+          "Quot.sound"
+        ],
+        "_private.ContinuousSubject110.0.ContinuousSubject110.outside_of_not_inside": [
+          "propext"
+        ],
+        "ContinuousSubject110.initial_diff_only_at_five": [
+          "propext",
+          "Quot.sound"
+        ],
+        "ContinuousSubject110.initial_values": [
+          "propext"
+        ],
+        "ContinuousSubject110.merge_on_line_4": [
+          "propext",
+          "Quot.sound"
+        ],
+        "ContinuousSubject110.merge_K0": [
+          "propext",
+          "Quot.sound"
+        ],
+        "ContinuousSubject110.merge_K1": [
+          "propext",
+          "Quot.sound"
+        ],
+        "ContinuousSubject110.sensor_values": [
+          "propext"
+        ],
+        "ContinuousSubject110.context_values": [
+          "propext"
+        ],
+        "ContinuousSubject110.left_gate_values": [
+          "propext"
+        ],
+        "ContinuousSubject110.witness_return": [
+          "propext"
+        ],
+        "ContinuousSubject110.concrete_no_stateless_decoder": [
+          "propext",
+          "Quot.sound"
+        ],
+        "ContinuousSubject110.witness_restart_coordinate": [
+          "propext"
+        ],
+        "ContinuousSubject110.concrete_stream_invariants": [
+          "propext"
+        ],
+        "ContinuousSubject110.parity_not_initial": [],
+        "ContinuousSubject110.infinite_witness_stream": [
+          "propext"
+        ]
+      }
+    },
+    {
+      "module": "AxiomAudit",
+      "source": "lean/AxiomAudit.lean",
+      "source_sha256": "bb40bd2ac13069063f13c355afbb8285c9a4a09da3376c82d00e905da4fda948",
+      "exit_code": 0,
+      "duration_seconds": 0.251,
+      "log": "AxiomAudit.log",
+      "log_sha256": "33b40158707652a45a0e2cd4a3533345079d14e93360ec4d3fad43a1cead59f2",
+      "warnings": 0,
+      "audit_count": 22,
+      "axioms": {
+        "Rule110ChiralSeam.rule110_right_exclusion": [],
+        "Rule110ChiralSeam.rule110_no_left_exclusion": [],
+        "Rule110ChiralSeam.rule124_inverts_chirality": [],
+        "Rule110ChiralSeam.rule90_symmetric_cone": [],
+        "Rule110ChiralSeam.etherCm_time_periodic": [
+          "propext"
+        ],
+        "Rule110ChiralSeam.etherCm_space_periodic": [
+          "propext"
+        ],
+        "Rule110ChiralSeam.etherCm_is_exact_crystal": [
+          "propext"
+        ],
+        "Rule110ChiralSeam.etherCm_step": [
+          "propext"
+        ],
+        "Rule110ChiralSeam.donor_phases_0_7_distinguishable": [
+          "propext",
+          "Quot.sound"
+        ],
+        "Rule110ChiralSeam.crystalAt_step": [
+          "propext",
+          "Quot.sound"
+        ],
+        "Rule110ChiralSeam.globalStep2_bridge": [
+          "propext",
+          "Quot.sound"
+        ],
+        "Rule110ChiralSeam.initial_node_p0_sound": [
+          "propext"
+        ],
+        "Rule110ChiralSeam.initial_node_p7_sound": [
+          "propext"
+        ],
+        "Rule110ChiralSeam.every_node_reachable": [],
+        "Rule110ChiralSeam.transducer_step_sound": [
+          "propext"
+        ],
+        "Rule110ChiralSeam.globalInv_step": [
+          "propext",
+          "Quot.sound"
+        ],
+        "Rule110ChiralSeam.globalInv_p0_zero": [
+          "propext",
+          "Quot.sound"
+        ],
+        "Rule110ChiralSeam.globalInv_p7_zero": [
+          "propext",
+          "Quot.sound"
+        ],
+        "Rule110ChiralSeam.global_crystal_preserved_p0": [
+          "propext",
+          "Quot.sound"
+        ],
+        "Rule110ChiralSeam.global_crystal_preserved_p7": [
+          "propext",
+          "Quot.sound"
+        ],
+        "Rule110ChiralSeam.counterfactual_donor_swap_G5_1": [
+          "propext",
+          "Quot.sound"
+        ],
+        "Rule110ChiralSeam.mirror_rule124_breaks_reachable_seam": [
+          "propext"
+        ]
+      }
+    },
+    {
+      "module": "RingAxiomAudit",
+      "source": "lean/RingAxiomAudit.lean",
+      "source_sha256": "4d87ad26a9515d317b4d09b9844af2439c398c7fd1ad6d5a6b910419113d7255",
+      "exit_code": 0,
+      "duration_seconds": 0.223,
+      "log": "RingAxiomAudit.log",
+      "log_sha256": "57374a3fd57c29f3272643391e3d69e231751dbb2c695bd22b385491e261f8f5",
+      "warnings": 0,
+      "audit_count": 19,
+      "axioms": {
+        "Rule110RingDecoupling.evolRing7_add": [
+          "propext",
+          "Quot.sound"
+        ],
+        "Rule110RingDecoupling.ring7_cycle_base": [
+          "propext",
+          "Quot.sound"
+        ],
+        "Rule110RingDecoupling.evolRing7_period14": [
+          "propext",
+          "Quot.sound"
+        ],
+        "Rule110RingDecoupling.evolRing7_add_mul14": [
+          "propext",
+          "Quot.sound"
+        ],
+        "Rule110RingDecoupling.evolRing7_reduce": [
+          "propext",
+          "Quot.sound"
+        ],
+        "Rule110RingDecoupling.attractors7_injective": [],
+        "Rule110RingDecoupling.evol7_lands_in_attractors": [
+          "propext",
+          "Quot.sound"
+        ],
+        "Rule110RingDecoupling.attractors7_closed": [
+          "propext",
+          "Quot.sound"
+        ],
+        "Rule110RingDecoupling.ring7_capacity_bound_all_time": [
+          "propext",
+          "Quot.sound"
+        ],
+        "Rule110RingDecoupling.ring7_attractors_reachable": [
+          "propext",
+          "Quot.sound"
+        ],
+        "Rule110RingDecoupling.ring7_reachable_iff_attractor": [
+          "propext",
+          "Quot.sound"
+        ],
+        "Rule110RingDecoupling.ring7_exact_image_size": [
+          "propext",
+          "Quot.sound"
+        ],
+        "Rule110RingDecoupling.ring7_minimal_preperiod": [
+          "propext",
+          "Quot.sound"
+        ],
+        "Rule110RingDecoupling.ring7_period_dvd": [
+          "propext",
+          "Quot.sound"
+        ],
+        "Rule110RingDecoupling.ring7_minimal_common_period": [
+          "propext",
+          "Quot.sound"
+        ],
+        "Rule110RingDecoupling.ring7_essential_base": [
+          "propext",
+          "Quot.sound"
+        ],
+        "Rule110RingDecoupling.ring7_all_bits_essential_all_time": [
+          "propext",
+          "Quot.sound"
+        ],
+        "Rule110RingDecoupling.ring7_persistent_decoupling": [
+          "propext",
+          "Quot.sound"
+        ],
+        "Rule110RingDecoupling.rule90_ring8_collapses_at_4": [
+          "propext",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "module": "MergeThreshold",
+      "source": "lean/MergeThreshold.lean",
+      "source_sha256": "15762dd68ad6a573c310bd499bfe8a081a29c340a295e8a44f68795fb79b1ef3",
+      "exit_code": 0,
+      "duration_seconds": 0.698,
+      "log": "MergeThreshold.log",
+      "log_sha256": "200d63861b103ee495c87bbc40b17f20d78fcf1fc03aeb8983b17fee2d54584f",
+      "warnings": 0,
+      "audit_count": 3,
+      "axioms": {
+        "MergeThreshold.protocol_at_four": [
+          "propext",
+          "Quot.sound"
+        ],
+        "MergeThreshold.protocol_time_ge_four": [
+          "propext",
+          "Quot.sound"
+        ],
+        "MergeThreshold.four_is_least": [
+          "propext",
+          "Quot.sound"
+        ]
+      }
+    }
+  ],
+  "total_distinct_audit_reports": 79,
+  "observed_axioms": [
+    "Quot.sound",
+    "propext"
+  ],
+  "finished_utc": "2026-11-21T13:26:44.439182+00:00"
+}

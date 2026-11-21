@@ -1,0 +1,68 @@
+[
+  {
+    "uploaded_filename": "AxiomAudit.lean",
+    "archived_path": "archive/supplied/AxiomAudit.lean",
+    "bytes": 37988,
+    "sha256": "8509f87100c185066e52854a53c95986a9f09f33bf55706818ea5e58515bd44c"
+  },
+  {
+    "uploaded_filename": "ContinuousSubject110.axioms.txt",
+    "archived_path": "archive/supplied/ContinuousSubject110.axioms.txt",
+    "bytes": 2096,
+    "sha256": "1b47f8babbfc5c3c667daac99765d455d903d976321dc6127c6b0d5d26b4ad48"
+  },
+  {
+    "uploaded_filename": "ContinuousSubject110.lean",
+    "archived_path": "archive/supplied/ContinuousSubject110.lean",
+    "bytes": 18223,
+    "sha256": "4ea6306b1bb1f8f9ed50631a43af7374c15af8bc2da4dc6249f45649a8bb7112"
+  },
+  {
+    "uploaded_filename": "MergeMinimality4.axioms.txt",
+    "archived_path": "archive/supplied/MergeMinimality4.axioms.txt",
+    "bytes": 1199,
+    "sha256": "a5c66a322c9182454a0025fa7adf517f693056be33705c5513fe5b4475971a23"
+  },
+  {
+    "uploaded_filename": "MergeMinimality4.check.log",
+    "archived_path": "archive/supplied/MergeMinimality4.check.log",
+    "bytes": 3241,
+    "sha256": "9092a926d79b35133f6a12dfdffaa2696e18357a2e3fada933940f3fc8095924"
+  },
+  {
+    "uploaded_filename": "MergeMinimality4.lean",
+    "archived_path": "archive/supplied/MergeMinimality4.lean",
+    "bytes": 17566,
+    "sha256": "da41665bb1ab2d72dcb9501560a64d6fda4bca01e01c672822f7606194bdd651"
+  },
+  {
+    "uploaded_filename": "Rule110ChiralSeam.lean",
+    "archived_path": "archive/supplied/Rule110ChiralSeam.lean",
+    "bytes": 36772,
+    "sha256": "cb16a38cfdc0465d5aebf47cce8d65b4fb09fa52061a1c9e6fb2276fedd79851"
+  },
+  {
+    "uploaded_filename": "Rule110RingDecoupling.axioms.txt",
+    "archived_path": "archive/supplied/Rule110RingDecoupling.axioms.txt",
+    "bytes": 3141,
+    "sha256": "c0f4abed6dcbcc05932995f5157627abd00e0372741d8468b3ebf1ad51637445"
+  },
+  {
+    "uploaded_filename": "Rule110RingDecoupling.lean",
+    "archived_path": "archive/supplied/Rule110RingDecoupling.lean",
+    "bytes": 22846,
+    "sha256": "44f2ae3f8499c4b425e30658863270537b4684f89bfd78914c5d42300abf34ef"
+  },
+  {
+    "uploaded_filename": "axioms.log",
+    "archived_path": "archive/supplied/axioms.log",
+    "bytes": 1701,
+    "sha256": "33b40158707652a45a0e2cd4a3533345079d14e93360ec4d3fad43a1cead59f2"
+  },
+  {
+    "uploaded_filename": "rule110-continuation-ru(1).pdf",
+    "archived_path": "archive/supplied/rule110-continuation-ru.pdf",
+    "bytes": 131128,
+    "sha256": "aa1e8ca2be26d3baf020f055af50844598703800127dfdc6cfa97ed81d89f98a"
+  }
+]

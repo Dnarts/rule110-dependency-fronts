@@ -4,8 +4,13 @@
 | --- | --- | --- | --- | --- |
 | **I. Exact dependency fronts in Rule 110** | [PDF](paper/v2/en.pdf) | [PDF](paper/v2/ru.pdf) | [PDF](paper/v2/zh.pdf) | [PDF](paper/v2/he.pdf) · [LaTeX](paper/v2/he.tex) |
 | **II. 110 OBSERVER: Observability of a System’s Own Past** | [PDF](https://github.com/Dnarts/rule110-dependency-fronts/blob/v2.2.1-monograph-multilingual/110_OBSERVER_Preprint_en.pdf) | [PDF](https://github.com/Dnarts/rule110-dependency-fronts/blob/v2.2.1-monograph-multilingual/110_OBSERVER_Preprint.pdf) | [PDF](https://github.com/Dnarts/rule110-dependency-fronts/blob/v2.2.1-monograph-multilingual/110_OBSERVER_Preprint_zh.pdf) | [PDF](paper/observer/he.pdf) · [LaTeX](paper/observer/he.tex) |
+| **III. Essential Inputs and Memory after Coalescence** | [PDF](continuation/paper/rule110-continuation-en.pdf) · [Source](continuation/paper/rule110-continuation-en.tex) | [PDF](continuation/paper/rule110-continuation-ru.pdf) | [中文说明](continuation/README.md#chinese) | [הסבר בעברית](continuation/README.md#hebrew) |
 
 Aleksandr Strand · November 2026
+
+**New continuation:** [English · Русский · 简体中文 · עברית](continuation/README.md) — the exact seven-cell ring, a 63-state arbitrary-tail crystal certificate, the formally completed four-step merger threshold, and a persistent one-bit register across externally reset episodes. [Verification: 79/79 axiom reports](continuation/verification/REPORT.md) · [Sources and reproduction](continuation/MANIFEST.md) · [Connection to Channel Topology and Memory](continuation/docs/relationship.md).
+
+**Продолжение:** точная динамика семиклеточного кольца, защита кристаллического фона при любом правом хвосте, формальное завершение порога слияния и однобитная память между эпизодами. [Описание на четырёх языках](continuation/README.md).
 
 **Paper I** asks which initial cells can change the state of the origin after exactly $t$ steps of Rule 110. It proves an exact asymmetric dependency interval on the infinite line and formalizes the theorem in Lean 4. **110 OBSERVER** asks a different question: can a reader reconstruct a target bit from a limited record? In Rule 110, the sensors’ dependency intervals can cover every relevant input and still produce identical records for two different answers.
 
@@ -50,6 +55,19 @@ The first preprint proved the endpoints and reported a finite search through tim
 - **Geometric coverage is necessary, not sufficient.** For unrestricted initial configurations on the infinite line, failing to cover even one essential input prevents exact prediction from the sensor log. Covering every essential input still need not distinguish histories that require different answers. [Formal statement and counterexamples](https://github.com/Dnarts/rule110-dependency-fronts/blob/v2.2.1-monograph-multilingual/observer/Rule110Observer.lean) · [How the two papers fit together](https://github.com/Dnarts/rule110-dependency-fronts/blob/v2.2.1-monograph-multilingual/docs/series.md)
 - **One bit can restore a distinction after merging.** In the displayed four-history construction, flipping one initial cell changes a sensor reading. An external register retains that reading through the merger of the main lattice configurations. After the bit is written back, one ordinary Rule 110 update reconstructs the past value using the remaining local context. Neither the message nor the context alone suffices on those four histories. [Construction and controls](https://github.com/Dnarts/rule110-dependency-fronts/blob/v2.2.1-monograph-multilingual/sections/04-witnesses.tex)
 - **OLMo is a separate development-panel experiment.** A sender chooses one of two rule tokens before seeing the new input. A recipient starts with a fresh KV cache and applies the transmitted rule. It answered 64/64 cases with unequal end bits versus 32/64 for a constant rule token; overall, 124/128 answers and 6/8 complete blocks. The held-out panels and activation-channel experiment were not run in this snapshot. This measures rule transfer through a token; it does not establish internal activation-level correction or subjective experience. [Experiment](https://github.com/Dnarts/rule110-dependency-fronts/blob/v2.2.1-monograph-multilingual/sections/05-olmo.tex) · [Recorded results](https://github.com/Dnarts/rule110-dependency-fronts/blob/v2.2.1-monograph-multilingual/observer/two-step-instruct-chat-04/report.json) · [Limits of inference](https://github.com/Dnarts/rule110-dependency-fronts/blob/v2.2.1-monograph-multilingual/sections/06-boundary.tex)
+
+
+## Paper III: essential inputs and memory after coalescence
+
+The continuation packages four unchanged supplied mathematical modules with a newly reconstructed and checked `MergeThreshold.lean` bridge. The earlier monograph already stated the four-step threshold; this package connects its lower bound and concrete witness in one Lean theorem under the same observation assumptions. The minimum is **merger at step 4**, with **return at step 5**.
+
+The external register stores parity across episodes, with output `O_n = q_n XOR Y_n`; the lattice is reinitialized by the episode schedule. All seven source/audit modules build on Lean 4.35.0, and the 79 requested dependency reports contain only `propext`, `Quot.sound`, or no axioms. Historical failing logs are preserved separately from the fresh successful build.
+
+- [Accessible multilingual README](continuation/README.md)
+- [English article](continuation/paper/rule110-continuation-en.pdf) · [Original Russian article](continuation/paper/rule110-continuation-ru.pdf)
+- [Exact file dependencies and reproduction](continuation/MANIFEST.md) · [Current verification report](continuation/verification/REPORT.md)
+- [Channel and memory relationships, with assumptions](continuation/docs/relationship.md)
+
 
 ## Reproduce
 

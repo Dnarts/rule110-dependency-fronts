@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "Please cite the continuation paper and the relevant predecessor results."
+type: article
+title: "Essential Inputs and Memory after Coalescence in Rule 110"
+authors:
+  - family-names: Strand
+    given-names: Aleksandr
+date-released: 2026-11-21
+url: "https://github.com/Dnarts/rule110-dependency-fronts/tree/main/continuation"
+abstract: >-
+  Exact eventual behavior of the seven-site Rule 110 ring, an arbitrary-tail
+  crystal certificate, the least merger time for a fixed raw sensor requiring
+  binary context, and an external one-bit parity register across reset episodes.
+keywords:
+  - Rule 110
+  - cellular automata
+  - essential variables
+  - observability
+  - memory
+  - Lean 4

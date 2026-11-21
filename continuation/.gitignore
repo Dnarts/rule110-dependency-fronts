@@ -1,0 +1,7 @@
+/build/
+__pycache__/
+*.py[cod]
+*.olean
+*.ilean
+!archive/supplied/*.log
+!verification/current/*.log

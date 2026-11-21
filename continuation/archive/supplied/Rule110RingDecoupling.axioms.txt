@@ -1,0 +1,62 @@
+Lean (version 4.33.1, arm64-apple-darwin24.6.0, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+Rule110RingDecoupling.lean SHA-256 44f2ae3f8499c4b425e30658863270537b4684f89bfd78914c5d42300abf34ef
+
+lean Rule110RingDecoupling.lean | exit 0 | no diagnostics
+lean AxiomAudit.lean | exit 0 | import Rule110RingDecoupling
+
+#print axioms Rule110RingDecoupling.evolRing7_add
+'Rule110RingDecoupling.evolRing7_add' depends on axioms: [propext, Quot.sound]
+
+#print axioms Rule110RingDecoupling.ring7_cycle_base
+'Rule110RingDecoupling.ring7_cycle_base' depends on axioms: [propext, Quot.sound]
+
+#print axioms Rule110RingDecoupling.evolRing7_period14
+'Rule110RingDecoupling.evolRing7_period14' depends on axioms: [propext, Quot.sound]
+
+#print axioms Rule110RingDecoupling.evolRing7_add_mul14
+'Rule110RingDecoupling.evolRing7_add_mul14' depends on axioms: [propext, Quot.sound]
+
+#print axioms Rule110RingDecoupling.evolRing7_reduce
+'Rule110RingDecoupling.evolRing7_reduce' depends on axioms: [propext, Quot.sound]
+
+#print axioms Rule110RingDecoupling.attractors7_injective
+'Rule110RingDecoupling.attractors7_injective' does not depend on any axioms
+
+#print axioms Rule110RingDecoupling.evol7_lands_in_attractors
+'Rule110RingDecoupling.evol7_lands_in_attractors' depends on axioms: [propext, Quot.sound]
+
+#print axioms Rule110RingDecoupling.attractors7_closed
+'Rule110RingDecoupling.attractors7_closed' depends on axioms: [propext, Quot.sound]
+
+#print axioms Rule110RingDecoupling.ring7_capacity_bound_all_time
+'Rule110RingDecoupling.ring7_capacity_bound_all_time' depends on axioms: [propext, Quot.sound]
+
+#print axioms Rule110RingDecoupling.ring7_attractors_reachable
+'Rule110RingDecoupling.ring7_attractors_reachable' depends on axioms: [propext, Quot.sound]
+
+#print axioms Rule110RingDecoupling.ring7_reachable_iff_attractor
+'Rule110RingDecoupling.ring7_reachable_iff_attractor' depends on axioms: [propext, Quot.sound]
+
+#print axioms Rule110RingDecoupling.ring7_exact_image_size
+'Rule110RingDecoupling.ring7_exact_image_size' depends on axioms: [propext, Quot.sound]
+
+#print axioms Rule110RingDecoupling.ring7_minimal_preperiod
+'Rule110RingDecoupling.ring7_minimal_preperiod' depends on axioms: [propext, Quot.sound]
+
+#print axioms Rule110RingDecoupling.ring7_period_dvd
+'Rule110RingDecoupling.ring7_period_dvd' depends on axioms: [propext, Quot.sound]
+
+#print axioms Rule110RingDecoupling.ring7_minimal_common_period
+'Rule110RingDecoupling.ring7_minimal_common_period' depends on axioms: [propext, Quot.sound]
+
+#print axioms Rule110RingDecoupling.ring7_essential_base
+'Rule110RingDecoupling.ring7_essential_base' depends on axioms: [propext, Quot.sound]
+
+#print axioms Rule110RingDecoupling.ring7_all_bits_essential_all_time
+'Rule110RingDecoupling.ring7_all_bits_essential_all_time' depends on axioms: [propext, Quot.sound]
+
+#print axioms Rule110RingDecoupling.ring7_persistent_decoupling
+'Rule110RingDecoupling.ring7_persistent_decoupling' depends on axioms: [propext, Quot.sound]
+
+#print axioms Rule110RingDecoupling.rule90_ring8_collapses_at_4
+'Rule110RingDecoupling.rule90_ring8_collapses_at_4' depends on axioms: [propext, Quot.sound]

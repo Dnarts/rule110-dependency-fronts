@@ -1,0 +1,26 @@
+import Rule110ChiralSeam
+
+/-! Audit the canonical seam module without duplicating its implementation. -/
+
+#print axioms Rule110ChiralSeam.rule110_right_exclusion
+#print axioms Rule110ChiralSeam.rule110_no_left_exclusion
+#print axioms Rule110ChiralSeam.rule124_inverts_chirality
+#print axioms Rule110ChiralSeam.rule90_symmetric_cone
+#print axioms Rule110ChiralSeam.etherCm_time_periodic
+#print axioms Rule110ChiralSeam.etherCm_space_periodic
+#print axioms Rule110ChiralSeam.etherCm_is_exact_crystal
+#print axioms Rule110ChiralSeam.etherCm_step
+#print axioms Rule110ChiralSeam.donor_phases_0_7_distinguishable
+#print axioms Rule110ChiralSeam.crystalAt_step
+#print axioms Rule110ChiralSeam.globalStep2_bridge
+#print axioms Rule110ChiralSeam.initial_node_p0_sound
+#print axioms Rule110ChiralSeam.initial_node_p7_sound
+#print axioms Rule110ChiralSeam.every_node_reachable
+#print axioms Rule110ChiralSeam.transducer_step_sound
+#print axioms Rule110ChiralSeam.globalInv_step
+#print axioms Rule110ChiralSeam.globalInv_p0_zero
+#print axioms Rule110ChiralSeam.globalInv_p7_zero
+#print axioms Rule110ChiralSeam.global_crystal_preserved_p0
+#print axioms Rule110ChiralSeam.global_crystal_preserved_p7
+#print axioms Rule110ChiralSeam.counterfactual_donor_swap_G5_1
+#print axioms Rule110ChiralSeam.mirror_rule124_breaks_reachable_seam

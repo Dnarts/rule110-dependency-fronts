@@ -1,0 +1,60 @@
+Lean (version 4.35.0, arm64-apple-darwin24.6.0, commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc, Release)
+source SHA-256: 2f450f16d3d7049455c5f70863098797277303b24565d987dee59a15e31b5727
+command: lean -j 1 MergeMinimality4.lean
+exit: 1
+
+MergeMinimality4.lean:77:6: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+MergeMinimality4.lean:77:18: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+MergeMinimality4.lean:129:2: error: failed to synthesize
+  Decidable
+    (∀ (l0 l1 l2 l3 l4 l5 r0 r1 r2 r3 r4 r5 : Bool),
+      merges3Strip l0 l1 l2 l3 l4 l5 r0 r1 r2 r3 r4 r5 = true ↔
+        l1 = true ∧ l2 = false ∧ l3 = true ∧ l4 = true ∧ l5 = true ∧ r0 = true ∧ r1 = false ∧ r2 = false ∧ r3 = false)
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+MergeMinimality4.lean:150:2: error: maximum recursion depth has been reached
+use `set_option maxRecDepth <num>` to increase limit
+use `set_option diagnostics true` to get diagnostic information
+MergeMinimality4.lean:262:5: error: unknown tactic
+MergeMinimality4.lean:261:46: error: unsolved goals
+g0 g1 : Grid
+hm0 : ∀ (x : Int), evolve 3 (setAt0 g0 false) x = evolve 3 (setAt0 g0 true) x
+hm1 : ∀ (x : Int), evolve 3 (setAt0 g1 false) x = evolve 3 (setAt0 g1 true) x
+τ : Nat
+hτ : τ < 3
+s : Int
+hsens0 : evolve τ (setAt0 g0 false) s ≠ evolve τ (setAt0 g0 true) s
+⊢ -↑τ ≤ s ∧ s ≤ ↑τ
+MergeMinimality4.lean:260:66: error: unsolved goals
+g0 g1 : Grid
+hm0 : ∀ (x : Int), evolve 3 (setAt0 g0 false) x = evolve 3 (setAt0 g0 true) x
+hm1 : ∀ (x : Int), evolve 3 (setAt0 g1 false) x = evolve 3 (setAt0 g1 true) x
+τ : Nat
+hτ : τ < 3
+s : Int
+hsens0 : evolve τ (setAt0 g0 false) s ≠ evolve τ (setAt0 g0 true) s
+hs : -↑τ ≤ s ∧ s ≤ ↑τ
+⊢ evolve τ (setAt0 g0 false) s = evolve τ (setAt0 g1 false) s ∧
+    evolve τ (setAt0 g0 true) s = evolve τ (setAt0 g1 true) s
+MergeMinimality4.lean:294:10: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+MergeMinimality4.lean:297:10: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+'MergeMinimality4.evolve_cone' depends on axioms: [propext, Classical.choice, Quot.sound]
+'MergeMinimality4.setAt0_outside_cone' depends on axioms: [propext, Classical.choice, Quot.sound]
+'MergeMinimality4.merges3Strip_iff' depends on axioms: [sorryAx]
+'MergeMinimality4.merges3_count_eq_8' depends on axioms: [sorryAx]
+'MergeMinimality4.global_merge3_iff_pattern' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'MergeMinimality4.same_sensor_on_merging_worlds' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'MergeMinimality4.no_opposite_orientations_at_merge3' depends on axioms: [sorryAx]
+'MergeMinimality4.no_joint_necessity_at_merge3' depends on axioms: [propext, sorryAx]
