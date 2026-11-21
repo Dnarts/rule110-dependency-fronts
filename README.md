@@ -1,9 +1,9 @@
 # Exact dependency fronts in Rule 110
 
-| Preprint | English | Русский | 简体中文 |
-| --- | --- | --- | --- |
-| **I. Exact dependency fronts in Rule 110** | [PDF](paper/v2/en.pdf) | [PDF](paper/v2/ru.pdf) | [PDF](paper/v2/zh.pdf) |
-| **II. 110 OBSERVER: Observability of a System’s Own Past** | [PDF](https://github.com/Dnarts/rule110-dependency-fronts/blob/v2.2.1-monograph-multilingual/110_OBSERVER_Preprint_en.pdf) | [PDF](https://github.com/Dnarts/rule110-dependency-fronts/blob/v2.2.1-monograph-multilingual/110_OBSERVER_Preprint.pdf) | [PDF](https://github.com/Dnarts/rule110-dependency-fronts/blob/v2.2.1-monograph-multilingual/110_OBSERVER_Preprint_zh.pdf) |
+| Preprint | English | Русский | 简体中文 | עברית |
+| --- | --- | --- | --- | --- |
+| **I. Exact dependency fronts in Rule 110** | [PDF](paper/v2/en.pdf) | [PDF](paper/v2/ru.pdf) | [PDF](paper/v2/zh.pdf) | [PDF](paper/v2/he.pdf) · [LaTeX](paper/v2/he.tex) |
+| **II. 110 OBSERVER: Observability of a System’s Own Past** | [PDF](https://github.com/Dnarts/rule110-dependency-fronts/blob/v2.2.1-monograph-multilingual/110_OBSERVER_Preprint_en.pdf) | [PDF](https://github.com/Dnarts/rule110-dependency-fronts/blob/v2.2.1-monograph-multilingual/110_OBSERVER_Preprint.pdf) | [PDF](https://github.com/Dnarts/rule110-dependency-fronts/blob/v2.2.1-monograph-multilingual/110_OBSERVER_Preprint_zh.pdf) | [PDF](paper/observer/he.pdf) · [LaTeX](paper/observer/he.tex) |
 
 Aleksandr Strand · November 2026
 
