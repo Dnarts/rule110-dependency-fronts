@@ -1,8 +1,21 @@
 # Exact dependency fronts in Rule 110
 
-**Final preprint (PDF)**  [English PDF](paper/v2/en.pdf) · [Русский PDF](paper/v2/ru.pdf) · [简体中文 PDF](paper/v2/zh.pdf)
+| Preprint | English | Русский | 简体中文 |
+| --- | --- | --- | --- |
+| **I. Exact dependency fronts in Rule 110** | [PDF](paper/v2/en.pdf) | [PDF](paper/v2/ru.pdf) | [PDF](paper/v2/zh.pdf) |
+| **II. 110 OBSERVER: Observability of a System’s Own Past** | [PDF](https://github.com/Dnarts/rule110-dependency-fronts/blob/v2.2.1-monograph-multilingual/110_OBSERVER_Preprint_en.pdf) | [PDF](https://github.com/Dnarts/rule110-dependency-fronts/blob/v2.2.1-monograph-multilingual/110_OBSERVER_Preprint.pdf) | [PDF](https://github.com/Dnarts/rule110-dependency-fronts/blob/v2.2.1-monograph-multilingual/110_OBSERVER_Preprint_zh.pdf) |
 
 Aleksandr Strand · November 2026
+
+**Paper I** asks which initial cells can change the state of the origin after exactly $t$ steps of Rule 110. It proves an exact asymmetric dependency interval on the infinite line and formalizes the theorem in Lean 4. **110 OBSERVER** asks a different question: can a reader reconstruct a target bit from a limited record? In Rule 110, the sensors’ dependency intervals can cover every relevant input and still produce identical records for two different answers.
+
+**Русский.** Первая работа точно определяет, какие начальные клетки могут повлиять на ответ. Вторая показывает, что даже полное покрытие этих клеток конусами датчиков не гарантирует, что их журнал позволяет восстановить ответ.
+
+**简体中文。** 第一篇论文精确确定哪些初始元胞可能影响目标元胞。第二篇论文表明：即使传感器的依赖区间覆盖了所有相关输入，观测记录仍可能不足以确定答案。
+
+- **Paper I:** [LaTeX sources and fonts](paper/v2) · [Release notes](RELEASE_NOTES.md) · [Citation](CITATION.cff) · [original v2 branch](https://github.com/Dnarts/rule110-dependency-fronts/tree/final-preprint-v2)
+- **110 OBSERVER:** [Monograph branch and source index](https://github.com/Dnarts/rule110-dependency-fronts/tree/series/monograph) · [Tagged snapshot](https://github.com/Dnarts/rule110-dependency-fronts/tree/v2.2.1-monograph-multilingual) · [Release notes](https://github.com/Dnarts/rule110-dependency-fronts/blob/v2.2.1-monograph-multilingual/RELEASE_NOTES.md) · [Checksums](https://github.com/Dnarts/rule110-dependency-fronts/blob/v2.2.1-monograph-multilingual/SHA256SUMS) · [Citation](https://github.com/Dnarts/rule110-dependency-fronts/blob/v2.2.1-monograph-multilingual/CITATION.cff)
+- **First edition of Paper I:** [Zenodo, DOI 10.5281/zenodo.24334185](https://doi.org/10.5281/zenodo.24334185) · [PDF](paper/main.pdf) · [LaTeX](paper/main.tex). This DOI identifies the first edition, not the final Paper I or the monograph.
 
 <details>
 <summary>Abstract · Аннотация · 摘要</summary>
@@ -19,11 +32,7 @@ Every integer between the two dependency fronts is essential. The proof is forma
 
 </details>
 
-[Final preprint sources and fonts](paper/v2)
-
-**First preprint:** [Zenodo, DOI 10.5281/zenodo.24334185](https://doi.org/10.5281/zenodo.24334185) · [PDF](paper/main.pdf) · [TeX](paper/main.tex)
-
-## Results and verification
+## Paper I: results and verification
 
 | Result | Evidence |
 | --- | --- |
@@ -32,22 +41,31 @@ Every integer between the two dependency fronts is essential. The proof is forma
 | Finite base for the full theorem, times 0 through 2484 | [Finite transfer](lean/Finite.lean) and [certificate checker](lean/FiniteBase.lean) for 5,147,263 time–coordinate pairs in 100 blocks |
 | All later times | [Five adjoining strips](lean/Late.lean) for every time from 2485 onward |
 | Finite-ring persistence criterion | Mathematical proof in the manuscript |
-| Ring of 20 sites at time 121 | Independent exhaustive enumeration: 2,095 reachable states, all 20 inputs essential |
+| Ring of 20 sites at time 121 | Independent exhaustive enumeration: 2,095 reachable states; each of the 20 initial coordinates is essential for the target cell |
 
 The first preprint proved the endpoints and reported a finite search through time 2000. It posed full coverage of the interior for all times as a conjecture. The final preprint proves it. [Verification scope](verification/VERIFICATION_SCOPE.md) · [Earlier proofs, experiments and manuscripts](history/)
 
+## 110 OBSERVER: what is established
+
+- **Geometric coverage is necessary, not sufficient.** For unrestricted initial configurations on the infinite line, failing to cover even one essential input prevents exact prediction from the sensor log. Covering every essential input still need not distinguish histories that require different answers. [Formal statement and counterexamples](https://github.com/Dnarts/rule110-dependency-fronts/blob/v2.2.1-monograph-multilingual/observer/Rule110Observer.lean) · [How the two papers fit together](https://github.com/Dnarts/rule110-dependency-fronts/blob/v2.2.1-monograph-multilingual/docs/series.md)
+- **One bit can restore a distinction after merging.** In the displayed four-history construction, flipping one initial cell changes a sensor reading. An external register retains that reading through the merger of the main lattice configurations. After the bit is written back, one ordinary Rule 110 update reconstructs the past value using the remaining local context. Neither the message nor the context alone suffices on those four histories. [Construction and controls](https://github.com/Dnarts/rule110-dependency-fronts/blob/v2.2.1-monograph-multilingual/sections/04-witnesses.tex)
+- **OLMo is a separate development-panel experiment.** A sender chooses one of two rule tokens before seeing the new input. A recipient starts with a fresh KV cache and applies the transmitted rule. It answered 64/64 cases with unequal end bits versus 32/64 for a constant rule token; overall, 124/128 answers and 6/8 complete blocks. The held-out panels and activation-channel experiment were not run in this snapshot. This measures rule transfer through a token; it does not establish internal activation-level correction or subjective experience. [Experiment](https://github.com/Dnarts/rule110-dependency-fronts/blob/v2.2.1-monograph-multilingual/sections/05-olmo.tex) · [Recorded results](https://github.com/Dnarts/rule110-dependency-fronts/blob/v2.2.1-monograph-multilingual/observer/two-step-instruct-chat-04/report.json) · [Limits of inference](https://github.com/Dnarts/rule110-dependency-fronts/blob/v2.2.1-monograph-multilingual/sections/06-boundary.tex)
+
 ## Reproduce
 
-Install the Lean toolchain pinned by `lean-toolchain` (4.35.0) and Python 3.10 or later. Run from the repository root:
+Use the Lean toolchain pinned by `lean-toolchain` (4.35.0) and Python 3.10 or later. Run each command from the root of the corresponding checkout.
 
-```sh
-make verify
-```
+| Checkout | Verify | Build PDFs |
+| --- | --- | --- |
+| `main` or `final-preprint-v2` | `make verify` | `make paper-v2`; `make package-v2` also assembles the PDFs and source archives |
+| `v2.2.1-monograph-multilingual` | `make verify-series`; `make verify-observer` runs only the Python checks | `make monograph` for Russian; `make translations` for English and Chinese |
 
-This regenerates the finite witnesses, compiles the proof from source and checks the axiom report for the root theorem. Its only reported dependencies are `propext`, `Classical.choice` and `Quot.sound`.
+On `main`, verification regenerates the finite certificates, builds the Lean proof and checks the axiom report for `Rails.essential_iff`: `propext`, `Classical.choice` and `Quot.sound`. The monograph verification adds the observer Lean module and finite witness checks. Its Python scripts recompute the OLMo counts from stored outputs; they do not run new inference. Paper I uses XeLaTeX with `latexmk`; the monograph supports Tectonic or XeLaTeX with `latexmk`.
 
-`make paper-v2` builds the three final manuscripts with XeLaTeX. `make package-v2` assembles the PDFs and uploadable source ZIPs under `dist/v2/`. For the first edition, `make test`, `make coverage`, `make test-ts`, `make ring20`, `make lean` and `make paper` retain their original meanings. The independent TypeScript check requires TypeScript and Node.js, and the ring test requires NumPy.
+[Paper I verification scope](verification/VERIFICATION_SCOPE.md) · [Monograph geometry log](https://github.com/Dnarts/rule110-dependency-fronts/blob/v2.2.1-monograph-multilingual/verification/monograph/geometry-axioms.log) · [Observer axiom log](https://github.com/Dnarts/rule110-dependency-fronts/blob/v2.2.1-monograph-multilingual/verification/monograph/observer-axioms.log) · [Monograph archive](https://github.com/Dnarts/rule110-dependency-fronts/blob/v2.2.1-monograph-multilingual/archive/README.md)
 
-## Citation and licenses
+For the original research package, `make test`, `make coverage`, `make test-ts`, `make ring20`, `make lean` and `make paper` retain their original meanings. The independent TypeScript check requires TypeScript and Node.js; the ring test requires NumPy.
 
-[Citation metadata](CITATION.cff) · [Release notes](RELEASE_NOTES.md) · [MIT code license](LICENSE-CODE) · [CC BY 4.0 manuscript license](LICENSE-PAPER.md). The bundled fonts have their own notices in [paper/v2/fonts](paper/v2/fonts). These manuscripts are preprints. The author takes responsibility for the work, which was prepared with substantive assistance from ChatGPT.
+## Licenses
+
+[MIT code license](LICENSE-CODE) · [CC BY 4.0 manuscript license](LICENSE-PAPER.md). Bundled fonts have separate notices in [paper/v2/fonts](paper/v2/fonts). These manuscripts are preprints. The author takes responsibility for the work, which was prepared with substantive assistance from ChatGPT.
