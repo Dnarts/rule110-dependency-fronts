@@ -6,6 +6,8 @@
 | **II. 110 OBSERVER: Observability of a System’s Own Past** | [PDF](https://github.com/Dnarts/rule110-dependency-fronts/blob/v2.2.1-monograph-multilingual/110_OBSERVER_Preprint_en.pdf) | [PDF](https://github.com/Dnarts/rule110-dependency-fronts/blob/v2.2.1-monograph-multilingual/110_OBSERVER_Preprint.pdf) | [PDF](https://github.com/Dnarts/rule110-dependency-fronts/blob/v2.2.1-monograph-multilingual/110_OBSERVER_Preprint_zh.pdf) | [PDF](paper/observer/he.pdf) · [LaTeX](paper/observer/he.tex) |
 | **III. Essential Inputs and Memory after Coalescence** | [PDF](continuation/paper/rule110-continuation-en.pdf) · [Source](continuation/paper/rule110-continuation-en.tex) | [PDF](continuation/paper/rule110-continuation-ru.pdf) | [中文说明](continuation/README.md#chinese) | [הסבר בעברית](continuation/README.md#hebrew) |
 
+**Zenodo record — Exact Dependency Fronts, Finite Certificates, and Constructive Invariants for Unbounded Time in Rule 110:** [Publication record](https://zenodo.org/records/24435634).
+
 Aleksandr Strand · November 2026
 
 **New continuation:** [English · Русский · 简体中文 · עברית](continuation/README.md) — the exact seven-cell ring, a 63-state arbitrary-tail crystal certificate, the formally completed four-step merger threshold, and a persistent one-bit register across externally reset episodes. [Verification: 79/79 axiom reports](continuation/verification/REPORT.md) · [Sources and reproduction](continuation/MANIFEST.md) · [Connection to Channel Topology and Memory](continuation/docs/relationship.md).
