@@ -12,7 +12,7 @@
 
 **Zenodo record — III. Essential Inputs and Memory after Coalescence in Rule 110:** [Publication record](https://zenodo.org/records/24435942).
 
-Aleksandr Strand · November 2026
+**Cross-domain methodological companion (outside Papers I–III):** [Hypothesis Languages and Evidence-Scoped Identification — English / Русский](https://github.com/Dnarts/proof-carrying-discovery/tree/main/papers/hypothesis-language). This separate working preprint studies semantic uniqueness under language enlargement, distinguishing versus model-falsifying queries, observation checksums, and a live evidence predicate. It uses an **augmented** Rule 110 cellular automaton as a finite witness; the attached Lean theorems establish selected coding/predicate properties, **not** the complete 64-cell transition dynamics. The canonical manuscript and verification source live in **proof-carrying-discovery**.\n\nAleksandr Strand · November 2026
 
 **New continuation:** [English · Русский · 简体中文 · עברית](continuation/README.md) — the exact seven-cell ring, a 63-state arbitrary-tail crystal certificate, the formally completed four-step merger threshold, and a persistent one-bit register across externally reset episodes. [Verification: 79/79 axiom reports](continuation/verification/REPORT.md) · [Sources and reproduction](continuation/MANIFEST.md) · [Connection to Channel Topology and Memory](continuation/docs/relationship.md).
 
