@@ -10,6 +10,8 @@
 
 **Zenodo record — II. 110 OBSERVER: Observability of a System’s Own Past:** [Publication record](https://zenodo.org/records/24435829).
 
+**Zenodo record — III. Essential Inputs and Memory after Coalescence in Rule 110:** [Publication record](https://zenodo.org/records/24435942).
+
 Aleksandr Strand · November 2026
 
 **New continuation:** [English · Русский · 简体中文 · עברית](continuation/README.md) — the exact seven-cell ring, a 63-state arbitrary-tail crystal certificate, the formally completed four-step merger threshold, and a persistent one-bit register across externally reset episodes. [Verification: 79/79 axiom reports](continuation/verification/REPORT.md) · [Sources and reproduction](continuation/MANIFEST.md) · [Connection to Channel Topology and Memory](continuation/docs/relationship.md).
