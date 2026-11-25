@@ -6,7 +6,7 @@
 
 ## Read the paper
 
-**[English PDF](paper/rule110-continuation-en.pdf) · [Русский PDF](paper/rule110-continuation-ru.pdf)**
+**[English PDF](paper/rule110-continuation-en.pdf) · [Русский PDF](paper/rule110-continuation-ru.pdf) · [PDF בעברית](paper/rule110-continuation-he.pdf)**
 
 **[English](#english) · [Русский](#russian) · [简体中文](#chinese) · [עברית](#hebrew)**
 
@@ -375,7 +375,7 @@ $$I(Y;K)=I(Y;Z)=0,\qquad I(Y;Z\mid K)=1\text{ bit}.$$
 <details>
 <summary>מקורות, שחזור והיקף ההוכחות</summary>
 
-- קראו את [המאמר באנגלית](paper/rule110-continuation-en.pdf) או את [המקור הרוסי](paper/rule110-continuation-ru.pdf).
+- קראו את [המאמר המלא בעברית](paper/rule110-continuation-he.pdf), את [המאמר באנגלית](paper/rule110-continuation-en.pdf) או את [המקור הרוסי](paper/rule110-continuation-ru.pdf).
 - [תיקיית Lean](lean/) כוללת את המקורות הפורמליים, ובהם המודול שמחבר את חסם הסף התחתון לעד בן ארבעת הצעדים.
 - [verify_lean.py](scripts/verify_lean.py) בודק את המקורות הפורמליים ואת דוחות האקסיומות; [check_finite.py](scripts/check_finite.py) מחשב מחדש באופן עצמאי את הטבלאות הסופיות.
 - [דוח האימות](verification/REPORT.md) מתעד את הבדיקות שבוצעו בפועל עבור הפרסום ואת מגבלותיהן. למנייה סופית ולהוכחת אינדוקציה יש תפקידים שונים; טבלה סופית לבדה אינה מוכיחה טענה לזמן בלתי מוגבל.

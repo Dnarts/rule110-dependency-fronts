@@ -38,6 +38,7 @@ moving into the temporary build directory.
 | [finite-checks.json](verification/finite-checks.json) | Recomputed finite results, including 98 witnesses and the 126-transition seam certificate |
 | [English PDF](paper/rule110-continuation-en.pdf) and [LaTeX](paper/rule110-continuation-en.tex) | Complete English translation with reproducible vector figures |
 | [Russian PDF](paper/rule110-continuation-ru.pdf) | Original supplied five-page article, preserved byte-for-byte |
+| [Hebrew PDF](paper/rule110-continuation-he.pdf) and [source archive](paper/rule110-continuation-he-source.zip) | Complete Hebrew translation, with Noto Sans Hebrew and rebuild instructions |
 | [Relationship note](docs/relationship.md) | Exact links to predecessor results and separately identified channel-memory deductions |
 | [Supplied originals](archive/supplied/README.md) | Historical provenance, including redundant source and superseded diagnostics |
 

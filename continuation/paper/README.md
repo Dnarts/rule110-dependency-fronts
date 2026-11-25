@@ -2,6 +2,7 @@
 
 - [English translation, 5 pages](rule110-continuation-en.pdf)
 - [Original Russian article, 5 pages](rule110-continuation-ru.pdf)
+- [Hebrew translation, 5 pages](rule110-continuation-he.pdf) · [LaTeX source, figures, and fonts](rule110-continuation-he-source.zip)
 - [English LaTeX source](rule110-continuation-en.tex)
 - [Verification/provenance section included by the source](verification-status.tex)
 - [Figure generator](generate_figures.py)
@@ -31,7 +32,11 @@ coalescence and the displayed difference support. PDF figures are used in the
 manuscript; PNG versions are provided for inspection. No AI-generated imagery
 is used for these exact diagrams.
 
-## Translation and publication decisions
+## Hebrew edition
+
+The complete Hebrew translation follows the published English LaTeX and its verification note, checked against the Russian PDF. It embeds Noto Sans Hebrew. The source archive includes build instructions, vector figures, and the font license. The scientific results and verification artifacts are unchanged.
+
+## English translation and publication decisions
 
 The English article includes every section, theorem, table, caption, and
 reference from the Russian original. Its mathematical scopes are preserved.

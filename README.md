@@ -4,7 +4,7 @@
 | --- | --- | --- | --- | --- |
 | **I. Exact dependency fronts in Rule 110** | [PDF](paper/v2/en.pdf) | [PDF](paper/v2/ru.pdf) | [PDF](paper/v2/zh.pdf) | [PDF](paper/v2/he.pdf) · [LaTeX](paper/v2/he.tex) |
 | **II. 110 OBSERVER: Observability of a System’s Own Past** | [PDF](https://github.com/Dnarts/rule110-dependency-fronts/blob/v2.2.1-monograph-multilingual/110_OBSERVER_Preprint_en.pdf) | [PDF](https://github.com/Dnarts/rule110-dependency-fronts/blob/v2.2.1-monograph-multilingual/110_OBSERVER_Preprint.pdf) | [PDF](https://github.com/Dnarts/rule110-dependency-fronts/blob/v2.2.1-monograph-multilingual/110_OBSERVER_Preprint_zh.pdf) | [PDF](paper/observer/he.pdf) · [LaTeX](paper/observer/he.tex) |
-| **III. Essential Inputs and Memory after Coalescence** | [PDF](continuation/paper/rule110-continuation-en.pdf) · [Source](continuation/paper/rule110-continuation-en.tex) | [PDF](continuation/paper/rule110-continuation-ru.pdf) | [中文说明](continuation/README.md#chinese) | [הסבר בעברית](continuation/README.md#hebrew) |
+| **III. Essential Inputs and Memory after Coalescence** | [PDF](continuation/paper/rule110-continuation-en.pdf) · [Source](continuation/paper/rule110-continuation-en.tex) | [PDF](continuation/paper/rule110-continuation-ru.pdf) | [中文说明](continuation/README.md#chinese) | [PDF](continuation/paper/rule110-continuation-he.pdf) · [מקורות LaTeX](continuation/paper/rule110-continuation-he-source.zip) |
 
 **Zenodo record — Exact Dependency Fronts, Finite Certificates, and Constructive Invariants for Unbounded Time in Rule 110:** [Publication record](https://zenodo.org/records/24435634).
 
@@ -72,7 +72,7 @@ The continuation packages four unchanged supplied mathematical modules with a ne
 The external register stores parity across episodes, with output `O_n = q_n XOR Y_n`; the lattice is reinitialized by the episode schedule. All seven source/audit modules build on Lean 4.35.0, and the 79 requested dependency reports contain only `propext`, `Quot.sound`, or no axioms. Historical failing logs are preserved separately from the fresh successful build.
 
 - [Accessible multilingual README](continuation/README.md)
-- [English article](continuation/paper/rule110-continuation-en.pdf) · [Original Russian article](continuation/paper/rule110-continuation-ru.pdf)
+- [English article](continuation/paper/rule110-continuation-en.pdf) · [Original Russian article](continuation/paper/rule110-continuation-ru.pdf) · [Hebrew article](continuation/paper/rule110-continuation-he.pdf)
 - [Exact file dependencies and reproduction](continuation/MANIFEST.md) · [Current verification report](continuation/verification/REPORT.md)
 - [Channel and memory relationships, with assumptions](continuation/docs/relationship.md)
 
